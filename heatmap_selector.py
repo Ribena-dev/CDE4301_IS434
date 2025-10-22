@@ -132,9 +132,9 @@ def onselect(eclick, erelease):
 def plot_line_fit(x_data, y_data, col_min, col_max):
     """Plot averaged values with edge function fit"""
     
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 10))
+    fig, ax1 = plt.subplots(1, 1, figsize=(12, 8))
     
-    # Plot 1: Data with line fit
+    # Plot data with line fit
     ax1.plot(x_data, y_data, 'o', markersize=8, label='Averaged Data Points', color='blue')
     
     if len(x_data) < 5:
@@ -174,34 +174,12 @@ def plot_line_fit(x_data, y_data, col_min, col_max):
                 bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.8),
                 family='monospace')
         
-        # Calculate residuals
-        y_fit = edge_function(x_data, A, B, C, d, f)
-        residuals = y_data - y_fit
-        
-        # Plot 2: Residuals
-        ax2.plot(x_data, residuals, 'o-', markersize=6, color='green')
-        ax2.axhline(y=0, color='black', linestyle='--', linewidth=1)
-        ax2.set_xlabel('Column Index', fontsize=12)
-        ax2.set_ylabel('Residuals', fontsize=12)
-        ax2.set_title('Fit Residuals', fontsize=12)
-        ax2.grid(True, alpha=0.3)
-        
-        # Calculate R-squared
-        ss_res = np.sum(residuals**2)
-        ss_tot = np.sum((y_data - np.mean(y_data))**2)
-        r_squared = 1 - (ss_res / ss_tot)
-        
-        ax2.text(0.02, 0.98, 'R² = ' + str(round(r_squared, 6)), transform=ax2.transAxes,
-                fontsize=10, verticalalignment='top',
-                bbox=dict(boxstyle='round', facecolor='lightblue', alpha=0.8))
-        
         print("\n=== Fitted Parameters ===")
         print("A (Erf amplitude):", A)
         print("B (Gaussian amplitude):", B)
         print("C (Baseline):", C)
         print("d (Edge position):", d)
         print("f (FWHM):", f)
-        print("R²:", r_squared)
         
     else:
         print("Line fitting failed, showing data only")
