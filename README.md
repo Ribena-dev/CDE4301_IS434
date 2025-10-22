@@ -1,12 +1,11 @@
-# Enhanced Heatmap Selector - User Guide
+# sample analysis tool guide
 
 ## Overview
-This enhanced version of your heatmap selector script includes three powerful new features for DLC (Diamond-Like Carbon) sample analysis and data comparison.
+creates a heatmap based on electron counts to prform sample analysis and data comparison.
 
 ## New Features
 
-### 1. DLC Edge Function Fitting ✓
-**Replaces polynomial fitting with the specialized DLC edge formula:**
+### 1.  Edge Function Fitting ✓
 
 ```
 F = A[1 + Erf(2√(ln2)/f × (d-x))] + B×exp[-ln16/f² × (d-x)²] + C
@@ -180,7 +179,7 @@ Enter number of rows per set: 5
 
 ## Technical Notes
 
-### DLC Fitting Algorithm
+###  Fitting Algorithm
 - Uses `scipy.optimize.curve_fit` with bounded optimization
 - Initial guesses based on data characteristics:
   - Baseline (C): minimum value
@@ -325,14 +324,3 @@ pip install pandas matplotlib seaborn numpy openpyxl scipy
 - Automatic edge finding
 
 ---
-
-## Questions?
-
-This enhanced version preserves all original functionality while adding three major new analysis modes. Each mode is designed for specific analysis workflows common in DLC sample characterization.
-
-The DLC edge function properly models:
-- Gradual signal rise from error function (convolution of edge with beam)
-- Sharp peak from Gaussian (secondary electron emission enhancement)
-- Flat baseline (background signal)
-
-Perfect for high-precision edge analysis in scanning microscopy!
