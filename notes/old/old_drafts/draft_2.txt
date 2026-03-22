@@ -1,0 +1,172 @@
+# Fabrication and Characterization of 3D Resolution Standards Using Proton Beam Lithography
+
+**Student:** Devinaa Kumeresh  
+**ID** : A0266490X  
+**Project Code:** IS-434  
+**Semester:** AY2025 Semester 1 Interim Report
+
+## Table of Contents
+
+
+
+## Introduction 
+
+### resolution standards and their importance
+
+Resolution standards are physical calibration artifacts featuring precisely engineered nanostructures that serve as reference specimens for microscopy systems. These standards typically consist of periodic patterns such as grids, gratings, or spherical particles with well-characterized dimensions at the nanometer scale. They provide essential functionality for magnification calibration, ensuring microscopes display accurate dimensional measurements across different magnification levels. Additionally, they enable distortion correction by identifying and compensating for optical or electromagnetic aberrations in imaging systems, facilitate resolution testing to evaluate the smallest features a microscope can reliably distinguish, and support astigmatism correction to detect and compensate for asymmetric focusing issues.
+{ ref needed for defining resolution standard}
+
+The critical role of resolution standards in nanotechnology and materials science cannot be overstated. As semiconductor fabrication pushes toward sub-3nm technology nodes and biological imaging demands molecular-level resolution, the need for accurate calibration standards becomes paramount. Without standardized calibration, measurements obtained from different microscopes or laboratories may vary significantly, making it impossible to compare results reliably. Resolution standards provide a common reference point, ensuring that a measurement at one facility matches the same measurement elsewhere, enabling reproducibility and comparability of data across research institutions and industrial facilities.
+
+For advanced manufacturing technologies to scale successfully, quality control and metrology must be standardized across production lines and facilities. Industries such as semiconductor manufacturing, nanomedicine, and advanced materials rely on calibrated imaging to maintain product consistency and meet specifications, supporting commercialization and industrial uptake. Regulatory compliance in medical devices, pharmaceuticals, and electronics demands traceable measurements, and resolution standards certified by metrology institutes provide the foundation for this traceability chain, linking nanoscale measurements to international standards through robust metrology and quality control practices.
+{referecne required for the importance of resolution standrads}
+[need to be reduced]
+
+### Technological limitations ( to be changed)
+- current resolution stanards are for surface measurements only 
+- as nanofabrication advances into 3d fabrication there is a requirement for subsrurfcae iomagaing [reference needed] 
+    - examples : semconductor chips being more layered and protien imaging [ reference req]
+
+Current grid resolution standards are predominantly fabricated using electron beam lithography. While electron beam lithography offers excellent resolution at surfaces, it suffers from fundamental physical limitations when creating deep structures. When high-energy electrons penetrate a resist material, they scatter from nuclei, creating a cloud of secondary electrons that expose resist far from the intended beam position. This proximity effect becomes more severe with increasing depth, causing blurred features below the surface, loss of edge definition, and dimensional inaccuracy at depth. additonally it causes a non homgenus ditricbution of doages across depth 
+
+As electrons travel through the resist, forward scattering causes the beam to broaden progressively with depth, a phenomenon known as beam broadening below the surface. At the bottom of a thick resist layer, the effective beam diameter can be several times larger than at the surface, making it impossible to create structures with straight, vertical sidewalls. Electrons have relatively low momentum and are easily deflected by collisions with resist molecules, limiting the practical thickness of resist that can be patterned with acceptable resolution. This limits penetration depth, typically constraining structures to depths of only a few hundred nanometers.
+
+In contrast, protons are approximately 1800 times heavier than electrons, resulting in minimal proximity effects due to reduced momentum transfer to secondary electrons during collisions. This mass advantage means protons maintain more linear trajectories through material with minimal lateral spreading even at significant depths, enabling high penetration depth capabilities exceeding 100 micrometers with maintained resolution. The fundamental physics of proton-matter interaction creates conditions ideal for fabricating three-dimensional resolution standards with straight edges and accurate dimensions throughout their depth.
+  { image rewuired}
+  
+ - this means that clean verticle edges are harder to achive for electorn beams than proton beams
+ { image of rough diagram of diffrent edges 1um electron  10 um electron vs 1 um prton 10um proton -> not to scale instead rouigh diagram }
+ from the diagram above we can summerize geta  rough idea of the diffrence in beam spreading in proton vs electron 
+ 
+ The physical basis for this hypothesis rests on three key advantages. First, protons possess a substantial mass advantage, being approximately 1800 times heavier than electrons. This results in reduced scattering angles upon collision with resist molecules, more linear trajectories through the material, and minimal lateral spreading even at significant depths. Second, the energy deposition profile of protons differs fundamentally from electrons, with protons depositing energy more uniformly along their track with a sharp Bragg peak near the end of their range. This allows precise control of exposure depth, reduced secondary electron generation, and minimal proximity effects between adjacent features. Third, MeV proton beams demonstrate superior penetration capability, able to penetrate tens to hundreds of micrometers with minimal beam broadening, enabling fabrication of truly three-dimensional structures with consistent feature dimensions throughout the resist thickness and straight vertical sidewalls.
+
+## Project plan (to be renamed later)
+in this project i aim to produce a grid resolution standard, as seen below { insert image}
+with straight or perpendicular verticle edges 
+it willbe evaluated using SEM image by analyzing the intenzity profile of the back scatterd counts 
+than using a mathematical model to find the full width half maxium  (FWHM) 
+### design significance 
+ [ to be paraphrased] The primary goal of this project is to fabricate nanometer-scale SEM resolution standard
+samples that can be used to calibrate and assess high-resolution imaging systems. A key
+design improvement introduced in this project involves minimizing measurement errors
+caused by non-ideal sample geometry, specifically the sloped sidewalls of metal grid features.
+In high-resolution SEM analysis, such geometric deviations can lead to inaccurate estimation
+of beam size or resolution. Therefore, a major focus of this work is on fabricating samples
+with more vertical metal edges, as flatter and sharper sidewalls reduce artifacts in edge
+intensity profiles and enhance the reliability of FWHM-based resolution estimation.
+### breif overview and experimental scheme
+{ insert diagram of fabrication process}
+- brief diescription of the basic steps 
+    - sputtering of metal layer -> spin coating resist then writing on resist with p-beam developing resist to se  the structure and verufy -> metal deposition -> actone lift off
+    
+### materials and considerations
+    - given that this is and on going project there as been previous work done on this research 
+- I will be taking some fabrication parameteres from previous reserach condcuted such as the use of pmma
+Positive resist is more soluble in the developer after exposure, as light can cause chain
+breakage and reduce the molecular weight of the polymer
+for the resist adn the thickness of pmma vs rpm [ reference rewuired]
+although the height of PMMA is an interesting point as it will determind the hieght of the metal deposition 
+- there may also possiblely  a max hight for the pmma structurally before the walls start warping , another interesting point to consider
+
+- other fabricationb parameters to be investigated is:
+    - the vatation and contrast of the intensity of back scaterring electrons depending on the metals choosen 
+        - previous reserach used nickel as the base metal for the grid unfortunately that is currently not posisble for this project as te h nickel platiting machine is out of order, this is thus a good oppurtunity to test diffrent materials and metals
+        - diffrent metals can produce diffrent smoothness and cointrast to each other
+        - the 2 tetsted and examined later in tehis paper will be diamond like coating (dlc)  on au 
+            - i will go into more details on the choices later
+            
+- the next fabrication parameter to be test would be related to the proton beam wrinthing 
+- whether a high beam intetensity or enegry over a single pass is better than a low beam intetesinty over multiple passes
+    - and indirectly the most optimal step size 
+    - a low beam intesity with high numbver of passes could potenteilaly produce a more average and even 'writing' if the beam is aligned uppon each pass ( no difrt ), it is presumed so unless evidence to the contrary is found.
+    - however if the step size is small enough than the a high beam intensity with single pass would also in thoery produce the smaek effect 
+    - hence the need to be tested 
+    {insert image of the diffrence between multiple passes vs singular pass and step size} 
+    
+- the last fabrication parameter is varying teh focal plane 
+{insert image of 2 beam ocnverging at a point then diverging}
+- even eith a p-beam there is still some level of divergence -> whcih means that after a certain thickness a divergence would be observed 
+- in theory it could be possible to use the angle of teh converging beam to counteractt the diverging beam in the resist material 
+
+
+
+
+## fabrication process break down 
+### the basic of lithography 
+- the very basics of lithography 
+- it is on of the most essential techniques in mciro and nano fabrication 
+### simualtions
+- before attempting an real life fabrication is it important to validate
+- as such the below simulations are of teh a proton beam at 2mev through 100um of PMMA
+    - with the depth and sactering graph 
+{ insert image}
+- from this it is easy to see that at below 15um the beam spread is barely more than 0.1 um
+- validating that p-beam deos have the potential to cvreate more perpendicular verticle side walls with more homogenus dosage 
+### sputtering of metal layer
+{ insert image of metal sputtering in thoery }
+breifd explanation of magnetron spluttering 
+- the significany of metal layer
+    - creates a conductive base to enable plating region 
+    - since PMMA is insultaiong , a predisposited layer like au , Cr or pladium provied a conductive seed This enables electroplating to occur selectively in
+exposed regions after lithographic developmen
+ [ needs to be paraphrased]
+ In some fabrication scenarios, removing the final patterned metal from the substrate without
+damage is critical. Direct processing on a bare silicon substrate leads to strong adhesion,
+making release difficult. Introducing a thin metal film as an intermediate layer creates a
+chemically responsive interface. In the final step, selective etchants can dissolve this metal
+layer, allowing the clean separation of the patterned structure from the substrate. This
+approach is particularly useful when fabricating freestanding nanostructures or devices
+intended for transfer and integration.
+
+#### current sputtering layer
+ gold was used for its high conductivity , but beacuse of the sputtering technique and golds own characteristics this lend to a lumpy unsmooth structure, th ebelow images depicted the au under afm 
+  { image of gold afm }
+  the probelm wiht unsmooth structures:
+  - it can make the final surface rough 
+  - due to the shadowing effect its isn possible that the plating may not adhere correctly resulting is areas with more or less coating 
+  - the same can be said for pmma ressit coating with teh addition that the lumpy shadowing sttructures may cause some pmma residue to be left over 
+
+### spin coating 
+- as mention previously the spin coating for this section is based of preious work done 
+- breifly, the thickness of the pmma depends largly on teh viscousity of the pmma and the rpm of the spin coater
+- positive resist PMMA is often used in high resolution applications, due to there sharp edge definitions
+current sample is 1um thick pmma with 4000 rpm 
+### p-beam writing  
+- the writing deisgined upon  was a high doasge with single pass for htis sample
+- as seen below, the initial smaple is testing a range of dosages, this is because the beam is calibrated for 0.75MeV which is less than the simulated example
+based on in terpolation the minium developement doasage would be 100 nC/mm^2 
+however it is worth seeing is the a higher dosages as any substantial effect on the development or fabrocation
+
+{ insert diagram of the dosages used}
+
+### pmma developement and acetone lift off
+{ insert image of samle at 5 mins and smaple at 10mins}
+{ insert image of ascetone lift off at 1 min 20 mins}
+
+here you can see that as predicted the dosage belwo the minum dosgae did not develop evident by the darker colouring in the pmma developmet and nearly or comepletly gone in the acetone lift off 
+this is most likely due to the fact that the proton could not interact with suitable depth leaving teh last layer of the pmma non-reacted 
+
+also to note is that the higher dosage the structure could be seen faster, greater intenstiity has more porbablity of interactions in the resist material 
+
+seeing teh actone lift off and 20 mins you can still see some pmma left overs
+this is also a probelm -> removing teh pmma cleanly takes time 
+I have used an ultrasonicator as seen below, but this runs the risk of the structure resouncae frequency with e ultrasonicator and completly sheering of the base layer, being distroyed
+
+
+## analysis
+### visible structural defect
+{ insert image of curved side walls}
+as seen above there is an obvious curvature of the 
+
+
+        
+
+
+            
+            
+ 
+
+
+
+
+

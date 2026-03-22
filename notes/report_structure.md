@@ -1,0 +1,82 @@
+structure of FYP report 
+-introduction 
+    - what is a resolution standard
+        - the diffrent kinds of resolution standards
+        - what are the used for
+            - diffrent kind of callibrations
+            - the more high end callibrations that require a 89  or 90 degreee side wall for resolution grid - where does your project exist inthe grad scehem of things ( novelty )
+
+    - nanofabrication 
+        - breif on lithography 
+        - nanoimprinting 
+    - hypothesis ish 
+        - what are you trying to achieve
+        - ideal reolsution standards
+- Methology 
+    - indepth explantion of the flow increating resoltuion stadard via lithography and via nano imprinitng 
+    - Lithography 
+        - e beam vs p beam 
+        - pbw structure 
+            -including interacting python script
+            - explaining that thebeam abgle into pmma can effect the angle scattering afterwards
+    - Subtracte 
+        - photoresist basics
+        - PMMA vs HSQ
+            - pmma and hsq basics structures and diffrences
+            - whya are we using PMMA
+        - PMMA spin curves
+            - pulled from previous projects
+    - Metal deposition  
+        - diffrent foram fo metal depositions
+            - the 2 mainly used tudes to techincal limitations
+                - PVD and magnettron sputtering vs Ni plating  
+            - explaining PVD and magentron diffrences etc 
+        - diffren properties of metals 
+            - Au vs Pd vs Ni vs dlc
+            - the stress on the surface 
+            - surface roughness for each 
+    - general explantion of lift  off process
+        - using acetone
+
+    - nano imprinting 
+        - beam line was down so to pivot we used nano impring using omostamps
+        - geanerala explanation of process
+        - why was this attempted
+    - analysis methods of side wall and surface roughness
+        - using FWHM and SEM to find side wall 
+        - using afm for sruface
+        - limitations
+            - using TEM 
+- Fabrication  
+    - simualtion of beam into PMMA
+        - how to simulate theoratical angle
+        -simulation of controlling beam apreature angle
+    - fabrication of Au attempt as baseline first attempt
+        - what was used
+            - what kind of pmma at what rpm, molecular weight, sputtering at which vacuum level and temp
+        - surface roughness and side wall
+    - fabrication of using diffrent metals 
+        - why did you use dlc?
+        - surface roughness and sidewall
+            - analysis of results with possible explanation as to why 
+    - fabrication attempts using nanoimprinintg for testing scalibility  
+        - why is failed 
+            - adhesion issues etc 
+    - fabrication attempt with Pd and with PVD instead of metal depositon 
+        - surface roughness and side wall
+        - same thinsg as eariler
+    * include key information as to what was learned form each attempt, including theoritical angle for each attempt etc
+
+- analysis of final iteration 
+    - explain the process and what methods was used
+        - metal fdepositon, pmma, beam settings (angle etc)
+
+    - comaprision to theoritical values and delivribles etc 
+
+- Future works 
+    - identify ddrawback and where there can be improvement
+        - using ni plating 
+            - why sould e ni plating be better 
+    - the impact on current works and systems
+        - callibration tools etc
+

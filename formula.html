@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FWHM Equation</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      background-color: white;
+      font-family: "Times New Roman", Times, serif;
+      padding: 40px;
+      margin: 0;
+    }
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px;
+    }
+    .equation {
+      font-size: 18px;
+      text-align: center;
+      margin: 30px 0;
+      padding: 20px;
+    }
+    .parameters {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-left: 20px;
+    }
+    .parameters li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="equation">
+      $$I(x) = A \cdot \text{erf}\left(\frac{x - x_0}{\sigma}\right) + B \cdot \exp\left(-\frac{(x - x_0)^2}{2\sigma^2}\right) + C$$
+    </div>
+    
+    <div class="parameters">
+      <strong>where:</strong>
+      <ul style="list-style: none; padding-left: 0;">
+        <li>$$I(x) = \text{intensity at position} x$$</li>
+        <li>$$A = \text{error function amplitude (edge transition sharpness) }$$</li>
+        <li>$$\text{erf} = \text{error function representing edge transition}$$</li>
+        <li>$$x_0 = \text{edge position}$$</li>
+        <li>$$\sigma = \text{standard deviation related to beam width}$$</li>
+        <li>$$B = \text{Gaussian amplitude (beam tail effects)}$$</li>
+        <li>$$C = \text{baseline intensity}$$</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+# Introduction:
+ #### What is a resolsution standard and why are they important?
+    a physical standard used for calibrating nanaoscale resolution
+    basically they are importanant for ensuring repeatability of results
+    
+#### whats the issue with current resolution standards?
+- as more and more semiconductor fabriation and nanomedical techonlogy is developed
+- resolution at depth is required 
+- insert some stuff about how protien nanaomicroscoppy ec and how as semiconductors are getting structured layered layers - getting depper 
+
+#### why is htis a porblem for current resolution stadards?
+-   currently teh grid resolution stard is made using electron beam lithography 
+    - electrons spread more than protons  under the surface since protons are 1800 times heavier than electron 
+    - hence there is less momentum transfered to the decondary elecron therefore less scattering
+    - to note: as proton looses energy there is more probablity of hitting at electron ==> more scasteering 
+        - so the beam widedn s as it passes throiugh the matreial
+        { insclde diuagram or animation of proton energy collsion with electron}
+        {insert diagram comapring the egdege staright ness at difreent depths using proton or elecrontn beam }
+#### why is it not currently being used?
+- making proton beam is expensive 
+- nus CIBA has the best resolution
+    - { to insert comaprison of diffrent beams}
+    
+    
+# fabrication of resolution standard
+
+{ insert image of breif fabrication}
+spin coating -> p-beam writing -> metal deposition -> lift off with acetone
+
+## variables and materials
+resist to use
+- include reasons on why to use PMMA
+-   support from previous paper
+- data on molecular density and resist
+- thickness of PMMA and structral stability 
+{ insert table if pmma molecular mass etc}
+Metal to use:
+- metal deposition 
+- diffrent kinds of metal and smoothness of metal surface
+- the contrast of diffrent metals etc
+- the conductivity of diffrent metals
+{ insert image examples of difffrent kinds of smoothness}
+
+## Indepth of process
+### Spin coarting 
+{ insert table of results from previous work on rpm vs thickness}
+- spin coating does not produce a fully smooth surface
+    - the edges have a bumb dues to teh surface tension 
+    - teh certer will lasways be thicker that teh sides since there is less angular veleocity change ( check if tru)
+    
+### p-eam wrting 
+- diffretn methiods of deposition 
+- higher nergy beam depositon would have diffrent daosae for development
+    - include a graph if possible
+- p-beam wriitng patters 
+    - is there a diffrence when doing 1 high dosage pass or doing a low dosage pass multiple times over the are
+    - give that at higher energy beam more dosage is required -> more energy lesss porbablity of the porton interactnng with teh electron and less energy transfer to ther electron
+    
+    {insert diagra / anuimationof p-beam wriitng }
+    
+### metal depostion 
+- smooth metal depositon or plating 
+- plating would be the most accurate -> where the metal would only adhere to the metal but would it be even with the edges that the grid has
+- the lab does metal spluttering -> will splutter and cover the entire sample
+- how to ensure that the metal platted or splutted is smooth 
+{insert diagram comaprision between metal spluttering adn plating}
+### acetone lift off
+- preventing PMMA form getting tsuck at eges or corners
+- how to cehck / remove PMMA resuide if that happends
+- using an ultrasonicator would aoid but runs the risk of dislodging the entire structure
+{ insert diagram of actone lift off}
+
+
+
+#Progress 
+##simulation of energy vs depth of a 2mev beam 
+talk about the graph ig
+- re itertate how there is less spread at the start
+
+##PMMA development and p-beam writing 
+- testing ouyt diffrent dosages for 1um of pmma 
+below 100 nC/mm^2 no developemt 
+## acetone lift off
+- pmma lifting off
+{insert dirgamof dark filter}
+
+##srtuctral defects
+teh curve structure seen in the grid 
+can be atrbuted to the the p-beam writing pattern 
+- using high disage but only 1 time coverage
+
+##ee analysis
+- checkinghow good the staright egde is 
+- software flow are made to amalysis tool
+
+
+
+# next step 
+- varying metal depositon 
+- testing difrrent pbeam writing techniques
+- testing and varying the facal palne
+    - the beam converges etc
+
+
+
+
+
+
