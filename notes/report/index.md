@@ -14,8 +14,8 @@ title: "Grid Resolution Standard — FYP Report"
 
 ## Table of Contents
 
-- [1. Introduction](notes/report/introduction)
-- [2. Methodology](notes/report/methodology)
+- [1. Introduction](Introduction.md)
+- [2. Methodology](Methodology.md)
 - [3. Results](notes/report/results)
 - [4. Analysis](notes/report/analysis)
 - [5. Conclusion](notes/report/conclusion)
