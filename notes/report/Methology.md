@@ -1,7 +1,10 @@
 ## Methodology
 
 ### 2.1 general flow 
-- lithography method for precising 
+[ insert image of clip art of lithograph y techinique]
+-  the baove is  rouigh guiideline to teh fabrication method that willl be made more precise thourght the section 
+
+t
 ### 2.2 lithography methods
 - proton beam 
 - e beam 

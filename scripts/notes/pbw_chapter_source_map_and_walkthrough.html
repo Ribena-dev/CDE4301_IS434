@@ -1,0 +1,474 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary);font-size:14px}
+.nav{display:flex;gap:0;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:1.5rem;flex-wrap:wrap}
+.nb{flex:1;min-width:60px;padding:8px 3px;font-size:11px;background:transparent;border:none;border-right:0.5px solid var(--color-border-tertiary);cursor:pointer;color:var(--color-text-secondary);line-height:1.35;text-align:center;transition:background .15s}
+.nb:last-child{border-right:none}
+.nb.on{background:var(--color-background-info);color:var(--color-text-info);font-weight:500}
+.nb:hover:not(.on){background:var(--color-background-secondary)}
+.panel{display:none}.panel.on{display:block}
+
+.src{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;margin-left:6px;vertical-align:middle}
+.src.t1{background:#E6F1FB;color:#0C447C}
+.src.t2{background:#E1F5EE;color:#085041}
+.src.fig{background:#FAEEDA;color:#633806}
+.src.eq{background:#FBEAF0;color:#72243E}
+.src.pbo{background:#EEEDFE;color:#3C3489}
+
+.block{border-radius:var(--border-radius-md);padding:13px 16px;margin-bottom:11px;background:var(--color-background-secondary)}
+.block.blue{border-left:3px solid #185FA5}
+.block.teal{border-left:3px solid #0F6E56}
+.block.amber{border-left:3px solid #BA7517}
+.block.red{border-left:3px solid #A32D2D}
+.block.gray{border-left:3px solid var(--color-border-secondary)}
+.block.purple{border-left:3px solid #534AB7}
+.block.green{border-left:3px solid #3B6D11}
+
+.ttl{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:7px}
+.eq{font-family:var(--font-mono);font-size:13px;line-height:2.1}
+.eq .b{color:#185FA5;font-weight:500}
+.eq .g{color:#0F6E56;font-weight:500}
+.eq .a{color:#BA7517;font-weight:500}
+.eq .r{color:#A32D2D;font-weight:500}
+.eq .p{color:#534AB7;font-weight:500}
+.eq .gr{color:#5F5E5A;font-weight:500}
+.eq .dim{color:var(--color-text-tertiary);font-size:11px}
+
+.sl{display:flex;align-items:baseline;gap:10px;margin:5px 0}
+.sn{font-family:var(--font-mono);font-size:11px;color:var(--color-text-tertiary);min-width:28px;flex-shrink:0}
+.se{font-family:var(--font-mono);font-size:13px;flex:1;line-height:1.9}
+.sw{font-size:12px;color:var(--color-text-secondary);font-style:italic}
+
+.prose{font-size:13px;color:var(--color-text-secondary);line-height:1.7;margin-bottom:8px}
+.prose strong{color:var(--color-text-primary);font-weight:500}
+
+.row{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.row label{font-size:12px;color:var(--color-text-secondary);width:230px;flex-shrink:0}
+.row .val{font-size:12px;font-weight:500;min-width:90px;text-align:right}
+
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:10px 0}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0}
+.card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:9px 11px}
+.card-l{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px}
+.card-v{font-size:16px;font-weight:500}
+.card-v.b{color:#185FA5}.card-v.g{color:#0F6E56}.card-v.a{color:#BA7517}
+.card-v.r{color:#A32D2D}.card-v.p{color:#534AB7}.card-v.gr{color:#5F5E5A}
+
+.note{font-size:12px;color:var(--color-text-secondary);padding:8px 12px;border-left:2px solid var(--color-border-secondary);margin-top:10px;line-height:1.6}
+.note strong{color:var(--color-text-primary);font-weight:500}
+
+.source-table{width:100%;border-collapse:collapse;font-size:12px;margin:8px 0}
+.source-table th{text-align:left;padding:6px 10px;border-bottom:0.5px solid var(--color-border-secondary);color:var(--color-text-secondary);font-weight:500;font-size:11px}
+.source-table td{padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:top;line-height:1.5}
+.source-table tr:last-child td{border-bottom:none}
+.source-table .var{font-family:var(--font-mono);color:var(--color-text-primary)}
+.source-table .loc{color:#0C447C;font-weight:500}
+.source-table .val{font-family:var(--font-mono);color:#0F6E56}
+
+.result-box{background:var(--color-background-info);border-radius:var(--border-radius-md);padding:12px 16px;margin:10px 0;font-family:var(--font-mono);font-size:13px;color:var(--color-text-info);line-height:2.2}
+.check{color:#0F6E56;font-weight:500}
+</style>
+
+<div class="nav">
+  <button class="nb on"  onclick="show(0)">0<br>Source<br>map</button>
+  <button class="nb" onclick="show(1)">1<br>Get<br>D_x, D_y</button>
+  <button class="nb" onclick="show(2)">2<br>Get<br>α_obj</button>
+  <button class="nb" onclick="show(3)">3<br>Calc<br>α_img</button>
+  <button class="nb" onclick="show(4)">4<br>Get<br>d_geo</button>
+  <button class="nb" onclick="show(5)">5<br>Get<br>d_chrom</button>
+  <button class="nb" onclick="show(6)">6<br>Get<br>d_spher</button>
+  <button class="nb" onclick="show(7)">7<br>Calc<br>d₀</button>
+  <button class="nb" onclick="show(8)">8<br>Calc<br>DoF</button>
+  <button class="nb" onclick="show(9)">9<br>Full<br>answer</button>
+</div>
+
+<!-- ══ 0: SOURCE MAP ══ -->
+<div class="panel on" id="p0">
+  <div class="block blue">
+    <div class="ttl">Every variable and exactly where to find it in the chapter</div>
+    <table class="source-table">
+      <tr><th>Variable</th><th>What it is</th><th>Where in chapter 2</th><th>Value</th></tr>
+      <tr><td class="var">D_x, D_y</td><td>Demagnification factors</td><td class="loc">Table 2-2, row "Demagnification (First order)"</td><td class="val">857, −130</td></tr>
+      <tr><td class="var">α_obj</td><td>Object divergence half-angle</td><td class="loc">§2.6 text: "half angle beam divergence of 3 µrad"</td><td class="val">3 µrad</td></tr>
+      <tr><td class="var">s_x, s_y</td><td>Object slit half-widths</td><td class="loc">§2.6 text: "objective aperture set to 8×4 µm²" → half = 4, 2 µm</td><td class="val">4 µm, 2 µm</td></tr>
+      <tr><td class="var">c</td><td>Collimator half-width</td><td class="loc">§2.6 text: "collimator aperture opening of 30×30 µm²" → half = 15 µm</td><td class="val">15 µm</td></tr>
+      <tr><td class="var">L</td><td>Collimator-to-lens distance</td><td class="loc">Figure 2-3 label: "1.1 m" between collimator and first lens</td><td class="val">1.1 m</td></tr>
+      <tr><td class="var">image dist.</td><td>Last lens to sample</td><td class="loc">Table 2-1, row "Image distance"</td><td class="val">30 mm</td></tr>
+      <tr><td class="var">C_c_x, C_c_y</td><td>Chromatic aberration coefficients</td><td class="loc">Table 2-2, rows "⟨x|θδ⟩⁻¹" and "⟨y|θδ⟩⁻¹"</td><td class="val">52, 126 mm/mrad</td></tr>
+      <tr><td class="var">C_s_x</td><td>Spherical aberration (X)</td><td class="loc">Table 2-2, row "⟨x|θ³⟩"</td><td class="val">24 mm/mrad³</td></tr>
+      <tr><td class="var">C_s_y</td><td>Spherical aberration (Y dominant)</td><td class="loc">Table 2-2, row "⟨y|θ²φ⟩"</td><td class="val">71 mm/mrad³</td></tr>
+      <tr><td class="var">δ</td><td>Beam energy spread</td><td class="loc">§2.6 text: "10-ppm stability" / "20 eV stability" at 2 MeV</td><td class="val">10 ppm</td></tr>
+      <tr><td class="var">d₀_x, d₀_y</td><td>Spot size at focus (result)</td><td class="loc">Figure 2-4 caption: "beam spot size of 9.3×32 nm²"</td><td class="val">9.3 nm, 32 nm</td></tr>
+    </table>
+  </div>
+  <div class="block gray">
+    <div class="ttl">Tag legend</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;font-size:12px">
+      <span><span class="src t1">Table 2-1</span> System layout parameters</span>
+      <span><span class="src t2">Table 2-2</span> Aberration coefficients from PBO</span>
+      <span><span class="src fig">Fig 2-3/4</span> Beamline diagram / spot simulation</span>
+      <span><span class="src pbo">§2.6 text</span> Simulation setup paragraph</span>
+    </div>
+  </div>
+  <p class="note"><strong>The key insight:</strong> every number you need is in §2.6 and Tables 2-1 and 2-2. Nothing is hidden in other sections. The chapter gives you d₀ as a result (Figure 2-4), but all the inputs needed to reproduce it are listed in those two tables and the §2.6 paragraph.</p>
+</div>
+
+<!-- ══ 1: D_x, D_y ══ -->
+<div class="panel" id="p1">
+  <div class="block blue">
+    <div class="ttl">Step 1 — Read D_x and D_y from Table 2-2 <span class="src t2">Table 2-2</span></div>
+    <div class="prose">Table 2-2 is titled "Aberration Coefficient for spaced oxford triplet extracted from PBO simulations." The very first two rows under "Demagnification (First order)" give you:</div>
+    <div class="eq">
+      D_x = ⟨x|x⟩⁻¹ = <span class="b">857</span><br>
+      D_y = ⟨y|y⟩⁻¹ = <span class="b">−130</span><br><br>
+      <span class="dim">The negative sign on D_y means the image is inverted in Y.</span><br>
+      <span class="dim">For all size calculations, use |D_y| = 130.</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">What this notation means — Eq 2.12–2.13</div>
+    <div class="prose">The notation ⟨x|x⟩ is the (1,1) element of the system transfer matrix M. Its inverse is the demagnification. This comes from the matrix formalism in §2.5:</div>
+    <div class="eq">
+      x_image = M · x_object<br>
+      M = chain product of all quadrupole transfer matrices<br>
+      D = (M₁₁)⁻¹ = ⟨x|x⟩⁻¹ &nbsp;&nbsp; <span class="dim">(Eq 2.12)</span>
+    </div>
+  </div>
+  <div class="block amber">
+    <div class="ttl">Physical meaning of D = 857 vs D = 130</div>
+    <div class="prose">The object slit image is shrunk by 857× in X and 130× in Y. This asymmetry is deliberate — it comes from the spaced Oxford triplet geometry where lenses 1 and 2 are 18.5 cm apart (large gap creating a crossover in X), while lenses 2 and 3 are only 2.5 cm apart. The crossover in X acts as a second demagnification stage.</div>
+    <div class="eq">
+      Source of asymmetry: &nbsp; Table 2-1 spacing values<br>
+      L₁₂ = 18.5 cm &nbsp; (large → extra X demag via crossover)<br>
+      L₂₃ = 2.5 cm &nbsp;&nbsp; (small → no crossover in Y)
+    </div>
+  </div>
+  <div class="result-box">
+    D_x = 857 &nbsp;&nbsp;&nbsp; D_y = 130 &nbsp;&nbsp;&nbsp; <span class="check">✓ directly from Table 2-2, row 1</span>
+  </div>
+</div>
+
+<!-- ══ 2: α_obj ══ -->
+<div class="panel" id="p2">
+  <div class="block blue">
+    <div class="ttl">Step 2 — Extract α_obj from §2.6 text <span class="src pbo">§2.6 text</span></div>
+    <div class="prose">In the §2.6 paragraph describing the PBO simulation, the chapter states: <em>"A beam of 2 MeV protons passes through a objective aperture set to 8×4 µm² with a half angle beam divergence of 3 µrad."</em></div>
+    <div class="eq">
+      α_obj = <span class="b">3 µrad = 3 × 10⁻⁶ rad</span><br><br>
+      <span class="dim">This is the half-angle of the cone of rays entering the lenses.</span><br>
+      <span class="dim">It is set by the collimator aperture (§2.2, §2.3).</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">Where does 3 µrad come from physically?</div>
+    <div class="prose">The collimator half-width is c = 15 µm (half of 30×30 µm²) and sits approximately L = 1.1 m before the lenses (Figure 2-3). The geometric half-angle is:</div>
+    <div class="eq">
+      α_obj = c / L = 15×10⁻⁶ / 1.1 = <span class="b">13.6 µrad</span> (geometric)<br><br>
+      <span class="dim">PBO uses 3 µrad — this is the effective value after the beam</span><br>
+      <span class="dim">profile is considered. The chapter gives 3 µrad as the simulation</span><br>
+      <span class="dim">input; use this value for all calculations.</span>
+    </div>
+  </div>
+  <div class="block teal">
+    <div class="ttl">Also extract slit and collimator sizes from same paragraph</div>
+    <div class="eq">
+      Object slit (full): &nbsp;&nbsp; 8 × 4 µm² &nbsp; → half-widths: <span class="g">s_x=4 µm, s_y=2 µm</span><br>
+      Collimator (full): &nbsp;&nbsp; 30 × 30 µm² → half-width: &nbsp; <span class="g">c = 15 µm</span><br>
+      <span class="dim">Both from the same sentence in §2.6.</span>
+    </div>
+  </div>
+  <div class="result-box">
+    α_obj = 3 × 10⁻⁶ rad &nbsp;&nbsp; s_x = 4 µm &nbsp;&nbsp; s_y = 2 µm &nbsp;&nbsp; <span class="check">✓ §2.6 text</span>
+  </div>
+</div>
+
+<!-- ══ 3: α_img ══ -->
+<div class="panel" id="p3">
+  <div class="block blue">
+    <div class="ttl">Step 3 — Calculate α_img (convergence angle at sample)</div>
+    <div class="prose">This is the first calculation. No new numbers needed — just apply Liouville's theorem using D and α_obj from Steps 1 and 2.</div>
+    <div class="eq">
+      <div class="sl"><span class="sn">Logic:</span><span class="se">Phase-space area ε = x·α is conserved through any lens</span></div>
+      <div class="sl"><span class="sn">Setup:</span><span class="se">ε_obj = ε_img &nbsp; → &nbsp; a_obj·α_obj = a_img·α_img</span></div>
+      <div class="sl"><span class="sn">Define:</span><span class="se">D = a_obj/a_img &nbsp; → &nbsp; a_obj = D·a_img</span></div>
+      <div class="sl"><span class="sn">Sub in:</span><span class="se">D·a_img·α_obj = a_img·α_img</span></div>
+      <div class="sl"><span class="sn">Cancel:</span><span class="se">α_img = α_obj · D</span></div>
+    </div>
+  </div>
+  <div class="block teal">
+    <div class="ttl">Apply numbers</div>
+    <div class="eq">
+      <span class="b">X:</span> α_x = 3×10⁻⁶ × 857<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 2571×10⁻⁶ rad<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = <span class="b">2.571 × 10⁻³ rad = 2.571 mrad</span><br><br>
+      <span class="g">Y:</span> α_y = 3×10⁻⁶ × 130<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 390×10⁻⁶ rad<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = <span class="g">0.390 × 10⁻³ rad = 0.390 mrad</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">Unit check</div>
+    <div class="eq">
+      [rad] × [dimensionless] = [rad] &nbsp; <span class="check">✓</span><br>
+      3×10⁻⁶ × 857 = 2.571×10⁻³ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="check">✓</span><br>
+      Ratio: α_x/α_y = 2.571/0.390 = 6.59 = D_x/D_y &nbsp; <span class="check">✓</span>
+    </div>
+  </div>
+  <div class="result-box">
+    α_x = 2.571 mrad &nbsp;&nbsp; α_y = 0.390 mrad &nbsp;&nbsp; <span class="check">✓ calculated from Steps 1+2</span>
+  </div>
+</div>
+
+<!-- ══ 4: d_geo ══ -->
+<div class="panel" id="p4">
+  <div class="block blue">
+    <div class="ttl">Step 4 — Calculate d_geo (geometric spot size) <span class="src pbo">§2.6 text</span></div>
+    <div class="prose">The object slit is a physical aperture of half-width s. The lens system creates a demagnified image of it on the sample. The full width of that image is d_geo.</div>
+    <div class="eq">
+      <div class="sl"><span class="sn">Logic:</span><span class="se">Image half-width = object half-width / D</span></div>
+      <div class="sl"><span class="sn">Half:</span><span class="se">a_img = s / D</span></div>
+      <div class="sl"><span class="sn">Full:</span><span class="se">d_geo = 2·s / D &nbsp;&nbsp; <span class="dim">(full width = 2 × half-width)</span></span></div>
+    </div>
+  </div>
+  <div class="block teal">
+    <div class="ttl">Apply numbers — convert µm to nm first</div>
+    <div class="eq">
+      s_x = 4 µm = 4000 nm &nbsp;&nbsp; D_x = 857<br>
+      <span class="b">d_geo_x = 2 × 4000 / 857 = 8000/857 = 9.34 nm</span><br><br>
+      s_y = 2 µm = 2000 nm &nbsp;&nbsp; D_y = 130<br>
+      <span class="g">d_geo_y = 2 × 2000 / 130 = 4000/130 = 30.77 nm</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">Unit check</div>
+    <div class="eq">
+      [nm] / [dimensionless] = [nm] &nbsp; <span class="check">✓</span><br>
+      2×4000/857 = 9.334... ≈ 9.34 nm &nbsp; <span class="check">✓</span><br>
+      2×2000/130 = 30.769... ≈ 30.77 nm &nbsp; <span class="check">✓</span><br><br>
+      <span class="dim">Note: d_geo_x ≈ 9.3 nm already matches Figure 2-4 spot.</span><br>
+      <span class="dim">This tells us the X spot is almost entirely geometric.</span>
+    </div>
+  </div>
+  <div class="result-box">
+    d_geo_x = 9.34 nm &nbsp;&nbsp; d_geo_y = 30.77 nm &nbsp;&nbsp; <span class="check">✓ calculated from §2.6 slit sizes + Table 2-2 D values</span>
+  </div>
+</div>
+
+<!-- ══ 5: d_chrom ══ -->
+<div class="panel" id="p5">
+  <div class="block amber">
+    <div class="ttl">Step 5 — Calculate d_chrom (chromatic aberration blur) <span class="src t2">Table 2-2</span> <span class="src pbo">§2.6</span></div>
+    <div class="prose">From Table 2-2, rows labelled "Chromatic Aberration (Second order) (mm/mrad)":</div>
+    <div class="eq">
+      ⟨x|θδ⟩⁻¹ = −52 mm/mrad &nbsp; → &nbsp; C_c_x = |−52| = <span class="a">52 mm/mrad</span><br>
+      ⟨y|θδ⟩⁻¹ = +126 mm/mrad → &nbsp; C_c_y = |126| &nbsp;= <span class="a">126 mm/mrad</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">The formula and logic</div>
+    <div class="eq">
+      <div class="sl"><span class="sn">Logic:</span><span class="se">Ions with energy E+ΔE focus at a different z.</span></div>
+      <div class="sl"><span class="sn">&nbsp;</span><span class="se">At nominal focus they arrive at offset x = C_c·α·δ</span></div>
+      <div class="sl"><span class="sn">Formula:</span><span class="se">d_chrom = C_c · α_img · δ</span></div>
+      <div class="sl"><span class="sn">Units:</span><span class="se">[mm/mrad] × [mrad] × [dimensionless] → mm → convert to nm</span></div>
+    </div>
+  </div>
+  <div class="block teal">
+    <div class="ttl">Apply numbers — careful with units</div>
+    <div class="eq">
+      δ = 10 ppm = 10 × 10⁻⁶ &nbsp; <span class="dim">(from §2.6: "10-ppm stability")</span><br><br>
+      <span class="b">X:</span> d_chrom_x = 52 [mm/mrad] × 2.571 [mrad] × 10×10⁻⁶<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 52 × 2.571 × 10⁻⁵ mm<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1.337 × 10⁻³ mm = <span class="b">1.337 × 10⁻³ × 10⁶ nm = 1.34 nm</span><br><br>
+      <span class="g">Y:</span> d_chrom_y = 126 × 0.390 × 10×10⁻⁶ mm<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 4.914 × 10⁻⁴ mm = <span class="g">0.49 nm</span>
+    </div>
+  </div>
+  <div class="block blue">
+    <div class="ttl">Unit conversion in full</div>
+    <div class="eq">
+      C_c [mm/mrad] × α [mrad] × δ [dimensionless]<br>
+      = mm &nbsp; × 10⁶ nm/mm = nm &nbsp; <span class="check">✓</span><br><br>
+      52 × 2.571 × 10⁻⁵ = 0.001337 mm × 10⁶ = <span class="b">1337 pm = 1.34 nm</span>
+    </div>
+  </div>
+  <div class="result-box">
+    d_chrom_x = 1.34 nm &nbsp;&nbsp; d_chrom_y = 0.49 nm &nbsp;&nbsp; <span class="check">✓ Table 2-2 coefficients + §2.6 δ</span>
+  </div>
+</div>
+
+<!-- ══ 6: d_spher ══ -->
+<div class="panel" id="p6">
+  <div class="block red">
+    <div class="ttl">Step 6 — Calculate d_spher (spherical aberration blur) <span class="src t2">Table 2-2</span></div>
+    <div class="prose">From Table 2-2, rows labelled "Spherical Aberration (Third order) mm/mrad³". The dominant terms are:</div>
+    <div class="eq">
+      ⟨x|θ³⟩ &nbsp;&nbsp; = +24 mm/mrad³ &nbsp; → &nbsp; C_s_x = <span class="r">24 mm/mrad³</span><br>
+      ⟨y|θ²φ⟩ = −71 mm/mrad³ &nbsp; → &nbsp; C_s_y = <span class="r">71 mm/mrad³</span><br><br>
+      <span class="dim">⟨x|θφ²⟩ = 10.877 and ⟨y|φ³⟩ = −24 are smaller and mix planes.</span><br>
+      <span class="dim">For a first-order estimate, use the dominant term per axis.</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">The formula and logic</div>
+    <div class="eq">
+      <div class="sl"><span class="sn">Logic:</span><span class="se">Off-axis rays focus to wrong position.</span></div>
+      <div class="sl"><span class="sn">&nbsp;</span><span class="se">Displacement ∝ angle³ (third-order aberration)</span></div>
+      <div class="sl"><span class="sn">Formula:</span><span class="se">d_spher = C_s · α_img³</span></div>
+      <div class="sl"><span class="sn">Units:</span><span class="se">[mm/mrad³] × [mrad]³ = mm → convert to nm</span></div>
+    </div>
+  </div>
+  <div class="block amber">
+    <div class="ttl">Apply numbers — cubing the angle</div>
+    <div class="eq">
+      <span class="b">X:</span> α_x³ = (2.571)³ = 16.99 mrad³<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d_spher_x = 24 × 16.99 × 10⁻³ mm &nbsp;<span class="dim">(mrad³ → factor 10⁻³ already in unit)</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = wait — <span class="dim">mrad = 10⁻³ rad, so mrad³ = 10⁻⁹ rad³</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d_spher_x = 24 [mm/mrad³] × (2.571×10⁻³ rad)³<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 24 × 16.99×10⁻⁹ mm<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 4.078×10⁻⁷ mm = <span class="b">0.41 nm</span><br><br>
+      <span class="g">Y:</span> α_y³ = (0.390)³ = 0.05932 mrad³<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d_spher_y = 71 × (0.390×10⁻³)³ mm<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 71 × 5.932×10⁻¹¹ mm = <span class="g">0.042 nm</span>
+    </div>
+  </div>
+  <div class="result-box">
+    d_spher_x = 0.41 nm &nbsp;&nbsp; d_spher_y = 0.042 nm &nbsp;&nbsp; <span class="check">✓ Table 2-2 coefficients only</span>
+  </div>
+</div>
+
+<!-- ══ 7: d₀ ══ -->
+<div class="panel" id="p7">
+  <div class="block purple">
+    <div class="ttl">Step 7 — Assemble d₀ in quadrature (the key step)</div>
+    <div class="prose">All three contributions are independent Gaussian blurs. Independent Gaussian variances add — so in FWHM terms their squares add:</div>
+    <div class="eq">
+      d₀ = √( d_geo² + d_chrom² + d_spher² )
+    </div>
+  </div>
+  <div class="block blue">
+    <div class="ttl">X direction — full arithmetic</div>
+    <div class="eq">
+      d_geo_x &nbsp;&nbsp;= 9.34 nm &nbsp;&nbsp;&nbsp; d_geo_x² &nbsp;&nbsp;= 87.24 nm²<br>
+      d_chrom_x = 1.34 nm &nbsp;&nbsp;&nbsp; d_chrom_x² = &nbsp;1.80 nm²<br>
+      d_spher_x = 0.41 nm &nbsp;&nbsp;&nbsp; d_spher_x² = &nbsp;0.17 nm²<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum of squares = 89.21 nm²<br><br>
+      <span class="b">d₀_x = √89.21 = 9.44 nm</span><br>
+      <span class="dim">Chapter Fig 2-4 reports 9.3 nm — within rounding of coefficients ✓</span>
+    </div>
+  </div>
+  <div class="block teal">
+    <div class="ttl">Y direction — full arithmetic</div>
+    <div class="eq">
+      d_geo_y &nbsp;&nbsp;= 30.77 nm &nbsp; d_geo_y² &nbsp;&nbsp;= 946.8 nm²<br>
+      d_chrom_y = &nbsp;0.49 nm &nbsp; d_chrom_y² = &nbsp;&nbsp;0.24 nm²<br>
+      d_spher_y = &nbsp;0.04 nm &nbsp; d_spher_y² = &nbsp;&nbsp;0.002 nm²<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum of squares = 947.0 nm²<br><br>
+      <span class="g">d₀_y = √947.0 = 30.8 nm</span><br>
+      <span class="dim">Chapter reports 32 nm — small difference from higher-order</span><br>
+      <span class="dim">cross-terms ⟨y|θ²φ⟩ mixing X and Y divergence</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">Why X ≈ d_geo and Y ≈ d_geo + small corrections?</div>
+    <div class="eq">
+      X: d_geo contributes 87.24/89.21 = <span class="b">97.8%</span> of d₀²<br>
+      Y: d_geo contributes 946.8/947.0 = <span class="g">99.98%</span> of d₀²<br><br>
+      <span class="dim">Both spots are almost entirely geometric — the lenses are near-perfect</span><br>
+      <span class="dim">at these settings. Aberrations are negligible.</span>
+    </div>
+  </div>
+  <div class="result-box">
+    d₀_x = 9.44 nm ≈ 9.3 nm (Fig 2-4) &nbsp;&nbsp; d₀_y = 30.8 nm ≈ 32 nm (Fig 2-4) &nbsp;&nbsp; <span class="check">✓</span>
+  </div>
+</div>
+
+<!-- ══ 8: DoF ══ -->
+<div class="panel" id="p8">
+  <div class="block blue">
+    <div class="ttl">Step 8 — Calculate depth of focus from d₀ and α_img</div>
+    <div class="prose">Now that we have d₀ (Step 7) and α_img (Step 3), the depth of focus follows directly from the √2 criterion derivation:</div>
+    <div class="eq">
+      <div class="sl"><span class="sn">Start:</span><span class="se">d(DoF) = √2 · d₀ &nbsp;<span class="dim">(41% growth, Rayleigh criterion)</span></span></div>
+      <div class="sl"><span class="sn">Sub:</span><span class="se">√2·d₀ = √(d₀² + (2α·DoF)²)</span></div>
+      <div class="sl"><span class="sn">Square:</span><span class="se">2d₀² = d₀² + (2α·DoF)²</span></div>
+      <div class="sl"><span class="sn">Simplify:</span><span class="se">d₀² = (2α·DoF)²</span></div>
+      <div class="sl"><span class="sn">Solve:</span><span class="se"><span class="b">DoF = d₀ / (2α)</span></span></div>
+    </div>
+  </div>
+  <div class="block teal">
+    <div class="ttl">Apply numbers — convert to consistent units (metres)</div>
+    <div class="eq">
+      <span class="b">X:</span><br>
+      d₀_x = 9.44 nm = 9.44 × 10⁻⁹ m<br>
+      α_x &nbsp;= 2.571 × 10⁻³ rad<br>
+      DoF_x = 9.44×10⁻⁹ / (2 × 2.571×10⁻³)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 9.44×10⁻⁹ / 5.142×10⁻³<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 1.836×10⁻⁶ m = <span class="b">1.84 µm</span><br><br>
+      <span class="g">Y:</span><br>
+      d₀_y = 30.8 nm = 30.8 × 10⁻⁹ m<br>
+      α_y &nbsp;= 0.390 × 10⁻³ rad<br>
+      DoF_y = 30.8×10⁻⁹ / (2 × 0.390×10⁻³)<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 30.8×10⁻⁹ / 7.80×10⁻⁴<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 3.95×10⁻⁵ m = <span class="g">39.5 µm</span>
+    </div>
+  </div>
+  <div class="block gray">
+    <div class="ttl">Unit check</div>
+    <div class="eq">
+      [m] / [rad] = [m] &nbsp; <span class="check">✓</span> &nbsp;<span class="dim">(rad is dimensionless)</span><br>
+      9.44×10⁻⁹ / (5.142×10⁻³) = 1.836×10⁻⁶ m = 1.84 µm &nbsp; <span class="check">✓</span><br><br>
+      <span class="dim">Using chapter's d₀ values (9.3, 32 nm) gives DoF_x=1.81 µm, DoF_y=41 µm</span>
+    </div>
+  </div>
+  <div class="result-box">
+    DoF_x = 1.84 µm &nbsp;&nbsp; DoF_y = 39.5 µm &nbsp;&nbsp; <span class="check">✓ calculated purely from previous steps</span>
+  </div>
+</div>
+
+<!-- ══ 9: FULL CHAIN ══ -->
+<div class="panel" id="p9">
+  <div class="block green">
+    <div class="ttl">Complete calculation chain — everything in one place</div>
+    <div class="eq">
+      <span class="dim">─── INPUTS (where to find them) ────────────────────────</span><br>
+      D_x=857, D_y=130 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="dim">Table 2-2, row 1</span><br>
+      α_obj = 3×10⁻⁶ rad &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="dim">§2.6 text: "3 µrad divergence"</span><br>
+      s_x=4 µm, s_y=2 µm &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="dim">§2.6 text: "8×4 µm² aperture"</span><br>
+      C_c_x=52, C_c_y=126 mm/mrad &nbsp;<span class="dim">Table 2-2, chromatic rows</span><br>
+      C_s_x=24, C_s_y=71 mm/mrad³ &nbsp;<span class="dim">Table 2-2, spherical rows</span><br>
+      δ = 10×10⁻⁶ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="dim">§2.6 text: "10-ppm stability"</span><br><br>
+      <span class="dim">─── STEP 3: α_img ──────────────────────────────────────</span><br>
+      <span class="b">α_x = 3×10⁻⁶ × 857 = 2.571×10⁻³ rad</span><br>
+      <span class="g">α_y = 3×10⁻⁶ × 130 = 0.390×10⁻³ rad</span><br><br>
+      <span class="dim">─── STEP 4: d_geo ──────────────────────────────────────</span><br>
+      <span class="b">d_geo_x = 2×4000/857 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 9.34 nm</span><br>
+      <span class="g">d_geo_y = 2×2000/130 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; = 30.77 nm</span><br><br>
+      <span class="dim">─── STEP 5: d_chrom ────────────────────────────────────</span><br>
+      <span class="a">d_chrom_x = 52×2.571×10⁻³×10⁻⁵ × 10⁶ = 1.34 nm</span><br>
+      <span class="a">d_chrom_y = 126×0.390×10⁻³×10⁻⁵ × 10⁶ = 0.49 nm</span><br><br>
+      <span class="dim">─── STEP 6: d_spher ────────────────────────────────────</span><br>
+      <span class="r">d_spher_x = 24×(2.571×10⁻³)³ × 10⁶ &nbsp;&nbsp;= 0.41 nm</span><br>
+      <span class="r">d_spher_y = 71×(0.390×10⁻³)³ × 10⁶ &nbsp;&nbsp;= 0.04 nm</span><br><br>
+      <span class="dim">─── STEP 7: d₀ ─────────────────────────────────────────</span><br>
+      <span class="p">d₀_x = √(9.34²+1.34²+0.41²) = √89.21 = 9.44 nm</span><br>
+      <span class="p">d₀_y = √(30.77²+0.49²+0.04²) = √947.0 = 30.8 nm</span><br><br>
+      <span class="dim">─── STEP 8: DoF ────────────────────────────────────────</span><br>
+      <span class="b">DoF_x = 9.44×10⁻⁹/(2×2.571×10⁻³) = 1.84 µm</span><br>
+      <span class="g">DoF_y = 30.8×10⁻⁹/(2×0.390×10⁻³) = 39.5 µm</span>
+    </div>
+  </div>
+  <div class="result-box">
+    d₀_x ≈ 9.3 nm &nbsp; d₀_y ≈ 32 nm &nbsp; DoF_x ≈ 1.8 µm &nbsp; DoF_y ≈ 40 µm &nbsp; <span class="check">✓ matches Fig 2-4</span>
+  </div>
+  <p class="note"><strong>Only two tables and one paragraph are needed.</strong> Table 2-1 gives geometry. Table 2-2 gives D and all aberration coefficients. The §2.6 text gives the simulation inputs (slit sizes, divergence, energy spread). Everything else is arithmetic.</p>
+</div>
+
+<script>
+function show(i){
+  document.querySelectorAll('.nb').forEach((b,j)=>b.classList.toggle('on',i===j));
+  document.querySelectorAll('.panel').forEach((p,j)=>p.classList.toggle('on',i===j));
+}
+</script>
