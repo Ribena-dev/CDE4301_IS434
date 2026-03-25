@@ -101,3 +101,92 @@ computer chips get smaller -> micrscopy / material charactistic methods get more
 - how do we conclusisvely show the uncertainly reducing for both material cahracterristic method and the grid resolution standard
 - i also need to prove why i want to do this for grid rather than tin balls or other resolution standrad
     - 
+
+
+
+## Methodology  
+### 2.1 general flow 
+[ insert image of clip art of lithograph y techinique]
+-  the above is  rough guideline to the fabrication method that willl be made more precise thought the section 
+- the main base layer is the sillicon waver , which is then spin coated with a photo ressit and then using lithography to carve out the shape of the the grid , metal is then deposited , and finally the resist is removed 
+
+
+### 2.2 lithography methods
+
+ e beam 
+- electron beam lithography 
+ref : 
+ https://doi-org.libproxy1.nus.edu.sg/10.1016/j.mee.2015.02.042 
+Arizona State University, USA
+Nanofabrication
+Fundamentals and Applications - ch 10
+CHAPTER 10
+ELECTRON BEAM DIRECT WRITING
+KENJI YAMAZAKI
+NTT Basic Research Laboratories, NTT Corporation,
+3-1 Morinosato-Wakamiya, Atsugi, 243-0198, Japan
+yamazaki@aecl.ntt.co.jp
+
+Electron beam lithography ( EBL) - 
+ Most frequently used resists and their lithography property are first introduced, followed by categorizing multiple layers of resists for fulfilling various tasks in nanofabrication. Particularlmainly used for pattering on masks in semiconinsdustry 
+- patterning speed is no tfast enough for mass-production 
+Up to date, the most common high resolution EBL resists can be categorized, according to their working principles, into two big groups, one contains PMMA (e.g. MW350K [2], MW100K [3]), PMMA/MAA [2], ZEP [4], [5] and HSQ [6], [7], etc
+- lithpgraphy using gaussian beamascan porvide resolution of 10nm or less 
+- interaction betwen e and materials
+    - The indirect exposure due to electrons scattered in the resist
+and in the substrate is known as the proximity eﬀect, where the part of interest
+in resist is exposed slightly by scattering electrons due to exposure on some other
+adjacent parts as well as due to direct exposure on that part
+-Even though the same dose
+and writing pattern size are used, it is clear that the developed patterns are aﬀected
+by the additional energy due to exposures of surrounding patterns.
+ Elastic collisions result in incoming electrons scattering away from
+the primary trajectory and inelastic collisions lead to ionization and excitation
+of target atoms. Energy transferred in inelastic collisions, result in generation of
+secondary electrons which can travel longer distances from the track of primary
+particles
+
+
+- proton beam 
+ref: doi: 10.1021/nl052478c
+Proton beam writing (p-beam writing) is a promising new direct-write lithographic technique for three-dimensional nanofabrication. In p-beam writing a megaelectronvolt proton beam is focused to a sub-100-nm spot size and scanned over a suitable resist material. 
+Unlike the high-energy secondary electrons generated during e-beam writing, secondary electrons induced by the primary proton beam have low energy15,16 (typically less than 100 eV). The secondary electrons therefore have limited range, resulting in minimal proximity effects.
+
+ref: International Journal of Nanoscience
+Vol. 4, No. 3 (2005) 269–286
+c© World Scientiﬁc Publishing Company
+ION BEAM LITHOGRAPHY AND NANOFABRICATION:
+A REVIEW
+F. WATT∗ , A. A. BETTIOL, J. A. VAN KAN, E. J. TEO and M. B. H. BREESE
+
+p-beam writing is a new technique that utilizes a focused beam of fast (MeV) pro-
+tons written directly into a resist. The relatively high energy of the incident protons
+produces high penetration into the resist
+
+- why are we choosing proton beam lithography over the others 
+ref: Proton beam writing, Frank Watt*, Mark B. H. Breese, Andrew A. Bettiol, and Jeroen A. van Kan
+Centre for Ion Beam Applications (CIBA), Physics Department, National University of Singapore, Singapore 117542
+[insert image of beam penetrations from ref ]
+    - lower scattering rate ==> there is greater depth penetration 
+    Protons, being more massive, have deeper penetration in
+materials while maintaining a straight path, enabling p-beam writing to
+fabricate three-dimensional, high aspect ratio structures with vertical,
+smooth sidewalls and low line-edge roughnes
+ref: T E C H N I C A L P A PE R
+Proton beam writing a platform technology
+for high quality three-dimensional metal mold
+fabrication for nanofluidic applications
+J. A. van Kan • P. G. Shao • Y. H. Wang •
+P. Malar
+Received: 10 May 2011 / Accepted: 14 July 2011 / Published online: 29 July 2011
+Proton beam writing (PBW) is a rela-
+tively new technique which has shown great potential in
+fabricating three-dimensional (3D) nanostructures in poly-
+mer resist material down to the 20 nm level. MeV protons
+generate secondary electrons and like in many lithographic
+processes these electrons modify the molecular structure of
+the resist. The energies of the proton induced secondary
+electrons are relatively low compared with secondary
+electrons generated using electron beam writing, therefore
+proton induced secondary electrons only modify resist
+material within several nano meters of the proton track

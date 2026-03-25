@@ -7,8 +7,16 @@
     - what are the setting how do you set the apertures and tune the beam 
     - choosing writing styles and methods
         - spot size vs passes
+ref: International Journal of Nanoscience
+Vol. 4, No. 3 (2005) 269–286
+c© World Scientiﬁc Publishing Company
+ION BEAM LITHOGRAPHY AND NANOFABRICATION:
+A REVIEW
+F. WATT∗ , A. A. BETTIOL, J. A. VAN KAN, E. J. TEO and M. B. H. BREESE
+
 - development 
     - insert video
+
 - metal deposition
     - what are the parameters for sputtering, pvd for each metal 
     - what do each of the parameters tell you about the metal suitability 
@@ -19,20 +27,26 @@
 
 - as stated on the title
     - show the graphs for depth penetration and the scattering angles
-### 3.3 P-beam angle variation  
+### 3.3 spin coating the waver
+
+### 3.4 P-beam structure
+- beam structure and basic characteristics
+    - beam stability etc.
+- angle of convergency  and X,Y lasers 
+    * might include interactive script to explain beam mechanics
 - include interactive python script 
     - to show how changing the slit size change the beam geometry
 
-### 3.3 Au on silicon waver sample
+### 3.5 Au on silicon waver sample
 - PMMA height, au height 
 - p- beam spot size 
 - sputtering vacuum settings
 - roughness and edge characteristics
 - the problems with roughness
-### 3.4 dlc on Si 
+### 3.6 dlc on Si 
 - why did we try dlc instead
 - afm of surface
 - the problems with dlc 
 
-### 3.5 some other sample
+### 3.7 some other sample
     - solving the wavy edges issues
