@@ -190,3 +190,137 @@ electrons are relatively low compared with secondary
 electrons generated using electron beam writing, therefore
 proton induced secondary electrons only modify resist
 material within several nano meters of the proton track
+
+
+
+### 2.3 resist
+ref :Arizona State University, USA
+Nanofabrication
+Fundamentals and Applications - ch 10
+CHAPTER 10
+ELECTRON BEAM DIRECT WRITING
+KENJI YAMAZAKI
+NTT Basic Research Laboratories, NTT Corporation,
+3-1 Morinosato-Wakamiya, Atsugi, 243-0198, Japan
+yamazaki@aecl.ntt.co.jp
+
+ref: doi: 10.1021/nl052478c
+
+
+
+- photoresist basics
+
+    - why is HSQ and PMMA the choices -> most commonly used photoresist
+    - Resists are radiation sensitive materials which can be coated on substrates and
+modified locally to yield desired patterns. Based on the nature of the interaction
+with the exposure method, they are broadly classified as positive and negative
+resists. Positive profile resists are the photosensitive materials which show
+higher rate of etching of exposed regions with a compatible solvent post-
+exposure. On the other hand, negative resists are the photopolymers which show
+low etching rate of exposed regions in developers after exposure. Two of the
+most common and high-resolution photoresists used for nanofabrication are
+PMMA and HSQ. 
+
+
+- PMMA basics and characteristics
+    [ INSERT pmma FORMULA]
+   
+        - is a positive resist
+        Poly(methyl methacrylate) (PMMA or Plexiglas) is a popular resist, utilized in many different lithographic processes. Primary advantages of PMMA include its simple structure, non toxic nature of the solvent (anisole), several possible dilutions allowing a wide range of resist thickness, non sensitivity to white light (λ > 250 nm), high resolution, no shelf life issues, no processing delay effects, and it can be easily removed after Ni electroplating, unless the resist has been crosslinked. With these flexible properties PMMA is a powerful resist material, which has great potential in Ni mold fabrication.
+
+    ref:https://www.wevolver.com/article/positive-vs-negative-photoresist-a-comprehensive-guide-to-photolithography-in-semiconductor-fabrication
+
+
+        Positive photoresists become soluble in exposed areas when exposed to UV light, a process driven by polymer chain scission. This chemical transformation allows developers to easily remove the unexposed areas during the development process. The result is a high-resolution pattern that can be effectively used in subsequent etching steps to define the final features of the device
+   
+
+- HSQ basics and characteristics
+    [ insert formula for hsq]
+
+    ref:https://www.wevolver.com/article/positive-vs-negative-photoresist-a-comprehensive-guide-to-photolithography-in-semiconductor-fabrication
+
+        negative photoresists undergo cross-linking upon exposure to UV light, which renders the exposed regions insoluble in the developer solution. This unique chemical structure provides robustness and the ability to support thicker films, making negative resists ideal for applications that require enhanced adhesion and structural integrity.
+
+
+ref : doi: 10.1021/nl052478c
+Hydrogen silsesquioxane (HSiO3/2)8 (HSQ), from Dow Corning, has been shown to function as a high-resolution negative tone e-beam resist. 1,2 In HSQ, below 20 nm resolution has been reported 3 and single lines down to 7 nm wide have also been observed. 4,5
+
+- choice of resist
+ref: https://doi-org.libproxy1.nus.edu.sg/10.1016/j.apsusc.2014.04.147
+    - why are we using PMMA over HSQ
+ref: https://www.wevolver.com/article/positive-vs-negative-photoresist-a-comprehensive-guide-to-photolithography-in-semiconductor-fabrication
+
+    When subjected to UV light, positive photoresists undergo polymer chain scission in the exposed areas, leading to increased solubility in the developer solution. This process allows for the effective removal of unexposed areas, resulting in high-resolution patterns suitable for precise microfabrication on circuit boards.
+
+    negative photoresists, such as those utilizing polyisoprene, react differently. Upon exposure to UV light or e-beam radiation, these materials experience cross-linking, which renders the exposed regions insoluble in the developer solution. This negative-tone response creates a robust structure that is ideal for applications requiring thick films and high aspect ratios.
+
+    the cleaner and more effective removal of the resist is more 
+
+    Photoresist can typically make structure sof up to 20nm making them ideal for highly detailed small-scale patterns, ocntrastingly negetive resiste generally resolve to 40nm , making them more suited for larger less intricate patterns
+
+
+
+### 2.4 Metal deposition 
+ref: THIN FILM MATERIALS
+Stress, Defect Formation and Surface Evolution
+L . B . F R E U N D
+Division of Engineering
+Brown University
+S . S U R E S H
+
+ref: Suresh Babu Krishna Moorthy
+Editor
+Thin Film Structures
+in Energy Applications
+
+ref: Hartmut Frey , Hamid R. Khan
+Editors
+Handbook of Thin-Film
+Technology , ch 6, 12.12, 13, 3, 
+
+
+- PVD , sputtering, plating  ( check thin film notes)
+- in general there are 3 main methods avalible to us
+- magnetron sputtering , thermal deposition and nickel plating
+    - unfortunately the nickle plating machine is down and has not been repaired, but a short section of its describetion will be attached here as it related to previous years work that will be compared against later
+- both thermal deposition and magnetron a re consiered physical deposition process
+- [ insert image of basic PVD from fig 1.2 of ref 2]
+- general process of PVD
+    - high energy transfer to substance
+    - material vapourized 
+    - vapourized material transfer to substrate
+    - material condensed on subtrate 
+    
+- advantages of PVD and disadvantages
+- advantages and why its important to the current porject
+    - composition of the deposited file can be controlled by selection of targte material-- important for small scale fabrication and quicker testing 
+    - formation of alloys or compounds via co-deposition
+    - high vacuum --> low contamination 
+    - most importantnly can controll the rate of deposition --> controll over morpology , texture and porosity 
+
+- disadvatages
+    - only line of sight -> which is fine since the we are fabricating a relatively simple structure  ( grid) and not one that required " hidden" layers to be coated
+    - depending on the combination of material and machine used can form poor converage and shadowing 
+
+##### Magnetron sputtering
+[ insert image of schematic of magnetron sputtering]
+- this would be the most commonly used for the fabrication step given that it is the most easily accesable to us 
+    - why is it a good option 
+         - non htermal method - so the PMMA is less lilkely to melt or warp due to heat
+         - convient for use - its alr in the lab lmao
+         - could theritically use any material - but his is limited by the vacuum lvl in the magentron used in the lab and the material aval;ible 
+         - disadvantage - higher possibility of shadowing effects
+[insert image of shadowing in material ]
+    
+##### Thermal deposition
+- [ insert image of schematic of vapour depostion]
+    - disadvantage - heat may warp or melt the PMMA --> the matal used must have a melting point below the PMMAs
+    - advantage -  
+##### nickle plating 
+    - the pros and cons of each method
+    - unfortunates its currently down and has not been fixed, but was used in previous samples 
+##### what would make a good metal
+    - what would be considered a good metal to choose
+    - what are the traditionally used metals 
+    - comparing characteristics of Au, dlc, pd, ni, 
+        - melting point and hence temperature required to make single crystals, strain ( lattice mismatch vs silicon and layer)

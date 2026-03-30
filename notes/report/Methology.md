@@ -29,7 +29,7 @@ The key physical distinction from EBL lies in the mass of the incident particle.
 The practical outcome of these properties is that PBW is capable of fabricating three-dimensional, high-aspect-ratio structures with smooth, near-vertical sidewalls and low line-edge roughness [4][5][6]. Aspect ratios of up to 160 have been demonstrated in SU-8, and feature widths down to 19 nm have been achieved in HSQ using a 2 MeV proton beam at CIBA [6][7]. Sub-3 nm edge smoothness has also been reported [7].
 ( might include interactive script to explain beam mechanics )
 
-### WHy did are using Proton beam 
+### Choosing P-beam
 
 [insert image of beam penetration profiles comparing e-beam and p-beam from ref [5]]
 
@@ -49,62 +49,137 @@ Depth-tuneable penetration
 
 — the depth of proton penetration can be precisely controlled by adjusting the incident beam energy, enabling accurate control of feature height in a single resist layer [6][7].
 
-### 2.3 substrate (to be renamed later)
-ref :Arizona State University, USA
-Nanofabrication
-Fundamentals and Applications - ch 10
-CHAPTER 10
-ELECTRON BEAM DIRECT WRITING
-KENJI YAMAZAKI
-NTT Basic Research Laboratories, NTT Corporation,
-3-1 Morinosato-Wakamiya, Atsugi, 243-0198, Japan
-yamazaki@aecl.ntt.co.jp
+### 2.3 Resist 
+Resists are radiation-sensitive materials that can be coated onto substrates and locally modified to yield desired patterns. Based on their response to exposure, they are broadly classified as positive or negative resists. Positive resists show an increased dissolution rate in the exposed regions when developed, while negative resists show a decreased dissolution rate — the exposed regions become
+insoluble and are retained after development [9].
 
-ref: doi: 10.1021/nl052478c
+Two of the most common and highest-resolution resists used for nano-fabrication are PMMA and HSQ. Both have been demonstrated to be compatible with proton-beam writing (PBW) at sub-100 nm dimensions, and represent the state-of-the-art for
+direct-write lithography at CIBA [10].
 
 
+####  PMMA — Poly(methyl methacrylate)
+[INSERT PMMA STRUCTURAL FORMULA — repeating unit: –[CH₂–C(CH₃)(COOCH₃)]ₙ–]
 
-- photoresist basics
-    - why is HSQ and PMMA the choices -> most commonly used photoresist
+PMMA is a long-chain synthetic polymer and one of the most widely used positive resists in nano-fabrication. Its primary advantages include a simple formulation (PMMA dissolved in anisole, a low-toxicity solvent), insensitivity to white
+light (λ > 250 nm), a wide range of available film thicknesses through dilution, no shelf-life limitations, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off [10] [11].
 
-- PMMA basics and characteristics
-    [ INSERT pmma FORMULA]
-    - basics characteristics of PMMA
-    - how PMMA fundamentally works
+PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission — the breaking of the polymer backbone at the carbon–carbonyl bond. This reduces
+the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development, leaving the unexposed PMMA as the remaining resist pattern [11] [12].
 
-- HSQ basics and characteristics
-    [ insert formula for hsq]
-    - basics characteristics of HSQ
-    - how HSQ fundamentally works
+#### HSQ — Hydrogen Silsesquioxane
+[INSERT HSQ STRUCTURAL FORMULA — cubic cage structure: (HSiO₃/₂)₈ or H₈Si₈O₁₂]
 
+HSQ is an inorganic silicon-based resist with the empirical formula [HSiO₃/₂]ₙ.In its as-deposited state it exists as a polyhedral cage of silicon and oxygen atoms, each silicon bearing a single hydrogen substituent. HSQ is a negative resist and has been shown to function as a high-resolution negative-tone e-beam resist, with resolutions below 20 nm reported and single lines as narrow as 7 nm
+demonstrated [10].
 
-- choice of resist
-    - why are we using PMMA over HSQ
+When exposed to radiation, secondary electrons cleave the Si–H bonds within the cage structure, generating silanol groups that rapidly condense to form new Si–O–Si crosslinks. This converts the soluble cage structure into a dense, crosslinked network that is insoluble in developer solutions such as TMAH. The unexposed, uncrosslinked regions are dissolved during development and removed, leaving the crosslinked network as the patterned feature — the negative-tone
+response [10] [13].
 
+[NOTE: HSQ has a limited shelf life of approximately 6 months (Dow Corning specification), and the coated film must be exposed and developed promptly after coating to achieve reproducible results — a constraint not shared by PMMA.]
 
+#### Resist
+PMMA is selected over HSQ for this project for three reasons.
+
+First, lift-off compatibility. The fabrication process in this project requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film [11] [12]. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow [13].
+
+Second, resolution requirements. Positive resists such as PMMA can typically resolve features down to approximately 20 nm, while negative resists such as HSQ generally resolve to around 40 nm under standard conditions [12]. As the target grid pitch for this standard does not require sub-20 nm features, the resolution advantage of HSQ is not a determining factor, and PMMA is sufficient.
+
+Third, process reliability. PMMA has an unlimited shelf life and is stable in air after spin-coating, placing no time constraint on processing. HSQ contrast and sensitivity degrade with age and with delay between coating and exposure, introducing a source of variability that is undesirable when fabricating a
+calibration standard requiring high reproducibility [10].
 
 
 ### 2.4 Metal deposition 
-- different deposition methods
-    - PVD , sputtering, plating  ( check thin film notes)
-    - the pros and cons of each method
-- different metal properties
-    - what would be considered a good metal to choose
-    - what are the traditionally used metals 
-    - comparing characteristics of Au, dlc, pd, ni, 
-        - melting point and hence temperature required to make single crystals, strain ( lattice mismatch vs silicon and layer)
 
-###  method of analysis
-- using SEM to check for edge straightness
-    - general schematic 
-    - using FWHM formula to finds the the curvature to find the edge straight ness
-        - what are limitations of this can only do down to 1nm
-- using afm to check for surface roughness
-    - hoenstly thats about it 
-- TEM 
-    - tem preparation steps 
+Following lithographic patterning and development of the resist, metal is deposited onto the substrate to form the functional grid features. For this project, metal deposition is carried out using physical vapour deposition (PVD) — a broad class of processes in which a solid source material is vaporised and the resulting vapour is transported and condensed onto the substrate as a thin film [13] [14].
+ 
+[INSERT image of basic PVD schematic — fig 1.2 of ref 2]
+
+he general PVD process proceeds in four stages:
+1. Energy is applied to the source material to vaporise it
+2. The vaporised material is transported through a high-vacuum environment
+3. The vapour impinges on the substrate surface
+4. The material condenses and forms a thin film on the substrate
+
+VD is well-suited to this project for several reasons. The composition of the deposited film is directly controlled by the choice of source material, enabling rapid testing of different metals without altering the rest of the fabrication process. High vacuum conditions minimise contamination from residual gases.
+Critically, the deposition rate can be controlled, providing influence over the film morphology, texture, and surface roughness — all of which affect the calibration utility of the finished standard [13] [14].
+
+The primary disadvantage of PVD is that it is a line-of-sight process — atoms travel in straight paths from the source to the substrate and cannot coat surfaces that are geometrically hidden from the source. For this project, this is not a limitation, as the grid structure is a relatively simple planar geometry with no hidden or re-entrant surfaces requiring coating.
+ 
+Three PVD techniques are considered: magnetron sputtering, thermal evaporation,
+and nickel electroplating.
+
+##### Magnetron sputtering
+[ insert image of schematic of magnetron sputtering]
+For this project, magnetron sputtering is the most readily accessible deposition
+technique available in the lab. Its key advantage in the context of PMMA-patterned substrates is that it is a non-thermal process — energy is delivered to the target by ion bombardment rather than by heat, so the substrate temperature remains comparatively low during deposition. This reduces the risk of the PMMA resist warping or deforming before lift-off. Magnetron sputtering is also highly versatile in terms of target material, provided the material is compatible with
+the vacuum level achievable in the available system.
+
+The primary disadvantage for lift-off applications is the diffuse transport of
+sputtered atoms: which can prevent clean lift-off [15].
+
+[insert image of shadowing in material ]
+    
+##### Thermal deposition
+- [ insert image of schematic of vapour deposition]
+Thermal evaporation is a PVD process in which the source material is resistively or inductively heated in a high-vacuum chamber until it reaches its evaporation temperature, at which point atoms leave the surface and travel in near-straight line-of-sight paths to the substrate [13] [14].
+ 
+The defining advantage of thermal evaporation for lift-off processes is its highly directional, line-of-sight deposition geometry. At typical operating pressures of 10⁻⁵ to 10⁻⁶ torr, the mean free path of evaporated atoms is comparable to the source-to-substrate distance, meaning atoms arrive at the substrate with a very narrow angular distribution.
+
+Disadvantage of thermal evaporation in the context of this project
+is substrate heating. As the source material is heated to its evaporation
+temperature, thermal radiation and convection in the chamber can raise the
+substrate temperature. Pure PMMA has a glass transition temperature (Tg) of approximately 105–107 °C but commercial greades can range from 85 to 165 °C[16]
+
+##### nickle plating 
+Nickel electroplating is an electrochemical deposition process in which nickel ions in solution are reduced onto the substrate surface by the application of an electric current, building up a conformal nickel film. Unlike PVD techniques, electroplating is not a line-of-sight process and can coat non-planar surfaces
+uniformly. It has historically been used at CIBA for the fabrication of metallic molds from PBW-patterned PMMA, and will be referenced for comparison against the PVD-fabricated samples from this project [17].
+ 
+Unfortunately, the electroplating facility is currently out of service and has not been repaired at the time of writing. Electroplated samples from prior work will be used as a comparative reference in the analysis section.
 
 
+##### Choice of metal 
+
+For this fabrication project, a metal is required that satisfies four criteria:
+ 
+1. It must be compatible with PMMA lift-off — i.e. evaporable at substrate
+2. It must be a good electron scatterer for SEM and TEM characterization —
+   materials with high atomic number (high-Z) produce strong contrast in electron microscopy.
+3. It must be chemically stable — the grid standard must resist oxidation or corrosion during storage and repeated use.
+
+4. It must have low lattice mismatch with the silicon substrate to minimize stress-induced deformation of the thin film.
+The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic structure) [18]. Lattice mismatch f is defined as f = (a_film − a_Si) / a_Si.
+    
+
+### 2.5 method of analysis
+Three complementary characterisation techniques are used to evaluate the fabricated grid resolution standard: scanning electron microscopy (SEM) for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
+
+#### SEM - edge straightness  and side wall angle 
+
+SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall — producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
+
+The edge intensity profile is fitted using a combined error function and Gaussian model:
+ 
+$$F(x) = A\left[1 + \text{Erf}\!\left(\frac{2\sqrt{\ln 2}}{f}(d - x)\right)\right] + B\exp\!\left(-\frac{\ln 16}{f^2}(d - x)^2\right) + C$$
+ 
+where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is the baseline offset, *d* is the fitted edge position in pixels, and *f* is the FWHM of the edge transition [3].
+ 
+The **error function term** models the underlying step transition in secondary electron intensity as the beam crosses the edge — the fundamental shape of an ideal edge profile convolved with the finite beam diameter. The **Gaussian term** accounts for the bright secondary electron emission peak at the sidewall. Together they give a physically complete description of the measured profile.
+ 
+The key output is *f* — the FWHM of the fitted edge transition. A smaller *f* corresponds to a sharper, more abrupt edge, which in turn indicates a more vertical sidewall. The sidewall angle θ is estimated geometrically from the fitted FWHM and the known feature height *h*:
+ 
+$$\theta = 90° - \arctan\!\left(\frac{f}{h}\right)$$
+ 
+where *h* is the feature height determined from the PBW process parameters and verified by AFM step-height measurement.
+
+
+The resolution limit of SEM for this type of measurement is approximately 1 nm,below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. SEM is also limited to top-down or oblique imaging — it cannot directly image the sidewall profile without cross-sectioning,
+which is destructive. 
+
+#### AFM - Surface Roughness
+
+AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometer height variations. From the resulting height map, the root mean square roughness R_rms (also written R_q) is extracted — the standard deviation of height across the measured area.
+ 
+For a resolution standard, surface roughness is significant for two reasons. First, it affects the accuracy of AFM-based calibration measurements made using the standard: a rough reference surface introduces uncertainty into tip characterization. Second, roughness provides indirect information about the quality of the deposition process and the uniformity of the metal film grain structure. Target surface roughness for a usable resolution standard is typically below a few nanometers R_rms.
 
 ### Reference list:
 [1] H. Duan, D. Winston, J. K. W. Yang, B. M. Cord, V. R. Manfrinato, and K. K. Berggren, "Sub-10-nm half-pitch electron-beam lithography by using poly(methyl methacrylate) as a negative resist," Microelectronic Engineering, 2015. DOI: 10.1016/j.mee.2015.02.042
@@ -114,4 +189,39 @@ ref: doi: 10.1021/nl052478c
 [5] F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam writing," Materials Today, vol. 10, no. 6, pp. 20–29, 2007. DOI: 10.1016/S1369-7021(07)70129-3
 [6] J. A. van Kan, P. G. Shao, Y. H. Wang, and P. Malar, "Proton beam writing: a platform technology for high quality three-dimensional metal mold fabrication for nanofluidic applications," Microsystem Technologies, vol. 17, pp. 1519–1527, 2011. DOI: 10.1007/s00542-011-1333-0
 [7]  A. A. Bettiol, S. Venugopal Rao, E. J. Teo, J. A. van Kan, and F. Watt, "Sidewall quality in proton beam writing," Nuclear Instruments and Methods in Physics Research Section B, vol. 258, no. 1, pp. 302–306, 2007. DOI: 10.1016/j.nimb.2007.01.073
-[8] S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," Nuclear Instruments and Methods in Physics Research Section B, 2016. DOI: 10.1016/j.nimb.2016.11.022
+[8]  S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," Nuclear Instruments and Methods in Physics Research Section B, 2016. DOI: 10.1016/j.nimb.2016.11.022
+
+[9] K. Yamazaki, "Electron beam direct writing," in Nanofabrication:
+    Fundamentals and Applications, Arizona State University / NTT Basic
+    Research Laboratories. ch. 10.
+
+[10] J. A. van Kan, A. A. Bettiol, and F. Watt, "Proton beam writing of
+    three-dimensional nanostructures in hydrogen silsesquioxane," Nano
+    Letters, vol. 6, no. 3, pp. 579–582, 2006.
+    DOI: 10.1021/nl052478c
+
+[11] J. A. van Kan et al., "Resist materials for proton beam writing: a
+    review," Applied Surface Science, 2014.
+    DOI: 10.1016/j.apsusc.2014.04.147
+
+[12] Wevolver, "Positive vs. negative photoresist: a comprehensive guide to
+    photolithography in semiconductor fabrication," Wevolver, 2023.
+    [Online]. Available: https://www.wevolver.com/article/positive-vs-
+    negative-photoresist-a-comprehensive-guide-to-photolithography-in-
+    semiconductor-fabrication
+
+[13] University of Houston Nanofabrication Facility, "PMMA:HSQ Bilayer,"UHNF Process Documentation. [Online]. Available: https://uhnf.egr.uh.edu/nanofabrication/processes/pmmahsq-bilayer/
+
+[14] L. B. Freund and S. Suresh, Thin Film Materials: Stress, Defect Formation and Surface Evolution. Cambridge: Cambridge University Press, 2003.
+ 
+[15] H. Frey and H. R. Khan, Eds., Handbook of Thin-Film Technology, ch. 3, 6, 12.12, 13. Berlin: Springer, 2015. 
+
+[16] Scientific Reports, "Thermal and optical properties of PMMA films," Nature, 2021. DOI: 10.1038/s41598-021-01282-7
+
+ 
+[17] J. A. van Kan et al., "Resist materials for proton beam writing: a
+    review," Applied Surface Science, 2014.
+  
+[18] Columbia University, "Silicon basics," EE4494 course notes, 2001.
+    [Si lattice parameter a = 5.43 Å]
+    URL: https://www1.columbia.edu/sec/itc/ee/test2/pdf%20files/silicon%20basics.pdf
