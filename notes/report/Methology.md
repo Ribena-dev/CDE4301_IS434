@@ -116,7 +116,7 @@ The primary disadvantage of PVD is that it is a line-of-sight process, atoms tra
 
 Additionally, given that  Pure PMMA has a glass transition temperature (Tg) of approximately 105–107 °C but commercial grades can range from 85 to 165 °C[16], the deposition method should not damage the PMMA 
  
-Three PVD techniques are considered: magnetron sputtering, E-beam deposition and nickel electroplating.
+Three PVD techniques are considered: magnetron sputtering, E-beam deposition and Filtered cathodic acuum arc (FCVA).
 
 #### Magnetron sputtering
 
@@ -138,11 +138,17 @@ sputtered atoms: which can prevent clean lift-off [15].
 In electron beam (e-beam) deposition, a high-voltage (6–40 kV) electron beam is focused onto a target material held in a water-cooled crucible. The kinetic energy of the electrons is converted to thermal energy on impact, causing the target to melt or sublimate and produce a vapour flux that condenses onto the substrate as a thin film. The beam is deflected through 180° or 270° by a magnetic field — keeping the filament away from the deposition path to preserve film purity — and can be scanned across the target in X and Y to distribute heating uniformly. The process must be carried out under high vacuum (>10⁻² mbar) to prevent energy loss from electron collisions with residual gas molecules. E-beam deposition can vaporise materials with melting points up to ~2,800 °C, making it suitable for refractory metals that cannot be processed by resistive thermal evaporation.
 
 
-#### nickle plating 
-Nickel electroplating is an electrochemical deposition process in which nickel ions in solution are reduced onto the substrate surface by the application of an electric current, building up a conformal nickel film. Unlike PVD techniques, electroplating is not a line-of-sight process and can coat non-planar surfaces
-uniformly. It has historically been used at CIBA for the fabrication of metallic molds from PBW-patterned PMMA, and will be referenced for comparison against the PVD-fabricated samples from this project [17].
- 
-Unfortunately, the electroplating facility is currently out of service and has not been repaired at the time of writing. Electroplated samples from prior work will be used as a comparative reference in the analysis section.
+#### DLC deposition via FCVA
+
+Filtered cathodic vacuum arc (FCVA) is a PVD technique in which a high-current arc is struck on a graphite cathode, generating a carbon plasma that is directed 
+onto the substrate through a magnetic filter. The filter removes macroparticles from the plasma stream, producing a dense, smooth diamondlike carbon (DLC) film 
+with a tunable sp²/sp³ ratio depending on the arc parameters. Unlike sputtering or thermal evaporation, FCVA can deposit hard, wear-resistant carbon films at 
+room temperature without requiring a precursor gas.
+
+DLC was considered as a candidate absorber material for the grid resolution standard due to its chemical inertness and mechanical hardness. However, it was 
+excluded on three grounds: its low atomic number (Z = 6) gives near-zero SEM contrast against the silicon substrate (Z = 14); the oxygen plasma conditions 
+required for selective DLC etching are incompatible with a PMMA lift-off process; and the FCVA facility was not available for use at the time of fabrication. 
+FCVA-deposited DLC samples from prior work will be referenced for comparison in the analysis section where relevant.
 
 
 ### 2.5 Material choice
@@ -217,7 +223,7 @@ AFM is used to characterize the surface roughness of the top face of the deposit
 For a resolution standard, surface roughness is significant for two reasons. First, it affects the accuracy of AFM-based calibration measurements made using the standard: a rough reference surface introduces uncertainty into tip characterization. Second, roughness provides indirect information about the quality of the deposition process and the uniformity of the metal film grain structure. Target surface roughness for a usable resolution standard is typically below a few nanometers R_rms.
 
 
-[Next: Fabrication →](Fabrication.md)
+[<--Prev: Introduction ](Introduction.md) | [Next: Fabrication →](Fabrication.md)
 
 ### Reference list:
 [1] H. Duan, D. Winston, J. K. W. Yang, B. M. Cord, V. R. Manfrinato, and K. K. Berggren, "Sub-10-nm half-pitch electron-beam lithography by using poly(methyl methacrylate) as a negative resist," Microelectronic Engineering, 2015. DOI: 10.1016/j.mee.2015.02.042

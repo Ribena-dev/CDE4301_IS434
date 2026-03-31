@@ -22,11 +22,28 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
 
 ### 3.2 simulations of P-beam in PMMA 
 
-[insert spread through PMMA 1um]
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/srim_trajectories.png" 
+       alt="SRIM simulation showing 20 sample 2 MeV proton trajectories through 1 µm PMMA in the X-Y plane (left) and the lateral exit spread distribution in the Y-Z plane with outlier nuclear scatter events marked (right)" 
+       width="280" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 3.2:</strong> SRIM Monte Carlo simulation of 2 MeV proton trajectories 
+    in 1 µm PMMA. Left: side-view (X–Y) showing 20 sample ion paths,protons travel 
+    near-straight with minimal lateral deviation. Right: exit spread (Y–Z) showing the 
+    radial distribution at the resist base;.
+  </figcaption>
+</figure>
 
-[insert SRIM range distribution plot — ion count vs depth for 2 MeV protons in PMMA]
- 
-[insert SRIM lateral straggle plot — σ(z) vs depth z for 2 MeV protons in PMMA]
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/srim_lateral_straggle.png" 
+       alt="Plot of lateral straggle sigma versus depth in PMMA for 2 MeV protons, comparing raw SRIM data including nuclear scatter outliers against IQR-cleaned data, with a 3 nm target threshold line" 
+       width="280" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 3.3:</strong> Lateral straggle σ<sub>r</sub> as a function of depth 
+    for 2 MeV protons in PMMA. The grey dashed curve shows the raw SRIM data 
+  </figcaption>
+</figure>
+spikes are caused by rare large-angle nuclear scattering events. The teal curve shows the cleaned data after IQR ×3 outlier removal, revealing a true straggle of 0.81 nm at the 1 µm exit depth — well below the 3 nm target (red dotted line).
  
 SRIM Monte Carlo simulations were used to characterize the behavior of 2 MeV protons in PMMA and to predict the theoretical sidewall angle of the fabricated features. Two outputs are of interest: the depth distribution (Bragg peak), which confirms the feature height achievable at a given beam energy, and the lateral straggle σ(z), which governs edge sharpness as a function of depth.
  
