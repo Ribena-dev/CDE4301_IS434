@@ -1,5 +1,6 @@
 ## Introduction 
 
+
 ### 1.1 Overview of Resolution Standards
 Driven by Moore's Law, which predicts the doubling of transistor density approximately every two years, semiconductor feature sizes have scaled from the micrometre range in the 1970s to sub-2 nm nodes in commercial production today [1] . This relentless miniaturisation has rendered conventional optical microscopy impractical for surface characterisation; the wavelength of visible light (380–700 nm) fundamentally limits optical resolution to length scales far exceeding those of modern device features [2]. Consequently, there is a pressing need for higher-precision characterisation instruments.
 
@@ -35,296 +36,239 @@ In CD-AFM, a vertical parallel structure (VPS), is required as the primary tip c
 </iframe> -->
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sidewall angle — SEM scan model</title>
 <style>
-  .sw-wrap { font-family: var(--font-sans); padding: 1rem 0; }
-  .sw-canvases { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.25rem; }
-  .sw-panel-label { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 6px; }
-  canvas { display: block; width: 100%; background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; }
-  .sw-sliders { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.25rem; }
-  .sw-row { display: flex; align-items: center; gap: 10px; }
-  .sw-row label { font-size: 12px; color: var(--color-text-secondary); width: 160px; flex-shrink: 0; }
-  .sw-row input { flex: 1; }
-  .sw-row .vout { font-size: 13px; font-weight: 500; width: 60px; text-align: right; color: var(--color-text-primary); }
-  .sw-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-  .sw-card { background: var(--color-background-secondary); border-radius: 8px; padding: 10px 12px; }
-  .sw-card .lbl { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; }
-  .sw-card .num { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
-  .sw-card.warn .num { color: #A32D2D; }
-  .sw-card.ok .num { color: #0F6E56; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); padding: 1rem 0; }
+  .canvases { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 1.25rem; }
+  .lbl { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 6px; }
+  canvas { display: block; width: 100%; background: var(--color-background-primary, #fff); border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; }
+  .sliders { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.25rem; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .row label { font-size: 12px; color: var(--color-text-secondary); width: 160px; flex-shrink: 0; }
+  .row input { flex: 1; }
+  .row .v { font-size: 13px; font-weight: 500; width: 60px; text-align: right; color: var(--color-text-primary); }
+  .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .card { background: var(--color-background-secondary); border-radius: 8px; padding: 10px 12px; }
+  .card .lbl2 { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 4px; }
+  .card .num { font-size: 20px; font-weight: 500; color: var(--color-text-primary); }
+  .card.warn .num { color: #A32D2D; }
+  .card.ok   .num { color: #0F6E56; }
 </style>
+</head>
+<body>
 
-<div class="sw-wrap">
-  <div class="sw-canvases">
-    <div>
-      <div class="sw-panel-label">Feature cross-section (CD-SEM view)</div>
-      <canvas id="cvXsec" width="400" height="280"></canvas>
-    </div>
-    <div>
-      <div class="sw-panel-label">Simulated SEM intensity profile</div>
-      <canvas id="cvSEM" width="400" height="280"></canvas>
-    </div>
+<div class="canvases">
+  <div>
+    <div class="lbl">Feature cross-section</div>
+    <canvas id="cvX" width="360" height="260"></canvas>
   </div>
-
-  <div class="sw-sliders">
-    <div class="sw-row">
-      <label>Sidewall angle (°)</label>
-      <input type="range" id="slSWA" min="60" max="90" step="0.5" value="85">
-      <span class="vout" id="vlSWA">85°</span>
-    </div>
-    <div class="sw-row">
-      <label>Feature height h (nm)</label>
-      <input type="range" id="slH" min="10" max="80" step="1" value="18">
-      <span class="vout" id="vlH">18 nm</span>
-    </div>
-    <div class="sw-row">
-      <label>Nominal CD (nm)</label>
-      <input type="range" id="slCD" min="8" max="40" step="1" value="16">
-      <span class="vout" id="vlCD">16 nm</span>
-    </div>
-  </div>
-
-  <div class="sw-metrics">
-    <div class="sw-card">
-      <div class="lbl">deviation from 90°</div>
-      <div class="num" id="mDev">5.0°</div>
-    </div>
-    <div class="sw-card">
-      <div class="lbl">CD error (nm)</div>
-      <div class="num" id="mErr">3.1 nm</div>
-    </div>
-    <div class="sw-card" id="mcPct">
-      <div class="lbl">CD error (%)</div>
-      <div class="num" id="mPct">19.6%</div>
-    </div>
-    <div class="sw-card">
-      <div class="lbl">W bottom (nm)</div>
-      <div class="num" id="mWbot">19.1 nm</div>
-    </div>
+  <div>
+    <div class="lbl">Simulated SEM intensity profile</div>
+    <canvas id="cvS" width="360" height="260"></canvas>
   </div>
 </div>
 
+<div class="sliders">
+  <div class="row">
+    <label style="color:#a32d2d">&#9632; Sidewall angle (°)</label>
+    <input type="range" id="sA" min="60" max="90" step="0.5" value="85">
+    <span class="v" id="vA" style="color:#a32d2d">85.0°</span>
+  </div>
+</div>
+
+<div class="metrics">
+  <div class="card"><div class="lbl2">deviation from 90°</div><div class="num" id="mD">5.0°</div></div>
+  <div class="card"><div class="lbl2">CD error (nm)</div><div class="num" id="mE">—</div></div>
+  <div class="card" id="mPc"><div class="lbl2">CD error (%) at 20 nm CD</div><div class="num" id="mP">—</div></div>
+</div>
+
 <script>
-const BLUE='#185FA5', TEAL='#0F6E56', RED='#A32D2D', AMB='#BA7517', GR='#888780';
+const H_NM = 40;
+const CD   = 20;
+const B='#185fa5', T='#0f6e56', R='#a32d2d', A='#ba7517';
 
-function gauss(x, mu, sig) {
-  return Math.exp(-0.5*((x-mu)/sig)**2);
-}
+// Fixed scale — 1 nm = this many px. Chosen so the feature fills ~40% of canvas width.
+// Canvas is 360px wide, PAD=40 each side → usable 280px. Max bot at 60° = 16+2*40*tan30 ≈ 62nm.
+// We want 62nm to fit comfortably → SC = 280/90 ≈ 3.1
+const PAD = 40;
+const SC  = 2.8;  // px per nm — FIXED, never changes
 
-function drawXsec(swa, h, cdTop) {
-  const cv = document.getElementById('cvXsec');
-  const ctx = cv.getContext('2d');
+function gauss(x,mu,s){ return Math.exp(-0.5*((x-mu)/s)**2); }
+
+function drawX(swa) {
+  const cv=document.getElementById('cvX'), ctx=cv.getContext('2d');
   const W=cv.width, H=cv.height;
   ctx.clearRect(0,0,W,H);
 
-  const PAD=40, GND=H-50;
-  const delta = (90-swa)*Math.PI/180;
-  const cdBot = cdTop + 2*h*Math.tan(delta);
-  const scale = (W-2*PAD) / Math.max(cdBot*2.5, 60);
+  const d=(90-swa)*Math.PI/180;
+  const GND=H-48;
+  const cx=W/2;
 
-  const cx = W/2;
-  const yTop = GND - h*scale;
-  const yBot = GND;
-  const xTopL = cx - (cdTop/2)*scale;
-  const xTopR = cx + (cdTop/2)*scale;
-  const xBotL = cx - (cdBot/2)*scale;
-  const xBotR = cx + (cdBot/2)*scale;
+  // Fixed top corners
+  const xTL=cx-(CD/2)*SC, xTR=cx+(CD/2)*SC;
+  const yT=GND-H_NM*SC, yB=GND;
 
-  ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--color-background-primary') || '#fff';
+  // Base corners slide out with angle
+  const overhang=H_NM*Math.tan(d);
+  const xBL=cx-(CD/2)*SC-overhang*SC;
+  const xBR=cx+(CD/2)*SC+overhang*SC;
 
-  ctx.strokeStyle='#ccc'; ctx.lineWidth=0.5; ctx.setLineDash([3,3]);
-  ctx.beginPath(); ctx.moveTo(0,GND); ctx.lineTo(W,GND); ctx.stroke();
+  // substrate
+  ctx.strokeStyle='#e0ddd6'; ctx.lineWidth=0.5; ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(0,yB); ctx.lineTo(W,yB); ctx.stroke();
   ctx.setLineDash([]);
 
-  ctx.fillStyle='#B5D4F4'; ctx.strokeStyle=BLUE; ctx.lineWidth=1.5;
+  // feature trapezoid
+  ctx.fillStyle='#b5d4f4'; ctx.strokeStyle=B; ctx.lineWidth=1.5;
   ctx.beginPath();
-  ctx.moveTo(xBotL, yBot);
-  ctx.lineTo(xTopL, yTop);
-  ctx.lineTo(xTopR, yTop);
-  ctx.lineTo(xBotR, yBot);
+  ctx.moveTo(xBL,yB); ctx.lineTo(xTL,yT);
+  ctx.lineTo(xTR,yT); ctx.lineTo(xBR,yB);
   ctx.closePath();
   ctx.fill(); ctx.stroke();
 
-  ctx.fillStyle='#D3D1C7';
-  ctx.fillRect(PAD-10, GND, W-2*PAD+20, 18);
-  ctx.strokeStyle='#888'; ctx.lineWidth=1;
-  ctx.strokeRect(PAD-10, GND, W-2*PAD+20, 18);
+  // substrate bar
+  ctx.fillStyle='#d3d1c7'; ctx.strokeStyle='#999'; ctx.lineWidth=1;
+  ctx.fillRect(PAD-8,yB,W-2*PAD+16,16);
+  ctx.strokeRect(PAD-8,yB,W-2*PAD+16,16);
 
-  const isDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-  const textCol = isDark ? '#e0ddd6' : '#333';
+  ctx.font='11px sans-serif';
 
-  ctx.font='11px sans-serif'; ctx.fillStyle=textCol;
-
-  ctx.setLineDash([3,3]); ctx.strokeStyle=RED; ctx.lineWidth=1;
-  ctx.beginPath(); ctx.moveTo(xTopL,yTop-6); ctx.lineTo(xTopL,yBot+20); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(xTopR,yTop-6); ctx.lineTo(xTopR,yBot+20); ctx.stroke();
+  // top edge markers (red — SEM reads these)
+  ctx.setLineDash([3,3]); ctx.strokeStyle=R; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(xTL,yT-6); ctx.lineTo(xTL,yB+18); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xTR,yT-6); ctx.lineTo(xTR,yB+18); ctx.stroke();
   ctx.setLineDash([]);
+  const ay=yT-14;
+  ctx.strokeStyle=R; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(xTL,ay); ctx.lineTo(xTR,ay); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xTL,ay-3); ctx.lineTo(xTL,ay+3); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xTR,ay-3); ctx.lineTo(xTR,ay+3); ctx.stroke();
+  ctx.fillStyle=R; ctx.textAlign='center';
+  ctx.fillText('W_top — SEM measured', cx, ay-5);
 
-  ctx.strokeStyle=RED; ctx.lineWidth=1.5;
-  const ay=yTop-14;
-  ctx.beginPath(); ctx.moveTo(xTopL,ay); ctx.lineTo(xTopR,ay); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(xTopL,ay-4); ctx.lineTo(xTopL,ay+4); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(xTopR,ay-4); ctx.lineTo(xTopR,ay+4); ctx.stroke();
-  ctx.fillStyle=RED; ctx.textAlign='center';
-  ctx.fillText(`W_top = ${cdTop.toFixed(0)} nm (SEM measured)`, cx, ay-6);
-
-  if(Math.abs(delta)>0.005){
-    ctx.setLineDash([2,3]); ctx.strokeStyle=TEAL; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(xBotL,yBot+24); ctx.lineTo(xBotR,yBot+24); ctx.stroke();
+  // bottom edge markers (teal — true CD)
+  if(Math.abs(d)>0.005){
+    ctx.setLineDash([2,3]); ctx.strokeStyle=T; ctx.lineWidth=1;
+    ctx.beginPath(); ctx.moveTo(xBL,yB+22); ctx.lineTo(xBR,yB+22); ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle=TEAL; ctx.textAlign='center';
-    ctx.fillText(`W_bot = ${cdBot.toFixed(1)} nm (true CD)`, cx, yBot+36);
+    ctx.fillStyle=T; ctx.textAlign='center';
+    ctx.fillText('W_bot — true CD', cx, yB+34);
   }
 
-  ctx.strokeStyle=AMB; ctx.lineWidth=1; ctx.setLineDash([]);
-  const hx=xTopR+12;
-  ctx.beginPath(); ctx.moveTo(hx,yTop); ctx.lineTo(hx,yBot); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(hx-3,yTop); ctx.lineTo(hx+3,yTop); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(hx-3,yBot); ctx.lineTo(hx+3,yBot); ctx.stroke();
-  ctx.fillStyle=AMB; ctx.textAlign='left';
-  ctx.fillText(`h = ${h} nm`, hx+5, (yTop+yBot)/2+4);
+  // height annotation
+  ctx.strokeStyle=A; ctx.lineWidth=1;
+  const hx=xTR+14;
+  ctx.beginPath(); ctx.moveTo(hx,yT); ctx.lineTo(hx,yB); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(hx-3,yT); ctx.lineTo(hx+3,yT); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(hx-3,yB); ctx.lineTo(hx+3,yB); ctx.stroke();
+  ctx.fillStyle=A; ctx.textAlign='left';
+  ctx.fillText('h = 40 nm', hx+4, (yT+yB)/2+4);
 
-  ctx.fillStyle=BLUE; ctx.textAlign='center';
-  ctx.font='10px sans-serif';
-  ctx.fillText(`SWA = ${swa}°`, xTopL-18, (yTop+yBot)/2+4);
-  const angLen=20;
-  ctx.strokeStyle=BLUE; ctx.lineWidth=1.2;
-  ctx.beginPath();
-  ctx.arc(xBotL, yBot, angLen, -Math.PI/2, -Math.PI/2+delta, false);
-  ctx.stroke();
+  // angle arc
+  ctx.strokeStyle=B; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.arc(xBL,yB,20,-Math.PI/2,-Math.PI/2+d,false); ctx.stroke();
+  ctx.fillStyle=B; ctx.textAlign='right';
+  ctx.fillText(swa.toFixed(1)+'°', xBL-5, (yT+yB)/2+4);
 
-  ctx.font='bold 11px sans-serif'; ctx.fillStyle=BLUE; ctx.textAlign='left';
-  ctx.fillText('Silicon substrate', PAD, GND+14);
-
-  ctx.font='11px sans-serif'; ctx.fillStyle=BLUE; ctx.textAlign='center';
-  ctx.fillText('Metal feature', cx, (yTop+yBot)/2+4);
+  ctx.fillStyle='#555'; ctx.textAlign='left'; ctx.fillText('Si substrate', PAD, yB+13);
+  ctx.fillStyle=B; ctx.textAlign='center'; ctx.fillText('Metal', cx, (yT+yB)/2+5);
 }
 
-function drawSEM(swa, h, cdTop) {
-  const cv = document.getElementById('cvSEM');
-  const ctx = cv.getContext('2d');
+function drawS(swa) {
+  const cv=document.getElementById('cvS'), ctx=cv.getContext('2d');
   const W=cv.width, H=cv.height;
   ctx.clearRect(0,0,W,H);
 
-  const isDark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-  const textCol = isDark ? '#e0ddd6' : '#333';
+  const d=(90-swa)*Math.PI/180;
+  const bot=CD+2*H_NM*Math.tan(d);
+  const pH=H-60;
 
-  const delta = (90-swa)*Math.PI/180;
-  const cdBot = cdTop + 2*h*Math.tan(delta);
-  const PAD=40, plotH=H-70;
+  // SEM plot uses a fixed display range tied to the worst-case (60°) so peaks don't jump
+  const xRangeNm = CD + 2*H_NM*Math.tan(30*Math.PI/180) + 20; // fixed ~82nm
+  const sc=(W-2*PAD)/xRangeNm;
 
-  const xRange = Math.max(cdBot*3, 60);
-  const xL_top = W/2 - (cdTop/2)/xRange*(W-2*PAD);
-  const xR_top = W/2 + (cdTop/2)/xRange*(W-2*PAD);
-  const xL_bot = W/2 - (cdBot/2)/xRange*(W-2*PAD);
-  const xR_bot = W/2 + (cdBot/2)/xRange*(W-2*PAD);
+  const xTL=W/2-(CD/2)*sc, xTR=W/2+(CD/2)*sc;
+  const xBL=W/2-(bot/2)*sc, xBR=W/2+(bot/2)*sc;
+  const sigPx=3*sc;
 
-  const sigma = (W-2*PAD)*2.5/xRange;
-
-  const N=300;
-  const xs=[], ys=[];
+  const N=300, xs=[], ys=[];
   for(let i=0;i<N;i++){
-    const px = PAD + i/(N-1)*(W-2*PAD);
-    const x_nm = (px - W/2) / (W-2*PAD) * xRange;
-    const x_top_l = -cdTop/2, x_top_r = cdTop/2;
-
-    let sig=0;
-    sig += 0.25;
-    if(x_nm > -cdBot/2 && x_nm < cdBot/2) sig += 0.30;
-
-    const sig_nm = 3.0;
-    const sig_px = sig_nm/(xRange)*(W-2*PAD);
-    sig += 0.9*gauss(px, xL_top, sig_px);
-    sig += 0.9*gauss(px, xR_top, sig_px);
-
-    const sig_bot_px = sig_nm*1.4/(xRange)*(W-2*PAD);
-    if(swa < 89){
-      sig += 0.35*gauss(px, xL_bot, sig_bot_px);
-      sig += 0.35*gauss(px, xR_bot, sig_bot_px);
-    }
-    xs.push(px);
-    ys.push(sig);
+    const px=PAD+i/(N-1)*(W-2*PAD);
+    const nm=(px-W/2)/sc;
+    let s=0.22;
+    if(nm>-bot/2&&nm<bot/2) s+=0.28;
+    s+=0.85*gauss(px,xTL,sigPx);
+    s+=0.85*gauss(px,xTR,sigPx);
+    if(swa<89){ s+=0.3*gauss(px,xBL,sigPx*1.4); s+=0.3*gauss(px,xBR,sigPx*1.4); }
+    xs.push(px); ys.push(s);
   }
+  const yMx=1.55, toY=v=>pH+26-(v/yMx)*pH;
 
-  const yMin=0, yMax=1.6;
-  const toY = v => plotH + 30 - (v-yMin)/(yMax-yMin)*plotH;
+  ctx.strokeStyle='#ebe9e2'; ctx.lineWidth=0.5;
+  for(let g=0;g<=4;g++){ ctx.beginPath(); ctx.moveTo(PAD,toY(g*0.4)); ctx.lineTo(W-PAD,toY(g*0.4)); ctx.stroke(); }
 
-  ctx.strokeStyle='#ddd'; ctx.lineWidth=0.5;
-  for(let g=0;g<=4;g++){
-    const gy=toY(g*0.4);
-    ctx.beginPath(); ctx.moveTo(PAD,gy); ctx.lineTo(W-PAD,gy); ctx.stroke();
-  }
-
-  ctx.strokeStyle=BLUE; ctx.lineWidth=2;
+  ctx.strokeStyle=B; ctx.lineWidth=2;
   ctx.beginPath();
-  for(let i=0;i<N;i++){
-    i===0 ? ctx.moveTo(xs[i],toY(ys[i])) : ctx.lineTo(xs[i],toY(ys[i]));
-  }
+  xs.forEach((x,i)=>i?ctx.lineTo(x,toY(ys[i])):ctx.moveTo(x,toY(ys[i])));
   ctx.stroke();
 
-  ctx.strokeStyle=RED; ctx.lineWidth=1.5; ctx.setLineDash([4,3]);
-  ctx.beginPath(); ctx.moveTo(xL_top,30); ctx.lineTo(xL_top,plotH+30); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(xR_top,30); ctx.lineTo(xR_top,plotH+30); ctx.stroke();
+  // top edge lines — fixed position
+  ctx.strokeStyle=R; ctx.lineWidth=1.5; ctx.setLineDash([4,3]);
+  ctx.beginPath(); ctx.moveTo(xTL,24); ctx.lineTo(xTL,pH+24); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xTR,24); ctx.lineTo(xTR,pH+24); ctx.stroke();
   ctx.setLineDash([]);
-  ctx.fillStyle=RED; ctx.font='10px sans-serif'; ctx.textAlign='center';
-  ctx.fillText('← SEM measured edges →', W/2, 22);
+  const ay=pH+36;
+  ctx.strokeStyle=R; ctx.lineWidth=1.5;
+  ctx.beginPath(); ctx.moveTo(xTL,ay); ctx.lineTo(xTR,ay); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xTL,ay-3); ctx.lineTo(xTL,ay+3); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(xTR,ay-3); ctx.lineTo(xTR,ay+3); ctx.stroke();
+  ctx.fillStyle=R; ctx.textAlign='center'; ctx.font='10px sans-serif';
+  ctx.fillText('W_top = '+CD+' nm', W/2, ay+12);
 
-  const arY=plotH+42;
-  ctx.strokeStyle=RED; ctx.lineWidth=1.5;
-  ctx.beginPath(); ctx.moveTo(xL_top,arY); ctx.lineTo(xR_top,arY); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(xL_top,arY-3); ctx.lineTo(xL_top,arY+3); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(xR_top,arY-3); ctx.lineTo(xR_top,arY+3); ctx.stroke();
-  ctx.fillStyle=RED; ctx.textAlign='center';
-  ctx.fillText(`W_top = ${cdTop.toFixed(0)} nm`, W/2, arY+12);
-
-  if(Math.abs(delta)>0.005 && cdBot>cdTop+0.5){
-    ctx.strokeStyle=TEAL; ctx.lineWidth=1.2; ctx.setLineDash([3,3]);
-    ctx.beginPath(); ctx.moveTo(xL_bot,30); ctx.lineTo(xL_bot,plotH+30); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(xR_bot,30); ctx.lineTo(xR_bot,plotH+30); ctx.stroke();
+  // bottom edge lines — slide outward
+  if(Math.abs(d)>0.005&&bot>CD+0.5){
+    ctx.strokeStyle=T; ctx.lineWidth=1.2; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(xBL,24); ctx.lineTo(xBL,pH+24); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xBR,24); ctx.lineTo(xBR,pH+24); ctx.stroke();
     ctx.setLineDash([]);
-    ctx.strokeStyle=TEAL; ctx.lineWidth=1.2;
-    const arY2=plotH+56;
-    ctx.beginPath(); ctx.moveTo(xL_bot,arY2); ctx.lineTo(xR_bot,arY2); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(xL_bot,arY2-3); ctx.lineTo(xL_bot,arY2+3); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(xR_bot,arY2-3); ctx.lineTo(xR_bot,arY2+3); ctx.stroke();
-    ctx.fillStyle=TEAL; ctx.textAlign='center';
-    ctx.fillText(`W_bot = ${cdBot.toFixed(1)} nm`, W/2, arY2+12);
+    const ay2=pH+50;
+    ctx.strokeStyle=T; ctx.lineWidth=1.2;
+    ctx.beginPath(); ctx.moveTo(xBL,ay2); ctx.lineTo(xBR,ay2); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xBL,ay2-3); ctx.lineTo(xBL,ay2+3); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(xBR,ay2-3); ctx.lineTo(xBR,ay2+3); ctx.stroke();
+    ctx.fillStyle=T; ctx.textAlign='center';
+    ctx.fillText('W_bot = '+bot.toFixed(1)+' nm', W/2, ay2+12);
   }
 
-  ctx.font='11px sans-serif'; ctx.fillStyle=textCol;
-  ctx.textAlign='left'; ctx.fillText('SE intensity (a.u.)', PAD, 24);
-  ctx.textAlign='center'; ctx.fillText('scan position', W/2, H-4);
+  ctx.fillStyle='#888'; ctx.font='11px sans-serif';
+  ctx.textAlign='left'; ctx.fillText('SE intensity', PAD, 18);
+  ctx.textAlign='center'; ctx.fillText('scan position →', W/2, H-4);
 }
 
-function update() {
-  const swa = parseFloat(document.getElementById('slSWA').value);
-  const h   = parseFloat(document.getElementById('slH').value);
-  const cd  = parseFloat(document.getElementById('slCD').value);
-
-  document.getElementById('vlSWA').textContent = swa.toFixed(1)+'°';
-  document.getElementById('vlH').textContent   = h.toFixed(0)+' nm';
-  document.getElementById('vlCD').textContent  = cd.toFixed(0)+' nm';
-
-  const delta = (90-swa)*Math.PI/180;
-  const errNm = 2*h*Math.tan(delta);
-  const errPct = errNm/cd*100;
-  const wBot = cd + errNm;
-
-  document.getElementById('mDev').textContent  = (90-swa).toFixed(1)+'°';
-  document.getElementById('mErr').textContent  = errNm.toFixed(1)+' nm';
-  document.getElementById('mPct').textContent  = errPct.toFixed(1)+'%';
-  document.getElementById('mWbot').textContent = wBot.toFixed(1)+' nm';
-
-  const pctCard = document.getElementById('mcPct');
-  pctCard.className = 'sw-card' + (errPct>15?' warn':errPct<5?' ok':'');
-
-  drawXsec(swa, h, cd);
-  drawSEM(swa, h, cd);
+function update(){
+  const swa=parseFloat(document.getElementById('sA').value);
+  document.getElementById('vA').textContent=swa.toFixed(1)+'°';
+  const d=(90-swa)*Math.PI/180;
+  const eNm=2*H_NM*Math.tan(d);
+  const ePct=eNm/CD*100;
+  document.getElementById('mD').textContent=(90-swa).toFixed(1)+'°';
+  document.getElementById('mE').textContent=eNm.toFixed(1)+' nm';
+  document.getElementById('mP').textContent=ePct.toFixed(1)+'%';
+  const pc=document.getElementById('mPc');
+  pc.className='card'+(ePct>15?' warn':ePct<5?' ok':'');
+  drawX(swa); drawS(swa);
 }
 
-['slSWA','slH','slCD'].forEach(id=>
-  document.getElementById(id).addEventListener('input',update));
+document.getElementById('sA').addEventListener('input',update);
 update();
 </script>
+</body>
+</html>
 
 
 In EUV and SEM metrology, the consequences are equally significant. A deviation of just 5° from the ideal 90° sidewall angle has been shown to produce a critical dimension error of up to 20% in a 16 nm line-space pattern [10]. This is because the interaction of the incident beam with a non-vertical sidewall produces asymmetric scattering that systematically shifts the apparent edge position.

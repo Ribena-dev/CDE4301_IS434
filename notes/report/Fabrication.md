@@ -2,7 +2,7 @@
 ### 3.1 overview of fabrication steps 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/lit_fab.png" alt="resolution fabrication overview" width="280" style="margin: 5px;">
+  <img src="images/lit_fab.png" alt="resolution fabrication overview"  style="margin: 5px;">
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
@@ -25,7 +25,7 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/srim_trajectories.png" 
        alt="SRIM simulation showing 20 sample 2 MeV proton trajectories through 1 µm PMMA in the X-Y plane (left) and the lateral exit spread distribution in the Y-Z plane with outlier nuclear scatter events marked (right)" 
-       width="280" style="margin: 5px;">
+        style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.2:</strong> SRIM Monte Carlo simulation of 2 MeV proton trajectories 
     in 1 µm PMMA. Left: side-view (X–Y) showing 20 sample ion paths,protons travel 
@@ -37,7 +37,7 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/srim_lateral_straggle.png" 
        alt="Plot of lateral straggle sigma versus depth in PMMA for 2 MeV protons, comparing raw SRIM data including nuclear scatter outliers against IQR-cleaned data, with a 3 nm target threshold line" 
-       width="280" style="margin: 5px;">
+        style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.3:</strong> Lateral straggle σ<sub>r</sub> as a function of depth 
     for 2 MeV protons in PMMA. The grey dashed curve shows the raw SRIM data 
@@ -107,7 +107,7 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
 
 
 
-<video width="100%" controls>
+<video width="300px" controls>
   <source src="images/development_1.mp4" type="video/mp4">
 </video>
 
@@ -117,7 +117,7 @@ Development is performed after PBW exposure and is included here for process con
 ### 3.4 P-beam structure
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/beam_line.png" alt="beam line optics" width="280" style="margin: 5px;">
+  <img src="images/beam_line.png" alt="beam line optics"  style="margin: 5px;">
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.4:</strong> Beam line optics
@@ -469,10 +469,10 @@ function updateMath(dz_um, sx, sy, p) {
 ────────────────────────────────
 
   DoF_x = ${f(p.dofx*1e6,3)} µm
-          ${okX?'INSIDE ✓':'OUTSIDE ✗'}
+          ${okX?'INSIDE ':'OUTSIDE ✗'}
 
   DoF_y = ${f(p.dofy*1e6,3)} µm
-          ${okY?'INSIDE ✓':'OUTSIDE ✗'}
+          ${okY?'INSIDE ':'OUTSIDE ✗'}
 
 └────────────────────────────────┘`;
 }
@@ -527,18 +527,18 @@ update();
 | DLC | FCVA | N/A (amorphous) | ~10⁻³–10² (sp²/sp³ dependent)  | Excluded: Z = 6 gives near-zero contrast vs Si (Z = 14)|
 
 
-### 3.6 Fabricated samples parameters and prep 
+### 3.6 Fabricated samples composition
 
-| Samples | Composition | Height(nm) | Theoretical sidewall angle | 
-| 1 | Au on Cr| | |
-
-sample 1 : Au on Cr on Si 
-sample 2 : DLC on Si 
-sample 3: DLC on Pd on Si - to imporve conductivity
-sample 4: Au on Pd on Si
-sample 5: Pd on Cr on Si
-
-[ to do is get the height of each layer of the sample]
+| Sample | Cr | Pd | Au | DLC | Ti |
+|---|:---:|:---:|:---:|:---:|:---:|
+| 1 — Au/Cr/Si | 2nm | |  40nm | | |
+| 2 — DLC/Si |  | | |   |
+| 3 — DLC/Pd/Si |  |  | | |
+| 4 — Au/Pd/Si |  |  |  | |
+| 5 — Pd/Cr/Si |   |  | | |
+| 6 - DLC/Pd/Ti/Si| | | | |2nm|
+| 7 - Pd/Ti/Si| | 40nm | | | 2nm |
+[  to do is get the height of each layer of the sample]
 
 [<--Prev: Methodology ](Methology.md) | 
 [Next: Results and analysis →](fna.md)
