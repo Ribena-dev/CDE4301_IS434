@@ -1,0 +1,10 @@
+1630
+
+Interface 			-5.31	9.78
+Possible apex		-6.15	9.75
+Possible dust		-6.95	9.75
+DLC Grid			-6.95	9.3
+
+1815
+
+Resolution standard		6.335	-8.35	-7.5
