@@ -2,7 +2,7 @@
 ### 3.1 overview of fabrication steps 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/lit_fab.png" alt="resolution fabrication overview" width="280" style="margin: 5px;">
+  <img src="images/lit_fab.png" alt="resolution fabrication overview" width="280" style="margin: 5px;">
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
@@ -23,7 +23,7 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
 ### 3.2 simulations of P-beam in PMMA 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/srim_trajectories.png" 
+  <img src="images/srim_trajectories.png" 
        alt="SRIM simulation showing 20 sample 2 MeV proton trajectories through 1 µm PMMA in the X-Y plane (left) and the lateral exit spread distribution in the Y-Z plane with outlier nuclear scatter events marked (right)" 
        width="280" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
@@ -35,7 +35,7 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
 </figure>
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/srim_lateral_straggle.png" 
+  <img src="images/srim_lateral_straggle.png" 
        alt="Plot of lateral straggle sigma versus depth in PMMA for 2 MeV protons, comparing raw SRIM data including nuclear scatter outliers against IQR-cleaned data, with a 3 nm target threshold line" 
        width="280" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
@@ -117,7 +117,7 @@ Development is performed after PBW exposure and is included here for process con
 ### 3.4 P-beam structure
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/beam_line.png" alt="beam line optics" width="280" style="margin: 5px;">
+  <img src="images/beam_line.png" alt="beam line optics" width="280" style="margin: 5px;">
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.4:</strong> Beam line optics
@@ -133,7 +133,7 @@ Focusing is achieved by a spaced Oxford triplet of magnetic quadrupole lenses in
 larger fields [5].
 
 <iframe 
-  src="/notes/report/scripts/beam_geo.html" 
+  src="notes/report/scripts/beam_geo.html" 
   width="100%" 
   height="580px" 
   style="border:none; border-radius:6px;">

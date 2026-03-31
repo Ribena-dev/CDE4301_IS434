@@ -2,7 +2,7 @@
 
 ### 2.1 general flow 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/wk3_fabrication_setup-resolution .drawio.png" alt="Resolution lithography process" width="280" style="margin: 5px;">
+  <img src="images/lit_fab.png" alt="Resolution lithography process"  style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 2.1:</strong> Overview of fabrication process
   </figcaption>
@@ -225,54 +225,44 @@ For a resolution standard, surface roughness is significant for two reasons. Fir
 
 [<--Prev: Introduction ](Introduction.md) | [Next: Fabrication →](Fabrication.md)
 
-### Reference list:
-[1] H. Duan, D. Winston, J. K. W. Yang, B. M. Cord, V. R. Manfrinato, and K. K. Berggren, "Sub-10-nm half-pitch electron-beam lithography by using poly(methyl methacrylate) as a negative resist," Microelectronic Engineering, 2015. DOI: 10.1016/j.mee.2015.02.042
 
-[2] K. Yamazaki, "Electron beam direct writing," in Nanofabrication: Fundamentals and Applications, A. A. Tseng, Ed. Singapore: World Scientific, 2008, ch. 10.
+### References
 
-[3] J. A. van Kan, A. A. Bettiol, and F. Watt, "Proton beam writing of three-dimensional nanostructures in hydrogen silsesquioxane," Nano Letters, vol. 6, no. 3, pp. 579–582, 2006. DOI: 10.1021/nl052478c
-
-[4] F. Watt, A. A. Bettiol, J. A. van Kan, E. J. Teo, and M. B. H. Breese, "Ion beam lithography and nanofabrication: a review," International Journal of Nanoscience, vol. 4, no. 3, pp. 269–286, 2005.
-
-[5] F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam writing," Materials Today, vol. 10, no. 6, pp. 20–29, 2007. DOI: 10.1016/S1369-7021(07)70129-3
-
-[6] J. A. van Kan, P. G. Shao, Y. H. Wang, and P. Malar, "Proton beam writing: a platform technology for high quality three-dimensional metal mold fabrication for nanofluidic applications," Microsystem Technologies, vol. 17, pp. 1519–1527, 2011. DOI: 10.1007/s00542-011-1333-0
-
-[7]  A. A. Bettiol, S. Venugopal Rao, E. J. Teo, J. A. van Kan, and F. Watt, "Sidewall quality in proton beam writing," Nuclear Instruments and Methods in Physics Research Section B, vol. 258, no. 1, pp. 302–306, 2007. DOI: 10.1016/j.nimb.2007.01.073
-
-[8]  S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," Nuclear Instruments and Methods in Physics Research Section B, 2016. DOI: 10.1016/j.nimb.2016.11.022
-
-[9] K. Yamazaki, "Electron beam direct writing," in Nanofabrication:
-    Fundamentals and Applications, Arizona State University / NTT Basic
-    Research Laboratories. ch. 10.
-
-[10] J. A. van Kan, A. A. Bettiol, and F. Watt, "Proton beam writing of
-    three-dimensional nanostructures in hydrogen silsesquioxane," Nano
-    Letters, vol. 6, no. 3, pp. 579–582, 2006.
-    DOI: 10.1021/nl052478c
-
-[11] J. A. van Kan et al., "Resist materials for proton beam writing: a
-    review," Applied Surface Science, 2014.
-    DOI: 10.1016/j.apsusc.2014.04.147
-
-[12] Wevolver, "Positive vs. negative photoresist: a comprehensive guide to
-    photolithography in semiconductor fabrication," Wevolver, 2023.
-    [Online]. Available: https://www.wevolver.com/article/positive-vs-
-    negative-photoresist-a-comprehensive-guide-to-photolithography-in-
-    semiconductor-fabrication
-
-[13] 
-
-[14] L. B. Freund and S. Suresh, Thin Film Materials: Stress, Defect Formation and Surface Evolution. Cambridge: Cambridge University Press, 2003.
+<div class="references">
  
-[15] H. Frey and H. R. Khan, Eds., Handbook of Thin-Film Technology, ch. 3, 6, 12.12, 13. Berlin: Springer, 2015. 
-
-[16] Scientific Reports, "Thermal and optical properties of PMMA films," Nature, 2021. DOI: 10.1038/s41598-021-01282-7
-
+<ol>
+  <li>H. Duan, D. Winston, J. K. W. Yang, B. M. Cord, V. R. Manfrinato, and K. K. Berggren, "Sub-10-nm half-pitch electron-beam lithography by using poly(methyl methacrylate) as a negative resist," <em>Microelectronic Engineering</em>, 2015. DOI: 10.1016/j.mee.2015.02.042</li>
  
-[17] J. A. van Kan et al., "Resist materials for proton beam writing: a
-    review," Applied Surface Science, 2014.
-  
-[18] Columbia University, "Silicon basics," EE4494 course notes, 2001.
-    [Si lattice parameter a = 5.43 Å]
-    URL: https://www1.columbia.edu/sec/itc/ee/test2/pdf%20files/silicon%20basics.pdf
+  <li>K. Yamazaki, "Electron beam direct writing," in <em>Nanofabrication: Fundamentals and Applications</em>, A. A. Tseng, Ed. Singapore: World Scientific, 2008, ch. 10.</li>
+ 
+  <li>J. A. van Kan, A. A. Bettiol, and F. Watt, "Proton beam writing of three-dimensional nanostructures in hydrogen silsesquioxane," <em>Nano Letters</em>, vol. 6, no. 3, pp. 579–582, 2006. DOI: 10.1021/nl052478c</li>
+ 
+  <li>F. Watt, A. A. Bettiol, J. A. van Kan, E. J. Teo, and M. B. H. Breese, "Ion beam lithography and nanofabrication: a review," <em>International Journal of Nanoscience</em>, vol. 4, no. 3, pp. 269–286, 2005.</li>
+ 
+  <li>F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam writing," <em>Materials Today</em>, vol. 10, no. 6, pp. 20–29, 2007. DOI: 10.1016/S1369-7021(07)70129-3</li>
+ 
+  <li>J. A. van Kan, P. G. Shao, Y. H. Wang, and P. Malar, "Proton beam writing: a platform technology for high quality three-dimensional metal mold fabrication for nanofluidic applications," <em>Microsystem Technologies</em>, vol. 17, pp. 1519–1527, 2011. DOI: 10.1007/s00542-011-1333-0</li>
+ 
+  <li>A. A. Bettiol, S. Venugopal Rao, E. J. Teo, J. A. van Kan, and F. Watt, "Sidewall quality in proton beam writing," <em>Nuclear Instruments and Methods in Physics Research Section B</em>, vol. 258, no. 1, pp. 302–306, 2007. DOI: 10.1016/j.nimb.2007.01.073</li>
+ 
+  <li>S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," <em>Nuclear Instruments and Methods in Physics Research Section B</em>, 2016. DOI: 10.1016/j.nimb.2016.11.022</li>
+ 
+  <li>C. Mack, <em>Fundamental Principles of Optical Lithography</em>. Chichester: Wiley, 2007.</li>
+ 
+  <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
+ 
+  <li>J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton beam writing: a review," <em>Applied Surface Science</em>, 2014. DOI: 10.1016/j.apsusc.2014.04.147</li>
+ 
+  <li>A. A. Tseng, K. Chen, C. D. Chen, and K. J. Ma, "Electron beam lithography in nanoscale fabrication: recent development," <em>IEEE Transactions on Electronics Packaging Manufacturing</em>, vol. 26, no. 2, pp. 141–149, 2003. DOI: 10.1109/TEPM.2003.817714</li>
+ 
+  <li>L. B. Freund and S. Suresh, <em>Thin Film Materials: Stress, Defect Formation and Surface Evolution</em>. Cambridge: Cambridge University Press, 2003.</li>
+ 
+  <li>H. Frey and H. R. Khan, Eds., <em>Handbook of Thin-Film Technology</em>. Berlin: Springer, 2015.</li>
+ 
+  <li>K. Müller, "Thermal stability of PMMA resists used in nanolithography," <em>Scientific Reports</em>, 2021. DOI: 10.1038/s41598-021-01282-7</li>
+ 
+  <li>National Institute of Standards and Technology, "Improving CD-AFM measurements from the tip down," NIST News, Mar. 2016. Available: <a href="https://www.nist.gov/news-events/news/2016/03/improving-cd-afm-measurements-tip-down">nist.gov</a></li>
+</ol>
+ 
+</div>
+ 
