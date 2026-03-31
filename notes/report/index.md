@@ -14,8 +14,6 @@ title: "Grid Resolution Standard — FYP Report"
 
 ## Table of Contents
 
-## Table of Contents
-
 - [1. Introduction](Introduction.md)
   - [1.1 Overview of Resolution Standards](#11-overview-of-resolution-standards)
   - [1.2 The Importance of Sidewall Angles](#12-the-importance-of-sidewall-angles-in-grid-resolution-standards)
