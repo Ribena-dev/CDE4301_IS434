@@ -133,10 +133,11 @@ Focusing is achieved by a spaced Oxford triplet of magnetic quadrupole lenses in
 larger fields [5].
 
 <iframe 
-  src="notes/report/scripts/beam_geo.html" 
+  src="https://github.com/Ribena-dev/CDE4301_IS434/blob/main/notes/report/scripts/beam_geo.html" 
   width="100%" 
   height="580px" 
-  style="border:none; border-radius:6px;">
+  style="border:none; border-radius:6px;"
+  sandbox="allow-scripts" >
 </iframe>
   
 | Parameter | Value |
