@@ -1,11 +1,6 @@
 ## Fabrication
 ### 3.1 overview of fabrication steps 
-{% include figure.html
-   src="/assets/images/fabrication_flow.png"
-   label="Figure 3.1"
-   caption="Side-view schematic of the grid resolution standard fabrication process, showing the five key stages: silicon wafer substrate, spin-coated resist, lithographic patterning and development, metal deposition, and resist lift-off."
-   alt="Step-by-step side view diagram showing a silicon wafer, PMMA resist layer, patterned resist after lithography, metal deposited into the trenches, and the final metallic grid after resist removal."
-%}
+
  
 [INSERT animated top-down view of fabrication steps]
  
@@ -78,6 +73,7 @@ larger fields [5].
   height="580px" 
   style="border:none; border-radius:6px;">
 </iframe>
+  
 | Parameter | Value |
 |---|---|
 | Accelerator | 3.5 MV Singletron (HVEE) |

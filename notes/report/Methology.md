@@ -113,6 +113,8 @@ PVD is well-suited to this project for several reasons. The composition of the d
 Critically, the deposition rate can be controlled, providing influence over the film morphology, texture, and surface roughness, all of which affect the calibration utility of the finished standard [14].
 
 The primary disadvantage of PVD is that it is a line-of-sight process, atoms travel in straight paths from the source to the substrate and cannot coat surfaces that are geometrically hidden from the source. For this project, this is not a limitation, as the grid structure is a relatively simple planar geometry with no hidden or re-entrant surfaces requiring coating.
+
+Additionally, given that  Pure PMMA has a glass transition temperature (Tg) of approximately 105–107 °C but commercial grades can range from 85 to 165 °C[16], the deposition method should not damage the PMMA 
  
 Three PVD techniques are considered: magnetron sputtering, E-beam deposition and nickel electroplating.
 
@@ -158,12 +160,24 @@ For this fabrication project, a metal is required that satisfies four criteria:
 The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic structure) [18]. Lattice mismatch f is defined as f = (a_film − a_Si) / a_Si.
 
 5. Good surface smoothness, limiting e- scattering 
-Using the 
+Using the Névot-Croce factor, to visualize the importance of a smooth surface under <3nm
 
-Additionally, given that  Pure PMMA has a glass transition temperature (Tg) of approximately 105–107 °C but commercial grades can range from 85 to 165 °C[16], the deposition method should not damage the PMMA 
+The Névot-Croce factor is a  correction factor that tells you how much of the specular (mirror-like) reflected signal you lose from a surface due to roughness.
+A perfectly smooth surface reflects 100% of the incident beam in the specular direction. As the surface gets rougher, some of that signal scatters diffusely in random directions instead, so the sharp, coherent reflection you're trying to measure gets weaker
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/nevot_croce.png" alt = "nevot_coroce" width="280" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
+    <strong>Figure 2.7</strong> 
+  </figcaption>
+</figure>
+
+The plot shows signal retention as a function of roughness across three representative scattering conditions (q_z = 0.5, 1.0, and 1.5 nm⁻¹). All three curves decay exponentially — at low roughness the surface behaves near-ideally, but beyond ~3 nm the higher-q curves drop sharply, indicating that diffuse scatter increasingly dominates over the coherent specular signal. At σ = 5 nm the most sensitive condition retains less than 40% of its signal; at σ = 10 nm the signal is effectively lost.
+The 3 nm threshold is therefore chosen as the point at which signal retention remains above 80%
+
 
 ### 2.5 method of analysis
-Three complementary characterisation techniques are used to evaluate the fabricated grid resolution standard: scanning electron microscopy (SEM) for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
+Three complementary characterization techniques are used to evaluate the fabricated grid resolution standard: scanning electron microscopy (SEM) for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
 
 #### SEM - edge straightness  and side wall angle 
 
@@ -189,12 +203,19 @@ which is destructive.
 
 #### AFM - Surface Roughness
 
-AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometer height variations. From the resulting height map, the root mean square roughness R_rms (also written R_q) is extracted — the standard deviation of height across the measured area.
-[ include an image of good AFM smoothness]
+AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometer height variations. From the resulting height map, the root mean square roughness R_rms (also written R_q) is extracted, the standard deviation of height across the measured area.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/nevot_croce.png" alt = "nevot_coroce" width="280" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
+    <strong>Figure 2.7</strong> 
+  </figcaption>
+</figure>
 
 For a resolution standard, surface roughness is significant for two reasons. First, it affects the accuracy of AFM-based calibration measurements made using the standard: a rough reference surface introduces uncertainty into tip characterization. Second, roughness provides indirect information about the quality of the deposition process and the uniformity of the metal film grain structure. Target surface roughness for a usable resolution standard is typically below a few nanometers R_rms.
 
 
+[Next: Fabrication →](Fabrication.md)
 
 ### Reference list:
 [1] H. Duan, D. Winston, J. K. W. Yang, B. M. Cord, V. R. Manfrinato, and K. K. Berggren, "Sub-10-nm half-pitch electron-beam lithography by using poly(methyl methacrylate) as a negative resist," Microelectronic Engineering, 2015. DOI: 10.1016/j.mee.2015.02.042
