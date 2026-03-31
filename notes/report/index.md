@@ -8,7 +8,7 @@ title: "Grid Resolution Standard — FYP Report"
   <h1>Fabrication of a Grid Resolution Standard via Proton-Beam Writing</h1>
   <div class="meta">
     NUS College of Design and Engineering<br>
-    Final Report · Week 11, Semester 2
+    Final Report · Week 12, Semester 2
   </div>
 </div>
 
