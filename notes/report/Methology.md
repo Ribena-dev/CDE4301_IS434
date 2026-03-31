@@ -133,7 +133,6 @@ the vacuum level achievable in the available system.
 The primary disadvantage for lift-off applications is the diffuse transport of
 sputtered atoms: which can prevent clean lift-off [15].
 
-[insert image of shadowing in material ]
     
 #### E-beam deposition  
 In electron beam (e-beam) deposition, a high-voltage (6–40 kV) electron beam is focused onto a target material held in a water-cooled crucible. The kinetic energy of the electrons is converted to thermal energy on impact, causing the target to melt or sublimate and produce a vapour flux that condenses onto the substrate as a thin film. The beam is deflected through 180° or 270° by a magnetic field — keeping the filament away from the deposition path to preserve film purity — and can be scanned across the target in X and Y to distribute heating uniformly. The process must be carried out under high vacuum (>10⁻² mbar) to prevent energy loss from electron collisions with residual gas molecules. E-beam deposition can vaporise materials with melting points up to ~2,800 °C, making it suitable for refractory metals that cannot be processed by resistive thermal evaporation.
@@ -206,8 +205,11 @@ which is destructive.
 AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometer height variations. From the resulting height map, the root mean square roughness R_rms (also written R_q) is extracted, the standard deviation of height across the measured area.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/nevot_croce.png" alt = "nevot_coroce" width="280" style="margin: 5px;">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
+  <img src="images/afm_example_pdsi.png" alt = "AFM example" style="margin: 5px;">
+
+  <img src="images/afm_ex_graph.png" alt="afm graph" width="280" style="margin: 5px;">
+
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Afm example and graph of surface at center lines in both verticle and horizontal
     <strong>Figure 2.7</strong> 
   </figcaption>
 </figure>

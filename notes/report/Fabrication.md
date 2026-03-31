@@ -1,12 +1,18 @@
 ## Fabrication
 ### 3.1 overview of fabrication steps 
 
- 
-[INSERT animated top-down view of fabrication steps]
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/lit_fab.png" alt="resolution fabrication overview" width="280" style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
+  </figcaption>
+</figure>
  
 The fabrication process consists of five sequential steps, as illustrated in Figure 3.1:
  
 1. **Silicon wafer** — the base substrate on which all subsequent layers are built.
+1. (b) **Metal deposition** - buffer metal layer to aid in adhesion, contrast in conductivity and reduce internal stress when the thin flim is coated
 2. **Spin-coated resist** — PMMA is spin-coated onto the wafer surface to the required thickness (Section 3.3).
 3. **Lithography and development** — the grid pattern is written by PBW (Section 3.4) and the exposed resist is removed by DI:IPA development, leaving a patterned resist stencil.
 4. **Metal deposition** — metal is deposited by PVD into the open trench regions (Section 3.5).
@@ -16,11 +22,11 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
 
 ### 3.2 simulations of P-beam in PMMA 
 
-[INSERTspread through PMMA 1um]
+[insert spread through PMMA 1um]
 
-[INSERT SRIM range distribution plot — ion count vs depth for 2 MeV protons in PMMA]
+[insert SRIM range distribution plot — ion count vs depth for 2 MeV protons in PMMA]
  
-[INSERT SRIM lateral straggle plot — σ(z) vs depth z for 2 MeV protons in PMMA]
+[insert SRIM lateral straggle plot — σ(z) vs depth z for 2 MeV protons in PMMA]
  
 SRIM Monte Carlo simulations were used to characterize the behavior of 2 MeV protons in PMMA and to predict the theoretical sidewall angle of the fabricated features. Two outputs are of interest: the depth distribution (Bragg peak), which confirms the feature height achievable at a given beam energy, and the lateral straggle σ(z), which governs edge sharpness as a function of depth.
  
@@ -34,13 +40,16 @@ where f is the FWHM of the dose profile across the feature edge — the same par
  
 $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(\frac{2.355\,\sigma(h)}{h}\right) $$
 
+[Insert graph of side wall vs the penetration depth]
+
 ### 3.3 spin coating the waver and development
 #### spin coating
 
+[insert spin curves]
 
 Film thickness is governed by two parameters: the concentration (viscosity) of the resist solution and the spin speed [1]. Higher spin speeds and lower concentrations produce thinner films, following an approximate inverse power-law relationship.
  
-PMMA is available in two standard molecular weights — 495K and 950K — each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1][2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness range:
+PMMA is available in two standard molecular weights — 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1 ][2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness range:
 
 | Grade | MW | Concentration | Thickness range (1000–5000 rpm) |
 |---|---|---|---|
@@ -50,11 +59,21 @@ PMMA is available in two standard molecular weights — 495K and 950K — each s
 
 
 #### Pre-back , Post-bake
+
 After spin coating, the wafer is placed on a hotplate for a soft bake, typically at 180 °C for 60–90 seconds [1] [3]. The pre-bake serves two purposes: it drives off residual solvent (anisole) from the film, which would otherwise cause the resist to remain tacky and deform during handling; and it densifies and hardens the film, improving adhesion to the substrate and reducing unwanted swelling during development. Baking above ~125 °C is avoided as PMMA begins to flow and reflow at elevated temperatures, rounding the resist edges [1].
 
 #### Development and lift off
-[ insert video of development]
-[insert images of PMMA developemnt]
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/lit_fab.png" alt="resolution fabrication overview" width="280" style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
+  </figcaption>
+</figure>
+
+[![Development](images/development_1.mp4)]
+
 
 Development is performed after PBW exposure and is included here for process continuity. The wafer is immersed in DI water:IPA (7:3) developer, which selectively dissolves the chain-scissioned PMMA in the exposed regions while leaving the unexposed resist intact [1][2]. The sample is then rinsed in fresh IPA and dried with a nitrogen gun to stop development. Following metal deposition, the remaining PMMA is removed by immersion in acetone, lifting off the metal on top of the resist and leaving only the metal deposited directly onto the silicon substrate.
 
@@ -101,6 +120,7 @@ larger fields [5].
 | Samples | Composition | Height(nm) | Theoretical sidewall angle | 
 | 1 | Au on Cr| | |
 
+[Next: Results and analysis →](fna.md)
 
 <div class="references">
 

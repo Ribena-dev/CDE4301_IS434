@@ -37,6 +37,14 @@ In EUV and SEM metrology, the consequences are equally significant. A deviation 
 ### 1.3 Deliverables
 This project aims to fabricate a grid resolution standard with a smooth surface finish and a sidewall perpendicularity of 89.9 using proton-beam writing lithography. The use of proton-beam writing, rather than conventional electron-beam lithography, is motivated by the fundamental reduction in lateral beam scattering and will explained later in the report. The fabricated standard will be characterised using CD-AFM and SEM to verify sidewall angle, pitch uniformity, and surface roughness against the defined specifications.
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/grid_dia.png" alt="Grid diagram" width="280" style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.3:</strong> Diagram of grid
+  </figcaption>
+</figure>
+
 [Next: Methodology →](Methology.md)
 
 ### Reference
