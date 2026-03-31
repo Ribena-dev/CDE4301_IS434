@@ -213,12 +213,21 @@ AFM is used to characterize the surface roughness of the top face of the deposit
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/afm_example_pdsi.png" alt = "AFM example" style="margin: 5px;">
 
-  <img src="images/afm_ex_graph.png" alt="afm graph" width="280" style="margin: 5px;">
 
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Afm example and graph of surface at center lines in both verticle and horizontal
+
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Afm example 
     <strong>Figure 2.7</strong> 
   </figcaption>
 </figure>
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/afm_ex_graph.png" alt="afm graph" style="margin: 5px;">
+
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> graph of surface at center lines in both verticle and horizontal
+    <strong>Figure 2.8</strong> 
+  </figcaption>
+</figure>
+
 
 For a resolution standard, surface roughness is significant for two reasons. First, it affects the accuracy of AFM-based calibration measurements made using the standard: a rough reference surface introduces uncertainty into tip characterization. Second, roughness provides indirect information about the quality of the deposition process and the uniformity of the metal film grain structure. Target surface roughness for a usable resolution standard is typically below a few nanometers R_rms.
 
