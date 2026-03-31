@@ -27,7 +27,7 @@ For instruments such as CD-AFM, 3D-AFM and electron microscopy systems (SEM, EUV
 In CD-AFM, a vertical parallel structure (VPS), is required as the primary tip characteriser because it allows measurement of the CD tip width independently of the specific flare geometry of the probe. The calibration relies on the sidewalls being vertical: the finer details of the tip-sample interaction, including feature sidewall angle and corner radius, introduce higher-order tip effects that cause systematic biases in measured linewidth.Any deviation of the reference sidewall from 90° introduces an uncharacterised geometric bias into every subsequent measurement the instrument makes. [5] [3] [6] [7]
 
 <iframe 
-  src="notes/report/scripts/sidewall_angle_cd_error.html" 
+  src="scripts/sidewall_angle_cd_error.html" 
   width="100%" 
   height="580px" 
   style="border:none; border-radius:6px;">

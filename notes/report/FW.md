@@ -38,7 +38,7 @@ in Table 5.1.
 | | Wait for temp | Yes |
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/imprinter.png" alt="" width="280" style="margin: 5px;">
+  <img src="images/imprinter.jpg" alt="" width="280" style="margin: 5px;">
 
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 5.2:</strong> nano imprinting mahcine
