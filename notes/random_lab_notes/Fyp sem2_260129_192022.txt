@@ -1,0 +1,32 @@
+Medusa 8200.18
+6k rpm dynamic
+- dynamic spin then drip 
+    - dynamic is more thinner resist
+Soft bake 150 10min
+Dissolve solvent 
+
+PMMA a11 950
+4K rpm static 
+- thicker resist
+Softbake 100C 1min
+
+Amount of liquid matters for thinner liquid 
+Harder to reproduce a thicker resist
+
+Pmma - based on spin curve 
+
+Cracking the sample
+
+Imprinting ( nano imprinter)
+White sheet to protect the imprinting membrane
+Parameter
+9 bar
+130 C
+10min
+Note: imprinting membrane has a high chance of cracking
+
+When is etching used 
+When metal is involved so not needed for current sample
+
+Pmma printing failed
+Pmma was displace off the sample

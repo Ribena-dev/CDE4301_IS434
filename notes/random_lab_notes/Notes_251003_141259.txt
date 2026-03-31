@@ -1,0 +1,16 @@
+Chamber pressure - 7
+If -5 ask for help
+0.3 nm is 1 sec
+10nm cr 10nm au at 0.3 nm per sec
+What happends if the pressure is top high or too low?
+Why is it like that?
+Why is au not uniformed
+- spattering technique??
+What is the root mean square of silicone waver roughness ?
+
+Spattering for chromium and gold 
+16s of cr
+10s cr
+
+Dlc coating 
+2nm per 3 secs

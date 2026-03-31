@@ -1,0 +1,18 @@
+1retain the second electrons 
+By bias the sample
+To measure the actual current 
+And hence the secondary electrons
+
+How do u determine the beam current
+By hitting the holder then measure the current
+But u could hv doubles the current via secondary electron emission
+
+Rbd doesn't hv electron suppression
+So u could be pff by a factor of 2
+A circuit to do By a function of bias
+
+Plot bias against the secondary electron current to find the true current
+
+Dosage problems
+Sample is mounted at a tilt
+So some of the dosage is at an angle

@@ -1,0 +1,16 @@
+Wait for light to stop blinking
+Wait for presure in chamber to drop to 
+
+1.9 e-04 
+Or
+9.63 e-05
+
+Low map or high map 
+Low u can see the circle
+
+Note
+Dlc is thinner than pmma
+Better contrast 
+The idea is when the beam writes u get very vertical colours
+
+Go read dlc coating

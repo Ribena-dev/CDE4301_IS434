@@ -1,0 +1,17 @@
+Wavers we're dirtied hence adhesion was week
+
+Pvd pd has a lower melting point
+So the substrate vacuum is lower temp
+Less tensile stress
+The residual radiation from heated material 
+Melts the pmma and damages the pattern
+Pd less likely to clumped
+Annealing to reduce stress 
+Resolution standard you don't what charging
+
+Pd surface the rms 1 nm
+Si adhesion layer of Ti or Cr 2nm also PVD
+
+Si naturally oxides on the surface 
+Ti reacts with Oxygen to adhesion to Si unlike Pd which doesn't stick to the O layer
+Glass transitin 105 degrees
