@@ -159,9 +159,9 @@ larger fields [5].
 
 | Material | Deposition technique | Melting point (°C) | Conductivity (S/m) | Reasoning |
 |---|---|---|---|------|
-| Au | Magnetron sputtering | 1,064 | 4.52 × 10⁷ |  High Z (79) gives excellent SEM/TEM contrast; chemically inert; well-established PVD process; lift-off compatible |
-| Pd | E-beam evaporation | 1,555 | 9.5 × 10⁶ |  High Z (46), good contrast; chemically stable; used for X-ray zone plates and resolution standards; higher melting point limits substrate heating risk |
-| Cr | Magnetron sputtering | 1,907 | 7.9 × 10⁶ |  Deposited as adhesion buffer layer beneath Au/Pd; strong bonding to Si oxide; reduces delamination from large lattice mismatch of overlying metal |
+| Au | Magnetron sputtering | 1064 | 4.52 × 10⁷ |  High Z (79) gives excellent SEM/TEM contrast; chemically inert; well-established PVD process; lift-off compatible |
+| Pd | E-beam evaporation | 1554.9 | 9.5 × 10⁶ |  High Z (46), good contrast; chemically stable; used for X-ray zone plates and resolution standards; higher melting point limits substrate heating risk |
+| Cr | Magnetron sputtering |  1907| 7.9 × 10⁶ |  Deposited as adhesion buffer layer beneath Au/Pd; strong bonding to Si oxide|
 | DLC | FCVA | N/A (amorphous) | ~10⁻³–10² (sp²/sp³ dependent)  | Excluded: Z = 6 gives near-zero contrast vs Si (Z = 14)|
 
 
@@ -178,7 +178,7 @@ sample 5: Pd on Cr on Si
 
 [ to do is get the height of each layer of the sample]
 
-
+[<--Prev: Methodology ](Methology.md) | 
 [Next: Results and analysis →](fna.md)
 
 <div class="references">

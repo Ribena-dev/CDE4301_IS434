@@ -64,4 +64,7 @@ Resolving these two issues would make NIL a viable route for producing multiple
 copies of the grid standard from a single PBW master, significantly reducing the 
 cost and time per calibration artefact.
 
+[<--Prev: Results and analysis ](fna.md) | 
+[Next: Appendix →](fna.md)
+
 

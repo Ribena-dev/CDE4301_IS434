@@ -52,7 +52,7 @@ This project aims to fabricate a grid resolution standard with a smooth surface 
   </figcaption>
 </figure>
 
-[Next: Methodology →](Methology.md)
+[<--Prev: Index ](index.md) | [Next: Methodology →](Methology.md)
 
 ---
 
