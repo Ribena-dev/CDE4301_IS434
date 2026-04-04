@@ -116,6 +116,8 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
   <source src="images/development_1.mp4" type="video/mp4">
 </video>
 
+![alt text](images/dev.png)
+
 
 Development is performed after PBW exposure and is included here for process continuity. The wafer is immersed in DI water:IPA (7:3) developer, which selectively dissolves the chain-scissioned PMMA in the exposed regions while leaving the unexposed resist intact [1][2]. The sample is then rinsed in fresh IPA and dried with a nitrogen gun to stop development. Following metal deposition, the remaining PMMA is removed by immersion in acetone, lifting off the metal on top of the resist and leaving only the metal deposited directly onto the silicon substrate.
 
@@ -524,6 +526,7 @@ The beam spot size plays a critical role in controlling patterning precision. A 
 The focal plane position can be physically adjusted by moving the sample stage along the beam axis with an accuracy of approximately 1 µm. Since the beam converges to a minimum spot at the focal point and diverges either side, placing the sample above or below focus increases
 the effective spot size at the resist surface according to the cone half-angle α and the defocus distance Δz. Systematic variation of the focal plane position during writing is therefore a potential strategy for compensating residual beam divergence at depth, keeping the beam optimally focused throughout the resist thickness rather than only at the surface.
 
+#### P-beam dosage 
 
 ### 3.5 Metal deposition characteristics
 
