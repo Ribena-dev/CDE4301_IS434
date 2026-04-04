@@ -1,15 +1,32 @@
 ## Methodology
 
+This section outlines the materials, techniques, and analytical methods selected to fabricate and characterise the grid resolution standard. The fabrication process follows a standard lift-off sequence, which is the most widely adopted approach for producing patterned metal structures in nanofabrication and is the established procedure at CIBA. The process proceeds in four stages:
+
+1. **Spin coating** — a phot resist is spin-coated onto the substrate to form a uniform film of controlled thickness.
+2. **Lithography** — the resist is exposed 
+3. **Metal deposition** — a metal layer is deposited over the entire surface, filling the developed trenches.
+4. **Lift-off** — the remaining resist is dissolved in solvent, removing the metal deposited on top of it and leaving only the patterned grid structures.
+
+Each of these steps is discussed in detail in Section 3. The methodology sections that follow address the key material decisions made at each stage and the analysis of the final results
+
 ### 2.1 lithography methods
-The choice of lithographic technique is central to the quality of the fabricated grid resolution standard, as it directly governs the achievable sidewall verticality, feature resolution, and proximity effects. Three primary techniques are considered here: electron-beam lithography (EBL), proton-beam writing (PBW), and soft UV lithography.
+The choice of lithographic technique is central to the quality of the fabricated grid resolution standard, as it directly governs the achievable sidewall verticality, feature resolution, and proximity effects. Three primary techniques are considered here: electron-beam lithography (EBL), proton-beam writing (PBW), and heavy ion lithography.
 
 #### Electron beam lithography
 
-Electron-beam lithography (EBL) is among the most widely used techniques for high-resolution nanopatterning, commonly employed for mask fabrication in the semiconductor industry [1]. Using a focused Gaussian beam, EBL can achieve feature resolutions of 10 nm or below, with common resists including PMMA, ZEP, and HSQ [1]. However, EBL suffers from a fundamental physical limitation — the proximity effect. When the beam interacts with the resist and substrate, it undergoes elastic and inelastic collisions with target atoms, generating high-energy secondary electrons that travel considerable distances from the primary beam track, exposing resist beyond the intended pattern boundaries [2]. Adjacent features therefore influence one another's exposure dose, an effect that worsens with depth and makes achieving consistently vertical sidewalls extremely challenging [1][2].
+Electron-beam lithography (EBL) is among the most widely used techniques for high-resolution nanopatterning, commonly employed for mask fabrication in the semiconductor industry [1]. Using a focused Gaussian beam, EBL can achieve feature resolutions of 10 nm or below, with common resists including PMMA, ZEP, and HSQ [1]. However, EBL suffers from a fundamental physical limitation, the proximity effect. When the beam interacts with the resist and substrate, it undergoes elastic and inelastic collisions with target atoms, generating high-energy secondary electrons that travel considerable distances from the primary beam track, exposing resist beyond the intended pattern boundaries [2]. Adjacent features therefore influence one another's exposure dose, an effect that worsens with depth and makes achieving consistently vertical sidewalls extremely challenging [1][2].
+
+#### Heavy ions  lithography
+
+Focused ion beam (FIB) lithography uses heavy ions — most commonly gallium (Ga⁺) at 50 keV, to directly ablate or pattern material at the nanoscale [3]. Unlike EBL or PBW, FIB is primarily a subtractive technique: the ion beam physically sputters material from the surface rather than exposing a resist. This makes it well-suited for cross-sectional milling, TEM sample preparation, and mask repair,
+but less appropriate for the lift-off fabrication sequence used in this project [3].
+
+The gallium beam penetrates only a shallow depth before the ions scatter laterally and come to rest near the surface, limiting the achievable structure depth [3]. The sputtering mechanism also introduces surface damage and gallium implantation
+into the substrate [4], which would contaminate the metal grid features and interfere with the backscatter contrast required for SEM calibration use. For these reasons, FIB was not selected as the lithography method for this project.
 
 #### Proton Beam writing 
 
-Proton-beam writing (PBW) is a direct-write lithographic technique developed at the Centre for Ion Beam Applications (CIBA), Physics Department, National University of Singapore [3][4]. In PBW, a focused MeV-energy proton beam is scanned in a predetermined pattern over a suitable resist material, which is subsequently chemically developed [4][5].
+Proton-beam writing (PBW) is a direct-write lithographic technique developed at the Centre for Ion Beam Applications (CIBA), Physics Department, National University of Singapore [3] [4]. In PBW, a focused MeV-energy proton beam is scanned in a predetermined pattern over a suitable resist material, which is subsequently chemically developed [4][5].
 
 The key physical distinction from EBL lies in the mass of the incident particle. Protons are approximately 1,800 times more massive than electrons, which has two critical consequences [4] [5]. First, due to their greater momentum, protons travel in near-linear trajectories through the resist with minimal lateral deflection, even at significant depths [4] [5]. Second, the secondary electrons generated by proton-resist interactions have considerably lower energies — typically below 100 eV — compared to those generated in EBL [3][5]. These low-energy secondary electrons have a very limited range, modifying resist material only within several nanometres of the proton track, resulting in minimal proximity effects [3] [4] [5] [6].
 
@@ -47,10 +64,9 @@ direct-write lithography at CIBA [10].
 </figure>
 
 PMMA is a long-chain synthetic polymer and one of the most widely used positive resists in nano-fabrication. Its primary advantages include a simple formulation (PMMA dissolved in anisole, a low-toxicity solvent), insensitivity to white
-light (λ > 250 nm), a wide range of available film thicknesses through dilution, no shelf-life limitations, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off [10] [11].
+light (λ > 250 nm), a wide range of available film thicknesses through dilution, no shelf-life limitations, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the pmma[10] [11].
 
-PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission — the breaking of the polymer backbone at the carbon–carbonyl bond. This reduces
-the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development, leaving the unexposed PMMA as the remaining resist pattern [11] [12].
+PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission — the breaking of the polymer backbone at the carbon–carbonyl bond. This reduces the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development, leaving the unexposed PMMA as the remaining resist pattern [11] [12].
 
 #### HSQ — Hydrogen Silsesquioxane
 
@@ -64,21 +80,16 @@ the molecular weight of the polymer in the exposed regions, increasing their sol
 HSQ is an inorganic silicon-based resist with the empirical formula [HSiO₃/₂]ₙ.In its as-deposited state it exists as a polyhedral cage of silicon and oxygen atoms, each silicon bearing a single hydrogen substituent. HSQ is a negative resist and has been shown to function as a high-resolution negative-tone e-beam resist, with resolutions below 20 nm reported and single lines as narrow as 7 nm
 demonstrated [10].
 
-When exposed to radiation, secondary electrons cleave the Si–H bonds within the cage structure, generating silanol groups that rapidly condense to form new Si–O–Si crosslinks. This converts the soluble cage structure into a dense, crosslinked network that is insoluble in developer solutions such as TMAH. The unexposed, uncrosslinked regions are dissolved during development and removed, leaving the crosslinked network as the patterned feature — the negative-tone
+When exposed to radiation, secondary electrons cleave the Si–H bonds within the cage structure, generating silanol groups that rapidly condense to form new Si–O–Si crosslinks. This converts the soluble cage structure into a dense, crosslinked network that is insoluble in developer solutions such as TMAH. The unexposed, uncrosslinked regions are dissolved during development and removed, leaving the crosslinked network as the patterned feature,the negative-tone
 response [10] [13].
 
-HSQ has a limited shelf life of approximately 6 months (Dow Corning specification), and the coated film must be exposed and developed promptly after coating to achieve reproducible results , a constraint not shared by PMMA.
+
 
 #### Resist choice
 
-PMMA is selected over HSQ for this project for three reasons.
+PMMA is selected over HSQ for this project for lift-off compatibility. The fabrication process in this project requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film [11] [12]. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow [13].
 
-First, lift-off compatibility. The fabrication process in this project requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film [11] [12]. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow [13].
 
-Second, resolution requirements. Positive resists such as PMMA can typically resolve features down to approximately 20 nm, while negative resists such as HSQ generally resolve to around 40 nm under standard conditions [12]. As the target grid pitch for this standard does not require sub-20 nm features, the resolution advantage of HSQ is not a determining factor, and PMMA is sufficient.
-
-Third, process reliability. PMMA has an unlimited shelf life and is stable in air after spin-coating, placing no time constraint on processing. HSQ contrast and sensitivity degrade with age and with delay between coating and exposure, introducing a source of variability that is undesirable when fabricating a
-calibration standard requiring high reproducibility [10].
 
 
 ### 2.3 Material deposition
@@ -125,6 +136,7 @@ sputtered atoms: which can prevent clean lift-off [15].
 
     
 #### E-beam deposition  
+
 In electron beam (e-beam) deposition, a high-voltage (6–40 kV) electron beam is focused onto a target material held in a water-cooled crucible. The kinetic energy of the electrons is converted to thermal energy on impact, causing the target to melt or sublimate and produce a vapour flux that condenses onto the substrate as a thin film. The beam is deflected through 180° or 270° by a magnetic field — keeping the filament away from the deposition path to preserve film purity — and can be scanned across the target in X and Y to distribute heating uniformly. The process must be carried out under high vacuum (>10⁻² mbar) to prevent energy loss from electron collisions with residual gas molecules. E-beam deposition can vaporise materials with melting points up to ~2,800 °C, making it suitable for refractory metals that cannot be processed by resistive thermal evaporation.
 
 
@@ -134,11 +146,6 @@ Filtered cathodic vacuum arc (FCVA) is a PVD technique in which a high-current a
 onto the substrate through a magnetic filter. The filter removes macroparticles from the plasma stream, producing a dense, smooth diamondlike carbon (DLC) film 
 with a tunable sp²/sp³ ratio depending on the arc parameters. Unlike sputtering or thermal evaporation, FCVA can deposit hard, wear-resistant carbon films at 
 room temperature without requiring a precursor gas.
-
-DLC was considered as a candidate absorber material for the grid resolution standard due to its chemical inertness and mechanical hardness. However, it was 
-excluded on three grounds: its low atomic number (Z = 6) gives near-zero SEM contrast against the silicon substrate (Z = 14); the oxygen plasma conditions 
-required for selective DLC etching are incompatible with a PMMA lift-off process; and the FCVA facility was not available for use at the time of fabrication. 
-FCVA-deposited DLC samples from prior work will be referenced for comparison in the analysis section where relevant.
 
 
 ### 2.4 Material choice
@@ -172,11 +179,11 @@ The 3 nm threshold is therefore chosen as the point at which signal retention re
 
 
 ### 2.5 method of analysis
-Three complementary characterization techniques are used to evaluate the fabricated grid resolution standard: scanning electron microscopy (SEM) for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
+Three complementary characterization techniques are used to evaluate the fabricated grid resolution standard: electron detector for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
 
-#### SEM - edge straightness  and side wall angle 
+#### electron detector - edge straightness  and side wall angle 
 
-SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall — producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
+Electron detector is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the p-beam beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
 
 The edge intensity profile is fitted using a combined error function and Gaussian model:
  
@@ -184,17 +191,26 @@ $$ F(x) = A\left[1 + \text{Erf}\!\left(\frac{2\sqrt{\ln 2}}{f}(d - x)\right)\rig
  
 where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is the baseline offset, *d* is the fitted edge position in pixels, and *f* is the FWHM of the edge transition [3].
  
-The **error function term** models the underlying step transition in secondary electron intensity as the beam crosses the edge — the fundamental shape of an ideal edge profile convolved with the finite beam diameter. The **Gaussian term** accounts for the bright secondary electron emission peak at the sidewall. Together they give a physically complete description of the measured profile.
+The **error function term** models the underlying step transition in secondary electron intensity as the beam crosses the edge, the fundamental shape of an ideal edge profile convolved with the finite beam diameter. The **Gaussian term** accounts for the bright secondary electron emission peak at the sidewall. Together they give a physically complete description of the measured profile.
  
-The key output is *f* — the FWHM of the fitted edge transition. A smaller *f* corresponds to a sharper, more abrupt edge, which in turn indicates a more vertical sidewall. The sidewall angle θ is estimated geometrically from the fitted FWHM and the known feature height *h*:
+The key output is *f* , the FWHM of the fitted edge transition. A smaller *f* corresponds to a sharper, more abrupt edge, which in turn indicates a more vertical sidewall. The sidewall angle θ is estimated geometrically from the fitted FWHM and the known feature height *h*:
  
 $$ \theta = 90° - \arctan\!\left(\frac{f}{h}\right)$$
  
 where *h* is the feature height determined from the PBW process parameters and verified by AFM step-height measurement.
 
 
-The resolution limit of SEM for this type of measurement is approximately 1 nm,below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. SEM is also limited to top-down or oblique imaging — it cannot directly image the sidewall profile without cross-sectioning,
+The resolution limit for this type of measurement is approximately 1 nm,below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. It is also limited to top-down or oblique imaging, it cannot directly image the sidewall profile without cross-sectioning,
 which is destructive. 
+
+To utilize and analyse the electron detector spectrum, I developed a python script, flow chart seen below. 
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/nevot_croce.png" alt = "nevot_coroce"  style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
+    <strong>Figure 2.7</strong> 
+  </figcaption>
+</figure>
 
 #### AFM - Surface Roughness
 
@@ -221,6 +237,7 @@ AFM is used to characterize the surface roughness of the top face of the deposit
 
 For a resolution standard, surface roughness is significant for two reasons. First, it affects the accuracy of AFM-based calibration measurements made using the standard: a rough reference surface introduces uncertainty into tip characterization. Second, roughness provides indirect information about the quality of the deposition process and the uniformity of the metal film grain structure. Target surface roughness for a usable resolution standard is typically below a few nanometers R_rms.
 
+To note, the graph analysis of the surface roughness was also doen with a python script 
 
 [<--Prev: Introduction ](Introduction.md) | [Next: Fabrication →](Fabrication.md)
 
@@ -228,40 +245,44 @@ For a resolution standard, surface roughness is significant for two reasons. Fir
 ### References
 
 <div class="references">
- 
+
 <ol>
   <li>H. Duan, D. Winston, J. K. W. Yang, B. M. Cord, V. R. Manfrinato, and K. K. Berggren, "Sub-10-nm half-pitch electron-beam lithography by using poly(methyl methacrylate) as a negative resist," <em>Microelectronic Engineering</em>, 2015. DOI: 10.1016/j.mee.2015.02.042</li>
- 
+
   <li>K. Yamazaki, "Electron beam direct writing," in <em>Nanofabrication: Fundamentals and Applications</em>, A. A. Tseng, Ed. Singapore: World Scientific, 2008, ch. 10.</li>
- 
+
+  <li>R. Winkler et al., "Roadmap for focused ion beam technologies," <em>Applied Physics Reviews</em>, vol. 10, no. 4, art. 041311, 2023. DOI: <a href="https://doi.org/10.1063/5.0162597">10.1063/5.0162597</a></li>
+
+  <li>J. Gierak et al., "Effects of focused gallium ion-beam implantation on properties of nanochannels on silicon-on-insulator substrates," <em>Applied Physics Letters</em>, vol. 89, 2006. Available: <a href="https://www.researchgate.net/publication/249512973">researchgate.net</a></li>
+
   <li>J. A. van Kan, A. A. Bettiol, and F. Watt, "Proton beam writing of three-dimensional nanostructures in hydrogen silsesquioxane," <em>Nano Letters</em>, vol. 6, no. 3, pp. 579–582, 2006. DOI: 10.1021/nl052478c</li>
- 
+
   <li>F. Watt, A. A. Bettiol, J. A. van Kan, E. J. Teo, and M. B. H. Breese, "Ion beam lithography and nanofabrication: a review," <em>International Journal of Nanoscience</em>, vol. 4, no. 3, pp. 269–286, 2005.</li>
- 
+
   <li>F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam writing," <em>Materials Today</em>, vol. 10, no. 6, pp. 20–29, 2007. DOI: 10.1016/S1369-7021(07)70129-3</li>
- 
+
   <li>J. A. van Kan, P. G. Shao, Y. H. Wang, and P. Malar, "Proton beam writing: a platform technology for high quality three-dimensional metal mold fabrication for nanofluidic applications," <em>Microsystem Technologies</em>, vol. 17, pp. 1519–1527, 2011. DOI: 10.1007/s00542-011-1333-0</li>
- 
+
   <li>A. A. Bettiol, S. Venugopal Rao, E. J. Teo, J. A. van Kan, and F. Watt, "Sidewall quality in proton beam writing," <em>Nuclear Instruments and Methods in Physics Research Section B</em>, vol. 258, no. 1, pp. 302–306, 2007. DOI: 10.1016/j.nimb.2007.01.073</li>
- 
+
   <li>S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," <em>Nuclear Instruments and Methods in Physics Research Section B</em>, 2016. DOI: 10.1016/j.nimb.2016.11.022</li>
- 
+
   <li>C. Mack, <em>Fundamental Principles of Optical Lithography</em>. Chichester: Wiley, 2007.</li>
- 
+
   <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
- 
+
   <li>J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton beam writing: a review," <em>Applied Surface Science</em>, 2014. DOI: 10.1016/j.apsusc.2014.04.147</li>
- 
+
   <li>A. A. Tseng, K. Chen, C. D. Chen, and K. J. Ma, "Electron beam lithography in nanoscale fabrication: recent development," <em>IEEE Transactions on Electronics Packaging Manufacturing</em>, vol. 26, no. 2, pp. 141–149, 2003. DOI: 10.1109/TEPM.2003.817714</li>
- 
+
   <li>L. B. Freund and S. Suresh, <em>Thin Film Materials: Stress, Defect Formation and Surface Evolution</em>. Cambridge: Cambridge University Press, 2003.</li>
- 
+
   <li>H. Frey and H. R. Khan, Eds., <em>Handbook of Thin-Film Technology</em>. Berlin: Springer, 2015.</li>
- 
+
   <li>K. Müller, "Thermal stability of PMMA resists used in nanolithography," <em>Scientific Reports</em>, 2021. DOI: 10.1038/s41598-021-01282-7</li>
- 
+
   <li>National Institute of Standards and Technology, "Improving CD-AFM measurements from the tip down," NIST News, Mar. 2016. Available: <a href="https://www.nist.gov/news-events/news/2016/03/improving-cd-afm-measurements-tip-down">nist.gov</a></li>
 </ol>
- 
+
 </div>
  

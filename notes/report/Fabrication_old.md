@@ -43,11 +43,9 @@ An optional adhesion layer may be deposited directly onto the silicon wafer prio
     for 2 MeV protons in PMMA. The grey dashed curve shows the raw SRIM data 
   </figcaption>
 </figure>
-
-Spikes are caused by rare large-angle nuclear scattering events. The teal curve shows the cleaned data after IQR ×3 outlier removal, revealing a true straggle of 0.81 nm at the 1 µm exit depth, well below the 3 nm target (red dotted line).
+spikes are caused by rare large-angle nuclear scattering events. The teal curve shows the cleaned data after IQR ×3 outlier removal, revealing a true straggle of 0.81 nm at the 1 µm exit depth, well below the 3 nm target (red dotted line).
  
-SRIM Monte Carlo simulations were used to characterise the behaviour of 2 MeV protons in PMMA and to predict the theoretical sidewall angle of the fabricated features. Two outputs are of interest: the depth distribution (Bragg peak), which confirms the feature height
-achievable at a given beam energy; and the lateral straggle σ(z), which governs edge sharpness as a function of depth.
+SRIM Monte Carlo simulations in SRIM were used to characterize the behavior of 2 MeV protons in PMMA and to predict the theoretical sidewall angle of the fabricated features. Two outputs are of interest: the depth distribution (Bragg peak), which confirms the feature height achievable at a given beam energy, and the lateral straggle σ(z), which governs edge sharpness as a function of depth.
  
 #### Theoretical Sidewall Angle
  
@@ -59,6 +57,7 @@ where f is the FWHM of the dose profile across the feature edge — the same par
  
 $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(\frac{2.355\,\sigma(h)}{h}\right) $$
 
+[Insert graph of side wall vs the penetration depth]
 
 ### 3.3 spin coating the waver and development
 #### spin coating
@@ -99,9 +98,7 @@ Film thickness is governed by two parameters: the concentration (viscosity) of t
  
 PMMA is available in two standard molecular weights — 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1][2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness
 
-A key design constraint is that the PMMA thickness must be at least five times greater than the intended metal deposition thickness. This ratio is required for two reasons: first, it ensures sufficient structural integrity of the resist walls during development and metal
-deposition; and second, it prevents metal overflowing the resist sidewalls, a phenomenon known as mushrooming, where excess metal forms a cap-like layer over the resist that prevents clean lift-off. However, if the PMMA is made excessively thick, the increased aspect ratio of the trench can cause resist wall collapse, and as shown by the SRIM simulations in Section 3.2, deeper features allow more lateral beam straggle to accumulate, degrading the
-sidewall angle. The optimal PMMA thickness is therefore determined by balancing these competing constraints against the spin curves shown above.
+Given that the pmma height needs to be 5 times mroe than the metal depositoin thickness( why?), for structural intergrity and to prevent metal over flow or "mushrooming" where excess metal form a cap ilke , layer,  but if the pmma is too tall it will effect the isde wall angle as seen wfromthe simulartion ealier so by comaporing teh corresponding soin curves it is importnact to check the optimal height
 
 
 #### Pre-back , Post-bake
@@ -519,10 +516,8 @@ update();
 | Demagnification (Y) | 130 |
 | Quadrupole power supply resolution | 2 ppm (Bruker) |
 
-The beam spot size plays a critical role in controlling patterning precision. A larger spot effectively broadens the dose profile at the feature edge, increasing the measured FWHM f and reducing the achievable sidewall angle. The relationship is non-linear: when the beam is already well focused, small changes in spot size have little effect on θ, but when the beam is defocused or the focal plane is misplaced, the degradation in θ becomes significant. For this reason, beam focus is verified before each writing session by scanning across the free-standing resolution standard and fitting the transmitted or secondary electron signal to an error function to extract the beam FWHM [4].
-
-The focal plane position can be physically adjusted by moving the sample stage along the beam axis with an accuracy of approximately 1 µm. Since the beam converges to a minimum spot at the focal point and diverges either side, placing the sample above or below focus increases
-the effective spot size at the resist surface according to the cone half-angle α and the defocus distance Δz. Systematic variation of the focal plane position during writing is therefore a potential strategy for compensating residual beam divergence at depth, keeping the beam optimally focused throughout the resist thickness rather than only at the surface.
+The beam spot size plays and important role in controlling the precision of the patterning, expland more on this
+the focla plane can be physically varied with an accuracy of 1 um 
 
 
 ### 3.5 Metal deposition characteristics
@@ -534,51 +529,43 @@ the effective spot size at the resist surface according to the cone half-angle �
 | Cr | Magnetron sputtering |  1907| 7.9 × 10⁶ |  Deposited as adhesion buffer layer beneath Au/Pd; strong bonding to Si oxide|
 | DLC | FCVA | N/A (amorphous) | ~10⁻³–10² (sp²/sp³ dependent)  | Excluded: Z = 6 gives near-zero contrast vs Si (Z = 14)|
 
-The metals selected for this project were chosen on the basis of the criteria established
-in Section 2.4 , lift-off compatibility, electron scattering contrast, chemical stability, and lattice mismatch, alongside the practical constraint of cleanroom availability at CIBA.
-
-Gold (Au) was selected as the primary structural metal due to its well-established compatibility with magnetron sputtering workflows at CIBA, its high atomic number (Z = 79) giving excellent electron detector backscatter contrast, and its chemical inertness. Chromium (Cr) was included as an adhesion buffer layer beneath Au, exploiting its strong bonding to native silicon oxide and its ability to reduce internal stress arising from the Au–Si lattice mismatch. Palladium (Pd) was evaluated as an alternative primary metal, offering high Z (46), good chemical stability, and a higher melting point than Au, reducing the risk of substrate heating during e-beam evaporation. Diamond-like carbon (DLC) was investigated as a candidate surface coating to improve roughness performance after surface concerns with sputtered Au were observed. Titanium (Ti) was later introduced as an alternative adhesion layer to Cr, offering improved interfacial
-bonding without the additional conductivity and optical contrast change associated with Cr.
-
+One must ask why thewse particular metlas was chossen
+Au was simply dues to teh practicallity of its readily avalibiliyt in the lab for magnetron sputtering , Cr was mainly used as an adhesive material . DLC was also attempted after finding issues with AU, that will be adressed later, for its practical avalibiliyt in the lab. 
+That is not to say these materials do not have their benefites -- what are the benefits 
 ### 3.6 Fabricated samples composition
 
 | Sample | Cr | Pd | Au | DLC | Ti |
 |---|:---:|:---:|:---:|:---:|:---:|
 | 1 — Au/Cr/Si | 2nm | |  40nm | | |
-| 2 — DLC/Si |  | | | 10nm  |
-| 3 — DLC/Pd/Si |  |2nm  | |10nm |
-| 4 — Au/Pd/Si |  | 2nm |  | |
-| 5 - DLC/Pd/Ti/Si| | | | |2nm|
-| 6 - Pd/Ti/Si| | 40nm | | | 2nm |
+| 2 — DLC/Si |  | | |   |
+| 3 — DLC/Pd/Si |  |  | | |
+| 4 — Au/Pd/Si |  |  |  | |
+| 5 — Pd/Cr/Si |   |  | | |
+| 6 - DLC/Pd/Ti/Si| | | | |2nm|
+| 7 - Pd/Ti/Si| | 40nm | | | 2nm |
+[  to do is get the height of each layer of the sample]
 
-
-[<--Prev: Methodology ](Methology.md) | [Next: Results and analysis →](fna.md)
-
-
-### References
+[<--Prev: Methodology ](Methology.md) | 
+[Next: Results and analysis →](fna.md)
 
 <div class="references">
 
-<ol>
-  <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available:
-      <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
+### Reference
 
-  <li>J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton beam writing:
-      a review," <em>Applied Surface Science</em>, 2014.
-      DOI: <a href="https://doi.org/10.1016/j.apsusc.2014.04.147">10.1016/j.apsusc.2014.04.147</a></li>
+[4] S. Raman, Y. Yao, and J. A. van Kan, "Automatic beam focusing in
+    the 2nd generation PBW line at sub-10 nm line resolution," Nuclear
+    Instruments and Methods in Physics Research Section B, vol. 348,
+    pp. 22–26, 2015. DOI: 10.1016/j.nimb.2014.12.066
+ 
+[5] J. A. van Kan, P. Malar et al., "Proton beam writing nanoprobe
+    facility design and first test results," Nuclear Instruments and
+    Methods in Physics Research Section A, 2011.
+    DOI: 10.1016/j.nima.2010.12.011
 
-  <li>University of Chicago Pritzker Nanofab, "NANO 495 PMMA process," 2024. Available:
-      <a href="https://pnf.uchicago.edu/process/detail/950pmma-a4/">pnf.uchicago.edu</a></li>
-
-  <li>S. Raman, Y. Yao, and J. A. van Kan, "Automatic beam focusing in the 2nd generation
-      PBW line at sub-10 nm line resolution," <em>Nuclear Instruments and Methods in Physics
-      Research Section B</em>, vol. 348, pp. 22–26, 2015.
-      DOI: <a href="https://doi.org/10.1016/j.nimb.2014.12.066">10.1016/j.nimb.2014.12.066</a></li>
-
-  <li>J. A. van Kan, P. Malar et al., "Proton beam writing nanoprobe facility design and
-      first test results," <em>Nuclear Instruments and Methods in Physics Research
-      Section A</em>, 2011.
-      DOI: <a href="https://doi.org/10.1016/j.nima.2010.12.011">10.1016/j.nima.2010.12.011</a></li>
+<ol class="ref-list">
+  <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
+  <li>J. A. van Kan et al., "Resist materials for proton beam writing: a review," <em>Applied Surface Science</em>, 2014. DOI: <a href="https://doi.org/10.1016/j.apsusc.2014.04.147">10.1016/j.apsusc.2014.04.147</a></li>
+  <li>University of Chicago Pritzker Nanofab, "NANO 495 PMMA process," 2024. Available: <a href="https://pnf.uchicago.edu/process/detail/950pmma-a4/">pnf.uchicago.edu</a></li>
 </ol>
-
 </div>
+

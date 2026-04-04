@@ -12,6 +12,9 @@ title: "Grid Resolution Standard — FYP Report"
   </div>
 </div>
 
+## Abstract 
+
+
 ## Table of Contents
 
 - [1. Introduction](Introduction.md)

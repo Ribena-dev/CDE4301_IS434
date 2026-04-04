@@ -1,4 +1,4 @@
-## Final results
+## Results and analysis
 ### 4.1 results from each sample
 | Samples | Surface roughness | Height(nm) | Theoretical sidewall angle |Actual side wall |
 
