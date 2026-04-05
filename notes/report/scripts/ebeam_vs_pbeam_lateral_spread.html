@@ -22,8 +22,7 @@
 
 <div class="legend-row">
   <div class="leg"><div class="leg-sq" style="background:#E24B4A;"></div>EBL electrons (selected keV)</div>
-  <div class="leg"><div class="leg-sq" style="background:#A32D2D;border:none;height:2px;background: repeating-linear-gradient(90deg,#A32D2D 0 6px,transparent 6px 10px);"></div>EBL 100 keV reference</div>
-  <div class="leg"><div class="leg-sq" style="background:#185FA5;"></div>PBW 2 MeV protons (this project)</div>
+  <div class="leg"><div class="leg-sq" style="background:#A32D2D;"></div>EBL 100 keV reference</div>
   <div class="leg"><div class="leg-sq" style="background:#888780;height:1px;"></div>1 µm resist depth</div>
 </div>
 
@@ -37,105 +36,64 @@
     <div id="ebl-val" style="font-size:20px;font-weight:500;color:#E24B4A;">—</div>
   </div>
   <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 16px;flex:1;text-align:center;">
-    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:2px;">PBW spread at 1 µm</div>
-    <div style="font-size:20px;font-weight:500;color:#185FA5;">0.81 nm</div>
-  </div>
-  <div style="background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px 16px;flex:1;text-align:center;">
-    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:2px;">Improvement factor</div>
-    <div id="ratio-val" style="font-size:20px;font-weight:500;color:#0F6E56;">—</div>
+    <div style="font-size:11px;color:var(--color-text-secondary);margin-bottom:2px;">EBL 100 keV at 1 µm</div>
+    <div id="ebl100-val" style="font-size:20px;font-weight:500;color:#A32D2D;">—</div>
   </div>
 </div>
-<p class="annotation">Lateral spread σ(z) modelled using empirical electron scattering (Everhart–Hoff) and SRIM Monte Carlo (protons). Shaded band = ±1σ uncertainty.</p>
+<p class="annotation">Lateral spread σ(z) modelled using the Everhart–Hoff empirical electron scattering relation.</p>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-function eblRange(keV){
-  return 0.0276 * Math.pow(keV, 1.75) * 1000;
+function eblRange(keV){ return 0.0276*Math.pow(keV,1.75)*1000; }
+function eblSpread(z,keV){
+  const R=eblRange(keV), t=z/R;
+  if(t>=1) return R*0.35;
+  return Math.max(1, R*0.018*Math.pow(t,0.9)*Math.exp(2.1*t));
 }
-function eblSpread(z_nm, keV){
-  const R = eblRange(keV);
-  const t = z_nm / R;
-  if(t >= 1) return R * 0.35;
-  return Math.max(1, R * 0.018 * Math.pow(t, 0.9) * Math.exp(2.1 * t));
-}
-function pbwSpread(z_nm){
-  const base = 0.12;
-  const linear = 0.00069 * z_nm;
-  const bragg = z_nm > 900 ? 0.8 * Math.pow((z_nm - 900)/100, 2) : 0;
-  return base + linear + bragg;
-}
-
-const N = 80;
-function makeDepths(maxD){
-  return Array.from({length:N}, (_,i) => Math.round((i/(N-1)) * maxD));
-}
+const N=80;
+function makeDepths(maxD){ return Array.from({length:N},(_,i)=>Math.round((i/(N-1))*maxD)); }
 
 let chart;
 function initChart(){
-  const ctx = document.getElementById('c').getContext('2d');
-  chart = new Chart(ctx,{
+  const ctx=document.getElementById('c').getContext('2d');
+  chart=new Chart(ctx,{
     type:'line',
     data:{labels:[],datasets:[
-      {label:'EBL (selected)',data:[],borderColor:'#E24B4A',backgroundColor:'rgba(226,75,74,0.08)',fill:false,tension:0.3,borderWidth:2,pointRadius:0},
+      {label:'EBL (selected keV)',data:[],borderColor:'#E24B4A',backgroundColor:'rgba(226,75,74,0.08)',fill:false,tension:0.3,borderWidth:2.5,pointRadius:0},
       {label:'EBL 100 keV',data:[],borderColor:'#A32D2D',fill:false,tension:0.3,borderWidth:1.5,borderDash:[6,4],pointRadius:0},
-      {label:'PBW 2 MeV protons',data:[],borderColor:'#185FA5',backgroundColor:'rgba(24,95,165,0.07)',fill:false,tension:0.3,borderWidth:2.5,pointRadius:0},
     ]},
     options:{
       responsive:true,maintainAspectRatio:false,
-      animation:{duration:250},
-      plugins:{legend:{display:false},tooltip:{
-        callbacks:{
-          label:ctx=>`${ctx.dataset.label}: ${ctx.parsed.y.toFixed(1)} nm`
-        }
-      }},
+      animation:{duration:200},
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y.toFixed(1)} nm`}}},
       scales:{
-        x:{title:{display:true,text:'Depth in PMMA (nm)',font:{size:12}},
-           ticks:{maxTicksLimit:8,callback:v=>v}},
-        y:{title:{display:true,text:'Lateral spread σ (nm)',font:{size:12}},
-           min:0,
-           ticks:{callback:v=>v.toFixed(0)+' nm'}}
+        x:{title:{display:true,text:'Depth in PMMA (nm)',font:{size:12}},ticks:{maxTicksLimit:8}},
+        y:{title:{display:true,text:'Lateral spread σ (nm)',font:{size:12}},min:0,ticks:{callback:v=>v.toFixed(0)+' nm'}}
       }
     }
   });
 }
 
 function update(){
-  const keV = +document.getElementById('kev').value;
-  const maxD = +document.getElementById('depth').value;
-  document.getElementById('kev-out').textContent = keV+' keV';
-  document.getElementById('dep-out').textContent = maxD+' nm';
+  const keV=+document.getElementById('kev').value;
+  const maxD=+document.getElementById('depth').value;
+  document.getElementById('kev-out').textContent=keV+' keV';
+  document.getElementById('dep-out').textContent=maxD+' nm';
 
-  const depths = makeDepths(maxD);
-  const eblData = depths.map(d=>({x:d, y:+eblSpread(d,keV).toFixed(2)}));
-  const ebl100  = depths.map(d=>({x:d, y:+eblSpread(d,100).toFixed(2)}));
-  const pbwData = depths.map(d=>({x:d, y:+pbwSpread(d).toFixed(2)}));
+  const depths=makeDepths(maxD);
+  chart.data.labels=depths;
+  chart.data.datasets[0].data=depths.map(d=>+eblSpread(d,keV).toFixed(2));
+  chart.data.datasets[1].data=depths.map(d=>+eblSpread(d,100).toFixed(2));
 
-  chart.data.labels = depths;
-  chart.data.datasets[0].data = eblData.map(p=>p.y);
-  chart.data.datasets[1].data = ebl100.map(p=>p.y);
-  chart.data.datasets[2].data = pbwData.map(p=>p.y);
-
-  const yMax = Math.max(...eblData.map(p=>p.y), 20) * 1.1;
-  chart.options.scales.y.max = Math.round(yMax);
-
-  const eblAt1 = eblSpread(1000, keV);
-  const pbwAt1 = pbwSpread(1000);
-  const ratio  = eblAt1 / pbwAt1;
-  document.getElementById('ebl-val').textContent = eblAt1.toFixed(0)+' nm';
-  document.getElementById('ratio-val').textContent = ratio.toFixed(0)+'×';
-
-  if(maxD >= 1000){
-    chart.options.plugins.annotation = {annotations:{line1:{
-      type:'line', xMin:1000, xMax:1000,
-      borderColor:'#888780', borderWidth:1, borderDash:[4,4]
-    }}};
-  }
-
+  const yMax=Math.max(...chart.data.datasets[0].data)*1.1;
+  chart.options.scales.y.max=Math.round(yMax);
   chart.update();
+
+  document.getElementById('ebl-val').textContent=eblSpread(1000,keV).toFixed(0)+' nm';
+  document.getElementById('ebl100-val').textContent=eblSpread(1000,100).toFixed(0)+' nm';
 }
 
-initChart();
-update();
-document.getElementById('kev').addEventListener('input', update);
-document.getElementById('depth').addEventListener('input', update);
+initChart(); update();
+document.getElementById('kev').addEventListener('input',update);
+document.getElementById('depth').addEventListener('input',update);
 </script>

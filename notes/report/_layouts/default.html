@@ -4,35 +4,487 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | CDE4301 IS434</title>
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
   <script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    MathJax = {
+      tex: {
+        inlineMath: [['$','$'],['\\(','\\)']],
+        displayMath: [['$$','$$'],['\\[','\\]']]
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #fafaf8;
+      color: #222;
+      display: flex;
+      min-height: 100vh;
     }
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    /* ── Sidebar ───────────────────────────────────────────── */
+    #sidebar {
+      width: 240px;
+      flex-shrink: 0;
+      background: #fff;
+      border-right: 1px solid #e8e5de;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      overflow-y: auto;
+      padding: 1.5rem 0 2rem;
+      transition: transform 0.25s ease;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #185FA5;
+      padding: 0 1.25rem 1.25rem;
+      border-bottom: 1px solid #e8e5de;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .nav-section {
+      margin-bottom: 0.25rem;
+    }
+
+    .nav-chapter {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.6rem 1.25rem 0.2rem;
+    }
+
+    .nav-link {
+      display: block;
+      font-size: 13px;
+      color: #444;
+      text-decoration: none;
+      padding: 0.35rem 1.25rem 0.35rem 1.5rem;
+      border-left: 2px solid transparent;
+      line-height: 1.4;
+      transition: background 0.12s, color 0.12s, border-color 0.12s;
+    }
+
+    .nav-link:hover {
+      background: #f1efe8;
+      color: #185FA5;
+    }
+
+    .nav-link.active {
+      border-left-color: #185FA5;
+      background: #e6f1fb;
+      color: #185FA5;
+      font-weight: 500;
+    }
+
+    .nav-sublink {
+      display: block;
+      font-size: 12px;
+      color: #666;
+      text-decoration: none;
+      padding: 0.25rem 1.25rem 0.25rem 2.25rem;
+      border-left: 2px solid transparent;
+      line-height: 1.4;
+      transition: background 0.12s, color 0.12s;
+    }
+
+    .nav-sublink:hover {
+      background: #f5f4f0;
+      color: #185FA5;
+    }
+
+    /* ── Hamburger (mobile only) ───────────────────────────── */
+    #hamburger {
+      display: none;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 200;
+      background: #fff;
+      border: 1px solid #e0ddd6;
+      border-radius: 6px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 18px;
+      line-height: 1;
+      color: #444;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      z-index: 99;
+    }
+
+    /* ── Main content ──────────────────────────────────────── */
+    #content {
+      flex: 1;
+      min-width: 0;
+      padding: clamp(1.5rem, 4vw, 3rem) clamp(1.25rem, 5vw, 3.5rem);
+      max-width: 820px;
+    }
+
+    /* ── Typography ────────────────────────────────────────── */
+    #content p {
+      font-size: clamp(14px, 1.5vw, 16px);
+      line-height: 1.75;
+      text-align: justify;
+      hyphens: auto;
+      margin-bottom: 1rem;
+    }
+
+    #content h1, #content h2, #content h3, #content h4 {
+      font-weight: 500;
+      line-height: 1.3;
+      margin: 2rem 0 0.75rem;
+      color: #111;
+      text-align: left;
+    }
+
+    #content h1 { font-size: clamp(20px, 3vw, 26px); }
+    #content h2 { font-size: clamp(17px, 2.5vw, 22px); }
+    #content h3 { font-size: clamp(15px, 2vw, 18px); }
+    #content h4 { font-size: clamp(14px, 1.8vw, 16px); }
+
+    #content li {
+      font-size: clamp(14px, 1.5vw, 16px);
+      line-height: 1.7;
+      margin-bottom: 0.3rem;
+    }
+
+    #content ul, #content ol {
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    #content a { color: #185FA5; }
+
+    #content hr {
+      border: none;
+      border-top: 1px solid #e8e5de;
+      margin: 2rem 0;
+    }
+
+    /* ── Tables ────────────────────────────────────────────── */
+    #content table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: clamp(12px, 1.3vw, 14px);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      display: block;
+    }
+
+    #content th {
+      background: #f1efe8;
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 500;
+      border-bottom: 1px solid #ddd;
+      white-space: nowrap;
+    }
+
+    #content td {
+      padding: 7px 12px;
+      border-bottom: 1px solid #eee;
+      vertical-align: top;
+    }
+
+    #content tr:last-child td { border-bottom: none; }
+    #content tr:hover td { background: #faf9f6; }
+
+    /* ── Images — fully responsive ─────────────────────────── */
+    #content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+
+    #content figure {
+      margin: 1.5rem 0;
+      text-align: center;
+    }
+
+    #content figure img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    #content figcaption {
+      font-size: clamp(11px, 1.2vw, 13px);
+      color: #666;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    /* ── Embedded iframes and HTML widgets ─────────────────── */
+    #content iframe,
+    #content .widget-wrap {
+      width: 100%;
+      max-width: 100%;
+      border: none;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* Responsive iframe wrapper — preserves aspect ratio */
+    .iframe-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+
+    .iframe-wrap iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ── Code blocks ────────────────────────────────────────── */
+    #content pre {
+      background: #f4f2eb;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      overflow-x: auto;
+      font-size: clamp(12px, 1.3vw, 13px);
+      margin-bottom: 1rem;
+    }
+
+    #content code {
+      font-family: 'SF Mono', 'Fira Mono', monospace;
+      font-size: 0.88em;
+      background: #f0ede6;
+      padding: 1px 5px;
+      border-radius: 3px;
+    }
+
+    #content pre code {
+      background: none;
+      padding: 0;
+    }
+
+    /* ── Tooltip abbreviations ──────────────────────────────── */
+    abbr[data-title] {
+      border-bottom: 1px dotted #888;
+      cursor: help;
+      text-decoration: none;
+      position: relative;
+    }
+
+    abbr[data-title]:hover::after {
+      content: attr(data-title);
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 6px);
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 10;
+      color: #222;
+    }
+
+    abbr[data-title]:hover::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 2px);
+      transform: translateX(-50%);
+      border: 4px solid transparent;
+      border-top-color: #ddd;
+    }
+
+    /* ── Responsive breakpoints ─────────────────────────────── */
+    @media (max-width: 768px) {
+      #sidebar {
+        position: fixed;
+        top: 0; left: 0;
+        height: 100vh;
+        z-index: 100;
+        transform: translateX(-100%);
+        width: 260px;
+      }
+
+      #sidebar.open {
+        transform: translateX(0);
+      }
+
+      #overlay.visible {
+        display: block;
+      }
+
+      #hamburger { display: block; }
+
+      #content {
+        padding: 3.5rem 1.25rem 2rem;
+      }
+
+      #content p, #content li {
+        font-size: 15px;
+        text-align: left;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1100px) {
+      #sidebar { width: 200px; }
+      #content { max-width: 700px; }
+    }
+  </style>
 </head>
 <body>
 
-  <nav class="site-nav">
-    <div class="nav-inner">
-      <a class="nav-title" href="/">CDE4301 IS434</a>
-      <div class="nav-links">
-        <a href="/notes/report/Introduction"     {% if page.url contains 'Introduction'  %}class="active"{% endif %}>1. Introduction</a>
-        <a href="/notes/report/Methology"        {% if page.url contains 'Methology'     %}class="active"{% endif %}>2. Methodology</a>
-        <a href="/notes/report/Fabrication"      {% if page.url contains 'Fabrication'   %}class="active"{% endif %}>3. Fabrication</a>
-        <a href="/notes/report/fna"              {% if page.url contains 'fna'           %}class="active"{% endif %}>4. Results</a>
-        <a href="/notes/report/FW"               {% if page.url contains 'FW'            %}class="active"{% endif %}>5. Future Work</a>
-      </div>
-    </div>
-  </nav>
+<button id="hamburger" onclick="toggleSidebar()">&#9776;</button>
+<div id="overlay" onclick="toggleSidebar()"></div>
 
-  <main class="page-content">
-    {{ content }}
-  </main>
+<nav id="sidebar">
+  <div class="sidebar-title">CDE4301 IS434<br>Grid Resolution Standard</div>
 
+  <div class="nav-section">
+    <span class="nav-chapter">Report</span>
+    <a class="nav-link {% if page.url contains 'index' or page.url == '/' %}active{% endif %}"
+       href="{{ '/' | relative_url }}">Abstract</a>
+  </div>
+
+  <div class="nav-section">
+    <a class="nav-link {% if page.url contains 'Introduction' %}active{% endif %}"
+       href="{{ '/Introduction.html' | relative_url }}">1. Introduction</a>
+    <a class="nav-sublink" href="{{ '/Introduction.html#11-overview-of-resolution-standards' | relative_url }}">1.1 Overview</a>
+    <a class="nav-sublink" href="{{ '/Introduction.html#12-the-importance-of-sidewall-angles' | relative_url }}">1.2 Sidewall angle</a>
+    <a class="nav-sublink" href="{{ '/Introduction.html#13-fabrication-review' | relative_url }}">1.3 Fabrication review</a>
+    <a class="nav-sublink" href="{{ '/Introduction.html#14-deliverables' | relative_url }}">1.4 Deliverables</a>
+  </div>
+
+  <div class="nav-section">
+    <a class="nav-link {% if page.url contains 'Fabrication' %}active{% endif %}"
+       href="{{ '/Fabrication.html' | relative_url }}">2. Fabrication</a>
+    <a class="nav-sublink" href="{{ '/Fabrication.html#21-spin-coating' | relative_url }}">2.1 Spin coating</a>
+    <a class="nav-sublink" href="{{ '/Fabrication.html#22-lithography' | relative_url }}">2.2 Lithography</a>
+    <a class="nav-sublink" href="{{ '/Fabrication.html#23-development-and-lift-off' | relative_url }}">2.3 Development</a>
+    <a class="nav-sublink" href="{{ '/Fabrication.html#24-metal-deposition' | relative_url }}">2.4 Metal deposition</a>
+    <a class="nav-sublink" href="{{ '/Fabrication.html#25-analysis-methods' | relative_url }}">2.5 Analysis methods</a>
+  </div>
+
+  <div class="nav-section">
+    <a class="nav-link {% if page.url contains 'fna' %}active{% endif %}"
+       href="{{ '/fna.html' | relative_url }}">3. Results</a>
+    <a class="nav-sublink" href="{{ '/fna.html#41-surface-roughness' | relative_url }}">3.1 Surface roughness</a>
+    <a class="nav-sublink" href="{{ '/fna.html#42-sidewall-testing' | relative_url }}">3.2 Sidewall angle</a>
+    <a class="nav-sublink" href="{{ '/fna.html#43-electron-contrast' | relative_url }}">3.3 Electron contrast</a>
+    <a class="nav-sublink" href="{{ '/fna.html#44-discussion' | relative_url }}">3.4 Discussion</a>
+  </div>
+
+  <div class="nav-section">
+    <a class="nav-link {% if page.url contains 'FW' %}active{% endif %}"
+       href="{{ '/FW.html' | relative_url }}">4. Future Work</a>
+  </div>
+</nav>
+
+<main id="content">
+  {{ content }}
+</main>
+
+<script>
+function toggleSidebar(){
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('visible');
+}
+
+(function buildTOC(){
+  const content = document.getElementById('content');
+  const headings = content.querySelectorAll('h2, h3, h4');
+  if(headings.length === 0) return;
+
+  const nav = document.getElementById('sidebar');
+
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+  const activeSection = nav.querySelector('.nav-link.active');
+  if(!activeSection) return;
+
+  const parent = activeSection.closest('.nav-section');
+  if(!parent) return;
+
+  const existingSubs = parent.querySelectorAll('.nav-sublink');
+  existingSubs.forEach(s => s.remove());
+
+  headings.forEach(h => {
+    if(!h.id){
+      const slug = h.textContent
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, '')
+        .trim()
+        .replace(/\s+/g, '-');
+      h.id = slug;
+    }
+
+    const link = document.createElement('a');
+    link.className = 'nav-sublink';
+    link.href = '#' + h.id;
+    link.textContent = h.textContent;
+
+    if(h.tagName === 'H2'){
+      link.style.paddingLeft = '1.5rem';
+      link.style.fontWeight = '500';
+      link.style.color = 'var(--color-text-primary, #444)';
+    } else if(h.tagName === 'H3'){
+      link.style.paddingLeft = '2rem';
+    } else if(h.tagName === 'H4'){
+      link.style.paddingLeft = '2.75rem';
+      link.style.fontSize = '11px';
+    }
+
+    parent.appendChild(link);
+  });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        parent.querySelectorAll('.nav-sublink').forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+
+  headings.forEach(h => observer.observe(h));
+
+  parent.querySelectorAll('.nav-sublink').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.getElementById(link.getAttribute('href').slice(1));
+      if(target){
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if(window.innerWidth <= 768) toggleSidebar();
+      }
+    });
+  });
+})();
+</script>
 </body>
 </html>
