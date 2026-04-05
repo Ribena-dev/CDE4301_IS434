@@ -35,7 +35,7 @@ In CD-AFM or 3D-AFM, a vertical parallel structure (VPS), is required as the pri
 
 The calibration relies on the sidewalls being vertical: the finer details of the tip-sample interaction, including feature sidewall angle and corner radius, introduce higher-order tip effects that cause systematic biases in measured linewidth.Any deviation of the reference sidewall from 90° introduces an uncharacterised geometric bias into every subsequent measurement the instrument makes. [5] [3] [6] [7]
 
-The simplified model below, demonstrates the correlation between sidewall angle and the SE intensity characteristics
+The simplified iterative model below, demonstrates the correlation between sidewall angle and the SE intensity characteristics, which you can see by varying the slider.
 
 <!-- <iframe
   src="scripts/sidewall_angle_cd_error.html" 
