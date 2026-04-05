@@ -73,5 +73,9 @@ Heres the issue, most commercial grids are made using electron beam lithography 
 
 When we zoom into the E-Beam penetrating the resist material we get this: 
 
-<iframe src ="scripts/ebeam_vs_pbeam_lateral_spread.html">
+<iframe src ="scripts/ebeam_vs_pbeam_lateral_spread.html"
+        allowfullscreen="true" 
+        width="100%" 
+        height="400">
+
 </iframe>
