@@ -19,17 +19,32 @@ title: "Abstract"
 
 <hr style="border: none; border-top: 2px solid #1a1a1a; margin: 1.5rem 0;">
 
-## Abstract
+<h2 style="font-size: clamp(18px, 3vw, 28px); font-weight: 700; margin-bottom: 0.4rem; text-align: center;">
+  Abstract
+</h2>
 
-Calibration of high-resolution electron microscopy systems requires physical reference standards with well-defined, near-vertical feature geometry. Existing resolution standards fabricated by electron-beam lithography are limited by the proximity effect — the lateral scattering of secondary electrons that degrades sidewall verticality with increasing feature depth — while single-crystal silicon etching produces sidewall angles that are crystallographically fixed and cannot approach 90°. This project investigates proton-beam writing (PBW) as an alternative fabrication route, exploiting the approximately 1,800× greater mass of protons compared to electrons to achieve near-zero lateral beam straggle and minimal proximity effects.
+Calibration of high-resolution electron microscopy systems requires physical reference standards with well-defined, near-vertical feature geometry. 
+Existing resolution standards fabricated by electron-beam lithography are limited by the proximity effect, the lateral scattering of secondary electrons 
+that degrades sidewall verticality with increasing feature depth, while single-crystal silicon etching produces sidewall angles that are crystallographically
+fixed and cannot approach 90°. This project investigates proton-beam writing (PBW) as an alternative fabrication route, 
+exploiting the approximately 1,800× greater mass of protons compared to electrons to achieve near-zero lateral beam straggle and minimal proximity effects.
 
-A grid resolution standard with a target cell size of 100 µm × 100 µm was fabricated at the Centre for Ion Beam Applications (CIBA), National University of Singapore, using a 2 MeV proton beam focused to a spot size of 9.3 × 32 nm². PMMA positive resist was selected for its lift-off compatibility, and metal features were deposited by physical vapour deposition using gold, palladium, chromium, and titanium across seven sample configurations. SRIM Monte Carlo simulations predict a lateral straggle of 0.81 nm at 1 µm resist depth, corresponding to a theoretical sidewall angle of 89.9°.
+A grid resolution standard with a target cell size of 100 µm × 100 µm was fabricated at the Centre for Ion Beam Applications (CIBA),
+National University of Singapore, using a 2 MeV proton beam focused to a spot size of 9.3 × 32 nm². PMMA positive resist was selected for its lift-off compatibility,
+and metal features were deposited by physical vapour deposition using gold, palladium, chromium, and titanium across seven sample configurations. 
+SRIM Monte Carlo simulations predict a lateral straggle of 0.81 nm at 1 µm resist depth, corresponding to a theoretical sidewall angle of greater than 89.9°.
 
-Sidewall angle was characterised using a custom Python analysis pipeline applied to electron detector intensity profiles, fitting each row with a combined Erf–Gaussian model to extract the edge transition FWHM and compute θ = 90° − arctan(f/h). Surface roughness was measured by atomic force microscopy with a target below 3 nm Rq. Three of four edge measurements meet the ≥89.4° target, with the best result at 89.68°. All samples pass the surface roughness target, with Pd achieving 0.219 nm Rq. Scalability via nanoimprint lithography is proposed as a route to high-throughput reproduction.
+Sidewall angle was characterised using a custom Python analysis pipeline applied to electron detector intensity profiles, 
+fitting each row with a combined Erf–Gaussian model to extract the edge transition FWHM and compute θ = 90° − arctan(f/h).
+Surface roughness was measured by atomic force microscopy with a target below 3 nm Rq. Three of four edge measurements meet the ≥89.4°
+target, with the best result at 89.68°. All samples pass the surface roughness target, with Pd achieving 0.219 nm Rq. 
+Scalability via nanoimprint lithography is proposed as a route to high-throughput reproduction.
 
 <hr style="border: none; border-top: 1px solid #ddd; margin: 2rem 0;">
 
-## Table of Contents
+<h2 style="font-size: clamp(15px, 3vw, 28px); font-weight: 700; margin-bottom: 0.4rem; text-align: center;">
+  table of contents
+</h2>
 
 <div id="toc-home" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; max-width:680px;">
  
@@ -66,7 +81,7 @@ Sidewall angle was characterised using a custom Python analysis pipeline applied
             {% assign printed = 0 %}
             {% for line in lines %}
               {% if printed < 12 %}
-                {% if line contains '### ' and line contains 'size' == false %}
+                {% if line contains '## ' and line contains 'size' == false %}
                   {% assign heading = line | remove: '####' | remove: '###' | remove: '##' | remove: '#' | strip | truncate: 60 %}
                   {% assign slug = heading | downcase
                                            | replace: ' ', '-'
