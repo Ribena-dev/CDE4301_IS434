@@ -133,7 +133,7 @@ The practical outcome of these properties is that PBW is capable of fabricating 
 The benchmarks for this project are based on prior work conducted at CIBA. The two primary characterisation targets are a sidewall angle of ≥89.4° and a surface roughness below 3 nm Rq, with a grid cell size of 100 µm × 100 µm [13]. 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/ni_grid_1.png"
+  <img src="images/ni_grid_1.jpg"
        alt="NIckel grid from paper"
        width="280" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
