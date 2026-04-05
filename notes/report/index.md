@@ -39,8 +39,8 @@ However, the accuracy of measurements from any such instrument depends entirely 
 There are many kinds of resolution standards/calibration standards, below are the examples of tin spheres and a fine nano copper mesh 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/tin_nm.png" alt="Tin sphere resolution standards"  style="margin: 5px;">
-  <img src="images/grid_nm.png" alt="Grid resolution standards"  style="margin: 5px;">
+  <img src="images/tin_nm.png" alt="Tin sphere resolution standards" >
+  <img src="images/grid_nm.png" alt="Grid resolution standards" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.2:</strong> Common resolution standards: tin spheres (left) and nano-grids (right)
   </figcaption>
@@ -53,7 +53,7 @@ As expected calibrating such complex machines would require a complex degree of 
 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/lit_fab.png" alt="resolution fabrication overview"  style="margin: 5px;">
+  <img src="images/lit_fab.png" alt="resolution fabrication overview"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.3:</strong> Fabrication process for resolution standard overview side view
@@ -64,7 +64,7 @@ The above is a rather simplified, overview of the fabrication process. (More det
 Heres the issue, most commercial grids are made using electron beam lithography (EBL)(step 2)
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/e_beam.png" alt="resolution fabrication overview"  style="margin: 5px;">
+  <img src="images/e_beam.png" alt="resolution fabrication overview"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.4:</strong> simplified EBL on positive resist 
@@ -83,7 +83,7 @@ When we zoom into the E-Beam penetrating the resist material we get this:
 A lateral spread of roughly 30nm over 1 miro depth of PMMA (estimated not simulated), can vary the the side wall vertical angle as demonstrated below (not to scale)
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/verticle_angle.png" style="margin: 5px;">
+  <img src="images/verticle_angle.png" >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.5:</strong> exaggerated example of vertical angle spread caused by E-beam 
@@ -111,7 +111,7 @@ In EUV and SEM metrology, the consequences are equally significant. A deviation 
 #### Proton Beam Writing  
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/Comparison-between-p-beam-writing-FIB-and-e-beam-writing-This-figure-shows.png" alt="Resolution lithography process"  style="margin: 5px;">
+  <img src="images/Comparison-between-p-beam-writing-FIB-and-e-beam-writing-This-figure-shows.png" alt="Resolution lithography process"  >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.6:</strong> Depth penetration comparison
   </figcaption>
@@ -135,7 +135,7 @@ The benchmarks for this project are based on prior work conducted at CIBA. The t
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/ni_grid_1.jpg"
        alt="NIckel grid from paper"
-       width="280" style="margin: 5px;">
+       width="280" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.7:</strong> Nickel grid from [13]shown for example 
   </figcaption>
@@ -147,11 +147,13 @@ The importance of surface roughness adn electron contrast  will be discussed lat
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/grid_dia.png"
        alt="Schematic diagram of the target grid resolution standard showing 100 µm × 100 µm cell geometry"
-       width="280" style="margin: 5px;">
+       width="280" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.8:</strong> Target grid resolution standard geometry.
   </figcaption>
 </figure>
+
+[Next: Methodology →](Methology.md)
 
 ## References
 

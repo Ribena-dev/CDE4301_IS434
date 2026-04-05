@@ -389,18 +389,25 @@
 </header>
 
 <!-- Top navigation -->
-<nav id="topnav">
-  <a href="{{ '/index.md' | relative_url }}"
-     {% if page.url == '/' or page.url contains 'index' %}class="active"{% endif %}>1. Introduction</a>
-  <a href="{{ '/Methology.md' | relative_url }}"
-     {% if page.url contains 'Introduction' %}class="active"{% endif %}>2. Methodology</a>
-  <a href="{{ '/Fabrication.md' | relative_url }}"
+<!-- <nav id="topnav">
+  <a href="{{ '/' | relative_url }}"
+     {% if page.url == '/' or page.url contains 'index' %}class="active"{% endif %}>Abstract</a>
+
+  <a href="{{ '/notes/report/Introduction.html' | relative_url }}"
+     {% if page.url contains 'Introduction' %}class="active"{% endif %}>1. Introduction</a>
+
+  <a href="{{ '/notes/report/Methology.html' | relative_url }}"
+     {% if page.url contains 'Methology' %}class="active"{% endif %}>2. Methodology</a>
+
+  <a href="{{ '/notes/report/Fabrication.html' | relative_url }}"
      {% if page.url contains 'Fabrication' %}class="active"{% endif %}>3. Fabrication</a>
-  <a href="{{ '/fna.md' | relative_url }}"
-     {% if page.url contains 'fna' %}class="active"{% endif %}>4. Results</a>
-  <a href="{{ '/FW.md' | relative_url }}"
+
+  <a href="{{ '/notes/report/fna.html' | relative_url }}"
+     {% if page.url contains 'fna' %}class="active"{% endif %}>4. Results & Analysis</a>
+
+  <a href="{{ '/notes/report/FW.html' | relative_url }}"
      {% if page.url contains 'FW' %}class="active"{% endif %}>5. Future Work</a>
-</nav>
+</nav> -->
 
 <!-- Body -->
 <div id="page-wrap">
