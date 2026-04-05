@@ -31,105 +31,48 @@ Sidewall angle was characterised using a custom Python analysis pipeline applied
 
 ## Table of Contents
 
-<div id="toc-home" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 1rem;">
+<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:680px;border-top:1px solid #ddd;">
 
-    <a href="Introduction.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 1</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Introduction</div>
-      <div id="toc-intro-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+  {% assign chapters = "1|Introduction|notes/report/Introduction.md|notes/report/Introduction.html,2|Methodology|notes/report/Methology.md|notes/report/Methology.html,3|Fabrication|notes/report/Fabrication.md|notes/report/Fabrication.html,4|Results & Analysis|notes/report/fna.md|notes/report/fna.html,5|Future Work|notes/report/FW.md|notes/report/FW.html" | split: "," %}
 
-    <a href="Methology.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 2</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Methodology</div>
-      <div id="toc-meth-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+  {% for ch in chapters %}
+    {% assign parts = ch | split: "|" %}
+    {% assign ch_num  = parts[0] %}
+    {% assign ch_name = parts[1] %}
+    {% assign ch_path = parts[2] %}
+    {% assign ch_url  = parts[3] %}
 
-    <a href="Fabrication.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 3</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Fabrication</div>
-      <div id="toc-fab-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+    <div style="border-bottom:1px solid #ddd;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;gap:12px;"
+           onclick="var s=this.nextElementSibling,a=this.querySelector('.arr');s.style.display=s.style.display==='block'?'none':'block';a.style.transform=s.style.display==='block'?'rotate(180deg)':'';">
+        <span style="font-size:11px;font-weight:500;color:#aaa;min-width:20px;">{{ ch_num }}</span>
+        <a href="/CDE4301_IS434/{{ ch_url }}"
+           style="font-size:15px;font-weight:600;color:#1a1a1a;flex:1;text-decoration:none;"
+           onclick="event.stopPropagation()">{{ ch_name }}</a>
+        <span class="arr" style="font-size:11px;color:#aaa;transition:transform 0.2s;">▼</span>
+      </div>
 
-    <a href="fna.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 4</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Results &amp; Analysis</div>
-      <div id="toc-fna-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+      <div style="display:none;padding-bottom:10px;">
+        {% for p in site.pages %}
+          {% if p.path == ch_path %}
+            {% assign lines = p.content | newline_to_br | split: '<br />' %}
+            {% for line in lines %}
+              {% if line contains '### ' %}
+                {% assign heading = line | remove: '####' | remove: '###' | remove: '##' | remove: '#' | strip %}
+                {% assign slug = heading | downcase | replace: ' ', '-' | remove: '.' | remove: ',' | remove: '(' | remove: ')' | remove: '/' | remove: ':' %}
+                <a href="/CDE4301_IS434/{{ ch_url }}#{{ slug }}"
+                   style="display:flex;align-items:baseline;gap:10px;padding:4px 0 4px 20px;font-size:13px;color:#555;text-decoration:none;line-height:1.45;">
+                  {{ heading }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
 
-    <a href="FW.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 5</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Future Work</div>
-      <div id="toc-fw-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
-
-  </div>
 </div>
-
-<style>
-.toc-card:hover {
-  border-color: #1a1a1a !important;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-}
-</style>
-
-<script>
-const chapters = [
-  {
-    url: '/CDE4301_IS434/notes/report/Introduction.html',
-    targetId: 'toc-intro-links'
-  },
-  {
-    url: '/CDE4301_IS434/notes/report/Methology.html',
-    targetId: 'toc-meth-links'
-  },
-  {
-    url: '/CDE4301_IS434/notes/report/Fabrication.html',
-    targetId: 'toc-fab-links'
-  },
-  {
-    url: '/CDE4301_IS434/notes/report/fna.html',
-    targetId: 'toc-fna-links'
-  },
-  {
-    url: '/CDE4301_IS434/notes/report/FW.html',
-    targetId: 'toc-fw-links'
-  }
-];
-
-chapters.forEach(ch => {
-  fetch(ch.url)
-    .then(r => r.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc    = parser.parseFromString(html, 'text/html');
-      const headings = doc.querySelectorAll('h2, h3');
-      const container = document.getElementById(ch.targetId);
-      if(!container) return;
-
-      let items = [];
-      headings.forEach(h => {
-        const id   = h.id || h.textContent.toLowerCase()
-                       .replace(/[^a-z0-9\s]/g,'')
-                       .trim().replace(/\s+/g,'-');
-        const indent = h.tagName === 'H3' ? 'padding-left:0.8rem;' : '';
-        items.push(
-          `<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;${indent}">`
-          + `<a href="${ch.url}#${id}" style="color:#555;text-decoration:none;">`
-          + `${h.textContent}</a></div>`
-        );
-      });
-
-      container.innerHTML = items.slice(0, 6).join('');
-      if(items.length > 6){
-        container.innerHTML +=
-          `<div style="color:#aaa;font-size:11px;margin-top:2px;">+${items.length - 6} more sections</div>`;
-      }
-    })
-    .catch(() => {});
-});
-</script>
 
 <hr style="border: none; border-top: 1px solid #ddd; margin: 2.5rem 0;">
 
