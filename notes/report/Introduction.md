@@ -172,6 +172,16 @@ No specific feature height was targeted, as the appropriate height varies consid
   </figcaption>
 </figure>
 
+### 1.5 Summary logic flow 
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/intro_logic.png"
+       alt="Schematic diagram of the target grid resolution standard showing 100 µm × 100 µm cell geometry"
+       width="280" >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.9:</strong> Logic flow chart summary
+  </figcaption>
+</figure>
 [<--Prev: Home ](index.html) | [Next: Methodology →](Methology.md)
 
 ## References
