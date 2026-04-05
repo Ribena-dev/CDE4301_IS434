@@ -75,8 +75,8 @@ When we zoom into the E-Beam penetrating the resist material we get this:
 
 <iframe src ="scripts/ebeam_vs_pbeam_lateral_spread.html"
         allowfullscreen="true" 
-        width="100%" 
-        height="100%">
+        width="500px" 
+        height="500px">
 
 </iframe>
 
@@ -99,8 +99,8 @@ The simplified iterative model below, demonstrates the correlation between sidew
 
 <iframe src ="scripts/sidewall_angle_cd_error.html"
         allowfullscreen="true" 
-        width="100%" 
-        height="100%">
+        width="500px" 
+        height="500px">
 </iframe>
 
 In EUV and SEM metrology, the consequences are equally significant. A deviation of just 5° from the ideal 90° sidewall angle has been shown to produce a critical dimension error of up to 20% in a 16 nm line-space pattern [8]. This is because the interaction of the incident beam with a non-vertical sidewall produces asymmetric scattering that systematically shifts the apparent edge position.
