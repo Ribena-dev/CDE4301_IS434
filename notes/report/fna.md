@@ -1,7 +1,6 @@
 ## Results and analysis
 
-Samples [X] and [Y] showed the most promising initial optical inspection results
-and were prioritised for detailed characterisation.
+What do i write here
 
 ### 4.1 Surface roughness
 
@@ -12,7 +11,7 @@ Surface roughness Rq was measured by AFM in tapping mode. Two regions were chara
   <img src="images/au_afm.png" alt="AFM profile of Au surface" width="280" style="margin: 5px;">
   <img src="images/dlc_surface.png" alt="AFM profile of DLC surface" width="280" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.2:</strong> AFM surface profiles of the three primary materials:
+    <strong>Figure 4.1:</strong> AFM surface profiles of the three primary materials:
     Pd (left), Au (centre), and DLC (right). Pd shows the smoothest surface at
     R_q = 0.219 nm, Au shows characteristic island grain structure from magnetron
     sputtering (R_q = 0.514–1.271 nm), and DLC shows spatially variable roughness
@@ -46,7 +45,7 @@ In magnetron sputtering, atoms arrive at the substrate with energies in the rang
   <img src="images/afm_best_worst.png" alt="beam line optics"  style="margin: 5px;">
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.3:</strong> Gold surface graph
+    <strong>Figure 4.2:</strong> Gold surface graph
   </figcaption>
 </figure>
 
@@ -59,22 +58,52 @@ For DLC the picture is more varied. DLC is essentially isotropic at 0.030 nm dif
 
 Edge profiles were extracted from the electron detector data for each sample using the Erf–Gaussian fitting pipeline described in Section 2.5.1. For each sample, a row band was selected over a single grid edge, individual row profiles were fitted independently, and the mean FWHM f and sidewall angle θ were reported with ±1σ across rows.
 
-[INSERT edge_profiles.png ,overlaid row profiles + mean for best sample]
-[INSERT edge_sidewall.png ,θ per row with mean ± 1σ and 89° target line]
+However given the large number of samples, the following section as selected to show only the best 3 sample grids, excluding Pd on Ti which has not been tested yet due to time contraints. 
 
-| Sample | Pixel size X (nm/px) | f mean (nm) | f std (nm) | θ mean (°) | θ std (°) | Meets ≥89.4° |
-|---|---|---|---|---|---|---|
-| 1 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 2 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 3 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 4 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 5 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 6 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 7 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/dlc_au_boundary.png" alt="DLC/Au boundary edge fit"
+       width="480" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3(a):</strong> DLC/Au boundary
+  </figcaption>
+</figure>
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/2012_6_385_graph.png"
+       alt="2012 grid 6.385 edge fit" width="480" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3(b):</strong> Side wall of PMMA before dlc deposition
+  </figcaption>
+</figure>
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/2012_6_41_graph.png"
+       alt="2012 grid 6.41 edge fit" width="480" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3(c):</strong> Side wall of PMMA before dlc deposition
+  </figcaption>
+</figure>
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="/images/nickel_graph.png"
+       alt="Nickel reference grid edge fit" width="480" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3(d):</strong> Nickel grid used to calibrate beam
+  </figcaption>
+</figure>
+
+| Measurement | f (nm) | θ (°) | Meets ≥89.4° |
+|---|---|---|---|
+| DLC/Au boundary | 5.93 | **89.66** | ✓ |
+| DLC | 14.91 | **89.49** | ✓ |
+| DLC on Pd  | 15.30 | 89.12 | ✗ |
+| Nickel reference | 11.21 | **89.68** | ✓ |
+| SRIM theoretical | 1.91 | 89.90 | ✓ |
 
 SRIM theoretical prediction: θ = 89.9° (f = 1.91 nm at h = 1000 nm).
 
-[INSERT comment on deviation from theoretical prediction and likely causes.]
+The nickel grid was used as a test to check if the python script was working as intended
 
 
 ### 4.3 Comparing electron contrast Au vs DLC
@@ -110,33 +139,9 @@ Au produces a mean electron count of 1.329 e/px compared to 1.115 e/px for DLC, 
 modest ratio of 1.19 rather than the order-of-magnitude difference expected from Z
 alone is due to the thin film of DLC deposited that allows partial electron transmission into the underlying substrate, diluting the contrast difference.
 
-### 4.4 Comparison across samples
-
-A summary comparison of all five key metrics across all seven samples is presented below. Samples are ranked by sidewall angle as the primary deliverable, with surface roughness and contrast ratio as secondary criteria.
-
-[INSERT summary radar chart or bar chart comparing θ and Rq across samples]
-
-| Sample | θ mean (°) | Rq (nm) | Contrast ratio | Lift-off quality | Overall |
-|---|---|---|---|---|---|
-| 1 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 2 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 3 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 4 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 5 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 6 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-| 7 | [TBC] | [TBC] | [TBC] | [TBC] | [TBC] |
-
-**Best performing sample: [TBC]**
-
-[INSERT SEM/electron detector image + AFM map of best sample side-by-side]
-
-This sample achieved θ = [TBC]° against the ≥89.4° target and Rq = [TBC] nm against the <3 nm target. [INSERT one sentence on why this composition outperformed the others ,e.g. adhesion layer reducing grain stress, e-beam vs sputtering deposition mode, etc.]
-
-
-
 ### 4.5 Discussion
 
-
+wah what do i write here
 
 
 #### Limitations of the analysis method
@@ -146,7 +151,8 @@ The electron detector Erf–Gaussian method provides an indirect estimate of θ 
 
 
 ### concluding 
-- where the deliverables achieved?
-- what was leant
+_ What do i write here
+
+
 
 [→Prev: Fabrication ](Fabrication.md)| [Next: Future works →](FW.md)
