@@ -1,14 +1,6 @@
 ## Results and analysis
 ### 4.1 General overview
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/dosage.png" alt="resolution fabrication overview"  style="margin: 5px;">
-  
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
-  </figcaption>
-</figure>
- 
-Proton beam writing doses ranged from 75–175 nC/mm². All samples underwent electron detector edge analysis and AFM surface roughness measurement.
+
 Samples [X] and [Y] showed the most promising initial optical inspection results
 and were prioritised for detailed characterisation.
 

@@ -62,10 +62,6 @@ $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(
 
 ### 3.3 spin coating the waver and development
 #### spin coating
-ref for images and others: 
-https://apps.mnc.umn.edu/archive/ebpgwiki/rsrc/EBPG/Datasheets/PMMA_Datasheet.PDF
-https://ebeam.mff.uw.edu/ebeamweb/process/process/pmma.html
-https://cse.umn.edu/mnc/pmma-spin-curves
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/pmma_495k_mid.png" 
@@ -97,7 +93,7 @@ https://cse.umn.edu/mnc/pmma-spin-curves
 
 Film thickness is governed by two parameters: the concentration (viscosity) of the resist solution and the spin speed [1]. Higher spin speeds and lower concentrations produce thinner films, following an approximate inverse power-law relationship.
  
-PMMA is available in two standard molecular weights — 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1][2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness
+PMMA is available in two standard molecular weights 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1][2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness
 
 A key design constraint is that the PMMA thickness must be at least five times greater than the intended metal deposition thickness. This ratio is required for two reasons: first, it ensures sufficient structural integrity of the resist walls during development and metal
 deposition; and second, it prevents metal overflowing the resist sidewalls, a phenomenon known as mushrooming, where excess metal forms a cap-like layer over the resist that prevents clean lift-off. However, if the PMMA is made excessively thick, the increased aspect ratio of the trench can cause resist wall collapse, and as shown by the SRIM simulations in Section 3.2, deeper features allow more lateral beam straggle to accumulate, degrading the
@@ -116,7 +112,7 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
   <source src="images/development_1.mp4" type="video/mp4">
 </video>
 
-![alt text](images/dev.png)
+
 
 
 Development is performed after PBW exposure and is included here for process continuity. The wafer is immersed in DI water:IPA (7:3) developer, which selectively dissolves the chain-scissioned PMMA in the exposed regions while leaving the unexposed resist intact [1][2]. The sample is then rinsed in fresh IPA and dried with a nitrogen gun to stop development. Following metal deposition, the remaining PMMA is removed by immersion in acetone, lifting off the metal on top of the resist and leaving only the metal deposited directly onto the silicon substrate.
@@ -136,7 +132,7 @@ The PBW facility at CIBA is built around a 3.5 MV Singletron accelerator (HVEE) 
  
 Before focusing, the beam passes through two apertures. The objective aperture (8 × 4 µm²) defines the virtual source size, while the collimator aperture (30 × 30 µm²) reduces angular divergence entering the lenses, giving a beam half-divergence of approximately 3 µrad [4].
 
-Focusing is achieved by a spaced Oxford triplet of magnetic quadrupole lenses in a converging-diverging-converging (CDC) configuration. A single quadrupole focuses in one plane and defocuses in the other; the triplet arrangement produces a symmetric spot focus. With an object-to-lens distance of 7.5 m and image distance of 30 mm, the system achieves a demagnification of 857 × 130, yielding a minimum spot size of 9.3 × 32 nm² [4]. Chromatic aberration — from the finite energy spread of the accelerator — is the dominant limit on spot size, requiring ~10 ppm accelerator stability for sub-10 nm resolution [4]. Before writing, the beam is focused by scanning across a free-standing resolution standard. The transmitted or secondary electron signal produces a complementary error function profile, which is fitted to extract the beam FWHM (Section 2.5). Once focused, a writing file is loaded and the beam is rastered over the resist using electrostatic scanners combined with stage movement for
+Focusing is achieved by a spaced Oxford triplet of magnetic quadrupole lenses in a converging-diverging-converging (CDC) configuration. A single quadrupole focuses in one plane and defocuses in the other; the triplet arrangement produces a symmetric spot focus. With an object-to-lens distance of 7.5 m and image distance of 30 mm, the system achieves a demagnification of 857 × 130, yielding a minimum spot size of 9.3 × 32 nm² [4]. Chromatic aberration, is the dominant limit on spot size, requiring ~10 ppm accelerator stability for sub-10 nm resolution [4]. Before writing, the beam is focused by scanning across a free-standing resolution standard. The transmitted or secondary electron signal produces a complementary error function profile, which is fitted to extract the beam FWHM (Section 2.5). Once focused, a writing file is loaded and the beam is rastered over the resist using electrostatic scanners combined with stage movement for
 larger fields [5].
 
 <!-- <iframe 
@@ -526,24 +522,54 @@ The beam spot size plays a critical role in controlling patterning precision. A 
 The focal plane position can be physically adjusted by moving the sample stage along the beam axis with an accuracy of approximately 1 µm. Since the beam converges to a minimum spot at the focal point and diverges either side, placing the sample above or below focus increases
 the effective spot size at the resist surface according to the cone half-angle α and the defocus distance Δz. Systematic variation of the focal plane position during writing is therefore a potential strategy for compensating residual beam divergence at depth, keeping the beam optimally focused throughout the resist thickness rather than only at the surface.
 
-#### P-beam dosage 
+### 3.5 P-beam energy dosage 
+In proton-beam writing, dose refers to the total charge delivered per unit area of resist, expressed in nC/mm². It is the product of the beam current, the dwell time per pixel, and the inverse of the pixel area. Physically, it represents the number of protons that have passed through each unit area of the resist surface, a higher dose means more protons, more secondary electron generation, and therefore more chain scission events per unit volume of PMMA.
 
-### 3.5 Metal deposition characteristics
+Dose is distinct from energy. Energy determines *where* in the resist the protons stop and how deeply they penetrate. Dose determines *how much* chemical damage is accumulated at each depth along that path.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/dosage.png" alt="resolution fabrication overview"  style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 3.5:</strong> dosage and development testing
+  </figcaption>
+</figure>
+ 
+Proton beam writing doses ranged from 75–175 nC/mm².
+
+The minimum dose required to fully develop the exposed PMMA is called the threshold dose or clearing dose. Below this value, the chain scission density is insufficient for the developer (DI:IPA 7:3) to dissolve the exposed material, and the feature will either partially develop or not develop at all as seen below.
+
+![alt text](images/dev.png)
+
+#### Effects of dosage
+
+**Underdose (below ~50–75 nC/mm²):** Insufficient chain scission. The exposed PMMA
+does not reach its gel point , the minimum molecular weight reduction required for the developer to dissolve it. The feature either does not develop, or develops incompletely, leaving a residual PMMA layer at the bottom of the trench. This prevents metal from reaching the substrate and produces no grid feature after lift-off.
+
+**Correct dose (> 75nC/mm²):** The exposed volume is cleanly dissolved by the developer from top to bottom, producing a well-defined trench with vertical sidewalls whose quality is limited by the lateral straggle of the beam, as characterised in
+Section 3.2.
+
+**Overdose (above > 280 nC/mm²):** Excess secondary electron generation begins to expose resist beyond the intended beam boundary. The trench widens beyond the written pattern, reducing the effective CD and degrading sidewall verticality. At very high doses the PMMA surface can blister or form bubbles due to rapid outgassing of volatile chain scission products, permanently damaging the resist structure.
+
+**Extreme overdose (above ~3.5 × 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become
+insoluble rather than soluble.  This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached.
+
+
+### 3.6 Metal deposition characteristics
 
 | Material | Deposition technique | Melting point (°C) | Conductivity (S/m) | Reasoning |
 |---|---|---|---|------|
-| Au | Magnetron sputtering | 1064 | 4.52 × 10⁷ |  High Z (79) gives excellent SEM/TEM contrast; chemically inert; well-established PVD process; lift-off compatible |
-| Pd | E-beam evaporation | 1554.9 | 9.5 × 10⁶ |  High Z (46), good contrast; chemically stable; used for X-ray zone plates and resolution standards; higher melting point limits substrate heating risk |
+| Au | Magnetron sputtering | 1064 | 4.52 × 10⁷ |   gives excellent SEM/TEM contrast; chemically inert; well-established PVD process; lift-off compatible |
+| Pd | E-beam evaporation | 1554.9 | 9.5 × 10⁶ |  good contrast; chemically stable; used for X-ray zone plates and resolution standards; higher melting point limits substrate heating risk |
 | Cr | Magnetron sputtering |  1907| 7.9 × 10⁶ |  Deposited as adhesion buffer layer beneath Au/Pd; strong bonding to Si oxide|
-| DLC | FCVA | N/A (amorphous) | ~10⁻³–10² (sp²/sp³ dependent)  | Excluded: Z = 6 gives near-zero contrast vs Si (Z = 14)|
+| DLC | FCVA | N/A (amorphous) | ~10⁻³–10² (sp²/sp³ dependent)  | smoother surface|
 
 The metals selected for this project were chosen on the basis of the criteria established
 in Section 2.4 , lift-off compatibility, electron scattering contrast, chemical stability, and lattice mismatch, alongside the practical constraint of cleanroom availability at CIBA.
 
-Gold (Au) was selected as the primary structural metal due to its well-established compatibility with magnetron sputtering workflows at CIBA, its high atomic number (Z = 79) giving excellent electron detector backscatter contrast, and its chemical inertness. Chromium (Cr) was included as an adhesion buffer layer beneath Au, exploiting its strong bonding to native silicon oxide and its ability to reduce internal stress arising from the Au–Si lattice mismatch. Palladium (Pd) was evaluated as an alternative primary metal, offering high Z (46), good chemical stability, and a higher melting point than Au, reducing the risk of substrate heating during e-beam evaporation. Diamond-like carbon (DLC) was investigated as a candidate surface coating to improve roughness performance after surface concerns with sputtered Au were observed. Titanium (Ti) was later introduced as an alternative adhesion layer to Cr, offering improved interfacial
-bonding without the additional conductivity and optical contrast change associated with Cr.
+Gold (Au) was selected as the primary structural metal due to its well-established compatibility with magnetron sputtering workflows at CIBA, hasa potentially high electron detector backscatter contrast, and its chemical inertness. Chromium (Cr) was included as an adhesion buffer layer beneath Au, exploiting its strong bonding to native silicon oxide and its ability to reduce internal stress arising from the Au–Si lattice mismatch. Palladium (Pd) was evaluated as an alternative primary metal good chemical stability, and a higher melting point than Au, reducing the risk of substrate heating during e-beam evaporation. Diamond-like carbon (DLC) was investigated as a candidate surface coating to improve roughness performance after surface concerns with sputtered Au were observed. Titanium (Ti) was later introduced as an alternative adhesion layer to Cr, offering improved interfacial bonding without the additional conductivity and optical contrast change associated with Cr.
 
-### 3.6 Fabricated samples composition
+### 3.7 Fabricated samples composition
 
 | Sample | Cr | Pd | Au | DLC | Ti |
 |---|:---:|:---:|:---:|:---:|:---:|

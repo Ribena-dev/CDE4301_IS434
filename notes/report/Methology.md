@@ -206,9 +206,9 @@ which is destructive.
 To utilize and analyse the electron detector spectrum, I developed a python script, flow chart seen below. 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/nevot_croce.png" alt = "nevot_coroce"  style="margin: 5px;">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
-    <strong>Figure 2.7</strong> 
+  <img src="images/images/software_flow.png" alt = "nevot_coroce"  style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> software flowchart
+    <strong>Figure 2.8</strong> 
   </figcaption>
 </figure>
 
