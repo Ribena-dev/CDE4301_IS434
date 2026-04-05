@@ -1,0 +1,35 @@
+{% assign page_path = include.path %}
+{% assign page_url  = include.url %}
+{% assign chapter   = include.chapter %}
+{% assign title     = include.title %}
+
+<a href="{{ page_url | relative_url }}" class="toc-card"
+   style="display:block;text-decoration:none;background:#fff;border:1px solid #ddd;border-radius:8px;padding:1.25rem 1.5rem;transition:border-color 0.15s,box-shadow 0.15s;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#888;margin-bottom:0.4rem;">
+    Chapter {{ chapter }}
+  </div>
+  <div style="font-size:16px;font-weight:700;color:#1a1a1a;margin-bottom:0.5rem;">
+    {{ title }}
+  </div>
+  <div style="font-size:12px;color:#666;line-height:1.9;">
+    {% for p in site.pages %}
+      {% if p.path == page_path %}
+        {% assign content_lines = p.content | newline_to_br | split: '<br />' %}
+        {% assign count = 0 %}
+        {% for line in content_lines %}
+          {% if line contains '## ' and count < 8 %}
+            {% assign heading = line | remove: '##' | remove: '#' | strip %}
+            {% assign slug = heading | downcase | replace: ' ', '-' | remove: '.' | remove: ',' | remove: '(' | remove: ')' | remove: '/' %}
+            <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">
+              <a href="{{ page_url | relative_url }}#{{ slug }}"
+                 style="color:#555;text-decoration:none;">
+                {{ heading }}
+              </a>
+            </div>
+            {% assign count = count | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</a>

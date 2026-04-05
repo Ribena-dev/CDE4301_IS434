@@ -12,20 +12,22 @@ title: "Abstract"
     CDE4301 Innovation &amp; ·&nbsp; AY2025
   </p>
   <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 0.2rem;">
-    NUS College of Design and Engineering
+    Devinaa Kumeresh 
   </p>
+  <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 0.2rem;">
+    A0266490X
+  </p>
+
 
 </div>
 
 <hr style="border: none; border-top: 2px solid #1a1a1a; margin: 1.5rem 0;">
 
+## Acknowledgements 
+
 ## Abstract
 
-Calibration of high-resolution electron microscopy systems requires physical reference standards with well-defined, near-vertical feature geometry. Existing resolution standards fabricated by electron-beam lithography are limited by the proximity effect — the lateral scattering of secondary electrons that degrades sidewall verticality with increasing feature depth — while single-crystal silicon etching produces sidewall angles that are crystallographically fixed and cannot approach 90°. This project investigates proton-beam writing (PBW) as an alternative fabrication route, exploiting the approximately 1,800× greater mass of protons compared to electrons to achieve near-zero lateral beam straggle and minimal proximity effects.
 
-A grid resolution standard with a target cell size of 100 µm × 100 µm was fabricated at the Centre for Ion Beam Applications (CIBA), National University of Singapore, using a 2 MeV proton beam focused to a spot size of 9.3 × 32 nm². PMMA positive resist was selected for its lift-off compatibility, and metal features were deposited by physical vapour deposition using gold, palladium, chromium, and titanium across seven sample configurations. SRIM Monte Carlo simulations predict a lateral straggle of 0.81 nm at 1 µm resist depth, corresponding to a theoretical sidewall angle of 89.9°.
-
-Sidewall angle was characterised using a custom Python analysis pipeline applied to electron detector intensity profiles, fitting each row with a combined Erf–Gaussian model to extract the edge transition FWHM and compute θ = 90° − arctan(f/h). Surface roughness was measured by atomic force microscopy with a target below 3 nm Rq. Three of four edge measurements meet the ≥89.4° target, with the best result at 89.68°. All samples pass the surface roughness target, with Pd achieving 0.219 nm Rq. Scalability via nanoimprint lithography is proposed as a route to high-throughput reproduction.
 
 <hr style="border: none; border-top: 1px solid #ddd; margin: 2rem 0;">
 
@@ -33,36 +35,37 @@ Sidewall angle was characterised using a custom Python analysis pipeline applied
 
 <div id="toc-home" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 1rem;">
+    {% include toc_card.html
+     chapter="1"
+     title="Introduction"
+     path="Introduction.md"
+     url="Introduction.html" %}
 
-    <a href="/notes/report/Introduction.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 1</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Introduction</div>
-      <div id="toc-intro-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+  {% include toc_card.html
+     chapter="2"
+     title="Methodology"
+     path="Methology.md"
+     url="Methology.html" %}
 
-    <a href="/notes/report/Methology.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 2</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Methodology</div>
-      <div id="toc-meth-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+  {% include toc_card.html
+     chapter="3"
+     title="Fabrication"
+     path="Fabrication.md"
+     url="Fabrication.html" %}
 
-    <a href="/notes/report/Fabrication.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 3</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Fabrication</div>
-      <div id="toc-fab-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+  {% include toc_card.html
+     chapter="4"
+     title="Results & Analysis"
+     path="fna.md"
+     url="fna.html" %}
 
-    <a href="/notes/report/fna.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 4</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Results &amp; Analysis</div>
-      <div id="toc-fna-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+  {% include toc_card.html
+     chapter="5"
+     title="Future Work"
+     path="FW.md"
+     url="FW.html" %}
 
-    <a href="/notes/report/FW.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
-      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 5</div>
-      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Future Work</div>
-      <div id="toc-fw-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
-    </a>
+
 
   </div>
 </div>
