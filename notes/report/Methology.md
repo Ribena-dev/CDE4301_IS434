@@ -3,7 +3,7 @@ layout: default
 title: "Methodology"
 ---
 
-<iframe src ="scripts/pbw_process_scrollspy.html"
+<iframe src ="scripts/rn_process_nav.html"
         allowfullscreen="true" 
         width="700px" 
         height="400px"> 
@@ -29,7 +29,7 @@ This section outlines the materials, techniques, and analytical methods selected
 
 To note section will skip a general lithography section as the novelty in section 1 already covers it , instead focusing more on understanding the Proton beam 
 
-
+<div id="resist"></div>
 ### 2.1 Resist 
 
 Resists are radiation-sensitive materials that can be coated onto substrates and locally modified to yield desired patterns. Based on their response to exposure, they are broadly classified as positive or negative resists. Positive resists show an increased dissolution rate in the exposed regions when developed, while negative resists show a decreased dissolution rate ,the exposed regions become
@@ -44,14 +44,21 @@ direct-write lithography at CIBA [10].
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/PMMA_repeating_unit.svg.png" alt="Resolution lithography process" width="280" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.4:</strong> PMMA repeating unit
+    <strong>Figure 2.Y:</strong> PMMA repeating unit
   </figcaption>
 </figure>
 
 PMMA is a long-chain synthetic polymer and one of the most widely used positive resists in nano-fabrication. Its primary advantages include a simple formulation (PMMA dissolved in anisole, a low-toxicity solvent), insensitivity to white
-light (λ > 250 nm), a wide range of available film thicknesses through dilution, no shelf-life limitations, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the pmma[10] [11].
+light (λ > 250 nm), a wide range of available film thicknesses through dilution, no shelf-life limitations, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the pmma[10] [11]. 
 
-PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission ,the breaking of the polymer backbone at the carbon–carbonyl bond. This reduces the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development, leaving the unexposed PMMA as the remaining resist pattern [11] [12].
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/p_re.png"  width="280" >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.Y:</strong> PMMA simplified development
+  </figcaption>
+</figure>
+
+PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission ,the breaking of the polymer backbone at the carbon–carbonyl bond. This reduces the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development , leaving the unexposed PMMA as the remaining resist pattern [11] [12].
 
 #### HSQ ,Hydrogen Silsesquioxane
 
@@ -65,12 +72,28 @@ PMMA is a positive resist. When exposed to a proton or electron beam, the incide
 HSQ is an inorganic silicon-based resist with the empirical formula [HSiO₃/₂]ₙ.In its as-deposited state it exists as a polyhedral cage of silicon and oxygen atoms, each silicon bearing a single hydrogen substituent. HSQ is a negative resist and has been shown to function as a high-resolution negative-tone e-beam resist, with resolutions below 20 nm reported and single lines as narrow as 7 nm
 demonstrated [10].
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/n_re.png"  width="280" >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.Y:</strong> HSQ simplified development
+  </figcaption>
+</figure>
+
 When exposed to radiation, secondary electrons cleave the Si–H bonds within the cage structure, generating silanol groups that rapidly condense to form new Si–O–Si crosslinks. This converts the soluble cage structure into a dense, crosslinked network that is insoluble in developer solutions such as TMAH. The unexposed, uncrosslinked regions are dissolved during development and removed, leaving the crosslinked network as the patterned feature,the negative-tone
 response [10] [13].
 
 #### Resist choice
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/resist_choice.png"  width="280" >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.Y:</strong> Simplifies diagram of resist liff off comparison
+  </figcaption>
+</figure>
+
 PMMA is selected over HSQ for this project for lift-off compatibility. The fabrication process in this project requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film [11] [12]. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow [13].
+
+<div id="pbw"></div>
 
 ### 2.2 Proton Beam writing 
 #### Dosage
@@ -78,6 +101,9 @@ In proton-beam writing, dose refers to the total charge delivered per unit area 
 
 
 `Dose is distinct from energy. Energy determines where in the resist the protons stop and how deeply they penetrate. Dose determines how much chemical damage is accumulated at each depth along that path.`
+
+
+
 
 
 <figure style="text-align: center; margin: 20px 0;">
@@ -92,6 +118,7 @@ There is a minium dose required, called the threshold dose to full develop a cer
 
 To test this and choose a suitable dose range, we fabricated various grids as seen above on the same piece of Si waver with the same seed metal 2nm of Cr
 
+<div id="develop"></div> 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/dev.png" alt="resolution fabrication overview" >
@@ -122,7 +149,7 @@ does not reach its threshold dose. The feature either does not develop, or devel
 
 **Extreme overdose (above ~3.5 × 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become insoluble rather than soluble.  This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached.
 
-
+<div id="material deposition"></div>
 
 ### 2.3 Material deposition
 
@@ -142,14 +169,15 @@ The general PVD process proceeds in four stages:
 3. The vapour impinges on the substrate surface
 4. The material condenses and forms a thin film on the substrate
 
-PVD is well-suited to this project for several reasons. The composition of the deposited film is directly controlled by the choice of source material, enabling rapid testing of different metals without altering the rest of the fabrication process. High vacuum conditions minimise contamination from residual gases.
-Critically, the deposition rate can be controlled, providing influence over the film morphology, texture, and surface roughness, all of which affect the calibration utility of the finished standard [14].
+PVD is well-suited to this project for several reasons. High vacuum conditions minimise contamination from residual gases. The deposition rate can be controlled, providing influence over the film morphology, texture, and surface roughness, all of which affect the calibration utility of the finished standard [14].
+
+
 
 The primary disadvantage of PVD is that it is a line-of-sight process, atoms travel in straight paths from the source to the substrate and cannot coat surfaces that are geometrically hidden from the source. For this project, this is not a limitation, as the grid structure is a relatively simple planar geometry with no hidden or re-entrant surfaces requiring coating.
 
 Additionally, given that  Pure PMMA has a glass transition temperature (Tg) of approximately 105–107 °C but commercial grades can range from 85 to 165 °C[16], the deposition method should not damage the PMMA 
  
-Three PVD techniques are considered: magnetron sputtering, E-beam deposition and Filtered cathodic acuum arc (FCVA).
+Three PVD techniques are considered: magnetron sputtering, E-beam deposition and Filtered cathodic vacuum arc (FCVA).
 
 #### Magnetron sputtering
 
@@ -174,10 +202,20 @@ In electron beam (e-beam) deposition, a high-voltage (6–40 kV) electron beam i
 
 #### DLC deposition via FCVA
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/FCVA.png" alt = "FCVA schematic"  >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.Y</strong> FCVA schematic
+  </figcaption>
+</figure> 
+
+
+<a href="https://www.researchgate.net/figure/Schematic-of-the-filtered-cathodic-vacuum-arc-FCVA-deposition-system_fig6_267805644"><img src="https://www.researchgate.net/profile/Mahnaz-Shafiei/publication/267805644/figure/fig6/AS:669391066759183@1536606675976/Schematic-of-the-filtered-cathodic-vacuum-arc-FCVA-deposition-system.png" alt="4. Schematic of the filtered cathodic vacuum arc (FCVA) deposition system."/></a>
+
+
 Filtered cathodic vacuum arc (FCVA) is a PVD technique in which a high-current arc is struck on a graphite cathode, generating a carbon plasma that is directed 
 onto the substrate through a magnetic filter. The filter removes macroparticles from the plasma stream, producing a dense, smooth diamondlike carbon (DLC) film 
-with a tunable sp²/sp³ ratio depending on the arc parameters. Unlike sputtering or thermal evaporation, FCVA can deposit hard, wear-resistant carbon films at 
-room temperature without requiring a precursor gas.
+with a tunable sp²/sp³ ratio depending on the arc parameters. Unlike sputtering or thermal evaporation, FCVA can deposit hard, wear-resistant carbon films at room temperature without requiring a precursor gas.
 
 
 ### 2.4 Material choice
@@ -196,6 +234,18 @@ The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic str
 5. Good surface smoothness, limiting e- scattering 
 Using the Névot-Croce factor, to visualize the importance of a smooth surface under <3nm
 
+<a href="https://www.researchgate.net/figure/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009_fig6_349395724"><img src="https://www.researchgate.net/profile/Ayman-Abdel-Hamid-2/publication/349395724/figure/fig6/AS:992501460660234@1613642196704/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009.jpg" alt="7. Diffuse surface scattering increases as roughness increases (Richards, 2009)."/></a>
+
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/sacttering_surface.jpg" alt = "FCVA schematic"  >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.Y</strong> Surface scattering
+  </figcaption>
+</figure> 
+
+The diagram above does a good job of visualizing the scattering. Electron microscope calibrations, rely on the backsactering of electron, scattering such as this can lead to skewed images. 
+
 The Névot-Croce factor is a  correction factor that tells you how much of the specular (mirror-like) reflected signal you lose from a surface due to roughness.
 A perfectly smooth surface reflects 100% of the incident beam in the specular direction. As the surface gets rougher, some of that signal scatters diffusely in random directions instead, so the sharp, coherent reflection you're trying to measure gets weaker
 
@@ -206,9 +256,13 @@ A perfectly smooth surface reflects 100% of the incident beam in the specular di
   </figcaption>
 </figure>
 
+
 The plot shows signal retention as a function of roughness across three representative scattering conditions (q_z = 0.5, 1.0, and 1.5 nm⁻¹). All three curves decay exponentially ,at low roughness the surface behaves near-ideally, but beyond ~3 nm the higher-q curves drop sharply, indicating that diffuse scatter increasingly dominates over the coherent specular signal. At σ = 5 nm the most sensitive condition retains less than 40% of its signal; at σ = 10 nm the signal is effectively lost.
 The 3 nm threshold is therefore chosen as the point at which signal retention remains above 80%
 
+
+
+<div id="analysis"></div>
 
 ### 2.5 method of analysis
 Three complementary characterization techniques are used to evaluate the fabricated grid resolution standard: electron detector for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
