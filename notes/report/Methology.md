@@ -237,7 +237,7 @@ The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic str
 5. Good surface smoothness, limiting e- scattering 
 Using the Névot-Croce factor, to visualize the importance of a smooth surface under <3nm
 
-<a href="https://www.researchgate.net/figure/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009_fig6_349395724"><img src="https://www.researchgate.net/profile/Ayman-Abdel-Hamid-2/publication/349395724/figure/fig6/AS:992501460660234@1613642196704/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009.jpg" alt="7. Diffuse surface scattering increases as roughness increases (Richards, 2009)."/></a>
+`<a href="https://www.researchgate.net/figure/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009_fig6_349395724"><img src="https://www.researchgate.net/profile/Ayman-Abdel-Hamid-2/publication/349395724/figure/fig6/AS:992501460660234@1613642196704/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009.jpg" alt="7. Diffuse surface scattering increases as roughness increases (Richards, 2009)."/></a>`
 
 
 <figure style="text-align: center; margin: 20px 0;">
