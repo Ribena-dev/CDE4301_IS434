@@ -3,7 +3,7 @@
 
 ### 1.1 Overview of Resolution Standards
 
-Driven by Moore's Law, which predicts the doubling of transistor density approximately every two years, semiconductor feature sizes have scaled from the micrometre range in the 1970s to sub-2 nm nodes in commercial production today [1]. Modern transistor gates are built through repeated cycles of deposition, patterning, and etching on a polished silicon wafer. This relentless miniaturisation has rendered conventional optical microscopy impractical for surface characterisation — the wavelength of visible light (380–700 nm) is far greater than the dimensions of current transistor features [2]. This raises a fundamental question: how can such structures be characterised with the precision required for manufacturing?
+Driven by Moore's Law, which predicts the doubling of transistor density approximately every two years, semiconductor feature sizes have scaled from the micrometre range in the 1970s to sub-2 nm nodes in commercial production today [1]. Modern transistor gates are built through repeated cycles of deposition, patterning, and etching on a polished silicon wafer. This relentless miniaturisation has rendered conventional optical microscopy impractical for surface characterisation ,the wavelength of visible light (380–700 nm) is far greater than the dimensions of current transistor features [2]. This raises a fundamental question: how can such structures be characterised with the precision required for manufacturing?
 
 
 <figure style="text-align: center; margin: 20px 0;">
@@ -14,7 +14,7 @@ Driven by Moore's Law, which predicts the doubling of transistor density approxi
   </figcaption>
 </figure>
 
-To meet this need, researchers and manufacturers rely on a suite of advanced metrology instruments capable of characterising nanometre and sub-nanometre scale features. These include scanning electron microscopes (SEM), critical dimension atomic force microscopes (CD-AFM), transmission electron microscopes (TEM), and extreme ultraviolet (EUV) scatterometry systems. CD-AFM measures surface features by dragging a calibrated flared tip across a surface — analogous to a record player needle tracing a groove — with potential width uncertainties as low as 1 nm [3]. EUV scatterometry illuminates a patterned surface with extreme ultraviolet light (wavelength ~13.5 nm) and reconstructs the three-dimensional profile of surface features by analysing the angular distribution of scattered intensity, enabling non-destructive characterisation of line width, sidewall angle, and surface roughness at the sub-10 nm scale [4]. However, the accuracy of measurements from any such instrument depends entirely on the quality of its calibration [3] — which is where resolution and calibration standards become essential.
+To meet this need, researchers and manufacturers rely on a suite of advanced metrology instruments capable of characterising nanometre and sub-nanometre scale features. These include scanning electron microscopes (SEM), critical dimension atomic force microscopes (CD-AFM), transmission electron microscopes (TEM), and extreme ultraviolet (EUV) scatterometry systems. CD-AFM measures surface features by dragging a calibrated flared tip across a surface ,analogous to a record player needle tracing a groove ,with potential width uncertainties as low as 1 nm [3]. EUV scatterometry illuminates a patterned surface with extreme ultraviolet light (wavelength ~13.5 nm) and reconstructs the three-dimensional profile of surface features by analysing the angular distribution of scattered intensity, enabling non-destructive characterisation of line width, sidewall angle, and surface roughness at the sub-10 nm scale [4]. However, the accuracy of measurements from any such instrument depends entirely on the quality of its calibration [3] ,which is where resolution and calibration standards become essential.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/tin_nm.png" alt="Tin sphere resolution standards" width="280" style="margin: 5px;">
@@ -50,7 +50,7 @@ The simplified model below, demonstrates the correlation between sidewall angle 
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sidewall angle — SEM scan model</title>
+<title>Sidewall angle ,SEM scan model</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--font-sans, sans-serif); padding: 1rem 0; }
@@ -102,11 +102,11 @@ const H_NM = 40;
 const CD   = 20;
 const B='#185fa5', T='#0f6e56', R='#a32d2d', A='#ba7517';
 
-// Fixed scale — 1 nm = this many px. Chosen so the feature fills ~40% of canvas width.
+// Fixed scale ,1 nm = this many px. Chosen so the feature fills ~40% of canvas width.
 // Canvas is 360px wide, PAD=40 each side → usable 280px. Max bot at 60° = 16+2*40*tan30 ≈ 62nm.
 // We want 62nm to fit comfortably → SC = 280/90 ≈ 3.1
 const PAD = 40;
-const SC  = 2.8;  // px per nm — FIXED, never changes
+const SC  = 2.8;  // px per nm ,FIXED, never changes
 
 function gauss(x,mu,s){ return Math.exp(-0.5*((x-mu)/s)**2); }
 
@@ -148,7 +148,7 @@ function drawX(swa) {
 
   ctx.font='11px sans-serif';
 
-  // top edge markers (red — SEM reads these)
+  // top edge markers (red ,SEM reads these)
   ctx.setLineDash([3,3]); ctx.strokeStyle=R; ctx.lineWidth=1;
   ctx.beginPath(); ctx.moveTo(xTL,yT-6); ctx.lineTo(xTL,yB+18); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(xTR,yT-6); ctx.lineTo(xTR,yB+18); ctx.stroke();
@@ -159,15 +159,15 @@ function drawX(swa) {
   ctx.beginPath(); ctx.moveTo(xTL,ay-3); ctx.lineTo(xTL,ay+3); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(xTR,ay-3); ctx.lineTo(xTR,ay+3); ctx.stroke();
   ctx.fillStyle=R; ctx.textAlign='center';
-  ctx.fillText('W_top — SEM measured', cx, ay-5);
+  ctx.fillText('W_top ,SEM measured', cx, ay-5);
 
-  // bottom edge markers (teal — true CD)
+  // bottom edge markers (teal ,true CD)
   if(Math.abs(d)>0.005){
     ctx.setLineDash([2,3]); ctx.strokeStyle=T; ctx.lineWidth=1;
     ctx.beginPath(); ctx.moveTo(xBL,yB+22); ctx.lineTo(xBR,yB+22); ctx.stroke();
     ctx.setLineDash([]);
     ctx.fillStyle=T; ctx.textAlign='center';
-    ctx.fillText('W_bot — true CD', cx, yB+34);
+    ctx.fillText('W_bot ,true CD', cx, yB+34);
   }
 
   // height annotation
@@ -227,7 +227,7 @@ function drawS(swa) {
   xs.forEach((x,i)=>i?ctx.lineTo(x,toY(ys[i])):ctx.moveTo(x,toY(ys[i])));
   ctx.stroke();
 
-  // top edge lines — fixed position
+  // top edge lines ,fixed position
   ctx.strokeStyle=R; ctx.lineWidth=1.5; ctx.setLineDash([4,3]);
   ctx.beginPath(); ctx.moveTo(xTL,24); ctx.lineTo(xTL,pH+24); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(xTR,24); ctx.lineTo(xTR,pH+24); ctx.stroke();
@@ -240,7 +240,7 @@ function drawS(swa) {
   ctx.fillStyle=R; ctx.textAlign='center'; ctx.font='10px sans-serif';
   ctx.fillText('W_top = '+CD+' nm', W/2, ay+12);
 
-  // bottom edge lines — slide outward
+  // bottom edge lines ,slide outward
   if(Math.abs(d)>0.005&&bot>CD+0.5){
     ctx.strokeStyle=T; ctx.lineWidth=1.2; ctx.setLineDash([3,3]);
     ctx.beginPath(); ctx.moveTo(xBL,24); ctx.lineTo(xBL,pH+24); ctx.stroke();
@@ -305,10 +305,10 @@ EBL-based approaches suffer from the fundamental proximity effect: backscattered
 
 The benchmarks for this project are based on prior work conducted at CIBA. The two primary characterisation targets are a sidewall angle of ≥89.4° and a surface roughness below 3 nm Rq, with a grid cell size of 100 µm × 100 µm [13]. The significance of surface roughness is discussed in Section 2.5; it is, however, not the primary novelty of this resolution standard. No specific feature height was targeted, as the appropriate height varies considerably depending on the calibration application. The fabricated standard will be characterised using AFM and electron detector measurements to verify sidewall angle, pitch uniformity, and surface roughness.
 
-The use of proton-beam writing, rather than conventional electron-beam lithography, is motivated by the fundamental reduction in lateral beam scattering — this is discussed in detail in Section 2.2.
+The use of proton-beam writing, rather than conventional electron-beam lithography, is motivated by the fundamental reduction in lateral beam scattering, this is discussed in detail in Section 2.2.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/grid_dia.png"
+  <img src="images/grid_dia.png"
        alt="Schematic diagram of the target grid resolution standard showing 100 µm × 100 µm cell geometry"
        width="280" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
@@ -343,7 +343,7 @@ The use of proton-beam writing, rather than conventional electron-beam lithograp
 
   <li>K. H. Ko, Y. Moon, C. Jeong, H. Kim, C. U. Jeon, and H. K. Oh, "Influence of a non-ideal sidewall angle of extreme ultra-violet mask absorber for 1×-nm patterning in isomorphic and anamorphic lithography," <em>Microelectronic Engineering</em>, vol. 181, pp. 1–9, 2017. DOI: 10.1016/j.mee.2017.06.007</li>
 
-  <li>National Institute of Standards and Technology, "Single-crystal critical dimension reference materials — sidewall angle standards," 2025. Available: <a href="https://www.nist.gov/programs-projects/atomic-force-microscopy">nist.gov</a> · Full paper: <a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=823219">tsapps.nist.gov</a></li>
+  <li>National Institute of Standards and Technology, "Single-crystal critical dimension reference materials ,sidewall angle standards," 2025. Available: <a href="https://www.nist.gov/programs-projects/atomic-force-microscopy">nist.gov</a> · Full paper: <a href="https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=823219">tsapps.nist.gov</a></li>
 
   <li>X. Lu et al., "Accurate top-down processing of silicon photonic devices," <em>SPIE Newsroom</em>, 2010. Available: <a href="https://spie.org/news/2580-accurate-top-down-processing-of-silicon-photonic-devices">spie.org</a></li>
 

@@ -11,12 +11,12 @@
  
 The fabrication process consists of five sequential steps, as illustrated in Figure 3.1:
  
-1. **Silicon wafer** — the base substrate on which all subsequent layers are built.
+1. **Silicon wafer** ,the base substrate on which all subsequent layers are built.
 1. (b) **Metal deposition** - buffer metal layer to aid in adhesion, contrast in conductivity and reduce internal stress when the thin flim is coated
-2. **Spin-coated resist** — PMMA is spin-coated onto the wafer surface to the required thickness (Section 3.3).
-3. **Lithography and development** — the grid pattern is written by PBW (Section 3.4) and the exposed resist is removed by DI:IPA development, leaving a patterned resist stencil.
-4. **Metal deposition** — metal is deposited by PVD into the open trench regions (Section 3.5).
-5. **Resist removal (lift-off)** — the remaining PMMA is dissolved in acetone, removing the metal on top of the resist and leaving only the metal features on the substrate.
+2. **Spin-coated resist** ,PMMA is spin-coated onto the wafer surface to the required thickness (Section 3.3).
+3. **Lithography and development** ,the grid pattern is written by PBW (Section 3.4) and the exposed resist is removed by DI:IPA development, leaving a patterned resist stencil.
+4. **Metal deposition** ,metal is deposited by PVD into the open trench regions (Section 3.5).
+5. **Resist removal (lift-off)** ,the remaining PMMA is dissolved in acetone, removing the metal on top of the resist and leaving only the metal features on the substrate.
  
 An optional adhesion layer may be deposited directly onto the silicon wafer prior to spin coating. This intermediate layer serves to improve resist adhesion to the substrate, reduce internal film stress where lattice mismatch between the deposited metal and silicon is large, and improve electrical conductivity or imaging contrast of the final standard
 
@@ -55,7 +55,7 @@ The lateral straggle σ(z) from SRIM gives the standard deviation of the beam's 
  
 $$ f(z) = 2\sqrt{2\ln 2} \cdot \sigma(z) \approx 2.355\,\sigma(z) $$
  
-where f is the FWHM of the dose profile across the feature edge — the same parameter extracted from SEM measurements in Section 2.5.1. The theoretical sidewall angle at the full feature depth h is then:
+where f is the FWHM of the dose profile across the feature edge ,the same parameter extracted from SEM measurements in Section 2.5.1. The theoretical sidewall angle at the full feature depth h is then:
  
 $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(\frac{2.355\,\sigma(h)}{h}\right) $$
 
@@ -175,13 +175,13 @@ larger fields [5].
 </head>
 <body>
 
-<h2>PBW beam geometry — drag sliders to explore slit opening and focal position</h2>
+<h2>PBW beam geometry ,drag sliders to explore slit opening and focal position</h2>
 
 <div class="layout">
 
   <!-- Side view canvas -->
   <div class="side-col">
-    <div class="panel-label">Side view — cone geometry</div>
+    <div class="panel-label">Side view ,cone geometry</div>
     <canvas id="cvSide" width="700" height="260"></canvas>
   </div>
 
@@ -573,10 +573,10 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
 
 | Sample | Cr | Pd | Au | DLC | Ti |
 |---|:---:|:---:|:---:|:---:|:---:|
-| 1 — Au/Cr/Si | 2nm | |  40nm | | |
-| 2 — DLC/Si |  | | | 10nm  |
-| 3 — DLC/Pd/Si |  |2nm  | |10nm |
-| 4 — Au/Pd/Si |  | 2nm |  | |
+| 1 ,Au/Cr/Si | 2nm | |  40nm | | |
+| 2 ,DLC/Si |  | | | 10nm  |
+| 3 ,DLC/Pd/Si |  |2nm  | |10nm |
+| 4 ,Au/Pd/Si |  | 2nm |  | |
 | 5 - DLC/Pd/Ti/Si| | | | |2nm|
 | 6 - Pd/Ti/Si| | 40nm | | | 2nm |
 
