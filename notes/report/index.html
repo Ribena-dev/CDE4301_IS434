@@ -31,49 +31,85 @@ Sidewall angle was characterised using a custom Python analysis pipeline applied
 
 ## Table of Contents
 
-<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;max-width:680px;border-top:1px solid #ddd;">
-
-  {% assign chapters = "1|Introduction|notes/report/Introduction.md|notes/report/Introduction.html,2|Methodology|notes/report/Methology.md|notes/report/Methology.html,3|Fabrication|notes/report/Fabrication.md|notes/report/Fabrication.html,4|Results & Analysis|notes/report/fna.md|notes/report/fna.html,5|Future Work|notes/report/FW.md|notes/report/FW.html" | split: "," %}
-
+<div id="toc-home" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; max-width:680px;">
+ 
+  {% assign chapters = "1|Introduction|Introduction.md|Introduction.html,2|Methodology|Methology.md|Methology.html,3|Fabrication|Fabrication.md|Fabrication.html,4|Results & Analysis|fna.md|fna.html,5|Future Work|FW.md|FW.html" | split: "," %}
+ 
   {% for ch in chapters %}
-    {% assign parts = ch | split: "|" %}
+    {% assign parts   = ch    | split: "|" %}
     {% assign ch_num  = parts[0] %}
     {% assign ch_name = parts[1] %}
     {% assign ch_path = parts[2] %}
     {% assign ch_url  = parts[3] %}
-
+ 
     <div style="border-bottom:1px solid #ddd;">
-      <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;gap:12px;"
-           onclick="var s=this.nextElementSibling,a=this.querySelector('.arr');s.style.display=s.style.display==='block'?'none':'block';a.style.transform=s.style.display==='block'?'rotate(180deg)':'';">
-        <span style="font-size:11px;font-weight:500;color:#aaa;min-width:20px;">{{ ch_num }}</span>
-        <a href="/CDE4301_IS434/{{ ch_url }}"
+ 
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 0;cursor:pointer;"
+           onclick="(function(el){
+             var s=el.nextElementSibling;
+             var a=el.querySelector('.arr');
+             var open=s.style.display==='block';
+             s.style.display=open?'none':'block';
+             a.style.transform=open?'':'rotate(180deg)';
+           })(this)">
+        <span style="font-size:11px;font-weight:600;color:#aaa;min-width:18px;">{{ ch_num }}</span>
+        <a href="{{ ch_url | relative_url }}"
            style="font-size:15px;font-weight:600;color:#1a1a1a;flex:1;text-decoration:none;"
            onclick="event.stopPropagation()">{{ ch_name }}</a>
-        <span class="arr" style="font-size:11px;color:#aaa;transition:transform 0.2s;">▼</span>
+        <span class="arr" style="font-size:11px;color:#aaa;transition:transform 0.2s;flex-shrink:0;">▼</span>
       </div>
-
-      <div style="display:none;padding-bottom:10px;">
+ 
+      <div style="display:none;padding-bottom:12px;">
         {% for p in site.pages %}
           {% if p.path == ch_path %}
             {% assign lines = p.content | newline_to_br | split: '<br />' %}
+            {% assign printed = 0 %}
             {% for line in lines %}
-              {% if line contains '### ' %}
-                {% assign heading = line | remove: '####' | remove: '###' | remove: '##' | remove: '#' | strip %}
-                {% assign slug = heading | downcase | replace: ' ', '-' | remove: '.' | remove: ',' | remove: '(' | remove: ')' | remove: '/' | remove: ':' %}
-                <a href="/CDE4301_IS434/{{ ch_url }}#{{ slug }}"
-                   style="display:flex;align-items:baseline;gap:10px;padding:4px 0 4px 20px;font-size:13px;color:#555;text-decoration:none;line-height:1.45;">
-                  {{ heading }}
-                </a>
+              {% if printed < 12 %}
+                {% if line contains '### ' and line contains 'size' == false %}
+                  {% assign heading = line | remove: '####' | remove: '###' | remove: '##' | remove: '#' | strip | truncate: 60 %}
+                  {% assign slug = heading | downcase
+                                           | replace: ' ', '-'
+                                           | remove: '.'
+                                           | remove: ','
+                                           | remove: '('
+                                           | remove: ')'
+                                           | remove: '/'
+                                           | remove: ':'
+                                           | remove: "'"
+                                           | remove: '&' %}
+                  <a href="{{ ch_url | relative_url }}#{{ slug }}"
+                     style="display:block;padding:4px 0 4px 28px;font-size:13px;color:#555;text-decoration:none;line-height:1.5;border-left:2px solid #eee;margin-left:18px;">
+                    {{ heading }}
+                  </a>
+                  {% assign printed = printed | plus: 1 %}
+                {% elsif line contains '## ' and line contains '###' == false and line contains '####' == false %}
+                  {% assign heading = line | remove: '##' | remove: '#' | strip | truncate: 60 %}
+                  {% assign slug = heading | downcase
+                                           | replace: ' ', '-'
+                                           | remove: '.'
+                                           | remove: ','
+                                           | remove: '('
+                                           | remove: ')'
+                                           | remove: '/'
+                                           | remove: ':'
+                                           | remove: "'"
+                                           | remove: '&' %}
+                  <a href="{{ ch_url | relative_url }}#{{ slug }}"
+                     style="display:block;padding:5px 0 5px 18px;font-size:14px;font-weight:600;color:#333;text-decoration:none;line-height:1.5;">
+                    {{ heading }}
+                  </a>
+                  {% assign printed = printed | plus: 1 %}
+                {% endif %}
               {% endif %}
             {% endfor %}
           {% endif %}
         {% endfor %}
       </div>
+ 
     </div>
   {% endfor %}
-
+ 
 </div>
-
+ 
 <hr style="border: none; border-top: 1px solid #ddd; margin: 2.5rem 0;">
-
-
