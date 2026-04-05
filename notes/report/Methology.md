@@ -8,16 +8,7 @@ title: "Methodology"
         width="700px" 
         height="400px"> 
 </iframe> -->
-<style>
-.proc-wrap{position:fixed;right:16px;top:360px;width:120px}
-.proc-heading{font-size:9px;font-weight:500;color:#999;text-transform:uppercase;letter-spacing:.07em;padding:0 10px 6px;border-top:0.5px solid #e5e5e5;padding-top:10px;margin-top:4px}
-.proc-item{display:block;padding:4px 8px;cursor:pointer;border-right:2px solid transparent;transition:all .15s}
-.proc-item.active{border-right-color:#111;background:#f5f5f5}
-.proc-svg{width:100%;height:28px;display:block;margin-bottom:2px}
-.proc-label{font-size:9px;font-weight:500;color:#aaa;display:block;transition:color .15s}
-.proc-item.active .proc-label{color:#555}
-.proc-divider{height:0.5px;background:#eee;margin:2px 8px}
-</style>
+
 
 ## Methodology
 
@@ -38,7 +29,7 @@ This section outlines the materials, techniques, and analytical methods selected
 
 To note section will skip a general lithography section as the novelty in section 1 already covers it , instead focusing more on understanding the Proton beam 
 
-<div id="resist"></div>
+
 ### 2.1 Resist 
 
 Resists are radiation-sensitive materials that can be coated onto substrates and locally modified to yield desired patterns. Based on their response to exposure, they are broadly classified as positive or negative resists. Positive resists show an increased dissolution rate in the exposed regions when developed, while negative resists show a decreased dissolution rate ,the exposed regions become
@@ -102,7 +93,8 @@ response [10] [13].
 
 PMMA is selected over HSQ for this project for lift-off compatibility. The fabrication process in this project requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film [11] [12]. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow [13].
 
-<div id="pbw"></div>
+
+
 
 ### 2.2 Proton Beam writing 
 #### Dosage
@@ -127,7 +119,8 @@ There is a minium dose required, called the threshold dose to full develop a cer
 
 To test this and choose a suitable dose range, we fabricated various grids as seen above on the same piece of Si waver with the same seed metal 2nm of Cr
 
-<div id="develop"></div> 
+
+
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/dev.png" alt="resolution fabrication overview" >
@@ -158,7 +151,8 @@ does not reach its threshold dose. The feature either does not develop, or devel
 
 **Extreme overdose (above ~3.5 × 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become insoluble rather than soluble.  This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached.
 
-<div id="material deposition"></div>
+
+
 
 ### 2.3 Material deposition
 
@@ -276,7 +270,8 @@ The plot shows signal retention as a function of roughness across representative
 
 
 
-<div id="analysis"></div>
+
+
 
 ### 2.5 method of analysis
 Three complementary characterization techniques are used to evaluate the fabricated grid resolution standard: electron detector for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
