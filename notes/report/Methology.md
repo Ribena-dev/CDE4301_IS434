@@ -206,7 +206,7 @@ which is destructive.
 To utilize and analyse the electron detector spectrum, I developed a python script, flow chart seen below. 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/images/software_flow.png" alt = "nevot_coroce"  style="margin: 5px;">
+  <img src="images/software_flow.png" alt = "nevot_coroce"  style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> software flowchart
     <strong>Figure 2.8</strong> 
   </figcaption>
@@ -214,7 +214,7 @@ To utilize and analyse the electron detector spectrum, I developed a python scri
 
 #### AFM - Surface Roughness
 
-AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometer height variations. From the resulting height map, the root mean square roughness R_rms (also written R_q) is extracted, the standard deviation of height across the measured area.
+AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometer height variations. From the resulting height map, the root mean square roughness R_rms (also written R_q) is extracted, the standard deviation of height across the measured area. Below is an example of surface roughness as shown using Gwyddion
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/afm_example_pdsi.png" alt = "AFM example" style="margin: 5px;">
@@ -237,7 +237,29 @@ AFM is used to characterize the surface roughness of the top face of the deposit
 
 For a resolution standard, surface roughness is significant for two reasons. First, it affects the accuracy of AFM-based calibration measurements made using the standard: a rough reference surface introduces uncertainty into tip characterization. Second, roughness provides indirect information about the quality of the deposition process and the uniformity of the metal film grain structure. Target surface roughness for a usable resolution standard is typically below a few nanometers R_rms.
 
-To note, the graph analysis of the surface roughness was also doen with a python script 
+
+#### Surface roughness metrics
+
+Surface roughness is quantified from the AFM height profiles using three standard parameters. For a profile of N height points y_i, with the mean height subtracted to remove any scan tilt or baseline offset, the three metrics are defined as follows.
+
+The root mean square roughness R_q is the standard deviation of the height values:
+
+$$ R_q = \sqrt{\frac{1}{N} \sum_{i=1}^{N} y_i^2} $$
+
+The arithmetic mean roughness R_a is the average of the absolute height deviations:
+
+$$ R_a = \frac{1}{N} \sum_{i=1}^{N} |y_i| $$
+
+R_a treats all deviations equally regardless of their size and is less sensitive to outliers than R_q. It is reported here as a secondary reference, as it is the most widely cited roughness parameter in industrial standards.
+
+The total height R_z is the peak-to-valley span across the full profile:
+
+$$ R_z = y_{max} - y_{min} $$
+
+R_z gives the worst-case surface excursion and is most sensitive to isolated spikes or scratches. A large R_z relative to R_q indicates the presence of a small number of extreme features on an otherwise smooth surface.
+
+All three parameters are computed from 1D line profiles extracted from the AFM height map by the Python analysis script. Values are reported in nanometres after converting from the raw SI metre output of Gwyddion.
+
 
 [<--Prev: Introduction ](Introduction.md) | [Next: Fabrication →](Fabrication.md)
 

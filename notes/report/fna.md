@@ -27,27 +27,52 @@ The theoretical expectation is that Au produces the highest contrast against Si 
 
 Surface roughness Rq was measured by AFM in tapping mode. Two regions were characterised for each sample: the top face of the metal grid feature, and the exposed silicon substrate between features.
 
-[INSERT AFM height map of best and worst performing samples side-by-side]
-
-| Sample | Metal surface Rq (nm) | Si substrate Rq (nm) | Meets <3 nm target |
-|---|---|---|---|
-| 1 | [TBC] | [TBC] | [TBC] |
-| 2 | [TBC] | [TBC] | [TBC] |
-| 3 | [TBC] | [TBC] | [TBC] |
-| 4 | [TBC] | [TBC] | [TBC] |
-| 5 | [TBC] | [TBC] | [TBC] |
-| 6 | [TBC] | [TBC] | [TBC] |
-| 7 | [TBC] | [TBC] | [TBC] |
-
-[INSERT Névot–Croce plot with measured Rq values marked]
-
-Au deposited by magnetron sputtering was expected to show the highest roughness due to grain nucleation during island growth — consistent with the AFM observations from the interim report (Rq ≈ 3.3 nm). Pd deposited by e-beam evaporation was expected to produce smoother films due to the more directional, lower-energy deposition flux. 
-
-[INSERT comment on measured values vs prediction.]
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/pd_afm.png" alt="AFM profile of Pd surface" width="280" style="margin: 5px;">
+  <img src="images/au_afm.png" alt="AFM profile of Au surface" width="280" style="margin: 5px;">
+  <img src="images/dlc_surface.png" alt="AFM profile of DLC surface" width="280" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.2:</strong> AFM surface profiles of the three primary materials:
+    Pd (left), Au (centre), and DLC (right). Pd shows the smoothest surface at
+    R_q = 0.219 nm, Au shows characteristic island grain structure from magnetron
+    sputtering (R_q = 0.514–1.271 nm), and DLC shows spatially variable roughness
+    (R_q = 0.392–1.943 nm) depending on measurement location.
+  </figcaption>
+</figure>
 
 
-[INSERT comparison against measured values and comment on whether
-results are consistent with Z-number prediction.]
+| Sample | Profile | Rq (nm) | Ra (nm) | Rz (nm) | Meets <3 nm |
+|---|---|---|---|---|---|
+| Pd 500 nm | P1 | 0.219 | 0.176 | 1.044 | ✓ |
+| Au  | P1 | 0.758 | 0.546 | 4.160 | ✓ |
+| Au | P2 | 0.866 | 0.709 | 4.347 | ✓ |
+| Au on Pd| P1 | 0.514 | 0.413 | 2.560 | ✓ |
+| Au on Pd | P2 | 1.271 | 1.005 | 6.875 | ✓ |
+| DLC on Pd| P1 | 1.707 | 1.316 | 11.510 | ✓ |
+| DLC on Pd| P2 | 0.954 | 0.764 | 6.227 | ✓ |
+| DLC on Au | P1 | 1.526 | 1.287 | 8.436 | ✓ |
+| DLC on Au | P2 | 1.943 | 1.650 | 9.444 | ✓ |
+| DLC  | P1 | 0.422 | 0.324 | 2.655 | ✓ |
+| DLC  | P2 | 0.392 | 0.311 | 2.362 | ✓ |
+
+Note: P1 ia a horizontal roughness and P2 is teh verticle roughness 
+Au deposited by magnetron sputtering was expected to show the highest roughness due to grain nucleation during island growth, consistent with the AFM observations from the interim report.
+
+In magnetron sputtering, atoms arrive at the substrate with energies in the range of 1–10 eV from many angles simultaneously, not just from directly above. This diffuse angular flux causes atoms to accumulate on the sides of any pre-existing nuclei as well as on top, encouraging three-dimensional island growth rather than layer-by-layer growth. The result is a granular, bumpy surface even at thin film thicknesses. Electron-beam evaporation, by contrast, delivers atoms in a much more directional line-of-sight flux at lower energies (0.1–1 eV), which promotes flatter, more conformal deposition and gives smoother films.
+
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/afm_best_worst.png" alt="beam line optics"  style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3:</strong> Gold surface graph
+  </figcaption>
+</figure>
+
+The Pd result at 0.219 nm supports this interpretation directly. Palladium deposited by electron-beam evaporation wets substrates much more readily than gold, has a higher surface energy, and the directional deposition geometry suppresses island growth. The order-of-magnitude improvement in Rq between Pd and Au is therefore consistent with the combined effect of both the deposition technique and the intrinsic material properties.
+
+For DLC the picture is more varied. DLC is essentially isotropic at 0.030 nm difference, indicating a genuinely uniform amorphous film structure in that region. DLC on Pd and DLC on Au show larger anisotropy of 0.753 nm and 0.417 nm respectively. FCVA is in principle an isotropic amorphous material with no preferred crystallographic orientation, so anisotropy in the DLC profiles most likely reflects the previous underneath layers of Pd and Au
+
 
 ### 4.4 Sidewall angle via electron detector
 
@@ -96,16 +121,7 @@ This sample achieved θ = [TBC]° against the ≥89.4° target and Rq = [TBC] nm
 
 ### 4.6 Discussion
 
-#### Deviation from SRIM prediction
 
-The SRIM simulation predicted a theoretical sidewall angle of 89.9° based on a lateral straggle of σ = 0.81 nm at 1 µm depth. Measured values of θ = [TBC]° represent a deviation of [TBC]°. Likely sources of this deviation include: 
-
-- **Development conditions**: overdevelopment or underdevelopment in the DI:IPA  developer can widen or narrow the trench beyond the exposed region, adding or removing material from the sidewall and shifting the apparent edge position. Additionally, PMMA has a melting point of bellow 100 degrees i is highly possible the side wall was damaged during metal sputtering 
-
-#### Metal and adhesion layer effects
-
-[INSERT comment on whether Pd/Ti samples outperformed Au/Cr samples in both θ and
-Rq, and whether the adhesion layer choice had a measurable effect on the results.]
 
 
 #### Limitations of the analysis method
