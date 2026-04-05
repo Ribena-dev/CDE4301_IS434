@@ -213,7 +213,7 @@ In electron beam (e-beam) deposition, a high-voltage (6–40 kV) electron beam i
 </figure> 
 
 
-<a href="https://www.researchgate.net/figure/Schematic-of-the-filtered-cathodic-vacuum-arc-FCVA-deposition-system_fig6_267805644"><img src="https://www.researchgate.net/profile/Mahnaz-Shafiei/publication/267805644/figure/fig6/AS:669391066759183@1536606675976/Schematic-of-the-filtered-cathodic-vacuum-arc-FCVA-deposition-system.png" alt="4. Schematic of the filtered cathodic vacuum arc (FCVA) deposition system."/></a>
+`ref <a href="https://www.researchgate.net/figure/Schematic-of-the-filtered-cathodic-vacuum-arc-FCVA-deposition-system_fig6_267805644"><img src="https://www.researchgate.net/profile/Mahnaz-Shafiei/publication/267805644/figure/fig6/AS:669391066759183@1536606675976/Schematic-of-the-filtered-cathodic-vacuum-arc-FCVA-deposition-system.png" alt="4. Schematic of the filtered cathodic vacuum arc (FCVA) deposition system."/></a>`
 
 
 Filtered cathodic vacuum arc (FCVA) is a PVD technique in which a high-current arc is struck on a graphite cathode, generating a carbon plasma that is directed 
@@ -237,7 +237,7 @@ The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic str
 5. Good surface smoothness, limiting e- scattering 
 Using the Névot-Croce factor, to visualize the importance of a smooth surface under <3nm
 
-`<a href="https://www.researchgate.net/figure/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009_fig6_349395724"><img src="https://www.researchgate.net/profile/Ayman-Abdel-Hamid-2/publication/349395724/figure/fig6/AS:992501460660234@1613642196704/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009.jpg" alt="7. Diffuse surface scattering increases as roughness increases (Richards, 2009)."/></a>`
+`ref <a href="https://www.researchgate.net/figure/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009_fig6_349395724"><img src="https://www.researchgate.net/profile/Ayman-Abdel-Hamid-2/publication/349395724/figure/fig6/AS:992501460660234@1613642196704/Diffuse-surface-scattering-increases-as-roughness-increases-Richards-2009.jpg" alt="7. Diffuse surface scattering increases as roughness increases (Richards, 2009)."/></a>`
 
 
 <figure style="text-align: center; margin: 20px 0;">
@@ -252,12 +252,6 @@ The diagram above does a good job of visualizing the scattering. Electron micros
 The Névot-Croce factor is a  correction factor that tells you how much of the specular (mirror-like) reflected signal you lose from a surface due to roughness.
 A perfectly smooth surface reflects 100% of the incident beam in the specular direction. As the surface gets rougher, some of that signal scatters diffusely in random directions instead, so the sharp, coherent reflection you're trying to measure gets weaker
 
-<!-- <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/nevot_croce.png" alt = "nevot_coroce"  >
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
-    <strong>Figure 2.7</strong> 
-  </figcaption>
-</figure> -->
 
 <iframe src ="scripts/nevot_croce_roughness.html"
         allowfullscreen="true" 
@@ -287,7 +281,7 @@ $$ F(x) = A\left[1 + \text{Erf}\!\left(\frac{2\sqrt{\ln 2}}{f}(d - x)\right)\rig
 where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is the baseline offset, *d* is the fitted edge position in pixels, and *f* is the FWHM of the edge transition [3].
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/ni_grid_x_lc.png" alt = "nevot_coroce"  >
+  <img src="images/ni_grid_x_lc.jpg" alt = "nevot_coroce"  >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">  analysis method used on previously made nickel grid 
     <strong>Figure 2.7</strong> 
   </figcaption>

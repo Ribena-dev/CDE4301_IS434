@@ -8,6 +8,8 @@
     <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
   </figcaption>
 </figure>
+
+A slightly updated version of our fabrication overview 
  
 
 
