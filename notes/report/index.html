@@ -1,0 +1,136 @@
+---
+layout: default
+title: "Abstract"
+---
+
+<div style="text-align: center; padding: 2rem 0 1rem;">
+  <img src="images/NUS_logo.png" alt="NUS Logo" style="height: 60px; display: inline-block; margin: 0 auto 1rem;">
+  <h1 style="font-size: clamp(20px, 3vw, 28px); font-weight: 700; margin-bottom: 0.4rem; text-align: center;">
+    Fabrication of a Grid Resolution Standard via Proton-Beam Writing
+  </h1>
+  <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 0.2rem;">
+    CDE4301 Innovation &amp; ·&nbsp; AY2025
+  </p>
+  <p style="font-size: 14px; color: #555; text-align: center; margin-bottom: 0.2rem;">
+    NUS College of Design and Engineering
+  </p>
+
+</div>
+
+<hr style="border: none; border-top: 2px solid #1a1a1a; margin: 1.5rem 0;">
+
+## Abstract
+
+Calibration of high-resolution electron microscopy systems requires physical reference standards with well-defined, near-vertical feature geometry. Existing resolution standards fabricated by electron-beam lithography are limited by the proximity effect — the lateral scattering of secondary electrons that degrades sidewall verticality with increasing feature depth — while single-crystal silicon etching produces sidewall angles that are crystallographically fixed and cannot approach 90°. This project investigates proton-beam writing (PBW) as an alternative fabrication route, exploiting the approximately 1,800× greater mass of protons compared to electrons to achieve near-zero lateral beam straggle and minimal proximity effects.
+
+A grid resolution standard with a target cell size of 100 µm × 100 µm was fabricated at the Centre for Ion Beam Applications (CIBA), National University of Singapore, using a 2 MeV proton beam focused to a spot size of 9.3 × 32 nm². PMMA positive resist was selected for its lift-off compatibility, and metal features were deposited by physical vapour deposition using gold, palladium, chromium, and titanium across seven sample configurations. SRIM Monte Carlo simulations predict a lateral straggle of 0.81 nm at 1 µm resist depth, corresponding to a theoretical sidewall angle of 89.9°.
+
+Sidewall angle was characterised using a custom Python analysis pipeline applied to electron detector intensity profiles, fitting each row with a combined Erf–Gaussian model to extract the edge transition FWHM and compute θ = 90° − arctan(f/h). Surface roughness was measured by atomic force microscopy with a target below 3 nm Rq. Three of four edge measurements meet the ≥89.4° target, with the best result at 89.68°. All samples pass the surface roughness target, with Pd achieving 0.219 nm Rq. Scalability via nanoimprint lithography is proposed as a route to high-throughput reproduction.
+
+<hr style="border: none; border-top: 1px solid #ddd; margin: 2rem 0;">
+
+## Table of Contents
+
+<div id="toc-home" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 1rem;">
+
+    <a href="/notes/report/Introduction.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 1</div>
+      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Introduction</div>
+      <div id="toc-intro-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
+    </a>
+
+    <a href="/notes/report/Methology.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 2</div>
+      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Methodology</div>
+      <div id="toc-meth-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
+    </a>
+
+    <a href="/notes/report/Fabrication.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 3</div>
+      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Fabrication</div>
+      <div id="toc-fab-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
+    </a>
+
+    <a href="/notes/report/fna.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 4</div>
+      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Results &amp; Analysis</div>
+      <div id="toc-fna-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
+    </a>
+
+    <a href="/notes/report/FW.html" class="toc-card" style="display:block; text-decoration:none; background:#fff; border:1px solid #ddd; border-radius:8px; padding:1.25rem 1.5rem; transition: border-color 0.15s, box-shadow 0.15s;">
+      <div style="font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:#888; margin-bottom:0.4rem;">Chapter 5</div>
+      <div style="font-size:16px; font-weight:700; color:#1a1a1a; margin-bottom:0.5rem;">Future Work</div>
+      <div id="toc-fw-links" style="font-size:12px; color:#666; line-height:1.8;"></div>
+    </a>
+
+  </div>
+</div>
+
+<style>
+.toc-card:hover {
+  border-color: #1a1a1a !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+</style>
+
+<script>
+const chapters = [
+  {
+    url: '/CDE4301_IS434/notes/report/Introduction.html',
+    targetId: 'toc-intro-links'
+  },
+  {
+    url: '/CDE4301_IS434/notes/report/Methology.html',
+    targetId: 'toc-meth-links'
+  },
+  {
+    url: '/CDE4301_IS434/notes/report/Fabrication.html',
+    targetId: 'toc-fab-links'
+  },
+  {
+    url: '/CDE4301_IS434/notes/report/fna.html',
+    targetId: 'toc-fna-links'
+  },
+  {
+    url: '/CDE4301_IS434/notes/report/FW.html',
+    targetId: 'toc-fw-links'
+  }
+];
+
+chapters.forEach(ch => {
+  fetch(ch.url)
+    .then(r => r.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc    = parser.parseFromString(html, 'text/html');
+      const headings = doc.querySelectorAll('h2, h3');
+      const container = document.getElementById(ch.targetId);
+      if(!container) return;
+
+      let items = [];
+      headings.forEach(h => {
+        const id   = h.id || h.textContent.toLowerCase()
+                       .replace(/[^a-z0-9\s]/g,'')
+                       .trim().replace(/\s+/g,'-');
+        const indent = h.tagName === 'H3' ? 'padding-left:0.8rem;' : '';
+        items.push(
+          `<div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;${indent}">`
+          + `<a href="${ch.url}#${id}" style="color:#555;text-decoration:none;">`
+          + `${h.textContent}</a></div>`
+        );
+      });
+
+      container.innerHTML = items.slice(0, 6).join('');
+      if(items.length > 6){
+        container.innerHTML +=
+          `<div style="color:#aaa;font-size:11px;margin-top:2px;">+${items.length - 6} more sections</div>`;
+      }
+    })
+    .catch(() => {});
+});
+</script>
+
+<hr style="border: none; border-top: 1px solid #ddd; margin: 2.5rem 0;">
+
+
