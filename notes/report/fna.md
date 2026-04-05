@@ -62,7 +62,7 @@ However given the large number of samples, the following section as selected to 
 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/dlc_au_boundary.png" alt="DLC/Au boundary edge fit"
+  <img src="images/dlc_au_boundary.png" alt="DLC/Au boundary edge fit"
        width="480" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(a):</strong> DLC/Au boundary
@@ -70,7 +70,7 @@ However given the large number of samples, the following section as selected to 
 </figure>
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/2012_6_385_graph.png"
+  <img src="images/2012_6_385_graph.png"
        alt="2012 grid 6.385 edge fit" width="480" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(b):</strong> Side wall of PMMA before dlc deposition
@@ -78,7 +78,7 @@ However given the large number of samples, the following section as selected to 
 </figure>
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/2012_6_41_graph.png"
+  <img src="images/2012_6_41_graph.png"
        alt="2012 grid 6.41 edge fit" width="480" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(c):</strong> Side wall of PMMA before dlc deposition
@@ -86,7 +86,7 @@ However given the large number of samples, the following section as selected to 
 </figure>
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="/images/nickel_graph.png"
+  <img src="images/nickel_graph.png"
        alt="Nickel reference grid edge fit" width="480" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(d):</strong> Nickel grid used to calibrate beam
