@@ -139,7 +139,7 @@ Au produces a mean electron count of 1.329 e/px compared to 1.115 e/px for DLC, 
 modest ratio of 1.19 rather than the order-of-magnitude difference expected from Z
 alone is due to the thin film of DLC deposited that allows partial electron transmission into the underlying substrate, diluting the contrast difference.
 
-### 4.5 Discussion
+### 4.4 Discussion
 
 wah what do i write here
 

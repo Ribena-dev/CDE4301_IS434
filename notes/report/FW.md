@@ -21,7 +21,7 @@ Transmission electron microscopy offers the highest spatial resolution for sidew
 The primary limitation of TEM is that sample preparation is destructive and time-consuming. Each FIB-prepared lamella represents one measurement site on one sample, and the preparation process itself introduces artefacts at the cut surface. For this project, TEM verification would be most valuable on the best-performing sample identified from the electron detector and AFM results, to establish a ground-truth measurement of θ against which the indirect Erf–Gaussian estimates can be calibrated for future use.
 
 
-### 5.2 scalability
+### 5.2 Scalability via Nanoimprinting
 Nanoimprint lithography (NIL) offers a path to high-throughput replication of the grid resolution standard without requiring repeated PBW exposures. In this approach a PBW-fabricated PMMA master is used as a stamp to imprint the grid pattern into a  fresh polymer substrate, transferring the geometry in a single press cycle.
 
 Initial trials were conducted using an Omostamp silicon stamp on a NILT CNI nanoimprinter (software v1.0.0.42). The hot embossing recipe used is summarised in Table 5.1.
