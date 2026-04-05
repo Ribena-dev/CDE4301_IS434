@@ -153,7 +153,7 @@ The importance of surface roughness adn electron contrast  will be discussed lat
   </figcaption>
 </figure>
 
-[Next: Methodology →](Methology.md)
+[<--Prev: Home ](index.md) | [Next: Methodology →](Methology.md)
 
 ## References
 
