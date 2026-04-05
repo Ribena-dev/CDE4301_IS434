@@ -1,0 +1,27 @@
+# Site settings
+title: "CDE4301 IS434 — Fabrication and Characterisation of 3D Resolution Standards"
+description: "NUS Innovation & Design Capstone — Proton Beam Lithography"
+url: "https://ribena-dev.github.io"
+baseurl: "/CDE4301_IS434"
+
+# Build settings
+theme: minima
+markdown: kramdown
+
+# Kramdown settings — needed for MathJax to work
+kramdown:
+  math_engine: mathjax
+  input: GFM
+
+# Apply default layout to all pages
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Exclude files from build
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

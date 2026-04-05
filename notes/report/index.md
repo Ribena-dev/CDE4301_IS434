@@ -1,54 +1,77 @@
----
-layout: default
-title: "Grid Resolution Standard — FYP Report"
----
+# Fabricating resolution standards using Proton beam lithography
 
-<div class="report-cover">
-  <div class="module-code">CDE4301 · Innovation &amp; Design Capstone · AY2025</div>
-  <h1>Fabrication of a Grid Resolution Standard via Proton-Beam Writing</h1>
-  <div class="meta">
-    NUS College of Design and Engineering<br>
-    Final Report · Week 12, Semester 2
-  </div>
-</div>
-
-## Abstract 
+# Acknowledgements
 
 
-## Table of Contents
-
-- [1. Introduction](Introduction.md)
-  - [1.1 Overview of Resolution Standards](Introduction.md#11-overview-of-resolution-standards)
-  - [1.2 The Importance of Sidewall Angles](Introduction.md#12-the-importance-of-sidewall-angles-in-grid-resolution-standards)
-  - [1.3 Fabrication review](Introduction.md#13-fabrication-review)
-  - [1.4 Deliverables](Introduction.md#14-deliverables)
-
-- [2. Methodology](Methology.md)
-  - [2.1 Lithography Methods](Methology.md#21-lithography-methods)
-  - [2.2 Resist](#22-resist)
-  - [2.3 Material Deposition](Methology.md#23-material-deposition)
-  - [2.4 Material choice](Methology.md#24-material-choice)
-  - [2.5 Methods of Analysis](Methology.md#25-methods-of-analysis)
-
-- [3. Fabrication](Fabrication.md)
-  - [3.1 Overview of Fabrication Steps](Fabrication.md#31-overview-of-fabrication-steps)
-  - [3.2 Simulations of Proton Beam in PMMA](Fabrication.md#32-simulations-of-proton-beam-in-pmma)
-  - [3.3 Spin Coating and Development](Fabrication.md#33-spin-coating-the-waver-and-development)
-  - [3.4 Proton Beam Structure](Fabrication.md#34-pbeam-structure)
-  - [3.5 P-beam energy dosage](Fabrication.md#35-p-beam-energy-dosage)
-  - [3.6 Metal Deposition Characteristics](Fabrication.md#36-metal-deposition-characteristics)
-  - [3.7 Fabricated Sample Parameters](Fabrication.md#37-fabricated-sample-parameters)
-
-- [4. Results and Analysis](fna.md)
-  - [4.1 Surface roughness](fna.md#41-surface-roughness)
-  - [4.2 Sidewall testing via SEM](fna.md#42-sidewall-testing-via-electron-detector)
-  - [4.1 Overview of results](fna.md#41-overview-of-results)
-  - [4.3 Comparing electron contrast](fna.md#43-comparing-electron-contrast-au-vs-dlc)
-  - [4.4 Discussion](fna.md#44-discussion)
-
-- [5. Future Works](FW.md)
-   - [5.1 Future testing using SEM and TEM](FW.md#51-future-testing-using-sem-and-tem)
-  - [5.3 Scalability via Nanoimprinting](FW.md#53-scalability-via-nanoimprinting)
+# Abstract 
 
 
-- [testing format](testing_format.md)
+# Introduction
+
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/Scaling-of-transistor-size-physical-gate-length-L-g-to-sustain-Moores-Law.png" alt="moores law tranistor gate scalling" >
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.1:</strong> Scaling of transistor size physical-gate length to-sustain Moore's Law
+  </figcaption>
+</figure>
+
+Moore's Law, which predicts the doubling of transistor density approximately every two years which has driven semiconductor feature sizes  from the micrometre range in the 1970s to sub-2 nm nodes  (thinner that a human DNA) in commercial production today [1]. These features are often fabricated through complex proprietary steps , that are outside the scope of this report. However they can be brutishly summarized to the the following steps  of deposition, patterning (ex. lithography), and etching on a polished silicon wafer.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/sem_2nm.png" alt="SEM of individual transistor on IBM's chip" >
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.2:</strong> scanning electron microscope image of individual transistors, each measuring 2 nanometers wide
+  </figcaption>
+</figure>
+ref: https://newatlas.com/computers/ibm-2-nm-chips-transistors/
+
+This relentless miniaturisation has rendered conventional optical microscopy impractical for surface characterisation ,the wavelength of visible light (380–700 nm) is far greater than the dimensions of current transistor features [2]. This raises a fundamental question: how can such structures be characterised with the precision required for manufacturing?
+
+As shown above, characterizing instruments such as [scanning electron microscopes (SEM)](https://microbenotes.com/scanning-electron-microscope-sem/), [critical dimension atomic force microscopes (CD-AFM)](https://www.nist.gov/programs-projects/atomic-force-microscopy), [transmission electron microscopes (TEM)](https://microbenotes.com/transmission-electron-microscope-tem/), and [extreme ultraviolet (EUV) scatterometry systems](https://www.nist.gov/programs-projects/euv-scatterometry), are being pushed to the limits of accuracy to validate such structures. 
+
+However, the accuracy of measurements from any such instrument depends entirely on the quality of its calibration [3] ,which is where resolution and calibration standards become essential.
+
+## 1.1 Overview of Resolution Standards
+
+There are many kinds of resolution standards/calibration standards, below are the examples of tin spheres and a fine nano copper mesh 
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/tin_nm.png" alt="Tin sphere resolution standards" width="280" style="margin: 5px;">
+  <img src="images/grid_nm.png" alt="Grid resolution standards" width="280" style="margin: 5px;">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.2:</strong> Common resolution standards: tin spheres (left) and nano-grids (right)
+  </figcaption>
+</figure>
+
+As expected calibrating such complex machines would require a complex degree of steps with various kinds of standards, for instance tin spheres are more commonly used for used for exposure and coverage testing, but are not applicable to CD-AFM calibration. Unlike the resolution grids, these can be used in calibration of all the above mentioned machines.
+
+## 1.2 Problem statement
+
+How are current resolution grids made?
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/lit_fab.png" alt="resolution fabrication overview"  style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.3:</strong> Fabrication process for resolution standard overview side view
+  </figcaption>
+</figure>
+
+The above is a rather simplified, overview of the fabrication process. (More details will be given later)
+Heres the issue, most commercial grids are made using electron beam lithography (EBL)(step 2)
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/e_beam.png" alt="resolution fabrication overview"  style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 1.4:</strong> simplified EBL on positive resist 
+  </figcaption>
+</figure>
+
+When we zoom into the E-Beam penetrating the resist material we get this: 
+
+<iframe src ="scripts/ebeam_vs_pbeam_lateral_spread.html">
+</iframe>
