@@ -1,3 +1,7 @@
+---
+layout: default
+title: "Methodology"
+---
 ## Methodology
 
 This section outlines the materials, techniques, and analytical methods selected to fabricate and characterise the grid resolution standard. The fabrication process follows a standard lift-off sequence, which is the most widely adopted approach for producing patterned metal structures in nanofabrication and is the established procedure at CIBA. The process proceeds in four stages:
