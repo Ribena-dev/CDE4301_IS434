@@ -3,12 +3,21 @@ layout: default
 title: "Methodology"
 ---
 
-<iframe src ="scripts/rn_process_nav.html"
+<!-- <iframe src ="scripts/rn_process_nav.html"
         allowfullscreen="true" 
         width="700px" 
         height="400px"> 
-</iframe>
-
+</iframe> -->
+<style>
+.proc-wrap{position:fixed;right:16px;top:360px;width:120px}
+.proc-heading{font-size:9px;font-weight:500;color:#999;text-transform:uppercase;letter-spacing:.07em;padding:0 10px 6px;border-top:0.5px solid #e5e5e5;padding-top:10px;margin-top:4px}
+.proc-item{display:block;padding:4px 8px;cursor:pointer;border-right:2px solid transparent;transition:all .15s}
+.proc-item.active{border-right-color:#111;background:#f5f5f5}
+.proc-svg{width:100%;height:28px;display:block;margin-bottom:2px}
+.proc-label{font-size:9px;font-weight:500;color:#aaa;display:block;transition:color .15s}
+.proc-item.active .proc-label{color:#555}
+.proc-divider{height:0.5px;background:#eee;margin:2px 8px}
+</style>
 
 ## Methodology
 
@@ -249,16 +258,21 @@ The diagram above does a good job of visualizing the scattering. Electron micros
 The Névot-Croce factor is a  correction factor that tells you how much of the specular (mirror-like) reflected signal you lose from a surface due to roughness.
 A perfectly smooth surface reflects 100% of the incident beam in the specular direction. As the surface gets rougher, some of that signal scatters diffusely in random directions instead, so the sharp, coherent reflection you're trying to measure gets weaker
 
-<figure style="text-align: center; margin: 20px 0;">
+<!-- <figure style="text-align: center; margin: 20px 0;">
   <img src="images/nevot_croce.png" alt = "nevot_coroce"  >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Névot-Croce factor against roughness
     <strong>Figure 2.7</strong> 
   </figcaption>
-</figure>
+</figure> -->
+
+<iframe src ="scripts/nevot_croce_roughness.html"
+        allowfullscreen="true" 
+        width="500px" 
+        height="500px">
+</iframe>
 
 
-The plot shows signal retention as a function of roughness across three representative scattering conditions (q_z = 0.5, 1.0, and 1.5 nm⁻¹). All three curves decay exponentially ,at low roughness the surface behaves near-ideally, but beyond ~3 nm the higher-q curves drop sharply, indicating that diffuse scatter increasingly dominates over the coherent specular signal. At σ = 5 nm the most sensitive condition retains less than 40% of its signal; at σ = 10 nm the signal is effectively lost.
-The 3 nm threshold is therefore chosen as the point at which signal retention remains above 80%
+The plot shows signal retention as a function of roughness across representative scattering conditions. At q_z = 0.5 nm⁻¹ (grazing incidence, where CD-AFM and SEM calibration measurements typically operate), a surface roughness below 1 nm yields a less than 6% of the coherent specular signal is lost to diffuse scatter. This places the standard firmly within the near-ideal regime where roughness-induced measurement bias is negligible.
 
 
 
@@ -267,7 +281,7 @@ The 3 nm threshold is therefore chosen as the point at which signal retention re
 ### 2.5 method of analysis
 Three complementary characterization techniques are used to evaluate the fabricated grid resolution standard: electron detector for edge straightness and sidewall angle, atomic force microscopy (AFM) for surface roughness.
 
-#### electron detector - edge straightness  and side wall angle 
+#### Electron detector - edge straightness  and side wall angle 
 
 Electron detector is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the p-beam beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
 
@@ -276,7 +290,15 @@ The edge intensity profile is fitted using a combined error function and Gaussia
 $$ F(x) = A\left[1 + \text{Erf}\!\left(\frac{2\sqrt{\ln 2}}{f}(d - x)\right)\right] + B\exp\!\left(-\frac{\ln 16}{f^2}(d - x)^2\right) + C $$
  
 where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is the baseline offset, *d* is the fitted edge position in pixels, and *f* is the FWHM of the edge transition [3].
- 
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/ni_grid_x_lc.png" alt = "nevot_coroce"  >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">  analysis method used on previously made nickel grid 
+    <strong>Figure 2.7</strong> 
+  </figcaption>
+</figure>
+
+
 The **error function term** models the underlying step transition in secondary electron intensity as the beam crosses the edge, the fundamental shape of an ideal edge profile convolved with the finite beam diameter. The **Gaussian term** accounts for the bright secondary electron emission peak at the sidewall. Together they give a physically complete description of the measured profile.
  
 The key output is *f* , the FWHM of the fitted edge transition. A smaller *f* corresponds to a sharper, more abrupt edge, which in turn indicates a more vertical sidewall. The sidewall angle θ is estimated geometrically from the fitted FWHM and the known feature height *h*:

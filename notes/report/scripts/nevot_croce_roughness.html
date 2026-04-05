@@ -1,0 +1,114 @@
+
+<style>
+.wrap{padding:16px 20px}
+.title{font-size:15px;font-weight:500;color:var(--color-text-primary);margin-bottom:4px}
+.subtitle{font-size:12px;color:var(--color-text-secondary);margin-bottom:16px}
+.chart-wrap{position:relative;height:320px}
+.controls{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctrl-label{font-size:12px;color:var(--color-text-secondary);margin-right:4px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s;user-select:none}
+.pill.on{border-color:var(--color-border-primary);color:var(--color-text-primary);background:var(--color-background-primary)}
+.pill-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.eq{font-size:12px;color:var(--color-text-secondary);margin-top:12px;padding:8px 12px;background:var(--color-background-secondary);border-radius:6px;border:0.5px solid var(--color-border-tertiary);font-family:var(--font-mono)}
+.note{font-size:11px;color:var(--color-text-tertiary);margin-top:8px}
+</style>
+
+<div class="wrap">
+  <div class="title">Névot–Croce roughness factor</div>
+  <div class="subtitle">Effect of RMS surface roughness on specular reflectivity — NC = exp(−q<sub>z</sub>² σ²)</div>
+  <div class="chart-wrap"><canvas id="nc-chart"></canvas></div>
+
+  <div class="controls">
+    <span class="ctrl-label">q<sub>z</sub> (nm⁻¹):</span>
+    <div id="pills"></div>
+  </div>
+
+  <div class="eq">NC(σ) = exp( −q<sub>z</sub>² · σ² )</div>
+  <div class="note">σ = RMS surface roughness (nm) &nbsp;·&nbsp; q<sub>z</sub> = 4π sin(θ)/λ &nbsp;·&nbsp; NC = 1 is perfectly smooth, NC → 0 is fully diffuse</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+const curves = [
+  {qz: 0.5,  color:'#1D9E75', label:'0.5'},
+  {qz: 1.0,  color:'#178BD4', label:'1.0'},
+  {qz: 1.5,  color:'#7F77DD', label:'1.5'},
+  {qz: 2.0,  color:'#EF9F27', label:'2.0'},
+  {qz: 3.0,  color:'#D85A30', label:'3.0'},
+  {qz: 4.0,  color:'#D4537E', label:'4.0'},
+];
+
+const active = new Set(curves.map(c=>c.label));
+const N = 200;
+const sigmaMax = 5;
+const sigmas = Array.from({length:N+1},(_,i)=>i*sigmaMax/N);
+
+function ncFactor(qz, sigma){ return Math.exp(-qz*qz*sigma*sigma); }
+
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const textCol = isDark ? '#c2c0b6' : '#6b6a65';
+const gridCol = isDark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.06)';
+
+const datasets = curves.map(c=>({
+  label: `q_z = ${c.label}`,
+  data: sigmas.map(s=>({x:s, y:ncFactor(c.qz,s)})),
+  borderColor: c.color,
+  backgroundColor: 'transparent',
+  borderWidth: 2,
+  pointRadius: 0,
+  tension: 0.3,
+  hidden: false,
+}));
+
+const ctx = document.getElementById('nc-chart').getContext('2d');
+const chart = new Chart(ctx, {
+  type:'line',
+  data:{datasets},
+  options:{
+    responsive:true,
+    maintainAspectRatio:false,
+    interaction:{mode:'index',intersect:false},
+    plugins:{
+      legend:{display:false},
+      tooltip:{
+        callbacks:{
+          title: items => `σ = ${parseFloat(items[0].label).toFixed(2)} nm`,
+          label: item => ` ${item.dataset.label}: ${item.parsed.y.toFixed(3)}`
+        },
+        bodyFont:{size:11},
+        titleFont:{size:11},
+      }
+    },
+    scales:{
+      x:{
+        type:'linear',
+        title:{display:true, text:'Surface roughness σ (nm)', color:textCol, font:{size:12}},
+        min:0, max:sigmaMax,
+        ticks:{color:textCol, font:{size:11}},
+        grid:{color:gridCol},
+      },
+      y:{
+        title:{display:true, text:'Névot–Croce factor', color:textCol, font:{size:12}},
+        min:0, max:1,
+        ticks:{color:textCol, font:{size:11}},
+        grid:{color:gridCol},
+      }
+    }
+  }
+});
+
+// Pills
+const pillWrap = document.getElementById('pills');
+curves.forEach((c,i)=>{
+  const p = document.createElement('div');
+  p.className = 'pill on';
+  p.innerHTML = `<span class="pill-dot" style="background:${c.color}"></span>${c.label}`;
+  p.onclick = ()=>{
+    const ds = chart.data.datasets[i];
+    ds.hidden = !ds.hidden;
+    p.classList.toggle('on', !ds.hidden);
+    chart.update();
+  };
+  pillWrap.appendChild(p);
+});
+</script>

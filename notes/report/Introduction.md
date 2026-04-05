@@ -147,7 +147,7 @@ The objective of this project is to fabricate a metallic grid resolution standar
 using proton-beam writing at CIBA, NUS, and to demonstrate that the fabricated
 features meet the sidewall angle and surface roughness targets required for
 traceable SEM and CD-AFM calibration. Specifically, the standard must achieve
-a sidewall angle of ≥89.4°, a surface roughness below 3 nm Rq, and a grid cell
+a sidewall angle of ≥89.4°, a surface roughness below 1 nm Rq, and a grid cell
 size of 100 µm × 100 µm [13]. 
 ```
 
