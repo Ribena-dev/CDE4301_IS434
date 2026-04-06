@@ -1,7 +1,7 @@
 ## Results and analysis
 
 What do i write here
- and overview of theresults to come
+ and overview of there results to come
 ### 4.1 Surface roughness
 
 Surface roughness Rq was measured by AFM in tapping mode, characterizing the top face of the surface metal grid feature 
@@ -28,20 +28,11 @@ Above are some example AFM images of Au, DLC and PD
 </iframe>
 
 
-Note: P1,P2,P3 all represent diffrent lines cans on the surface
+Note: P1,P2,P3 all represent different lines cans on the surface
 
 Au deposited by magnetron sputtering was expected to show the highest roughness due to grain nucleation during island growth, consistent with the AFM observations from the interim report.
 
 In magnetron sputtering, atoms arrive at the substrate with energies in the range of 1–10 eV from many angles simultaneously, not just from directly above. This diffuse angular flux causes atoms to accumulate on the sides of any pre-existing nuclei as well as on top, encouraging three-dimensional island growth rather than layer-by-layer growth. The result is a granular, bumpy surface even at thin film thicknesses. Electron-beam evaporation, by contrast, delivers atoms in a much more directional line-of-sight flux at lower energies (0.1–1 eV), which promotes flatter, more conformal deposition and gives smoother films.
-
-
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/afm_best_worst.png" alt="beam line optics"  >
-  
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.2:</strong> Gold surface graph
-  </figcaption>
-</figure>
 
 The Pd result at 0.219 nm supports this interpretation directly. Palladium deposited by electron-beam evaporation wets substrates much more readily than gold, has a higher surface energy, and the directional deposition geometry suppresses island growth. The order-of-magnitude improvement in Rq between Pd and Au is therefore consistent with the combined effect of both the deposition technique and the intrinsic material properties.
 
@@ -50,12 +41,31 @@ For DLC the picture is more varied. DLC is essentially isotropic at 0.030 nm dif
 
 #### AFM across grid
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="afm/dlc-grid_5nm_2.png" alt="beam line optics"  >
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.2:</strong> AFM across a 5nm grid of dlc
+  </figcaption>
+</figure>
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="afm/dlc_5nm_grid_afm.png" alt="beam line optics"  >
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3:</strong> Graph of surface roughness across a 5nm grid of dlc
+  </figcaption>
+</figure>
+
+why did we do-it just looks cool
+what can i say  
+
 
 ### 4.2 Sidewall angle via electron detector
 
 Edge profiles were extracted from the electron detector data for each sample using the Erf–Gaussian fitting pipeline described in Section 2.5.1. For each sample, a row band was selected over a single grid edge, individual row profiles were fitted independently, and the mean FWHM f and sidewall angle θ were reported with ±1σ across rows.
 
-However given the large number of samples, the following section as selected to show only the best 3 sample grids, excluding Pd on Ti which has not been tested yet due to time contraints. 
+However, during the year the P-beam and electron detector was down limiting testing. Both the Au and Pd samples have not be tested. Instead the next subsection will be on analysis the visible structure using a optical microscope
 
 
 <figure style="text-align: center; margin: 20px 0;">

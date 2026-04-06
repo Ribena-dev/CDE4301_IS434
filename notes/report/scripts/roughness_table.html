@@ -1,4 +1,3 @@
-
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 .wrap{padding:16px 20px;font-family:var(--font-sans)}
@@ -18,10 +17,6 @@ tr:hover td{background:var(--color-background-secondary)}
 .rq-bar-wrap{display:flex;align-items:center;gap:6px}
 .rq-bar{height:6px;border-radius:3px;transition:width .3s;min-width:2px}
 .rq-val{font-size:11px;font-weight:500;min-width:40px}
-.nc-good{color:#1D9E75;font-weight:500}
-.nc-ok{color:#639922;font-weight:500}
-.nc-warn{color:#BA7517;font-weight:500}
-.nc-bad{color:#D85A30;font-weight:500}
 .flag-pass{color:#1D9E75;font-weight:500}
 .flag-fail{color:#BA7517}
 .empty{padding:24px;text-align:center;font-size:12px;color:var(--color-text-tertiary)}
@@ -32,7 +27,38 @@ tr:hover td{background:var(--color-background-secondary)}
 .stat{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
 .stat-n{font-size:18px;font-weight:500;color:var(--color-text-primary)}
 .stat-l{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
+
+/* lightbox */
+.sample-link{cursor:pointer;text-decoration:none;border-bottom:1px dashed #ccc;transition:border-color .15s}
+.sample-link:hover .sample-name{text-decoration:underline;text-decoration-style:dotted}
+.lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center}
+.lb-overlay.open{display:flex}
+.lb-box{background:#fff;border-radius:12px;padding:24px;max-width:880px;width:92vw;max-height:88vh;overflow-y:auto;position:relative}
+.lb-close{position:absolute;top:14px;right:16px;font-size:20px;cursor:pointer;color:#aaa;background:none;border:none;padding:0;line-height:1}
+.lb-close:hover{color:#111}
+.lb-title{font-size:14px;font-weight:500;color:#111;margin-bottom:3px;padding-right:28px}
+.lb-subtitle{font-size:11px;color:#999;margin-bottom:16px}
+.lb-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lb-imgs img{width:100%;border-radius:8px;border:0.5px solid #e5e5e5;display:block}
+.lb-img-wrap{display:flex;flex-direction:column;gap:5px}
+.lb-img-label{font-size:10px;color:#aaa;text-align:center}
+.lb-metrics{display:flex;gap:16px;margin-bottom:16px;font-size:12px;color:#666}
+.lb-metric{display:flex;flex-direction:column;gap:2px}
+.lb-metric-val{font-weight:500;color:#111;font-size:14px}
+.lb-metric-key{font-size:10px;color:#aaa}
+@media(max-width:580px){.lb-imgs{grid-template-columns:1fr}}
 </style>
+
+<!-- lightbox overlay -->
+<div class="lb-overlay" id="lb-overlay" onclick="closeLB(event)">
+  <div class="lb-box" id="lb-box">
+    <button class="lb-close" onclick="closeLB(null)">✕</button>
+    <div class="lb-title" id="lb-title"></div>
+    <div class="lb-subtitle" id="lb-subtitle"></div>
+    <div class="lb-metrics" id="lb-metrics"></div>
+    <div class="lb-imgs" id="lb-imgs"></div>
+  </div>
+</div>
 
 <div class="wrap">
   <div class="summary" id="summary"></div>
@@ -53,8 +79,7 @@ tr:hover td{background:var(--color-background-secondary)}
         <th data-col="sample">Sample ↕</th>
         <th data-col="profile">Profile ↕</th>
         <th data-col="rq">Rq (nm) ↕</th>
-
-        <th>&lt;1 nm</th>
+        <th>&lt;1 nm target</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
@@ -70,33 +95,37 @@ tr:hover td{background:var(--color-background-secondary)}
 
 <script>
 const data = [
-  {sample:'Pd si 500nm',       profile:'P1', rq:0.176},
-  {sample:'Pd si 500nm',       profile:'P2', rq:0.223},
-  {sample:'Pd si 500nm',       profile:'P3', rq:1.848},
-  {sample:'Pd 500nm graph',    profile:'P1', rq:0.181},
-  {sample:'Pd 500nm graph',    profile:'P2', rq:0.230},
-  {sample:'Pd 500nm graph',    profile:'P3', rq:1.934},
-  {sample:'Pd si 5µm',         profile:'P1', rq:0.148},
-  {sample:'Pd si 5µm',         profile:'P2', rq:0.165},
-  {sample:'Pd si 5µm',         profile:'P3', rq:1.555},
-  {sample:'Pd old',            profile:'P1', rq:1.008},
-  {sample:'Pd old',            profile:'P2', rq:1.308},
-  {sample:'Si surface',        profile:'P1', rq:0.164},
-  {sample:'Au on Cr (01)',     profile:'P1', rq:0.758},
-  {sample:'Au on Cr (01)',     profile:'P2', rq:0.866},
-  {sample:'Au on Cr (02)',     profile:'P1', rq:0.514},
-  {sample:'Au on Cr (02)',     profile:'P2', rq:1.286},
-  {sample:'DLC on Pd',         profile:'P1', rq:1.027},
-  {sample:'DLC on Pd',         profile:'P2', rq:0.883},
-  {sample:'DLC 5nm grid',      profile:'P1', rq:1.965},
-  {sample:'DLC 5nm grid',      profile:'P2', rq:1.575},
-  {sample:'DLC 5nm grid',      profile:'P3', rq:2.668},
-  {sample:'DLC boundary 00',   profile:'P1', rq:1.707},
-  {sample:'DLC boundary 00',   profile:'P2', rq:0.959},
-  {sample:'DLC boundary 01',   profile:'P1', rq:1.526},
-  {sample:'DLC boundary 01',   profile:'P2', rq:1.943},
-  {sample:'DLC boundary 02',   profile:'P1', rq:0.422},
-  {sample:'DLC boundary 02',   profile:'P2', rq:0.392},
+  {sample:'Si surface',    profile:'P1', rq:0.164, ra:0.131, rz:1.076,
+   afm:'afm/si.png', graph:'images/Si_surface_afm.png'},
+
+  {sample:'Pd 500nm',      profile:'P1', rq:0.176, ra:0.144, rz:0.925,
+   afm:'images/Pd_si_500nm_0_afm.png', graph:'images/pd_500nm_graph_2_afm.png'},
+  {sample:'Pd 500nm',      profile:'P2', rq:0.223, ra:0.182, rz:1.171,
+   afm:'images/Pd_si_500nm_0_afm.png', graph:'images/pd_500nm_graph_2_afm.png'},
+  {sample:'Pd 500nm',      profile:'P3', rq:1.848, ra:1.484, rz:8.553,
+   afm:'images/Pd_si_500nm_0_afm.png', graph:'images/pd_500nm_graph_2_afm.png'},
+
+  {sample:'Pd 5µm',        profile:'P1', rq:0.148, ra:0.120, rz:0.806,
+   afm:'images/pd_si_5um_0_afm.png', graph:'images/pd_si_5um_0_afm.png'},
+  {sample:'Pd 5µm',        profile:'P2', rq:0.165, ra:0.129, rz:0.870,
+   afm:'images/pd_si_5um_0_afm.png', graph:'images/pd_si_5um_0_afm.png'},
+  {sample:'Pd 5µm',        profile:'P3', rq:1.555, ra:1.297, rz:6.058,
+   afm:'images/pd_si_5um_0_afm.png', graph:'images/pd_si_5um_0_afm.png'},
+
+  {sample:'Au on Cr (01)', profile:'P1', rq:0.758, ra:0.546, rz:4.160,
+   afm:'images/Au_boundary_01_graph_afm.png', graph:'images/Au_boundary_01_graph_afm.png'},
+  {sample:'Au on Cr (01)', profile:'P2', rq:0.866, ra:0.709, rz:4.347,
+   afm:'images/Au_boundary_01_graph_afm.png', graph:'images/Au_boundary_01_graph_afm.png'},
+
+  {sample:'DLC on Pd',     profile:'P1', rq:1.027, ra:0.783, rz:5.889,
+   afm:'images/dlc_pd_afm.png', graph:'images/dlc_boundary_00_graph_afm.png'},
+  {sample:'DLC on Pd',     profile:'P2', rq:0.883, ra:0.760, rz:3.934,
+   afm:'images/dlc_pd_afm.png', graph:'images/dlc_boundary_00_graph_afm.png'},
+
+  {sample:'DLC on Au',     profile:'P1', rq:0.422, ra:0.324, rz:2.655,
+   afm:'images/dlc_boundary_02_graph_afm.png', graph:'images/dlc_boundary_02_graph_afm.png'},
+  {sample:'DLC on Au',     profile:'P2', rq:0.392, ra:0.311, rz:2.362,
+   afm:'images/dlc_boundary_02_graph_afm.png', graph:'images/dlc_boundary_02_graph_afm.png'},
 ];
 
 const RQ_MAX = 3.0;
@@ -105,19 +134,11 @@ let currentSort = 'sample';
 let sortDir = 1;
 let passOnly = false;
 
-function nc(rq){ return Math.exp(-0.25*rq*rq); }
-
 function rqColor(rq){
-  if(rq < 0.5)  return '#1D9E75';
-  if(rq < 1.0)  return '#639922';
-  if(rq < 2.0)  return '#BA7517';
+  if(rq < 0.5) return '#1D9E75';
+  if(rq < 1.0) return '#639922';
+  if(rq < 2.0) return '#BA7517';
   return '#D85A30';
-}
-function ncClass(v){
-  if(v >= 0.95) return 'nc-good';
-  if(v >= 0.85) return 'nc-ok';
-  if(v >= 0.70) return 'nc-warn';
-  return 'nc-bad';
 }
 
 function updateSummary(rows){
@@ -128,64 +149,83 @@ function updateSummary(rows){
   document.getElementById('summary').innerHTML = `
     <div class="stat"><div class="stat-n">${total}</div><div class="stat-l">profiles shown</div></div>
     <div class="stat"><div class="stat-n" style="color:#1D9E75">${passing}</div><div class="stat-l">below 1 nm</div></div>
-    <div class="stat"><div class="stat-n" style="color:#1D9E75">${best ? best.rq.toFixed(3) : '—'}</div><div class="stat-l">best Rq (nm)</div></div>
-    <div class="stat"><div class="stat-n" style="color:#D85A30">${worst ? worst.rq.toFixed(3) : '—'}</div><div class="stat-l">worst Rq (nm)</div></div>
-  `;
+    <div class="stat"><div class="stat-n" style="color:#1D9E75">${best?best.rq.toFixed(3):'—'}</div><div class="stat-l">best Rq (nm)</div></div>
+    <div class="stat"><div class="stat-n" style="color:#D85A30">${worst?worst.rq.toFixed(3):'—'}</div><div class="stat-l">worst Rq (nm)</div></div>`;
 }
+
+function openLB(r){
+  document.getElementById('lb-title').textContent = `${r.sample} — ${r.profile}`;
+  document.getElementById('lb-subtitle').textContent = 'Click outside or ✕ to close';
+  const col = rqColor(r.rq);
+  document.getElementById('lb-metrics').innerHTML = `
+    <div class="lb-metric"><span class="lb-metric-val" style="color:${col}">${r.rq.toFixed(3)} nm</span><span class="lb-metric-key">Rq</span></div>
+    <div class="lb-metric"><span class="lb-metric-val">${r.ra.toFixed(3)} nm</span><span class="lb-metric-key">Ra</span></div>
+    <div class="lb-metric"><span class="lb-metric-val">${r.rz.toFixed(3)} nm</span><span class="lb-metric-key">Rz</span></div>
+    <div class="lb-metric"><span class="lb-metric-val" style="color:${col}">${r.rq<1?'✓ &lt;1 nm':'△ &gt;1 nm'}</span><span class="lb-metric-key">target</span></div>`;
+
+  const sameImg = r.afm === r.graph;
+  document.getElementById('lb-imgs').className = sameImg ? 'lb-imgs lb-single' : 'lb-imgs';
+  document.getElementById('lb-imgs').innerHTML = sameImg
+    ? `<div class="lb-img-wrap"><img src="${r.afm}" alt="AFM profile plot" onerror="this.style.display='none';this.nextSibling.textContent='Image not found — update path in data array'"><div class="lb-img-label">AFM profile plot</div></div>`
+    : `<div class="lb-img-wrap"><img src="${r.afm}" alt="AFM scan" onerror="this.style.display='none';this.nextSibling.textContent='Image not found'"><div class="lb-img-label">AFM scan</div></div>
+       <div class="lb-img-wrap"><img src="${r.graph}" alt="Profile graph" onerror="this.style.display='none';this.nextSibling.textContent='Image not found'"><div class="lb-img-label">Profile graph</div></div>`;
+
+  document.getElementById('lb-overlay').classList.add('open');
+}
+
+function closeLB(e){
+  if(e && e.target !== document.getElementById('lb-overlay')) return;
+  document.getElementById('lb-overlay').classList.remove('open');
+}
+
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') document.getElementById('lb-overlay').classList.remove('open'); });
 
 function render(){
   let rows = [...data];
-
   if(passOnly) rows = rows.filter(r=>r.rq<1);
-  if(currentFilter !== 'all' && currentFilter !== 'pass'){
+  if(currentFilter!=='all'&&currentFilter!=='pass')
     rows = rows.filter(r=>r.sample.toLowerCase().includes(currentFilter.toLowerCase()));
-  }
 
-  if(currentSort==='rq')      rows.sort((a,b)=>sortDir*(a.rq-b.rq));
-  else if(currentSort==='ra') rows.sort((a,b)=>sortDir*(a.ra-b.ra));
-  else if(currentSort==='rz') rows.sort((a,b)=>sortDir*(a.rz-b.rz));
-  else if(currentSort==='nc') rows.sort((a,b)=>sortDir*(nc(b.rq)-nc(a.rq)));
+  if(currentSort==='rq')           rows.sort((a,b)=>sortDir*(a.rq-b.rq));
   else if(currentSort==='profile') rows.sort((a,b)=>sortDir*a.profile.localeCompare(b.profile));
   else rows.sort((a,b)=>sortDir*(a.sample.localeCompare(b.sample)||a.profile.localeCompare(b.profile)));
 
   updateSummary(rows);
-
   const tbody = document.getElementById('tbody');
-  if(!rows.length){ tbody.innerHTML=`<tr><td colspan="7" class="empty">No results</td></tr>`; return; }
+  if(!rows.length){ tbody.innerHTML=`<tr><td colspan="4" class="empty">No results</td></tr>`; return; }
 
-  tbody.innerHTML = rows.map(r=>{
-    const ncv = nc(r.rq);
+  tbody.innerHTML = rows.map((r,i)=>{
     const col = rqColor(r.rq);
     const barW = Math.min(100,(r.rq/RQ_MAX)*100);
     const pass = r.rq < 1;
     return `<tr>
-      <td><span class="sample-name">${r.sample}</span></td>
+      <td><span class="sample-name sample-link" data-idx="${i}" style="cursor:pointer;border-bottom:1px dashed #ccc">${r.sample} <span style="font-size:9px;color:#bbb">⬡</span></span></td>
       <td><span class="profile-tag">${r.profile}</span></td>
-      <td>
-        <div class="rq-bar-wrap">
-          <div class="rq-bar" style="width:${barW}%;background:${col}"></div>
-          <span class="rq-val" style="color:${col}">${r.rq.toFixed(3)}</span>
-        </div>
-      </td>
-      <td>${r.ra.toFixed(3)}</td>
-      <td>${r.rz.toFixed(3)}</td>
-      <td><span class="${ncClass(ncv)}">${ncv.toFixed(3)}</span></td>
+      <td><div class="rq-bar-wrap">
+        <div class="rq-bar" style="width:${barW}%;background:${col}"></div>
+        <span class="rq-val" style="color:${col}">${r.rq.toFixed(3)}</span>
+      </div></td>
       <td class="${pass?'flag-pass':'flag-fail'}">${pass?'✓':'△'}</td>
     </tr>`;
   }).join('');
+
+  // attach click — store filtered rows so index matches
+  const filtered = rows;
+  document.querySelectorAll('.sample-link').forEach(el=>{
+    el.addEventListener('click',()=>openLB(filtered[+el.dataset.idx]));
+  });
 }
 
 document.querySelectorAll('[data-filter]').forEach(p=>{
   p.addEventListener('click',()=>{
     const f = p.dataset.filter;
     if(f==='pass'){
-      passOnly = !passOnly;
-      p.classList.toggle('on', passOnly);
-      // reset material filter pills if toggling pass
+      passOnly=!passOnly;
+      p.classList.toggle('on',passOnly);
     } else {
       document.querySelectorAll('[data-filter]:not(#pass-pill)').forEach(x=>x.classList.remove('on'));
       p.classList.add('on');
-      currentFilter = f;
+      currentFilter=f;
     }
     render();
   });
@@ -193,7 +233,7 @@ document.querySelectorAll('[data-filter]').forEach(p=>{
 
 document.querySelectorAll('th[data-col]').forEach(th=>{
   th.addEventListener('click',()=>{
-    const col = th.dataset.col;
+    const col=th.dataset.col;
     if(currentSort===col) sortDir*=-1; else{currentSort=col;sortDir=1;}
     document.querySelectorAll('th').forEach(t=>t.classList.remove('sorted'));
     th.classList.add('sorted');
