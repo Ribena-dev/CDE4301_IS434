@@ -3,7 +3,7 @@
 ### 3.1 Overview of Fabrication Steps
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/lit_fab_3.png" alt="Fabrication process overview" width = "280px">
+  <img src="images/lit_fab_3.png" alt="Fabrication process overview" width = "280px" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.1:</strong> Fabrication process for the resolution standard, updated overview.
   </figcaption>
@@ -117,8 +117,7 @@ At these scales, chromatic aberration is the primary limit on spot size. To main
 
 <iframe 
   src="scripts/beam_geo.html" 
-  width="100%" 
-  height="580px" 
+  allowfullscreen="true"
   style="border:none; border-radius:6px;"
   sandbox="allow-scripts" >
 </iframe>
