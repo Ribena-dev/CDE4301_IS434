@@ -23,6 +23,8 @@ Surface roughness Rq was measured by AFM in tapping mode, characterising the top
   src="scripts/roughness_table.html"
   style="border:none; border-radius:6px;"
   allowfullscreen="true"
+  width="500px"
+  height="500px"
   sandbox="allow-scripts">
 </iframe>
 
@@ -91,6 +93,8 @@ The measured edge blur f is approximately 20 nm greater than the reference value
   src="scripts/surface.html"
   style="border:none; border-radius:6px;"
   allowfullscreen="true"
+  width="500px"
+  height="500px"
   sandbox="allow-scripts">
 </iframe>
 

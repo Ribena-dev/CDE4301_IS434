@@ -23,7 +23,7 @@ Nanoimprint lithography (NIL) offers a path to high-throughput replication of th
 Initial trials were conducted using an Omostamp silicon stamp on a NILT CNI nanoimprinter (software v1.0.0.42). The hot embossing recipe used is summarised in Table 5.1.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/stamp.png" alt="Nanoimprinting overview" width="280" style="margin: 5px;">
+  <img src="images/stamp.png" alt="Nanoimprinting overview" width="280">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 5.1:</strong> Nanoimprinting process overview.
   </figcaption>
