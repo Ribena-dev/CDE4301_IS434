@@ -327,16 +327,28 @@
     /* ── Figures and images ───────────────────────────────── */
     #content figure {
       margin: 2rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    /* figcaption always spans full width so it sits below all images */
+    #content figure figcaption {
+      flex-basis: 100%;
+      width: 100%;
       text-align: center;
     }
- 
+
+    /* each image grows/shrinks but won't collapse below ~160px before wrapping */
     #content figure img {
+      flex: 1 1 auto;
+      min-width: min(160px, 100%);
       max-width: 100%;
       height: auto;
-      display: block;
-      margin: 0 auto;
     }
- 
+
     #content img {
       display: block;
       margin-left: auto;
@@ -344,7 +356,7 @@
       max-width: 100%;
       height: auto;
     }
- 
+
     #content figcaption { text-align: center; }
  
     #content p > img { display: block; margin: 1.5rem auto; }
