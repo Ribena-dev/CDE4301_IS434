@@ -22,6 +22,7 @@ Surface roughness Rq was measured by AFM in tapping mode, characterising the top
 <iframe
   src="scripts/roughness_table.html"
   style="border:none; border-radius:6px;"
+  allowfullscreen="true"
   sandbox="allow-scripts">
 </iframe>
 
@@ -74,7 +75,7 @@ Given that the analysis is performed using a custom Python script, it is importa
 | Nickel measured | 47.71 | **89.68** |
 | Nickel reference | 35.21 | **89.4** |
 
-The measured edge blur f is approximately 20 nm greater than the reference value, which is attributed to the beam not being at its optimum focus during the test scan. Despite this, the fitted sidewall angle of 89.68° is consistent with and slightly exceeds the published reference value of 89.4°, confirming that the fitting pipeline correctly recovers the sidewall angle even under non-ideal beam conditions.
+The measured edge blur f is approximately 20 nm greater than the reference value, which is attributed to the beam not being at its optimum focus during the test scan. Despite this, the fitted sidewall angle of 89.68° is consistent with and slightly exceeds the published reference value of 89.4°, confirming that the fitting pipeline correctly recovers the sidewall angle.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/nickel_grid_e.png"
@@ -86,34 +87,13 @@ The measured edge blur f is approximately 20 nm greater than the reference value
 
 #### Sample Results
 
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/dlc_au_boundary.png" alt="DLC/Au boundary edge fit" width="480">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.4:</strong> Error function fit at the DLC/Au boundary edge.
-  </figcaption>
-</figure>
+<iframe
+  src="scripts/surface.html"
+  style="border:none; border-radius:6px;"
+  allowfullscreen="true"
+  sandbox="allow-scripts">
+</iframe>
 
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/2012_6_385_graph.png"
-       alt="PMMA sidewall edge fit, sample 2012-6-385" width="480">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.5(a):</strong> Edge fit of the PMMA sidewall prior to DLC deposition, measurement position 1.
-  </figcaption>
-</figure>
-
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/2012_6_41_graph.png"
-       alt="PMMA sidewall edge fit, sample 2012-6-41" width="480">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.5(b):</strong> Edge fit of the PMMA sidewall prior to DLC deposition, measurement position 2.
-  </figcaption>
-</figure>
-
-| Measurement | f (nm) | θ (°) | Meets ≥89.4° |
-|---|---|---|---|
-| DLC/Au boundary | 40.93 | **89.66** | ✓ |
-| DLC | 45.91 | **89.49** | ✓ |
-| DLC on Pd | 60.30 | 89.12 | ✗ |
 
 SRIM theoretical prediction: θ = 89.9° (f = 1.91 nm at h = 1000 nm).
 
