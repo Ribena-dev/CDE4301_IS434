@@ -30,7 +30,7 @@ A slightly updated version of our fabrication overview
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/srim_lateral_straggle.png" 
        alt="Plot of lateral straggle sigma versus depth in PMMA for 2 MeV protons, comparing raw SRIM data including nuclear scatter outliers against IQR-cleaned data, with a 3 nm target threshold line" 
-        style="margin: 5px;">
+        >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.3:</strong> Lateral straggle σ<sub>r</sub> as a function of depth 
     for 2 MeV protons in PMMA. The grey dashed curve shows the raw SRIM data 
@@ -48,9 +48,8 @@ Depth (1 µm): We modeled a 1 µm thick layer of PMMA, as this is the maximum he
 Key Findings
 
 The simulation focused on two main factors that determine the quality of our microstructures:
-Penetration & The Bragg Peak:
 
-The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
+Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
   
 
 
@@ -59,7 +58,7 @@ The simulation confirms that at 2 MeV, the protons pass through the PMMA with ea
   <span class="graph-tooltip">
     <span class="gt-trigger">EBL</span>
     <div class="gt-popup">
-      <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"></iframe>
+      <iframe src="scripts/beam_geo.html"></iframe>
       <div class="gt-caption">Interactive: electron beam lateral spread</div>
     </div>
   </span> 
@@ -134,7 +133,7 @@ Development is performed after PBW exposure and is included here for process con
 This section will cover the general P-beam structures that need to be manipulated or calibrated before and during P-Beam writing, to control teh spot size
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/beam_line.png" alt="beam line optics"  style="margin: 5px;">
+  <img src="images/beam_line.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.4:</strong> Beam line optics
@@ -143,7 +142,7 @@ This section will cover the general P-beam structures that need to be manipulate
 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/PB_sc.png" alt="beam line optics"  style="margin: 5px;">
+  <img src="images/PB_sc.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.5:</strong> Beam line schematics ( labeled proton beam writing)
@@ -227,7 +226,7 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
 | 5 - Pd/Ti/Si| | 40nm | | | 2nm |
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/samples.png" alt="beam line optics"  style="margin: 5px;">
+  <img src="images/samples.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.6:</strong> Tested samples
