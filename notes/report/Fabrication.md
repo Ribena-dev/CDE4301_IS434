@@ -52,19 +52,18 @@ The simulation focused on two main factors that determine the quality of our mic
 
   - Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design.
 
-  - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional Electron Beam Lithography (EBL).
-
-
-<span class="graph-preview-wrap">
+  - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional <span class="graph-preview-wrap">
   <a href="#ebl-spread-graph" class="graph-preview-link">Electron Beam Lithography (EBL)</a>
   <span class="graph-preview-popup">
     <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"
             width="420" height="320"
-            scrolling="no" frameborder="0"
-            loading="lazy"></iframe>
+    </iframe>
     <span class="graph-preview-caption">EBL lateral spread vs depth — hover to explore</span>
   </span>
-</span>
+</span>.
+
+
+
 
 
 Note on "Spikes": You may notice occasional spikes in the trajectory data; these are simply rare instances where a proton bounces off a nucleus at a wide angle. They are outliers and do not impact the overall sharpness of the final feature.
