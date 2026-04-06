@@ -594,124 +594,134 @@
       #content iframe { height: 300px; }
     }
  
-    /* ── Mobile bottom bar ───────────────────────────────── */
+    /* ── Mobile process sticky bar ─────────────────────────── */
     #mobile-bottom-bar {
       display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: #fff;
-      border-top: 1px solid #ddd;
-      z-index: 200;
+      position: sticky;
+      top: 72px;
+      left: 0; right: 0;
+      background: #f7f7f5;
+      border-bottom: 1px solid #ddd;
+      z-index: 99;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      padding: 10px 16px 12px;
     }
- 
+
     #mobile-bottom-bar .bar-panel {
       display: block;
     }
  
-    /* Process panel inside bottom bar */
-    /* mobile process — single step display */
+    /* ── Mobile process sticky bar — horizontal nav ─────────── */
     #mob-process {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
+      align-items: stretch;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 0 8px;
     }
- 
-    /* all steps hidden by default */
+    #mob-process::-webkit-scrollbar { display: none; }
+
+    .mob-proc-connector { display: none; }
+
     .mob-proc-step {
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
-    }
- 
-    /* only active step shown */
-    .mob-proc-step.active {
-      display: flex;
-    }
- 
-    /* hide connectors entirely */
-    .mob-proc-connector { display: none; }
- 
-    /* bigger diagram for single display */
-    .mob-proc-diagram {
-      width: 120px !important;
-      height: 50px !important;
-      margin-bottom: 6px;
-    }
- 
-    .mob-layer { height: 8px !important; }
- 
-    .mob-proc-name {
-      font-size: 12px !important;
-      font-weight: 700;
-      color: #1a1a1a !important;
-    }
- 
-    /* step counter dots */
-    #mob-proc-dots {
-      display: flex;
-      gap: 5px;
       justify-content: center;
-      margin-top: 8px;
+      gap: 3px;
+      padding: 8px 14px;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      opacity: 0.45;
+      transition: opacity 0.2s, border-color 0.2s;
+      flex-shrink: 0;
     }
- 
-    .proc-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: #ddd;
-      transition: background 0.2s;
+
+    .mob-proc-step.active {
+      opacity: 1;
+      border-bottom-color: #1a1a1a;
     }
- 
-    .proc-dot.active { background: #1a1a1a; }
- 
-    /* bottom bar layout */
-    #mobile-bottom-bar {
-      padding: 8px 16px 10px;
-    }
- 
-    .mob-proc-step {
-      flex: 1;
-      min-width: 70px;
-      text-align: center;
-      opacity: 0.3;
-      transition: opacity 0.3s;
-    }
- 
-    .mob-proc-step.active { opacity: 1; }
- 
+
     .mob-proc-diagram {
-      width: 64px;
-      height: 32px;
+      width: 52px;
+      height: 26px;
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
       gap: 2px;
-      border: 1px solid #ddd;
+      border: 0.5px solid #ccc;
       border-radius: 3px;
       padding: 2px 3px;
       background: #fafaf8;
-      margin: 0 auto 4px;
     }
- 
+
     .mob-proc-step.active .mob-proc-diagram {
       border-color: #1a1a1a;
       background: #fff;
     }
- 
+
     .mob-proc-name {
       font-size: 9px;
       color: #888;
-      line-height: 1.3;
+      font-weight: 500;
+      line-height: 1.2;
     }
- 
+
     .mob-proc-step.active .mob-proc-name {
       color: #1a1a1a;
       font-weight: 700;
+    }
+
+    /* hide dots — no longer needed */
+    #mob-proc-dots { display: none; }
+    .proc-dot { display: none; }
+
+    /* toggle header row */
+    #mob-proc-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 12px;
+      border-bottom: 0.5px solid #e0e0e0;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    #mob-proc-header-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    #mob-proc-header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #mob-proc-active-name {
+      font-size: 11px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+
+    #mob-proc-chevron {
+      font-size: 10px;
+      color: #aaa;
+      transition: transform 0.2s;
+      line-height: 1;
+    }
+
+    #mobile-bottom-bar.collapsed #mob-proc-chevron {
+      transform: rotate(-90deg);
+    }
+
+    /* collapse the steps row when toggled */
+    #mobile-bottom-bar.collapsed #mob-process {
+      display: none;
     }
  
     .mob-layer { width: 100%; height: 5px; border-radius: 1px; }
@@ -825,12 +835,10 @@
       }
     }
  
-    /* push body up so content not hidden behind bar */
-    body.has-bottom-bar { padding-bottom: 60px; }
  
     @media (max-width: 899px) {
       #mobile-bottom-bar { display: block; }
-      body { padding-bottom: 60px; }
+      body { padding-bottom: 0; }
     }
  
   </style>
@@ -956,6 +964,11 @@
 </div>
  
 <script>
+function toggleProcBar(){
+  const bar = document.getElementById('mobile-bottom-bar');
+  bar.classList.toggle('collapsed');
+}
+
 function toggleMobileNav(){
   const mn = document.getElementById('mobile-nav');
   const btn = document.getElementById('nav-toggle');
@@ -1065,16 +1078,30 @@ function toggleMobileNav(){
   }
  
   function syncDots(steps){
-    const dots = document.querySelectorAll('.proc-dot');
-    steps.forEach((s, i) => {
-      if(dots[i]) dots[i].classList.toggle('active', s.classList.contains('active'));
-    });
+    /* update the header label with the current active step name */
+    const activeStep = document.querySelector('.mob-proc-step.active');
+    if(activeStep){
+      const name = activeStep.querySelector('.mob-proc-name');
+      const label = document.getElementById('mob-proc-active-name');
+      if(label && name) label.textContent = name.textContent;
+      /* scroll active step into view inside the bar */
+      activeStep.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+    }
   }
 })();
 </script>
  
 <div id="mobile-bottom-bar">
   <div class="bar-panel" id="mob-proc-panel">
+
+    <div id="mob-proc-header" onclick="toggleProcBar()">
+      <span id="mob-proc-header-label">Process</span>
+      <div id="mob-proc-header-right">
+        <span id="mob-proc-active-name"></span>
+        <span id="mob-proc-chevron">▼</span>
+      </div>
+    </div>
+
     <div id="mob-process">
       <div class="mob-proc-step" data-keys="substrate,wafer,silicon">
         <div class="mob-proc-diagram">
