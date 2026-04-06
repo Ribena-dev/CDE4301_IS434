@@ -110,7 +110,7 @@
       margin-bottom: 16px;
       opacity: 0.3;
       transition: opacity 0.3s;
-      cursor: default;
+      cursor: text;
     }
 
     .proc-step.active { opacity: 1; }
@@ -445,7 +445,7 @@
     /* ── Abbreviation tooltips ───────────────────────────── */
     abbr[data-title] {
       border-bottom: 1px dotted #888;
-      cursor: help;
+      cursor: pointer;
       text-decoration: none;
       position: relative;
     }
@@ -764,7 +764,7 @@
         
         /* Positioning the popup above the text */
         position: absolute;
-        z-index: 10;
+        z-index: 9999;
         bottom: 125%; 
         left: 50%;
         transform: translateX(-50%);
@@ -833,7 +833,7 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      z-index: 300;
+      z-index: 999;
       overflow: hidden;
       padding: 10px;
     }

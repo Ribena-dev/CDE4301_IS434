@@ -64,6 +64,9 @@ Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons
   </span> 
 </p>
 
+<div class="gt-popup">
+  <p>Test: If you see this, the CSS is working!</p>
+</div>
 
 Note on "Spikes": You may notice occasional spikes in the trajectory data; these are simply rare instances where a proton bounces off a nucleus at a wide angle. They are outliers and do not impact the overall sharpness of the final feature.
 
@@ -186,7 +189,7 @@ The sample stage can be adjusted along the beam axis with **1 µm accuracy**. Be
 By varying the focal plane, we can compensate for beam divergence at depth. This can counter act beam lateral spread adn greater depths.
 
 
-### System Specifications Summary
+#### System Specifications Summary
 
 | Parameter | Value |
 | :--- | :--- |
@@ -214,7 +217,8 @@ By varying the focal plane, we can compensate for beam divergence at depth. This
 The metals selected for this project were chosen on the basis of the criteria established
 in Section 2.X , lift-off compatibility, electron scattering contrast, chemical stability, and lattice mismatch, alongside the practical constraint of cleanroom availability at CIBA.
 
-Gold (Au) was selected as the primary structural metal due to its well-established compatibility with magnetron sputtering workflows at CIBA, hasa potentially high electron detector backscatter contrast, and its chemical inertness. Chromium (Cr) was included as an adhesion buffer layer beneath Au, exploiting its strong bonding to native silicon oxide and its ability to reduce internal stress arising from the Au–Si lattice mismatch. Palladium (Pd) was evaluated as an alternative primary metal good chemical stability, and a higher melting point than Au, reducing the risk of substrate heating during e-beam evaporation. Diamond-like carbon (DLC) was investigated as a candidate surface coating to improve roughness performance after surface concerns with sputtered Au were observed. Titanium (Ti) was later introduced as an alternative adhesion layer to Cr, offering improved interfacial bonding without the additional conductivity and optical contrast change associated with Cr.
+Gold (Au) was selected as the primary structural metal due to its well-established compatibility with magnetron sputtering workflows at CIBA, hasa potentially high electron detector backscatter contrast, making it easier to compute the analyses later ( higher electron range and intensity ) and its chemical inertness. Chromium (Cr) was included as an adhesion buffer layer beneath Au, exploiting its strong bonding to native silicon oxide and its ability to reduce internal stress arising from the Au–Si lattice mismatch. Palladium (Pd) was evaluated as an alternative primary metal good chemical stability, and a higher melting point than Au, reducing the risk of substrate heating during e-beam evaporation. Diamond-like carbon (DLC) was investigated as a candidate surface coating to improve roughness performance after surface concerns with sputtered Au were observed. Titanium (Ti) was later introduced as an alternative adhesion layer to Cr and Ti, offering improved interfacial bonding without the additional conductivity.
+
 #### Fabricated samples composition
 
 | Sample | Cr | Pd | Au | DLC | Ti |
