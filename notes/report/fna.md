@@ -1,15 +1,15 @@
 ## Results and analysis
 
 What do i write here
-
+ and overview of theresults to come
 ### 4.1 Surface roughness
 
-Surface roughness Rq was measured by AFM in tapping mode. Two regions were characterised for each sample: the top face of the metal grid feature, and the exposed silicon substrate between features.
+Surface roughness Rq was measured by AFM in tapping mode, characterizing the top face of the surface metal grid feature 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/pd_afm.png" alt="AFM profile of Pd surface" width="280" style="margin: 5px;">
-  <img src="images/au_afm.png" alt="AFM profile of Au surface" width="280" style="margin: 5px;">
-  <img src="images/dlc_surface.png" alt="AFM profile of DLC surface" width="280" style="margin: 5px;">
+  <img src="images/pd_afm.png" alt="AFM profile of Pd surface" width="280" >
+  <img src="images/au_afm.png" alt="AFM profile of Au surface" width="280" >
+  <img src="images/dlc_surface.png" alt="AFM profile of DLC surface" width="280" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.1:</strong> AFM surface profiles of the three primary materials:
     Pd (left), Au (centre), and DLC (right). Pd shows the smoothest surface at
@@ -19,22 +19,16 @@ Surface roughness Rq was measured by AFM in tapping mode. Two regions were chara
   </figcaption>
 </figure>
 
+Above are some example AFM images of Au, DLC and PD 
 
-| Sample | Profile | Rq (nm) | Ra (nm) | Rz (nm) | Meets <3 nm |
-|---|---|---|---|---|---|
-| Pd 500 nm | P1 | 0.219 | 0.176 | 1.044 | ✓ |
-| Au  | P1 | 0.758 | 0.546 | 4.160 | ✓ |
-| Au | P2 | 0.866 | 0.709 | 4.347 | ✓ |
-| Au on Pd| P1 | 0.514 | 0.413 | 2.560 | ✓ |
-| Au on Pd | P2 | 1.271 | 1.005 | 6.875 | ✓ |
-| DLC on Pd| P1 | 1.707 | 1.316 | 11.510 | ✓ |
-| DLC on Pd| P2 | 0.954 | 0.764 | 6.227 | ✓ |
-| DLC on Au | P1 | 1.526 | 1.287 | 8.436 | ✓ |
-| DLC on Au | P2 | 1.943 | 1.650 | 9.444 | ✓ |
-| DLC  | P1 | 0.422 | 0.324 | 2.655 | ✓ |
-| DLC  | P2 | 0.392 | 0.311 | 2.362 | ✓ |
+<iframe 
+  src="scripts/roughness_table_interactive.html" 
+  style="border:none; border-radius:6px;"
+  sandbox="allow-scripts">
+</iframe>
 
-Note: P1 ia a horizontal roughness and P2 is teh verticle roughness 
+
+Note: P1 ia a horizontal roughness and P2 is the verticle roughness 
 
 Au deposited by magnetron sputtering was expected to show the highest roughness due to grain nucleation during island growth, consistent with the AFM observations from the interim report.
 
@@ -42,7 +36,7 @@ In magnetron sputtering, atoms arrive at the substrate with energies in the rang
 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/afm_best_worst.png" alt="beam line optics"  style="margin: 5px;">
+  <img src="images/afm_best_worst.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.2:</strong> Gold surface graph
@@ -63,7 +57,7 @@ However given the large number of samples, the following section as selected to 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/dlc_au_boundary.png" alt="DLC/Au boundary edge fit"
-       width="480" style="margin: 5px;">
+       width="480" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(a):</strong> DLC/Au boundary
   </figcaption>
@@ -71,7 +65,7 @@ However given the large number of samples, the following section as selected to 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/2012_6_385_graph.png"
-       alt="2012 grid 6.385 edge fit" width="480" style="margin: 5px;">
+       alt="2012 grid 6.385 edge fit" width="480" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(b):</strong> Side wall of PMMA before dlc deposition
   </figcaption>
@@ -79,7 +73,7 @@ However given the large number of samples, the following section as selected to 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/2012_6_41_graph.png"
-       alt="2012 grid 6.41 edge fit" width="480" style="margin: 5px;">
+       alt="2012 grid 6.41 edge fit" width="480" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(c):</strong> Side wall of PMMA before dlc deposition
   </figcaption>
@@ -87,7 +81,7 @@ However given the large number of samples, the following section as selected to 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/nickel_graph.png"
-       alt="Nickel reference grid edge fit" width="480" style="margin: 5px;">
+       alt="Nickel reference grid edge fit" width="480" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(d):</strong> Nickel grid used to calibrate beam
   </figcaption>
@@ -111,7 +105,7 @@ The nickel grid was used as a test to check if the python script was working as 
 The backscatter contrast ratio between the metal grid features and the silicon substrate was assessed from the electron detector intensity profiles. A higher contrast ratio indicates greater separation between the metal signal and the background, which is the primary functional requirement of the resolution standard for SEM calibration use.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/electron_heatmaps.png" alt="beam line optics"  style="margin: 5px;">
+  <img src="images/electron_heatmaps.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.4:</strong> Electron count heatmap on Au and DLC

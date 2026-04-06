@@ -49,31 +49,10 @@ Key Findings
 
 The simulation focused on two main factors that determine the quality of our microstructures:
 
-<span class="img-tooltip">
-  <span class="it-trigger">Penetration & The Bragg Peak: </span>
-  <div class="it-popup">
-    <img src="images/srim_lateral_straggle.png" alt="AFM profile of Pd surface">
-    <div class="it-caption"></div>
-  </div>
-</span>
-The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
-  
+Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
 
+Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional [EBL](Introduction.md#12-problem-statement)
 
-<p>
-  Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional
-  <span class="graph-tooltip">
-    <span class="gt-trigger">EBL</span>
-    <div class="gt-popup">
-      <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"></iframe>
-      <div class="gt-caption">Interactive: electron beam lateral spread</div>
-    </div>
-  </span> 
-</p>
-
-<div class="gt-popup">
-  <p>Test: If you see this, the CSS is working!</p>
-</div>
 
 Note on "Spikes": You may notice occasional spikes in the trajectory data; these are simply rare instances where a proton bounces off a nucleus at a wide angle. They are outliers and do not impact the overall sharpness of the final feature.
 
@@ -231,10 +210,11 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
 | Sample | Cr | Pd | Au | DLC | Ti |
 |---|:---:|:---:|:---:|:---:|:---:|
 | 1 - Au/Cr/Si | 2nm | |  30nm | | |
-| 2 - DLC/Au/Si |  | |2nm|10nm |
-| 3 - Au/Pd/Ti/Si |  | 2nm | 20nm | |
-| 4 - DLC/Pd/Ti/Si| | | | 10nm |2nm|
-| 5 - Pd/Ti/Si| | 40nm | | | 2nm |
+| 2 - Au/Pd/Ti/Si |  | 2nm | 20nm | |
+| 3 - DLC/Si |  | ||10nm |
+| 4 - DLC/Au/Si |  | |2nm|10nm |
+| 5 - DLC/Pd/Ti/Si| | | | 10nm |2nm|
+| 6 - Pd/Ti/Si| | 40nm | | | 2nm |
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/samples.png" alt="beam line optics"  >
@@ -244,7 +224,7 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
   </figcaption>
 </figure>
 
-The samples created that are tested later are 2 DLC samples, with seed layer Pd and Au, and 2 Au samples with seed layers Cr and Pd. The Pd sample was the last made and unfortunately faced difficulties testing the Pd as the vacuum chamber and P-beam was down for repairs
+The samples created that are tested later are 3 DLC samples, with seed layer Pd or Au and one without, and 2 Au samples with seed layers Cr and Pd. The Pd sample was the last made and unfortunately faced difficulties testing the Pd as the vacuum chamber and P-beam was down for repairs
 
 [<--Prev: Methodology ](Methology.md) | [Next: Results and analysis →](fna.md)
 
