@@ -29,6 +29,7 @@ This section outlines the materials, techniques, and analytical methods selected
 
 To note section will skip a general lithography section as the novelty in section 1 already covers it , instead focusing more on understanding the Proton beam 
 
+Further notes: this section and the next has process chart at either the side or bottom depending on the view that will highlight which fabricated process the subsection is linked to.
 
 ### 2.1 Resist 
 
