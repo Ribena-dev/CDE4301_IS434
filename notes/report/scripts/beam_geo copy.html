@@ -286,54 +286,54 @@ function drawFront(dz_um, p) {
   ctx.fillText('-- d₀ at focus', W/2, H-6);
 }
 
-// // ── Math box ──────────────────────────────────────────────────────────────
-// function updateMath(dz_um, sx, sy, p) {
-//   const sp = spotSize(dz_um, p);
-//   const dz = Math.abs(dz_um)*1e-6;
-//   const ageo = dz>5e-8 ? (sp.cbx/2*1e-9)/dz : p.ax;
-//   const okX = Math.abs(dz_um) <= p.dofx*1e6;
-//   const okY = Math.abs(dz_um) <= p.dofy*1e6;
-//   const reg = dz_um<0?'before focus':dz_um>0?'past focus':'AT FOCUS';
-//   const f = (v,n=3) => v.toFixed(n);
+// ── Math box ──────────────────────────────────────────────────────────────
+function updateMath(dz_um, sx, sy, p) {
+  const sp = spotSize(dz_um, p);
+  const dz = Math.abs(dz_um)*1e-6;
+  const ageo = dz>5e-8 ? (sp.cbx/2*1e-9)/dz : p.ax;
+  const okX = Math.abs(dz_um) <= p.dofx*1e6;
+  const okY = Math.abs(dz_um) <= p.dofy*1e6;
+  const reg = dz_um<0?'before focus':dz_um>0?'past focus':'AT FOCUS';
+  const f = (v,n=3) => v.toFixed(n);
 
-//   document.getElementById('mathBox').textContent =
-// `┌─ Slit → beam params ──────────┐
+  document.getElementById('mathBox').textContent =
+`┌─ Slit → beam params ──────────┐
 
-//   X slit = ${f(sx,0)} µm (ref ${SX_REF} µm)
-//   Y slit = ${f(sy,0)} µm (ref ${SY_REF} µm)
+  X slit = ${f(sx,0)} µm (ref ${SX_REF} µm)
+  Y slit = ${f(sy,0)} µm (ref ${SY_REF} µm)
 
-//   α_x = α_ref × (sx/sx_ref)
-//       = ${f(AX_REF*1e3)} × (${f(sx,0)}/${SX_REF})
-//       = ${f(p.ax*1e3)} mrad
+  α_x = α_ref × (sx/sx_ref)
+      = ${f(AX_REF*1e3)} × (${f(sx,0)}/${SX_REF})
+      = ${f(p.ax*1e3)} mrad
 
-//   d₀_x = ε_x / α_x
-//        = ${f(p.d0x*1e9,2)} nm
+  d₀_x = ε_x / α_x
+       = ${f(p.d0x*1e9,2)} nm
 
-//   α_y  = ${f(p.ay*1e3)} mrad
-//   d₀_y = ${f(p.d0y*1e9,2)} nm
+  α_y  = ${f(p.ay*1e3)} mrad
+  d₀_y = ${f(p.d0y*1e9,2)} nm
 
-// ────────────────────────────────
+────────────────────────────────
 
-//   Δz = ${f(dz_um,2)} µm  (${reg})
+  Δz = ${f(dz_um,2)} µm  (${reg})
 
-//   Cone blur X = ${f(sp.cbx,2)} nm
-//   Cone blur Y = ${f(sp.cby,2)} nm
+  Cone blur X = ${f(sp.cbx,2)} nm
+  Cone blur Y = ${f(sp.cby,2)} nm
 
-//   d_x = √(${f(p.d0x*1e9,2)}² + ${f(sp.cbx,2)}²)
-//       = ${f(sp.dx,2)} nm
+  d_x = √(${f(p.d0x*1e9,2)}² + ${f(sp.cbx,2)}²)
+      = ${f(sp.dx,2)} nm
 
-//   d_y = ${f(sp.dy,2)} nm
+  d_y = ${f(sp.dy,2)} nm
 
-// ────────────────────────────────
+────────────────────────────────
 
-//   DoF_x = ${f(p.dofx*1e6,3)} µm
-//           ${okX?'INSIDE ✓':'OUTSIDE ✗'}
+  DoF_x = ${f(p.dofx*1e6,3)} µm
+          ${okX?'INSIDE ✓':'OUTSIDE ✗'}
 
-//   DoF_y = ${f(p.dofy*1e6,3)} µm
-//           ${okY?'INSIDE ✓':'OUTSIDE ✗'}
+  DoF_y = ${f(p.dofy*1e6,3)} µm
+          ${okY?'INSIDE ✓':'OUTSIDE ✗'}
 
-// └────────────────────────────────┘`;
-// }
+└────────────────────────────────┘`;
+}
 
 // ── Main update ───────────────────────────────────────────────────────────
 function update() {
