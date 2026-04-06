@@ -1,0 +1,207 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:16px 20px;font-family:var(--font-sans)}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.ctrl-label{font-size:11px;color:var(--color-text-tertiary)}
+.pill{font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s;user-select:none}
+.pill.on{background:var(--color-background-primary);border-color:var(--color-text-primary);color:var(--color-text-primary)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--color-text-secondary)}
+th.sorted{color:var(--color-text-primary)}
+td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--color-background-secondary)}
+.sample-name{font-weight:500;color:var(--color-text-primary);font-size:12px}
+.profile-tag{display:inline-block;font-size:9px;padding:1px 6px;border-radius:3px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)}
+.rq-bar-wrap{display:flex;align-items:center;gap:6px}
+.rq-bar{height:6px;border-radius:3px;transition:width .3s;min-width:2px}
+.rq-val{font-size:11px;font-weight:500;min-width:40px}
+.nc-good{color:#1D9E75;font-weight:500}
+.nc-ok{color:#639922;font-weight:500}
+.nc-warn{color:#BA7517;font-weight:500}
+.nc-bad{color:#D85A30;font-weight:500}
+.flag-pass{color:#1D9E75;font-weight:500}
+.flag-fail{color:#BA7517}
+.empty{padding:24px;text-align:center;font-size:12px;color:var(--color-text-tertiary)}
+.legend{display:flex;gap:14px;margin-top:12px;font-size:10px;color:var(--color-text-tertiary);flex-wrap:wrap}
+.leg{display:flex;align-items:center;gap:4px}
+.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.stat{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
+.stat-n{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.stat-l{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
+</style>
+
+<div class="wrap">
+  <div class="summary" id="summary"></div>
+  <div class="controls">
+    <span class="ctrl-label">Filter:</span>
+    <span class="pill on" data-filter="all">All</span>
+    <span class="pill" data-filter="Pd">Pd</span>
+    <span class="pill" data-filter="Au">Au</span>
+    <span class="pill" data-filter="DLC">DLC</span>
+    <span class="pill" data-filter="Si">Si</span>
+    <span class="ctrl-label" style="margin-left:8px">Show only &lt;1 nm:</span>
+    <span class="pill" data-filter="pass" id="pass-pill">✓ passing</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-col="sample">Sample ↕</th>
+        <th data-col="profile">Profile ↕</th>
+        <th data-col="rq">Rq (nm) ↕</th>
+        <th data-col="ra">Ra (nm) ↕</th>
+        <th data-col="rz">Rz (nm) ↕</th>
+        <th data-col="nc">NC q=0.5 ↕</th>
+        <th>&lt;1 nm</th>
+      </tr>
+    </thead>
+    <tbody id="tbody"></tbody>
+  </table>
+
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:#1D9E75"></div>Rq &lt; 0.5 nm — excellent</div>
+    <div class="leg"><div class="leg-dot" style="background:#639922"></div>0.5–1.0 nm — good</div>
+    <div class="leg"><div class="leg-dot" style="background:#BA7517"></div>1.0–2.0 nm — marginal</div>
+    <div class="leg"><div class="leg-dot" style="background:#D85A30"></div>&gt; 2.0 nm — exceeds target</div>
+  </div>
+</div>
+
+<script>
+const data = [
+  {sample:'Pd si 500nm',       profile:'P1', rq:0.176, ra:0.144, rz:0.925},
+  {sample:'Pd si 500nm',       profile:'P2', rq:0.223, ra:0.182, rz:1.171},
+  {sample:'Pd si 500nm',       profile:'P3', rq:1.848, ra:1.484, rz:8.553},
+  {sample:'Pd 500nm graph',    profile:'P1', rq:0.181, ra:0.142, rz:1.006},
+  {sample:'Pd 500nm graph',    profile:'P2', rq:0.230, ra:0.188, rz:1.169},
+  {sample:'Pd 500nm graph',    profile:'P3', rq:1.934, ra:1.609, rz:8.147},
+  {sample:'Pd si 5µm',         profile:'P1', rq:0.148, ra:0.120, rz:0.806},
+  {sample:'Pd si 5µm',         profile:'P2', rq:0.165, ra:0.129, rz:0.870},
+  {sample:'Pd si 5µm',         profile:'P3', rq:1.555, ra:1.297, rz:6.058},
+  {sample:'Pd old',            profile:'P1', rq:1.008, ra:0.841, rz:3.857},
+  {sample:'Pd old',            profile:'P2', rq:1.308, ra:1.020, rz:6.531},
+  {sample:'Si surface',        profile:'P1', rq:0.164, ra:0.131, rz:1.076},
+  {sample:'Au on Cr (01)',     profile:'P1', rq:0.758, ra:0.546, rz:4.160},
+  {sample:'Au on Cr (01)',     profile:'P2', rq:0.866, ra:0.709, rz:4.347},
+  {sample:'Au on Cr (02)',     profile:'P1', rq:0.514, ra:0.413, rz:2.560},
+  {sample:'Au on Cr (02)',     profile:'P2', rq:1.286, ra:1.026, rz:6.875},
+  {sample:'DLC on Pd',         profile:'P1', rq:1.027, ra:0.783, rz:5.889},
+  {sample:'DLC on Pd',         profile:'P2', rq:0.883, ra:0.760, rz:3.934},
+  {sample:'DLC 5nm grid',      profile:'P1', rq:1.965, ra:1.559, rz:8.397},
+  {sample:'DLC 5nm grid',      profile:'P2', rq:1.575, ra:1.302, rz:6.865},
+  {sample:'DLC 5nm grid',      profile:'P3', rq:2.668, ra:2.613, rz:8.902},
+  {sample:'DLC boundary 00',   profile:'P1', rq:1.707, ra:1.316, rz:11.510},
+  {sample:'DLC boundary 00',   profile:'P2', rq:0.959, ra:0.774, rz:6.227},
+  {sample:'DLC boundary 01',   profile:'P1', rq:1.526, ra:1.287, rz:8.436},
+  {sample:'DLC boundary 01',   profile:'P2', rq:1.943, ra:1.650, rz:9.444},
+  {sample:'DLC boundary 02',   profile:'P1', rq:0.422, ra:0.324, rz:2.655},
+  {sample:'DLC boundary 02',   profile:'P2', rq:0.392, ra:0.311, rz:2.362},
+];
+
+const RQ_MAX = 3.0;
+let currentFilter = 'all';
+let currentSort = 'sample';
+let sortDir = 1;
+let passOnly = false;
+
+function nc(rq){ return Math.exp(-0.25*rq*rq); }
+
+function rqColor(rq){
+  if(rq < 0.5)  return '#1D9E75';
+  if(rq < 1.0)  return '#639922';
+  if(rq < 2.0)  return '#BA7517';
+  return '#D85A30';
+}
+function ncClass(v){
+  if(v >= 0.95) return 'nc-good';
+  if(v >= 0.85) return 'nc-ok';
+  if(v >= 0.70) return 'nc-warn';
+  return 'nc-bad';
+}
+
+function updateSummary(rows){
+  const total = rows.length;
+  const passing = rows.filter(r=>r.rq<1).length;
+  const best = rows.reduce((a,b)=>a.rq<b.rq?a:b, rows[0]);
+  const worst = rows.reduce((a,b)=>a.rq>b.rq?a:b, rows[0]);
+  document.getElementById('summary').innerHTML = `
+    <div class="stat"><div class="stat-n">${total}</div><div class="stat-l">profiles shown</div></div>
+    <div class="stat"><div class="stat-n" style="color:#1D9E75">${passing}</div><div class="stat-l">below 1 nm</div></div>
+    <div class="stat"><div class="stat-n" style="color:#1D9E75">${best ? best.rq.toFixed(3) : '—'}</div><div class="stat-l">best Rq (nm)</div></div>
+    <div class="stat"><div class="stat-n" style="color:#D85A30">${worst ? worst.rq.toFixed(3) : '—'}</div><div class="stat-l">worst Rq (nm)</div></div>
+  `;
+}
+
+function render(){
+  let rows = [...data];
+
+  if(passOnly) rows = rows.filter(r=>r.rq<1);
+  if(currentFilter !== 'all' && currentFilter !== 'pass'){
+    rows = rows.filter(r=>r.sample.toLowerCase().includes(currentFilter.toLowerCase()));
+  }
+
+  if(currentSort==='rq')      rows.sort((a,b)=>sortDir*(a.rq-b.rq));
+  else if(currentSort==='ra') rows.sort((a,b)=>sortDir*(a.ra-b.ra));
+  else if(currentSort==='rz') rows.sort((a,b)=>sortDir*(a.rz-b.rz));
+  else if(currentSort==='nc') rows.sort((a,b)=>sortDir*(nc(b.rq)-nc(a.rq)));
+  else if(currentSort==='profile') rows.sort((a,b)=>sortDir*a.profile.localeCompare(b.profile));
+  else rows.sort((a,b)=>sortDir*(a.sample.localeCompare(b.sample)||a.profile.localeCompare(b.profile)));
+
+  updateSummary(rows);
+
+  const tbody = document.getElementById('tbody');
+  if(!rows.length){ tbody.innerHTML=`<tr><td colspan="7" class="empty">No results</td></tr>`; return; }
+
+  tbody.innerHTML = rows.map(r=>{
+    const ncv = nc(r.rq);
+    const col = rqColor(r.rq);
+    const barW = Math.min(100,(r.rq/RQ_MAX)*100);
+    const pass = r.rq < 1;
+    return `<tr>
+      <td><span class="sample-name">${r.sample}</span></td>
+      <td><span class="profile-tag">${r.profile}</span></td>
+      <td>
+        <div class="rq-bar-wrap">
+          <div class="rq-bar" style="width:${barW}%;background:${col}"></div>
+          <span class="rq-val" style="color:${col}">${r.rq.toFixed(3)}</span>
+        </div>
+      </td>
+      <td>${r.ra.toFixed(3)}</td>
+      <td>${r.rz.toFixed(3)}</td>
+      <td><span class="${ncClass(ncv)}">${ncv.toFixed(3)}</span></td>
+      <td class="${pass?'flag-pass':'flag-fail'}">${pass?'✓':'△'}</td>
+    </tr>`;
+  }).join('');
+}
+
+document.querySelectorAll('[data-filter]').forEach(p=>{
+  p.addEventListener('click',()=>{
+    const f = p.dataset.filter;
+    if(f==='pass'){
+      passOnly = !passOnly;
+      p.classList.toggle('on', passOnly);
+      // reset material filter pills if toggling pass
+    } else {
+      document.querySelectorAll('[data-filter]:not(#pass-pill)').forEach(x=>x.classList.remove('on'));
+      p.classList.add('on');
+      currentFilter = f;
+    }
+    render();
+  });
+});
+
+document.querySelectorAll('th[data-col]').forEach(th=>{
+  th.addEventListener('click',()=>{
+    const col = th.dataset.col;
+    if(currentSort===col) sortDir*=-1; else{currentSort=col;sortDir=1;}
+    document.querySelectorAll('th').forEach(t=>t.classList.remove('sorted'));
+    th.classList.add('sorted');
+    render();
+  });
+});
+
+render();
+</script>

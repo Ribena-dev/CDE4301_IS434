@@ -22,7 +22,7 @@ Surface roughness Rq was measured by AFM in tapping mode, characterizing the top
 Above are some example AFM images of Au, DLC and PD 
 
 <iframe 
-  src="scripts/roughness_table_interactive.html" 
+  src="scripts/roughness_table.html" 
   style="border:none; border-radius:6px;"
   sandbox="allow-scripts">
 </iframe>

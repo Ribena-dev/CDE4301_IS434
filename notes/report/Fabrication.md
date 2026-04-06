@@ -119,7 +119,7 @@ Development is performed after PBW exposure and is included here for process con
 
 ### 3.4 P-beam structure
 
-This section will cover the general P-beam structures that need to be manipulated or calibrated before and during P-Beam writing, to control teh spot size
+This section will cover the general P-beam structures that need to be manipulated or calibrated before and during P-Beam writing, to control the  spot size
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/beam_line.png" alt="beam line optics"  >
