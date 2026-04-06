@@ -837,15 +837,171 @@
  
  
     @media (max-width: 899px) {
-      #mobile-bottom-bar { display: block; }
+      #mobile-bottom-bar { display: none; }
       body { padding-bottom: 0; }
     }
  
+
+    /* ── Process left drawer (mobile only) ──────────────────── */
+    #proc-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 6px;
+      flex-shrink: 0;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    #proc-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #1a1a1a;
+      border-radius: 1px;
+    }
+
+    /* small coloured dot on toggle button showing active step colour */
+    #proc-toggle-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      display: none;
+      margin: 0 auto;
+    }
+
+    /* left drawer overlay */
+    #proc-drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.35);
+      z-index: 300;
+    }
+
+    #proc-drawer-overlay.open { display: block; }
+
+    /* left drawer panel */
+    #proc-drawer {
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid #ddd;
+      z-index: 301;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      transform: translateX(-100%);
+      transition: transform 0.25s ease;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #proc-drawer.open { transform: translateX(0); }
+
+    #proc-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-bottom: 2px solid #1a1a1a;
+    }
+
+    #proc-drawer-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    #proc-drawer-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 18px;
+      color: #aaa;
+      padding: 0;
+      line-height: 1;
+    }
+
+    #proc-drawer-close:hover { color: #1a1a1a; }
+
+    /* each step row in the drawer */
+    .proc-drawer-step {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 1px solid #f0f0ee;
+      opacity: 0.4;
+      transition: opacity 0.2s;
+    }
+
+    .proc-drawer-step.active {
+      opacity: 1;
+      background: #fafaf8;
+      border-left: 3px solid #1a1a1a;
+    }
+
+    .proc-drawer-diagram {
+      width: 60px;
+      height: 30px;
+      flex-shrink: 0;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 2px;
+      border: 0.5px solid #ccc;
+      border-radius: 3px;
+      padding: 2px 3px;
+      background: #fafaf8;
+    }
+
+    .proc-drawer-step.active .proc-drawer-diagram {
+      border-color: #1a1a1a;
+      background: #fff;
+    }
+
+    .proc-drawer-info { flex: 1; }
+
+    .proc-drawer-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      line-height: 1.3;
+    }
+
+    .proc-drawer-step.active .proc-drawer-name { color: #1a1a1a; }
+
+    .proc-drawer-sub {
+      font-size: 11px;
+      color: #bbb;
+      margin-top: 1px;
+    }
+
+    .proc-drawer-step.active .proc-drawer-sub { color: #888; }
+
+    @media (max-width: 899px) {
+      #proc-toggle { display: flex; }
+      #proc-toggle-dot { display: block; }
+    }
+
   </style>
 </head>
 <body>
  
 <header id="site-header">
+  {% if page.url contains 'Methology' or page.url contains 'Fabrication' or page.url contains 'fna' or page.url contains 'FW' %}
+  <button id="proc-toggle" onclick="toggleProcDrawer()" aria-label="Toggle process panel">
+    <span></span><span></span><span></span>
+    <div id="proc-toggle-dot"></div>
+  </button>
+  {% endif %}
   <img src="{{ '/images/NUS_logo.png' | relative_url }}" alt="NUS Logo"
        onerror="this.style.display='none'">
   <div class="header-text">
@@ -964,9 +1120,13 @@
 </div>
  
 <script>
-function toggleProcBar(){
-  const bar = document.getElementById('mobile-bottom-bar');
-  bar.classList.toggle('collapsed');
+function toggleProcDrawer(){
+  const overlay = document.getElementById('proc-drawer-overlay');
+  const drawer  = document.getElementById('proc-drawer');
+  if(!overlay || !drawer) return;
+  const open = overlay.classList.toggle('open');
+  drawer.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
 }
 
 function toggleMobileNav(){
@@ -1078,14 +1238,20 @@ function toggleMobileNav(){
   }
  
   function syncDots(steps){
-    /* update the header label with the current active step name */
-    const activeStep = document.querySelector('.mob-proc-step.active');
-    if(activeStep){
-      const name = activeStep.querySelector('.mob-proc-name');
-      const label = document.getElementById('mob-proc-active-name');
-      if(label && name) label.textContent = name.textContent;
-      /* scroll active step into view inside the bar */
-      activeStep.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+    /* sync drawer step highlights */
+    let activeSlug = '';
+    headings.forEach(h => {
+      if(h.getBoundingClientRect().top <= 160) activeSlug = h.id;
+    });
+    document.querySelectorAll('.proc-drawer-step').forEach(step => {
+      const keys = step.dataset.keys ? step.dataset.keys.split(',') : [];
+      step.classList.toggle('active', keys.some(k => activeSlug.includes(k.trim())));
+    });
+    /* ensure at least first drawer step is active if nothing matches */
+    const anyActive = document.querySelector('.proc-drawer-step.active');
+    if(!anyActive){
+      const first = document.querySelector('.proc-drawer-step');
+      if(first) first.classList.add('active');
     }
   }
 })();
