@@ -296,6 +296,13 @@ $$ \theta = 90° - \arctan\!\left(\frac{f}{h}\right)$$
  
 where *h* is the feature height determined from the PBW process parameters and verified by AFM step-height measurement.
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/calc_angle.jpg" alt = "nevot_coroce"  >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Vizual of angle calcualtions
+    <strong>Figure 2.8</strong> 
+  </figcaption>
+</figure>
+
 
 The resolution limit for this type of measurement is approximately 1 nm,below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. It is also limited to top-down or oblique imaging, it cannot directly image the sidewall profile without cross-sectioning,
 which is destructive. 
@@ -305,7 +312,7 @@ To utilize and analyse the electron detector spectrum, I developed a python scri
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/software_flow.png" alt = "nevot_coroce"  >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> software flowchart
-    <strong>Figure 2.8</strong> 
+    <strong>Figure 2.9</strong> 
   </figcaption>
 </figure>
 
@@ -319,7 +326,7 @@ AFM is used to characterize the surface roughness of the top face of the deposit
 
 
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Afm example 
-    <strong>Figure 2.7</strong> 
+    <strong>Figure 2.10</strong> 
   </figcaption>
 </figure>
 
@@ -327,7 +334,7 @@ AFM is used to characterize the surface roughness of the top face of the deposit
   <img src="images/afm_ex_graph.png" alt="afm graph" >
 
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> graph of surface at center lines in both verticle and horizontal
-    <strong>Figure 2.8</strong> 
+    <strong>Figure 2.11</strong> 
   </figcaption>
 </figure>
 
