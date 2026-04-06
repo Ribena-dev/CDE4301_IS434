@@ -1,25 +1,71 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{padding:16px 20px;font-family:var(--font-sans)}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.ctrl-label{font-size:11px;color:var(--color-text-tertiary)}
+.pill{font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s;user-select:none}
+.pill.on{background:var(--color-background-primary);border-color:var(--color-text-primary);color:var(--color-text-primary)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{text-align:left;font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--color-text-secondary)}
+th.sorted{color:var(--color-text-primary)}
+td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--color-background-secondary)}
+.sample-name{font-weight:500;color:var(--color-text-primary);font-size:12px}
+.profile-tag{display:inline-block;font-size:9px;padding:1px 6px;border-radius:3px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);color:var(--color-text-tertiary)}
+.rq-bar-wrap{display:flex;align-items:center;gap:6px}
+.rq-bar{height:6px;border-radius:3px;transition:width .3s;min-width:2px}
+.rq-val{font-size:11px;font-weight:500;min-width:40px}
+.nc-good{color:#1D9E75;font-weight:500}
+.nc-ok{color:#639922;font-weight:500}
+.nc-warn{color:#BA7517;font-weight:500}
+.nc-bad{color:#D85A30;font-weight:500}
+.flag-pass{color:#1D9E75;font-weight:500}
+.flag-fail{color:#BA7517}
+.empty{padding:24px;text-align:center;font-size:12px;color:var(--color-text-tertiary)}
+.legend{display:flex;gap:14px;margin-top:12px;font-size:10px;color:var(--color-text-tertiary);flex-wrap:wrap}
+.leg{display:flex;align-items:center;gap:4px}
+.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px}
+.stat{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
+.stat-n{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.stat-l{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
+</style>
+
 <div class="wrap">
+  <div class="summary" id="summary"></div>
   <div class="controls">
     <span class="ctrl-label">Filter:</span>
-    <span class="pill on" data-filter="all">All Samples</span>
+    <span class="pill on" data-filter="all">All</span>
     <span class="pill" data-filter="Pd">Pd</span>
     <span class="pill" data-filter="Au">Au</span>
     <span class="pill" data-filter="DLC">DLC</span>
-    <span class="pill" data-filter="Si">Si Surface</span>
+    <span class="pill" data-filter="Si">Si</span>
+    <span class="ctrl-label" style="margin-left:8px">Show only &lt;1 nm:</span>
+    <span class="pill" data-filter="pass" id="pass-pill">✓ passing</span>
   </div>
 
-  <table id="tbl">
+  <table>
     <thead>
       <tr>
-        <th data-col="sample">Sample Name <span class="arr">↕</span></th>
-        <th data-col="profile">Profile</th>
-        <th data-col="rq" style="width: 220px;">Rq Roughness (nm) <span class="arr">↕</span></th>
-        <th>Status</th>
-        <th>Links</th>
+        <th data-col="sample">Sample ↕</th>
+        <th data-col="profile">Profile ↕</th>
+        <th data-col="rq">Rq (nm) ↕</th>
+
+        <th>&lt;1 nm</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
+
+  <div class="legend">
+    <div class="leg"><div class="leg-dot" style="background:#1D9E75"></div>Rq &lt; 0.5 nm — excellent</div>
+    <div class="leg"><div class="leg-dot" style="background:#639922"></div>0.5–1.0 nm — good</div>
+    <div class="leg"><div class="leg-dot" style="background:#BA7517"></div>1.0–2.0 nm — marginal</div>
+    <div class="leg"><div class="leg-dot" style="background:#D85A30"></div>&gt; 2.0 nm — exceeds target</div>
+  </div>
 </div>
 
 <script>
@@ -53,49 +99,107 @@ const data = [
   {sample:'DLC boundary 02',   profile:'P2', rq:0.392},
 ];
 
-const RQ_LIMIT = 1.0; // Pass threshold (adjust as needed)
-const RQ_MAX = 3.0;   // Scaling for progress bar max
+const RQ_MAX = 3.0;
+let currentFilter = 'all';
+let currentSort = 'sample';
+let sortDir = 1;
+let passOnly = false;
+
+function nc(rq){ return Math.exp(-0.25*rq*rq); }
+
+function rqColor(rq){
+  if(rq < 0.5)  return '#1D9E75';
+  if(rq < 1.0)  return '#639922';
+  if(rq < 2.0)  return '#BA7517';
+  return '#D85A30';
+}
+function ncClass(v){
+  if(v >= 0.95) return 'nc-good';
+  if(v >= 0.85) return 'nc-ok';
+  if(v >= 0.70) return 'nc-warn';
+  return 'nc-bad';
+}
+
+function updateSummary(rows){
+  const total = rows.length;
+  const passing = rows.filter(r=>r.rq<1).length;
+  const best = rows.reduce((a,b)=>a.rq<b.rq?a:b, rows[0]);
+  const worst = rows.reduce((a,b)=>a.rq>b.rq?a:b, rows[0]);
+  document.getElementById('summary').innerHTML = `
+    <div class="stat"><div class="stat-n">${total}</div><div class="stat-l">profiles shown</div></div>
+    <div class="stat"><div class="stat-n" style="color:#1D9E75">${passing}</div><div class="stat-l">below 1 nm</div></div>
+    <div class="stat"><div class="stat-n" style="color:#1D9E75">${best ? best.rq.toFixed(3) : '—'}</div><div class="stat-l">best Rq (nm)</div></div>
+    <div class="stat"><div class="stat-n" style="color:#D85A30">${worst ? worst.rq.toFixed(3) : '—'}</div><div class="stat-l">worst Rq (nm)</div></div>
+  `;
+}
 
 function render(){
   let rows = [...data];
 
-  // Material Filtering
-  if(currentFilter !== 'all'){
-    rows = rows.filter(r => r.sample.toLowerCase().includes(currentFilter.toLowerCase()));
+  if(passOnly) rows = rows.filter(r=>r.rq<1);
+  if(currentFilter !== 'all' && currentFilter !== 'pass'){
+    rows = rows.filter(r=>r.sample.toLowerCase().includes(currentFilter.toLowerCase()));
   }
 
-  // Sorting
-  if(currentSort === 'rq') rows.sort((a,b)=>sortDir*(a.rq-b.rq));
-  else rows.sort((a,b)=>sortDir*(a.sample.localeCompare(b.sample)));
+  if(currentSort==='rq')      rows.sort((a,b)=>sortDir*(a.rq-b.rq));
+  else if(currentSort==='ra') rows.sort((a,b)=>sortDir*(a.ra-b.ra));
+  else if(currentSort==='rz') rows.sort((a,b)=>sortDir*(a.rz-b.rz));
+  else if(currentSort==='nc') rows.sort((a,b)=>sortDir*(nc(b.rq)-nc(a.rq)));
+  else if(currentSort==='profile') rows.sort((a,b)=>sortDir*a.profile.localeCompare(b.profile));
+  else rows.sort((a,b)=>sortDir*(a.sample.localeCompare(b.sample)||a.profile.localeCompare(b.profile)));
+
+  updateSummary(rows);
 
   const tbody = document.getElementById('tbody');
-  
-  tbody.innerHTML = rows.map(r=>{
-    const barW = Math.min(100, (r.rq / RQ_MAX) * 100);
-    const isPass = r.rq < RQ_LIMIT;
-    const rqColor = r.rq < 0.5 ? '#1D9E75' : r.rq < 1.0 ? '#639922' : '#BA7517';
+  if(!rows.length){ tbody.innerHTML=`<tr><td colspan="7" class="empty">No results</td></tr>`; return; }
 
+  tbody.innerHTML = rows.map(r=>{
+    const ncv = nc(r.rq);
+    const col = rqColor(r.rq);
+    const barW = Math.min(100,(r.rq/RQ_MAX)*100);
+    const pass = r.rq < 1;
     return `<tr>
       <td><span class="sample-name">${r.sample}</span></td>
       <td><span class="profile-tag">${r.profile}</span></td>
       <td>
         <div class="rq-bar-wrap">
-          <div class="rq-bar" style="width:${barW}%; background:${rqColor}"></div>
-          <span class="rq-val" style="color:${rqColor}">${r.rq.toFixed(3)} nm</span>
+          <div class="rq-bar" style="width:${barW}%;background:${col}"></div>
+          <span class="rq-val" style="color:${col}">${r.rq.toFixed(3)}</span>
         </div>
       </td>
-      <td>
-        <span class="badge ${isPass ? 'pass' : 'warn'}">
-          ${isPass ? 'IDEAL' : 'ROUGH'}
-        </span>
-      </td>
-      <td>
-        <div style="display:flex; gap:4px;">
-          <a class="link-btn" title="View AFM Scan" href="#">AFM</a>
-          <a class="link-btn" title="View Graph" href="#">Plot</a>
-        </div>
-      </td>
+      <td>${r.ra.toFixed(3)}</td>
+      <td>${r.rz.toFixed(3)}</td>
+      <td><span class="${ncClass(ncv)}">${ncv.toFixed(3)}</span></td>
+      <td class="${pass?'flag-pass':'flag-fail'}">${pass?'✓':'△'}</td>
     </tr>`;
   }).join('');
 }
+
+document.querySelectorAll('[data-filter]').forEach(p=>{
+  p.addEventListener('click',()=>{
+    const f = p.dataset.filter;
+    if(f==='pass'){
+      passOnly = !passOnly;
+      p.classList.toggle('on', passOnly);
+      // reset material filter pills if toggling pass
+    } else {
+      document.querySelectorAll('[data-filter]:not(#pass-pill)').forEach(x=>x.classList.remove('on'));
+      p.classList.add('on');
+      currentFilter = f;
+    }
+    render();
+  });
+});
+
+document.querySelectorAll('th[data-col]').forEach(th=>{
+  th.addEventListener('click',()=>{
+    const col = th.dataset.col;
+    if(currentSort===col) sortDir*=-1; else{currentSort=col;sortDir=1;}
+    document.querySelectorAll('th').forEach(t=>t.classList.remove('sorted'));
+    th.classList.add('sorted');
+    render();
+  });
+});
+
+render();
 </script>

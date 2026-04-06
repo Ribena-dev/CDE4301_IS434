@@ -28,7 +28,7 @@ Above are some example AFM images of Au, DLC and PD
 </iframe>
 
 
-Note: P1 ia a horizontal roughness and P2 is the verticle roughness 
+Note: P1,P2,P3 all represent diffrent lines cans on the surface
 
 Au deposited by magnetron sputtering was expected to show the highest roughness due to grain nucleation during island growth, consistent with the AFM observations from the interim report.
 
@@ -46,6 +46,9 @@ In magnetron sputtering, atoms arrive at the substrate with energies in the rang
 The Pd result at 0.219 nm supports this interpretation directly. Palladium deposited by electron-beam evaporation wets substrates much more readily than gold, has a higher surface energy, and the directional deposition geometry suppresses island growth. The order-of-magnitude improvement in Rq between Pd and Au is therefore consistent with the combined effect of both the deposition technique and the intrinsic material properties.
 
 For DLC the picture is more varied. DLC is essentially isotropic at 0.030 nm difference, indicating a genuinely uniform amorphous film structure in that region. DLC on Pd and DLC on Au show larger anisotropy of 0.753 nm and 0.417 nm respectively. FCVA is in principle an isotropic amorphous material with no preferred crystallographic orientation, so anisotropy in the DLC profiles most likely reflects the previous underneath layers of Pd and Au
+
+
+#### AFM across grid
 
 
 ### 4.2 Sidewall angle via electron detector
