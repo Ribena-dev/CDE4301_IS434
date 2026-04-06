@@ -75,7 +75,7 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
 
 #### Development and Lift-off
 
-<video width="300px" controls>
+<video width="300px" controls style="text-align: center; margin: 20px 0;">
   <source src="images/development_1.mp4" type="video/mp4">
 </video>
 
@@ -118,6 +118,8 @@ At these scales, chromatic aberration is the primary limit on spot size. To main
 <iframe 
   src="scripts/beam_geo.html" 
   allowfullscreen="true"
+  width="500px"
+  height="500px"
   style="border:none; border-radius:6px;"
   sandbox="allow-scripts" >
 </iframe>
