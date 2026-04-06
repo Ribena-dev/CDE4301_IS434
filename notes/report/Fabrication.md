@@ -49,29 +49,24 @@ Key Findings
 
 The simulation focused on two main factors that determine the quality of our microstructures:
 
-  - <span class="graph-tooltip">
-  <span class="gt-trigger">Penetration & The Bragg Peak</span>
-  <div class="gt-popup">
-    <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/srim_lateral_straggle.png" 
-       alt="Plot of lateral straggle sigma versus depth in PMMA for 2 MeV protons, comparing raw SRIM data including nuclear scatter outliers against IQR-cleaned data, with a 3 nm target threshold line" 
-        style="margin: 5px;">
-</figure>
-</span>: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
+  - <span class="img-tooltip">
+  <span class="it-trigger">Penetration & The Bragg Peak:</span>
+  <div class="it-popup">
+    <img src="images/srim_lateral_straggle.png.png" alt="AFM profile of Pd surface">
+    div>
+  </div>
+</span> 
+The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
   
 
-  - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional <span class="graph-tooltip">
+  - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional 
+  <span class="graph-tooltip">
   <span class="gt-trigger">Electron Beam Lithography</span>
   <div class="gt-popup">
-    <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"
-            scrolling="no"></iframe>
+    <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html" scrolling="yes" width="400px"></iframe>
     <div class="gt-caption">EBL lateral spread vs depth — click to explore</div>
   </div>
 </span>
-
-
-
-
 
 
 
@@ -160,13 +155,24 @@ This section will cover the general P-beam structures that need to be manipulate
 </figure>
 
 
+Before we begin patterning, we verify the focus by scanning the beam across a resolution standard. By fitting the resulting signal to an error function, we extract the beam’s FWHM (Full Width at Half Maximum) to confirm it is at its sharpest. 
 
-The PBW facility at CIBA is built around a 3.5 MV Singletron accelerator (HVEE) which generates a focused MeV proton beam for lithography [4] [5]. Protons are produced from hydrogen gas, accelerated to the required energy, and filtered by a 90° analysing magnet before being directed to the PBW end station via a switching magnet. Blanking plates deflect the beam off-axis to control dose delivery during patterning [4].
- 
-Before focusing, the beam passes through two apertures. The objective aperture (8 × 4 µm²) defines the virtual source size, while the collimator aperture (30 × 30 µm²) reduces angular divergence entering the lenses, giving a beam half-divergence of approximately 3 µrad [4].
+The Proton Beam Writing (PBW) facility at CIBA is built around a **3.5 MV Singletron accelerator (HVEE)**, which generates the focused MeV proton beam required for high-resolution lithography **[4][5]**. To achieve sub-10 nm precision, the system refines the beam through several critical stages.
 
-Focusing is achieved by a spaced Oxford triplet of magnetic quadrupole lenses in a converging-diverging-converging (CDC) configuration. A single quadrupole focuses in one plane and defocuses in the other; the triplet arrangement produces a symmetric spot focus. With an object-to-lens distance of 7.5 m and image distance of 30 mm, the system achieves a demagnification of 857 × 130, yielding a minimum spot size of 9.3 × 32 nm² [4]. Chromatic aberration, is the dominant limit on spot size, requiring ~10 ppm accelerator stability for sub-10 nm resolution [4]. Before writing, the beam is focused by scanning across a free-standing resolution standard. The transmitted or secondary electron signal produces a complementary error function profile, which is fitted to extract the beam FWHM (Section 2.5). Once focused, a writing file is loaded and the beam is rastered over the resist using electrostatic scanners combined with stage movement for
-larger fields [5].
+#### **1. Beam Generation and Refinement**
+Protons are produced from hydrogen gas, accelerated to **2 MeV**, and filtered by a **90° analysing magnet**. This ensures a "clean" beam before it is directed to the end station via a switching magnet. Two apertures then define the beam's geometry **[4]**:
+* **Objective Aperture ($8 \times 4$ µm²):** Defines the virtual source size.
+* **Collimator Aperture ($30 \times 30$ µm²):** Limits angular divergence to approximately **3 µrad**.
+
+#### **2. The Oxford Triplet (Demagnification)**
+Focusing is achieved using a spaced **Oxford triplet** of magnetic quadrupole lenses in a **converging-diverging-converging (CDC)** configuration. Since a single quadrupole focuses in one plane while defocusing the other, this triplet is essential for a symmetric spot focus **[4]**. 
+
+With an object-to-lens distance of 7.5 m and an image distance of 30 mm, the system achieves a massive demagnification (**857× in X, 130× in Y**), resulting in a minimum spot size of **$9.3 \times 32$ nm²**. 
+
+#### **3. Stability and Calibration**
+At these scales, **chromatic aberration** is the primary limit on spot size. To maintain sub-10 nm resolution, the accelerator requires a stability of approximately **10 ppm** **[4]**. 
+
+Before writing, the beam focus is verified by scanning across a resolution standard. The transmitted or secondary electron signal produces a **complementary error function profile**, which is fitted to extract the beam **FWHM** (as discussed in Section 2.5). Once focused, electrostatic scanners and stage movement are used to raster the beam over the resist **[5]**.
 
 <iframe 
   src="scripts/beam_geo.html" 
@@ -176,25 +182,24 @@ larger fields [5].
   sandbox="allow-scripts" >
 </iframe>
 
+#### **4. Strategic Focal Plane Positioning**
+The sample stage can be adjusted along the beam axis with **1 µm accuracy**. Because the beam converges to a minimum "waist" at the focal point and diverges on either side, the effective spot size depends on the defocus distance ($\Delta z$) and the cone half-angle ($\alpha$). 
 
-  
+By systematically varying the focal plane, we can compensate for beam divergence at depth. This ensures the beam stays optimally focused throughout the entire **1 µm PMMA thickness**, rather than being sharpest only at the surface.
+
+
+### System Specifications Summary
+
 | Parameter | Value |
-|---|---|
-| Accelerator | 3.5 MV Singletron (HVEE) |
-| Beam energy | 2 MeV protons |
-| Objective aperture | 8 × 4 µm² |
-| Beam half-divergence | ~3 µrad |
-| Lens configuration | Spaced Oxford triplet (CDC) |
-| Object-to-lens distance | 7.5 m |
-| Image distance | 30 mm |
-| Demagnification (X) | 857 |
-| Demagnification (Y) | 130 |
-| Quadrupole power supply resolution | 2 ppm (Bruker) |
+| :--- | :--- |
+| **Accelerator** | 3.5 MV Singletron (HVEE) |
+| **Beam Energy** | 2 MeV protons |
+| **Beam Half-Divergence** | ~3 µrad |
+| **Lens Configuration** | Spaced Oxford triplet (CDC) |
+| **Demagnification (X / Y)** | 857 / 130 |
+| **Stage Accuracy (Z-axis)**| ~1 µm |
+| **Power Supply Resolution**| 2 ppm (Bruker) |
 
-The beam spot size plays a critical role in controlling patterning precision. A larger spot effectively broadens the dose profile at the feature edge, increasing the measured FWHM f and reducing the achievable sidewall angle. The relationship is non-linear: when the beam is already well focused, small changes in spot size have little effect on θ, but when the beam is defocused or the focal plane is misplaced, the degradation in θ becomes significant. For this reason, beam focus is verified before each writing session by scanning across the free-standing resolution standard and fitting the transmitted or secondary electron signal to an error function to extract the beam FWHM [4].
-
-The focal plane position can be physically adjusted by moving the sample stage along the beam axis with an accuracy of approximately 1 µm. Since the beam converges to a minimum spot at the focal point and diverges either side, placing the sample above or below focus increases
-the effective spot size at the resist surface according to the cone half-angle α and the defocus distance Δz. Systematic variation of the focal plane position during writing is therefore a potential strategy for compensating residual beam divergence at depth, keeping the beam optimally focused throughout the resist thickness rather than only at the surface.
 
 
 

@@ -598,66 +598,33 @@
     }
 
     /* Process panel inside bottom bar */
-    /* mobile process — single step display */
+    /* mobile process — show all steps as a progress row, highlight active */
     #mob-process {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0;
+      gap: 6px;
     }
 
-    /* all steps hidden by default */
     .mob-proc-step {
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
-      width: 100%;
+      flex: 1;
+      opacity: 0.25;
+      transition: opacity 0.3s;
+      min-width: 0;
     }
 
-    /* only active step shown */
-    .mob-proc-step.active {
-      display: flex;
-    }
+    .mob-proc-step.active { opacity: 1; }
 
-    /* hide connectors entirely */
-    .mob-proc-connector { display: none; }
-
-    /* bigger diagram for single display */
-    .mob-proc-diagram {
-      width: 120px !important;
-      height: 50px !important;
-      margin-bottom: 6px;
-    }
-
-    .mob-layer { height: 8px !important; }
-
-    .mob-proc-name {
-      font-size: 12px !important;
-      font-weight: 700;
-      color: #1a1a1a !important;
-    }
-
-    /* step counter dots */
-    #mob-proc-dots {
-      display: flex;
-      gap: 5px;
-      justify-content: center;
-      margin-top: 8px;
-    }
-
-    .proc-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
+    /* connector line between steps */
+    .mob-proc-connector {
+      width: 12px;
+      height: 1px;
       background: #ddd;
-      transition: background 0.2s;
-    }
-
-    .proc-dot.active { background: #1a1a1a; }
-
-    /* bottom bar layout */
-    #mobile-bottom-bar {
-      padding: 8px 16px 10px;
+      flex-shrink: 0;
+      margin-bottom: 14px;
     }
 
     .mob-proc-step {
@@ -740,8 +707,8 @@
         transparent 2px,transparent 5px
       );
     }
-
-                /* ── Graph hover tooltip ─────────────────────────────── */
+    
+            /* ── Graph hover tooltip ─────────────────────────────── */
     .graph-tooltip {
       position: relative;
       display: inline;
@@ -800,64 +767,6 @@
       }
     }
 
-        /* ── Image hover tooltip ─────────────────────────────── */
-    .img-tooltip {
-      position: relative;
-      display: inline;
-    }
-
-    .img-tooltip .it-trigger {
-      color: #1a1a1a;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
-      cursor: pointer;
-    }
-
-    .img-tooltip .it-popup {
-      display: none;
-      position: absolute;
-      bottom: calc(100% + 10px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 320px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      z-index: 300;
-      overflow: hidden;
-      padding: 10px;
-    }
-
-    .img-tooltip .it-popup img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-radius: 4px;
-      margin: 0;
-    }
-
-    .img-tooltip .it-caption {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 11px;
-      color: #888;
-      text-align: center;
-      padding: 6px 4px 2px;
-    }
-
-    .img-tooltip:hover .it-popup,
-    .img-tooltip:focus-within .it-popup {
-      display: block;
-    }
-
-    @media (max-width: 600px) {
-      .img-tooltip .it-popup {
-        width: 220px;
-        left: 0;
-        transform: none;
-      }
-    }
 
     /* push body up so content not hidden behind bar */
     body.has-bottom-bar { padding-bottom: 60px; }
@@ -960,7 +869,7 @@
         <div class="layer metal-islands"></div>
         <div class="layer silicon"></div>
       </div>
-      <div class="proc-name">Metal + liftoff</div>
+      <div class="proc-name">Metal</div>
     </div>
 
     <div class="proc-step" data-keys="analysis,afm,sidewall,roughness,erf,gaussian,electron,detector">
@@ -1070,7 +979,6 @@ function toggleMobileNav(){
       if(mobSteps.length && !document.querySelector('.mob-proc-step.active')){
         mobSteps[0].classList.add('active');
       }
-      syncDots(mobSteps);
     }
 
     window.addEventListener('scroll', updatePanel, { passive: true });
@@ -1091,18 +999,10 @@ function toggleMobileNav(){
           step.classList.toggle('active', keys.some(k => activeSlug.includes(k.trim())));
         });
         if(!document.querySelector('.mob-proc-step.active')) mobSteps[0].classList.add('active');
-        syncDots(mobSteps);
       }
       window.addEventListener('scroll', updateMobProc, { passive: true });
       updateMobProc();
     }
-  }
-
-  function syncDots(steps){
-    const dots = document.querySelectorAll('.proc-dot');
-    steps.forEach((s, i) => {
-      if(dots[i]) dots[i].classList.toggle('active', s.classList.contains('active'));
-    });
   }
 })();
 </script>
@@ -1165,14 +1065,6 @@ function toggleMobileNav(){
         <div class="mob-proc-name">Analysis</div>
       </div>
 
-    </div>
-    <div id="mob-proc-dots">
-      <div class="proc-dot" data-idx="0"></div>
-      <div class="proc-dot" data-idx="1"></div>
-      <div class="proc-dot" data-idx="2"></div>
-      <div class="proc-dot" data-idx="3"></div>
-      <div class="proc-dot" data-idx="4"></div>
-      <div class="proc-dot" data-idx="5"></div>
     </div>
   </div>
 </div>
