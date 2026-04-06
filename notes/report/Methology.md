@@ -49,7 +49,7 @@ direct-write lithography at CIBA [10].
 </figure>
 
 PMMA is a long-chain synthetic polymer and one of the most widely used positive resists in nano-fabrication. Its primary advantages include a simple formulation (PMMA dissolved in anisole, a low-toxicity solvent), insensitivity to white
-light (λ > 250 nm), a wide range of available film thicknesses through dilution, no shelf-life limitations, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the pmma[10] [11]. 
+light (λ > 250 nm), a wide range of available film thicknesses through dilution, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the pmma[10] [11]. 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/p_re.png"  width="280" >
@@ -59,6 +59,8 @@ light (λ > 250 nm), a wide range of available film thicknesses through dilution
 </figure>
 
 PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission ,the breaking of the polymer backbone at the carbon–carbonyl bond. This reduces the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development , leaving the unexposed PMMA as the remaining resist pattern [11] [12].
+
+It is available in two standard molecular weights 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1] [2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness
 
 #### HSQ ,Hydrogen Silsesquioxane
 
@@ -409,6 +411,13 @@ All three parameters are computed from 1D line profiles extracted from the AFM h
 
   <li>National Institute of Standards and Technology, "Improving CD-AFM measurements from the tip down," NIST News, Mar. 2016. Available: <a href="https://www.nist.gov/news-events/news/2016/03/improving-cd-afm-measurements-tip-down">nist.gov</a></li>
 </ol>
+
+<li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available:
+    <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
+
+<li>J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton beam writing:
+    a review," <em>Applied Surface Science</em>, 2014.
+    DOI: <a href="https://doi.org/10.1016/j.apsusc.2014.04.147">10.1016/j.apsusc.2014.04.147</a></li>
 
 </div>
  

@@ -2,7 +2,7 @@
 ### 3.1 overview of fabrication steps 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/lit_fab_3.png" alt="resolution fabrication overview"  style="margin: 5px;">
+  <img src="images/lit_fab_3.png" alt="resolution fabrication overview"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.1:</strong> Fabrication process for resolution standard overview
@@ -49,7 +49,16 @@ Key Findings
 
 The simulation focused on two main factors that determine the quality of our microstructures:
 
-  - Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design.
+  - <span class="graph-tooltip">
+  <span class="gt-trigger">Penetration & The Bragg Peak</span>
+  <div class="gt-popup">
+    <figure style="text-align: center; margin: 20px 0;">
+  <img src="images/srim_lateral_straggle.png" 
+       alt="Plot of lateral straggle sigma versus depth in PMMA for 2 MeV protons, comparing raw SRIM data including nuclear scatter outliers against IQR-cleaned data, with a 3 nm target threshold line" 
+        style="margin: 5px;">
+</figure>
+</span>: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
+  
 
   - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional <span class="graph-tooltip">
   <span class="gt-trigger">Electron Beam Lithography</span>
@@ -59,6 +68,8 @@ The simulation focused on two main factors that determine the quality of our mic
     <div class="gt-caption">EBL lateral spread vs depth — click to explore</div>
   </div>
 </span>
+
+
 
 
 
@@ -84,10 +95,10 @@ $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/pmma_495k_mid.png" 
        alt="Spin speed vs film thickness for PMMA 495K at medium concentration in anisole" 
-       width="280" style="margin: 5px;">
+       width="280" >
   <img src="images/pmma_495k_thin.png" 
        alt="Spin speed vs film thickness for PMMA 495K at low concentration in anisole" 
-       width="280" style="margin: 5px;">
+       width="280">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.X:</strong> Spin curves for PMMA 495K at medium (left) 
     and low (right) concentrations in anisole. Higher spin speed produces thinner films.
@@ -99,11 +110,15 @@ $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(
 
 Film thickness is governed by two parameters: the concentration (viscosity) of the resist solution and the spin speed [1]. Higher spin speeds and lower concentrations produce thinner films, following an approximate inverse power-law relationship.
  
-PMMA is available in two standard molecular weights 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [1][2]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness
 
-A key design constraint is that the PMMA thickness must be at least five times greater than the intended metal deposition thickness. This ratio is required for two reasons: first, it ensures sufficient structural integrity of the resist walls during development and metal
-deposition; and second, it prevents metal overflowing the resist sidewalls, a phenomenon known as mushrooming, where excess metal forms a cap-like layer over the resist that prevents clean lift-off. However, if the PMMA is made excessively thick, the increased aspect ratio of the trench can cause resist wall collapse, and as shown by the SRIM simulations in Section 3.2, deeper features allow more lateral beam straggle to accumulate, degrading the
-sidewall angle. The optimal PMMA thickness is therefore determined by balancing these competing constraints against the spin curves shown above.
+
+A key design constraint is that the PMMA thickness must be at least five times greater than the intended metal deposition thickness. 
+This ratio is required for two reasons: 
+- first, it ensures sufficient structural integrity of the resist walls during development and metal
+deposition
+- second, it prevents metal overflowing the resist sidewalls, a phenomenon known as mushrooming, where excess metal forms a cap-like layer over the resist that prevents clean lift-off. 
+
+Since, the metal deposition height varies per sample, the graph above is to show the range of possible PMMA thickness used.
 
 
 #### Pre-back , Post-bake
@@ -119,11 +134,13 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
 </video>
 
 
-
+The above is a video on the lift off process
 
 Development is performed after PBW exposure and is included here for process continuity. The wafer is immersed in DI water:IPA (7:3) developer, which selectively dissolves the chain-scissioned PMMA in the exposed regions while leaving the unexposed resist intact [1] [2]. The sample is then rinsed in fresh IPA and dried with a nitrogen gun to stop development. Following metal deposition, the remaining PMMA is removed by immersion in acetone, lifting off the metal on top of the resist and leaving only the metal deposited directly onto the silicon substrate.
 
 ### 3.4 P-beam structure
+
+This section will cover the general P-beam structures that need to be manipulated or calibrated before and during P-Beam writing, to control teh spot size
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/beam_line.png" alt="beam line optics"  style="margin: 5px;">
@@ -132,6 +149,16 @@ Development is performed after PBW exposure and is included here for process con
     <strong>Figure 3.4:</strong> Beam line optics
   </figcaption>
 </figure>
+
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/PB_sc.png" alt="beam line optics"  style="margin: 5px;">
+  
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 3.5:</strong> Beam line schematics ( labeled proton beam writing)
+  </figcaption>
+</figure>
+
 
 
 The PBW facility at CIBA is built around a 3.5 MV Singletron accelerator (HVEE) which generates a focused MeV proton beam for lithography [4] [5]. Protons are produced from hydrogen gas, accelerated to the required energy, and filtered by a 90° analysing magnet before being directed to the PBW end station via a switching magnet. Blanking plates deflect the beam off-axis to control dose delivery during patterning [4].
