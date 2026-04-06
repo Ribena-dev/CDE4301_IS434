@@ -108,7 +108,7 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
 
 
 
-<video width="300px" controls>
+<video width="300px" controls style="text-align: center; margin: 20px 0;">
   <source src="images/development_1.mp4" type="video/mp4">
 </video>
 

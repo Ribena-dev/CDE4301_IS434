@@ -115,11 +115,12 @@ Focusing is achieved using a spaced Oxford triplet of magnetic quadrupole lenses
 
 At these scales, chromatic aberration is the primary limit on spot size. To maintain sub-10 nm resolution, the accelerator requires a stability of approximately 10 ppm [4]. Before writing, the beam focus is verified by scanning across a resolution standard. The transmitted or secondary electron signal produces a complementary error function profile, which is fitted to extract the beam FWHM (as discussed in Section 2.5). Once focused, electrostatic scanners and stage movement are used to raster the beam over the resist [5].
 
-<iframe
-  src="scripts/beam_geo.html"
+<iframe 
+  src="scripts/beam_geo.html" 
+  width="100%" 
+  height="580px" 
   style="border:none; border-radius:6px;"
-  height ="100%"
-  sandbox="allow-scripts">
+  sandbox="allow-scripts" >
 </iframe>
 
 The interactive simulation above demonstrates how varying the beam parameters affects the spot size.
