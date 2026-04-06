@@ -53,17 +53,16 @@ The simulation focused on two main factors that determine the quality of our mic
   <span class="it-trigger">Penetration & The Bragg Peak:</span>
   <div class="it-popup">
     <img src="images/srim_lateral_straggle.png.png">
-    div>
   </div>
 </span> 
 The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
   
 
 Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional 
-  <span class="graph-tooltip">
+<span class="graph-tooltip">
   <span class="gt-trigger">Electron Beam Lithography</span>
   <div class="gt-popup">
-    <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html" scrolling="yes" ></iframe>
+    <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html" ></iframe>
     <div class="gt-caption">EBL lateral spread vs depth — click to explore</div>
   </div>
 </span>
@@ -182,10 +181,13 @@ Before writing, the beam focus is verified by scanning across a resolution stand
   sandbox="allow-scripts" >
 </iframe>
 
+This simulates the different parameters available to vary the beam spot size 
+
+
 #### **4. Strategic Focal Plane Positioning**
 The sample stage can be adjusted along the beam axis with **1 µm accuracy**. Because the beam converges to a minimum "waist" at the focal point and diverges on either side, the effective spot size depends on the defocus distance ($\Delta z$) and the cone half-angle ($\alpha$). 
 
-By systematically varying the focal plane, we can compensate for beam divergence at depth. This ensures the beam stays optimally focused throughout the entire **1 µm PMMA thickness**, rather than being sharpest only at the surface.
+By varying the focal plane, we can compensate for beam divergence at depth. This can counter act beam lateral spread adn greater depths.
 
 
 ### System Specifications Summary

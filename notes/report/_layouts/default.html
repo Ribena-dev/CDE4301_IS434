@@ -742,63 +742,71 @@
     }
 
                 /* ── Graph hover tooltip ─────────────────────────────── */
-    .graph-tooltip {
-      position: relative;
-      display: inline;
-    }
-
-    .graph-tooltip .gt-trigger {
-      color: #1a1a1a;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
-      cursor: pointer;
-    }
-
-    .graph-tooltip .gt-popup {
-      display: none;
-      position: absolute;
-      bottom: calc(100% + 10px);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 340px;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      z-index: 300;
-      overflow: hidden;
-    }
-
-    .graph-tooltip .gt-popup iframe {
-      width: 100%;
-      height: 220px;
-      border: none;
-      display: block;
-      pointer-events: none;
-    }
-
-    .graph-tooltip .gt-caption {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-size: 11px;
-      color: #888;
-      text-align: center;
-      padding: 6px 10px 8px;
-      border-top: 1px solid #f0f0ed;
-    }
-
-    .graph-tooltip:hover .gt-popup,
-    .graph-tooltip:focus-within .gt-popup {
-      display: block;
-    }
-
-    @media (max-width: 600px) {
-      .graph-tooltip .gt-popup {
-        width: 260px;
-        left: 0;
-        transform: none;
+      /* Container for the trigger word and the popup */
+      .graph-tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: help;
+        border-bottom: 1px dotted #185FA5; /* Visual cue for the user */
+        color: #185FA5;
+        font-weight: 500;
       }
-    }
+
+      /* The hidden popup box */
+      .gt-popup {
+        visibility: hidden;
+        width: 400px; /* Adjust based on your graph size */
+        background-color: #ffffff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+        
+        /* Positioning the popup above the text */
+        position: absolute;
+        z-index: 10;
+        bottom: 125%; 
+        left: 50%;
+        transform: translateX(-50%);
+        
+        /* Smooth fade-in effect */
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      /* Show the popup on hover */
+      .graph-tooltip:hover .gt-popup {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      /* Optional: Arrow pointing down to the word */
+      .gt-popup::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #ddd transparent transparent transparent;
+      }
+
+      /* Style the iframe inside the popup */
+      .gt-popup iframe {
+        width: 100%;
+        height: 250px;
+        border: none;
+        border-radius: 4px;
+      }
+
+      .gt-caption {
+        display: block;
+        font-size: 11px;
+        color: #666;
+        text-align: center;
+        margin-top: 5px;
+      }
 
         /* ── Image hover tooltip ─────────────────────────────── */
     .img-tooltip {
