@@ -124,15 +124,10 @@ const data = [
   {
     label: 'DLC on Pd',
     f: 60.30, theta: 89.12, pass: false,
-    imgs: [],
+    imgs: [ {src: '../images/dlc_pd_graph.png', caption: 'Edge fit — PMMA sidewall, position 2'}],
     note: 'Marginally below the 89.4° target. The wider f is consistent with a slightly less sharp edge, possibly reflecting the Pd seed layer surface roughness contribution.'
   },
-  {
-    label: 'SRIM prediction',
-    f: 1.91, theta: 89.9, pass: null,
-    imgs: [],
-    note: 'Monte Carlo simulation (SRIM) for 2 MeV protons in 1 µm PMMA. Represents the theoretical upper bound with perfect beam focus.'
-  },
+
 ];
 
 function thetaColor(theta, pass){
