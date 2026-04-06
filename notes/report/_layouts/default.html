@@ -580,6 +580,168 @@
       #content .img-row img { max-width: 100%; }
       #content iframe { height: 300px; }
     }
+
+    /* ── Mobile bottom bar ───────────────────────────────── */
+    #mobile-bottom-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #fff;
+      border-top: 1px solid #ddd;
+      z-index: 200;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    #mobile-bottom-bar .bar-tabs {
+      display: flex;
+      border-bottom: 1px solid #eee;
+    }
+
+    #mobile-bottom-bar .bar-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 4px 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #888;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+
+    #mobile-bottom-bar .bar-tab.active {
+      color: #1a1a1a;
+      border-bottom-color: #1a1a1a;
+    }
+
+    #mobile-bottom-bar .bar-icon {
+      font-size: 16px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    #mobile-bottom-bar .bar-panel {
+      display: none;
+      max-height: 52vh;
+      overflow-y: auto;
+      padding: 12px 16px 16px;
+    }
+
+    #mobile-bottom-bar .bar-panel.open { display: block; }
+
+    /* TOC panel inside bottom bar */
+    #mob-toc a {
+      display: block;
+      font-size: 13px;
+      color: #444;
+      text-decoration: none;
+      padding: 5px 0;
+      border-bottom: 0.5px solid #f0f0ed;
+      line-height: 1.4;
+    }
+
+    #mob-toc a.h3 { padding-left: 1rem; font-size: 12px; color: #666; }
+    #mob-toc a.h4 { padding-left: 1.75rem; font-size: 11px; color: #888; }
+    #mob-toc a.active { color: #1a1a1a; font-weight: 600; }
+    #mob-toc a:last-child { border-bottom: none; }
+
+    /* Process panel inside bottom bar */
+    #mob-process {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .mob-proc-step {
+      flex: 1;
+      min-width: 70px;
+      text-align: center;
+      opacity: 0.3;
+      transition: opacity 0.3s;
+    }
+
+    .mob-proc-step.active { opacity: 1; }
+
+    .mob-proc-diagram {
+      width: 64px;
+      height: 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 2px;
+      border: 1px solid #ddd;
+      border-radius: 3px;
+      padding: 2px 3px;
+      background: #fafaf8;
+      margin: 0 auto 4px;
+    }
+
+    .mob-proc-step.active .mob-proc-diagram {
+      border-color: #1a1a1a;
+      background: #fff;
+    }
+
+    .mob-proc-name {
+      font-size: 9px;
+      color: #888;
+      line-height: 1.3;
+    }
+
+    .mob-proc-step.active .mob-proc-name {
+      color: #1a1a1a;
+      font-weight: 700;
+    }
+
+    .mob-layer { width: 100%; height: 5px; border-radius: 1px; }
+    .mob-layer.silicon        { background: #888780; }
+    .mob-layer.pmma           { background: #5DCAA5; }
+    .mob-layer.metal-islands  {
+      background: repeating-linear-gradient(
+        to right,
+        transparent 0%,transparent 20%,
+        #BA7517 20%,#BA7517 48%,
+        transparent 48%,transparent 52%,
+        #BA7517 52%,#BA7517 80%,
+        transparent 80%,transparent 100%
+      );
+    }
+    .mob-layer.pmma-patterned {
+      background: repeating-linear-gradient(
+        to right,
+        #5DCAA5 0%,#5DCAA5 28%,
+        transparent 28%,transparent 36%,
+        #5DCAA5 36%,#5DCAA5 64%,
+        transparent 64%,transparent 72%,
+        #5DCAA5 72%,#5DCAA5 100%
+      );
+    }
+
+    .mob-beam-container {
+      position: absolute;
+      top: 2px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 7px;
+    }
+
+    .mob-beam-line {
+      width: 1px; height: 10px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #E24B4A 0,#E24B4A 2px,
+        transparent 2px,transparent 5px
+      );
+    }
+
+    /* push body up so content not hidden behind bar */
+    body.has-bottom-bar { padding-bottom: 60px; }
+
+    @media (max-width: 899px) {
+      #mobile-bottom-bar { display: block; }
+      body { padding-bottom: 60px; }
+    }
+
   </style>
 </head>
 <body>
@@ -750,6 +912,35 @@ function toggleMobileNav(){
     }, { rootMargin:'-10% 0px -80% 0px', threshold:0 });
 
     headings.forEach(h => tocObs.observe(h));
+
+    /* populate mobile TOC */
+    const mobToc = document.getElementById('mob-toc');
+    if(mobToc){
+      headings.forEach(h => {
+        const a = document.createElement('a');
+        a.href = '#' + h.id;
+        a.textContent = h.textContent;
+        if(h.tagName === 'H3') a.className = 'h3';
+        if(h.tagName === 'H4') a.className = 'h4';
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          document.getElementById(h.id).scrollIntoView({ behavior:'smooth', block:'start' });
+          switchTab('toc');
+        });
+        mobToc.appendChild(a);
+      });
+
+      const mobTocObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if(e.isIntersecting){
+            mobToc.querySelectorAll('a').forEach(a =>
+              a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+          }
+        });
+      }, { rootMargin:'-10% 0px -80% 0px', threshold:0 });
+
+      headings.forEach(h => mobTocObs.observe(h));
+    }
   }
 
   /* ── Process panel ────────────────────────────────────── */
@@ -771,12 +962,145 @@ function toggleMobileNav(){
       if(!panel.querySelector('.proc-step.active')){
         steps[0].classList.add('active');
       }
+
+      /* sync mobile process steps */
+      const mobSteps = document.querySelectorAll('.mob-proc-step');
+      mobSteps.forEach(step => {
+        const keys = step.dataset.keys.split(',');
+        const hit  = keys.some(k => activeSlug.includes(k.trim()));
+        step.classList.toggle('active', hit);
+      });
+      if(mobSteps.length && !document.querySelector('.mob-proc-step.active')){
+        mobSteps[0].classList.add('active');
+      }
     }
 
     window.addEventListener('scroll', updatePanel, { passive: true });
     updatePanel();
   }
+
+  /* mobile process sync even when desktop panel absent */
+  if(!panel){
+    const mobSteps = document.querySelectorAll('.mob-proc-step');
+    if(mobSteps.length){
+      function updateMobProc(){
+        let activeSlug = '';
+        headings.forEach(h => {
+          if(h.getBoundingClientRect().top <= 160) activeSlug = h.id;
+        });
+        mobSteps.forEach(step => {
+          const keys = step.dataset.keys.split(',');
+          step.classList.toggle('active', keys.some(k => activeSlug.includes(k.trim())));
+        });
+        if(!document.querySelector('.mob-proc-step.active')) mobSteps[0].classList.add('active');
+      }
+      window.addEventListener('scroll', updateMobProc, { passive: true });
+      updateMobProc();
+    }
+  }
 })();
+</script>
+
+<div id="mobile-bottom-bar">
+  <div class="bar-tabs">
+    <div class="bar-tab active" id="tab-toc" onclick="switchTab('toc')">
+      <span class="bar-icon">&#9776;</span>
+      Contents
+    </div>
+    <div class="bar-tab" id="tab-proc" onclick="switchTab('proc')">
+      <span class="bar-icon">&#9634;</span>
+      Process
+    </div>
+  </div>
+  <div class="bar-panel" id="mob-toc-panel">
+    <div id="mob-toc"></div>
+  </div>
+  <div class="bar-panel" id="mob-proc-panel">
+    <div id="mob-process">
+
+      <div class="mob-proc-step" data-keys="substrate,wafer,silicon">
+        <div class="mob-proc-diagram">
+          <div class="mob-layer silicon"></div>
+        </div>
+        <div class="mob-proc-name">Substrate</div>
+      </div>
+
+      <div class="mob-proc-step" data-keys="resist,pmma,hsq,spin,coating,pre-bake,bake">
+        <div class="mob-proc-diagram">
+          <div class="mob-layer pmma"></div>
+          <div class="mob-layer silicon"></div>
+        </div>
+        <div class="mob-proc-name">Resist</div>
+      </div>
+
+      <div class="mob-proc-step" data-keys="lithography,pbw,proton,srim,dose,energy,ciba,beam,exposure">
+        <div class="mob-proc-diagram">
+          <div class="mob-beam-container">
+            <div class="mob-beam-line"></div>
+            <div class="mob-beam-line"></div>
+            <div class="mob-beam-line"></div>
+          </div>
+          <div class="mob-layer pmma"></div>
+          <div class="mob-layer silicon"></div>
+        </div>
+        <div class="mob-proc-name">PBW</div>
+      </div>
+
+      <div class="mob-proc-step" data-keys="development,developer,ipa,lift-off,liftoff">
+        <div class="mob-proc-diagram">
+          <div class="mob-layer pmma-patterned"></div>
+          <div class="mob-layer silicon"></div>
+        </div>
+        <div class="mob-proc-name">Develop</div>
+      </div>
+
+      <div class="mob-proc-step" data-keys="metal,deposition,magnetron,evaporation,material,gold,palladium,sample">
+        <div class="mob-proc-diagram">
+          <div class="mob-layer metal-islands"></div>
+          <div class="mob-layer silicon"></div>
+        </div>
+        <div class="mob-proc-name">Metal</div>
+      </div>
+
+      <div class="mob-proc-step" data-keys="analysis,afm,sidewall,roughness,erf,gaussian,electron">
+        <div class="mob-proc-diagram" style="justify-content:center;align-items:center;">
+          <svg viewBox="0 0 50 20" width="50" height="20">
+            <polyline points="0,18 8,14 16,9 24,12 34,5 42,8 50,3"
+                      fill="none" stroke="#1D9E75" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="mob-proc-name">Analysis</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+var _activeTab = null;
+
+function switchTab(tab){
+  var tocPanel  = document.getElementById('mob-toc-panel');
+  var procPanel = document.getElementById('mob-proc-panel');
+  var tabToc    = document.getElementById('tab-toc');
+  var tabProc   = document.getElementById('tab-proc');
+
+  if(_activeTab === tab){
+    tocPanel.classList.remove('open');
+    procPanel.classList.remove('open');
+    tabToc.classList.remove('active');
+    tabProc.classList.remove('active');
+    _activeTab = null;
+    return;
+  }
+
+  _activeTab = tab;
+  tocPanel.classList.toggle('open',  tab === 'toc');
+  procPanel.classList.toggle('open', tab === 'proc');
+  tabToc.classList.toggle('active',  tab === 'toc');
+  tabProc.classList.toggle('active', tab === 'proc');
+}
 </script>
 
 </body>
