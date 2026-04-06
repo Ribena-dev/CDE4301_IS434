@@ -107,6 +107,30 @@ The DLC/Au boundary and the standalone DLC measurements both meet the 89.4° tar
 
 Due to the electron detector being unavailable for part of the project period, optical microscopy was used as an interim technique to visually inspect the Au and Pd grid samples and confirm the presence of well-defined grid features following fabrication.
 
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/20260223_4MR_10mindev_50x_1.png" alt="Brightfield optical micrograph of Pd grid after development" width="340px">
+  <img src="images/20260223_4MR_10mindev_50x_1df.png" alt="Darkfield optical micrograph of Pd grid after development" width="340px">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.4:</strong> Optical micrographs of the Pd grid sample after 20 minutes of development at 50× magnification. Brightfield (left) and darkfield (right). Scale bar: 10 µm.
+  </figcaption>
+</figure>
+
+
+Both brightfield and darkfield images confirm that the fabricated Pd grid features are well-resolved and structurally intact across the imaged area. The grid bars are straight and continuous with no visible breaks, bridging between adjacent lines, or rounding at the cell corners. The cell geometry is uniform across the full field of view, with consistent bar width and cell spacing. The darkfield image is particularly informative: under this illumination mode, scattered light from the feature edges produces a bright blue-white edge response while the flat surfaces remain dark, effectively functioning as an edge-detection filter. The sharpness and uniformity of this edge highlight across all four sides of every visible cell confirms that the sidewalls are well-defined 
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/20250929_100x_grid3_10minDev_3_9m.png" alt="Au grid interior with CD measurements, 100x" width="340px">
+  <img src="images/20250929_100x_grid3_10minDev_1_1m.png" alt="Au grid edge region with CD measurements, 100x" width="340px">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.5:</strong> Brightfield optical micrographs of the Au grid at 100× magnification after 10 minutes of development. Left: interior region with annotated cell and bar dimensions. Right: edge region showing the grid boundary and corresponding measurements. Scale bar: 10 µm.
+  </figcaption>
+</figure>
+
+The grid lines are straight and continuous with no visible breaks or bridging defects. The cell corners are visibly rounded rather than sharp, which is an expected consequence of the finite beam spot size at CIBA: the beam cannot write an abrupt corner at the intersection of two orthogonal lines, resulting in a smooth fillet. This rounding has no practical consequence for the sidewall angle measurement, which is extracted from straight edge segments rather than corners, but would need to be accounted for if the standard were used for corner radius characterisation.
+
+
+
+
 ### 4.4 Electron Contrast: Au vs DLC
 
 The backscatter contrast ratio between the metal grid features and the silicon substrate was assessed from the electron detector intensity profiles. A higher contrast ratio indicates greater separation between the metal signal and the background, which is the primary functional requirement of the resolution standard for SEM calibration use.

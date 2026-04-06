@@ -59,4 +59,4 @@ Second, the PMMA film thickness exceeded the Omostamp feature height, causing ov
 
 Resolving these two issues would make NIL a viable route for producing multiple copies of the grid standard from a single PBW master, significantly reducing the cost and time per calibration artefact.
 
-[← Prev: Results and Analysis](fna.md) | [Next: Appendix →](fna.md)
+[← Prev: Results and Analysis](fna.md) | [Next: Appendix A →](A.md)

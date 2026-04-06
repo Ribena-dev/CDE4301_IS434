@@ -20,7 +20,7 @@ Moore's Law, which predicts the doubling of transistor density approximately eve
 
 This relentless miniaturisation has rendered conventional optical microscopy impractical for surface characterisation — the wavelength of visible light (380–700 nm) is far greater than the dimensions of current transistor features <a href="#ref-2">[2]</a>. This raises a fundamental question: how can such structures be characterised with the precision required for manufacturing?
 
-Characterising instruments such as [scanning electron microscopes (SEM)](https://microbenotes.com/scanning-electron-microscope-sem/), [critical dimension atomic force microscopes (CD-AFM)](https://www.nist.gov/programs-projects/atomic-force-microscopy), [transmission electron microscopes (TEM)](https://microbenotes.com/transmission-electron-microscope-tem/), and [extreme ultraviolet (EUV) scatterometry systems](https://www.nist.gov/programs-projects/euv-scatterometry) are being pushed to the limits of accuracy to validate such structures. However, the accuracy of measurements from any such instrument depends entirely on the quality of its calibration <a href="#ref-3">[3]</a>, which is where resolution and calibration standards become essential.
+Characterising instruments such as [scanning electron microscopes (SEM)](A.md), [critical dimension atomic force microscopes (CD-AFM)](B.md), [transmission electron microscopes (TEM)](A.md), and extreme ultraviolet (EUV) scatterometry systems are being pushed to the limits of accuracy to validate such structures. However, the accuracy of measurements from any such instrument depends entirely on the quality of its calibration <a href="#ref-3">[3]</a>, which is where resolution and calibration standards become essential.
 
 ### 1.1 Overview of Resolution Standards
 
@@ -45,7 +45,7 @@ Calibrating such complex instruments requires different standards for different 
   </figcaption>
 </figure>
 
-Most commercial grids are fabricated using electron beam lithography (EBL) at the patterning step.
+Most commercial grids are fabricated using [electron beam lithography (EBL)](C.md) at the patterning step.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/e_beam.png" alt="Simplified EBL on positive resist">
@@ -75,7 +75,7 @@ Here is where this becomes critical. For instruments such as CD-AFM, 3D-AFM, and
 
 The calibration relies on the sidewalls being vertical: the finer details of the tip–sample interaction, including feature sidewall angle and corner radius, introduce higher-order tip effects that cause systematic biases in measured linewidth. Any deviation of the reference sidewall from 90° introduces an uncharacterised geometric bias into every subsequent measurement the instrument makes. <a href="#ref-3">[3]</a> <a href="#ref-5">[5]</a> <a href="#ref-6">[6]</a> <a href="#ref-7">[7]</a>
 
-The simplified iterative model below demonstrates the correlation between sidewall angle and the secondary electron (SE) intensity profile, which can be explored using the slider.
+The [simplified iterative model](D.md) below demonstrates the correlation between sidewall angle and the secondary electron (SE) intensity profile, which can be explored using the slider.
 
 <iframe src="scripts/sidewall_angle_cd_error.html"
         allowfullscreen="true"

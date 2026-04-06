@@ -71,3 +71,6 @@ so it always reads 20 nm no matter how sloped the walls are. It is the green
 W_bot markers that slide outward as the angle decreases, showing the true base
 width growing while the SEM measurement stays fixed. The gap between the two
 is the CD error.
+
+
+[← Prev: Appendix D](D.md) | 
