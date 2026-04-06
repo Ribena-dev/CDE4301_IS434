@@ -742,6 +742,60 @@
       body { padding-bottom: 60px; }
     }
 
+    /* ── Hover graph preview ─────────────────────────────── */
+    .graph-preview-wrap {
+      position: relative;
+      display: inline;
+    }
+
+    .graph-preview-link {
+      color: #1a1a1a;
+      text-decoration: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+
+    .graph-preview-popup {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 10px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      padding: 8px;
+      z-index: 500;
+      width: 436px;
+      pointer-events: none;
+    }
+
+    .graph-preview-wrap:hover .graph-preview-popup {
+      display: block;
+      pointer-events: auto;
+    }
+
+    .graph-preview-caption {
+      display: block;
+      font-size: 11px;
+      color: #888;
+      text-align: center;
+      margin-top: 5px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-style: italic;
+    }
+
+    /* keep popup on screen if near right edge */
+    @media (max-width: 700px) {
+      .graph-preview-popup {
+        width: 96vw;
+        left: 0;
+        transform: none;
+      }
+    }
+
   </style>
 </head>
 <body>

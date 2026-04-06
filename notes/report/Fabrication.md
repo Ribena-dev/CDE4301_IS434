@@ -39,11 +39,33 @@ A slightly updated version of our fabrication overview
 </figure>
 
 
-The SRIM Monte Carlo simulations are on 2 Mev proton trajectories are mapped above. 
-Spikes are caused by rare large-angle nuclear scattering events. The teal curve shows the cleaned data after IQR ×3 outlier removal, revealing a true straggle of 0.81 nm at the 1 µm exit depth, well below the 3 nm target (red dotted line).
- 
-SRIM Monte Carlo simulations were used to characterise the behaviour of 2 MeV protons in PMMA and to predict the theoretical sidewall angle of the fabricated features. Two outputs are of interest: the depth distribution (Bragg peak), which confirms the feature height
-achievable at a given beam energy; and the lateral straggle σ(z), which governs edge sharpness as a function of depth.
+To better understand how the proton beam behaves inside the PMMA, I ran SRIM Monte Carlo simulations. These simulations can help  predict exactly the verticality of the  fabricated edges will be .
+
+Energy (2 MeV): Chosen to balance the software's capabilities with the physical requirements of our beam.
+
+Depth (1 µm): We modeled a 1 µm thick layer of PMMA, as this is the maximum height used in our specific fabrication process.
+
+
+Key Findings
+
+The simulation focused on two main factors that determine the quality of our microstructures:
+
+    Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design.
+
+    Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional Electron Beam Lithography (EBL).
+<span class="graph-preview-wrap">
+  <a href="#ebl-spread-graph" class="graph-preview-link">Electron Beam Lithography (EBL)</a>
+  <span class="graph-preview-popup">
+    <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"
+            width="420" height="320"
+            scrolling="no" frameborder="0"
+            loading="lazy"></iframe>
+    <span class="graph-preview-caption">EBL lateral spread vs depth — hover to explore</span>
+  </span>
+</span>
+
+    Note on "Spikes": You may notice occasional spikes in the trajectory data; these are simply rare instances where a proton bounces off a nucleus at a wide angle. They are outliers and do not impact the overall sharpness of the final feature.
+
  
 #### Theoretical Sidewall Angle
  
@@ -51,7 +73,7 @@ The lateral straggle σ(z) from SRIM gives the standard deviation of the beam's 
  
 $$ f(z) = 2\sqrt{2\ln 2} \cdot \sigma(z) \approx 2.355\,\sigma(z) $$
  
-where f is the FWHM of the dose profile across the feature edge ,the same parameter extracted from SEM measurements in Section 2.5.1. The theoretical sidewall angle at the full feature depth h is then:
+where f is the FWHM of the dose profile across the feature edge ,the same parameter extracted from electron detectors measurements in [Section 2.5.1](Methology.md#25-method-of-analysis). The theoretical sidewall angle at the full feature depth h is then:
  
 $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(\frac{2.355\,\sigma(h)}{h}\right) $$
 
