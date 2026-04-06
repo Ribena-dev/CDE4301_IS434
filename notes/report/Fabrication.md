@@ -49,7 +49,14 @@ Key Findings
 
 The simulation focused on two main factors that determine the quality of our microstructures:
 
-Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
+<span class="img-tooltip">
+  <span class="it-trigger">Penetration & The Bragg Peak: </span>
+  <div class="it-popup">
+    <img src="images/srim_lateral_straggle.png" alt="AFM profile of Pd surface">
+    <div class="it-caption"></div>
+  </div>
+</span>
+The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design
   
 
 
@@ -58,7 +65,7 @@ Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons
   <span class="graph-tooltip">
     <span class="gt-trigger">EBL</span>
     <div class="gt-popup">
-      <iframe src="scripts/beam_geo.html"></iframe>
+      <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"></iframe>
       <div class="gt-caption">Interactive: electron beam lateral spread</div>
     </div>
   </span> 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | CDE4301 IS434</title>
-
+ 
   <script>
     MathJax = {
       tex: {
@@ -14,17 +14,17 @@
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
+ 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     body {
       font-family: Georgia, 'Times New Roman', serif;
       background: #fff;
       color: #1a1a1a;
       line-height: 1.75;
     }
-
+ 
     /* ── Top header ─────────────────────────────────────── */
     #site-header {
       background: #fff;
@@ -37,22 +37,22 @@
       top: 0;
       z-index: 100;
     }
-
+ 
     #site-header img { height: 40px; width: auto; }
-
+ 
     #site-header .header-text {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     #site-header .header-title {
       font-size: 14px;
       font-weight: 700;
       color: #1a1a1a;
       line-height: 1.2;
     }
-
+ 
     #site-header .header-sub { font-size: 12px; color: #555; }
-
+ 
     /* ── Top nav bar ─────────────────────────────────────── */
     #topnav {
       background: #f7f7f5;
@@ -63,7 +63,7 @@
       overflow-x: auto;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     #topnav a {
       display: block;
       font-size: 13px;
@@ -74,10 +74,10 @@
       white-space: nowrap;
       transition: color 0.15s, border-color 0.15s;
     }
-
+ 
     #topnav a:hover { color: #1a1a1a; border-bottom-color: #aaa; }
     #topnav a.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 600; }
-
+ 
     /* ── Layout ──────────────────────────────────────────── */
     #page-wrap {
       display: flex;
@@ -87,7 +87,7 @@
       gap: 2rem;
       align-items: flex-start;
     }
-
+ 
     /* ── Process panel (left, Methodology + Fabrication only) */
     #process-panel {
       width: 100px;
@@ -97,7 +97,7 @@
       align-self: flex-start;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     .proc-label {
       font-size: 9px;
       font-weight: 700;
@@ -105,28 +105,28 @@
       color: #aaa;
       margin-bottom: 14px;
     }
-
+ 
     .proc-step {
       margin-bottom: 16px;
       opacity: 0.3;
       transition: opacity 0.3s;
       cursor: text;
     }
-
+ 
     .proc-step.active { opacity: 1; }
-
+ 
     .proc-name {
       font-size: 10px;
       color: #888;
       margin-top: 5px;
       line-height: 1.3;
     }
-
+ 
     .proc-step.active .proc-name {
       color: #1a1a1a;
       font-weight: 700;
     }
-
+ 
     /* diagram box */
     .proc-diagram {
       width: 88px;
@@ -141,22 +141,22 @@
       padding: 3px 4px;
       background: #fafaf8;
     }
-
+ 
     .proc-step.active .proc-diagram {
       border-color: #1a1a1a;
       background: #fff;
     }
-
+ 
     .layer {
       width: 100%;
       height: 7px;
       border-radius: 1px;
     }
-
+ 
     .layer.silicon  { background: #888780; }
     .layer.pmma     { background: #5DCAA5; }
     .layer.metal    { background: #BA7517; }
-
+ 
     /* patterned PMMA after development */
     .layer.pmma-patterned {
       background: repeating-linear-gradient(
@@ -168,7 +168,7 @@
         #5DCAA5 72%, #5DCAA5 100%
       );
     }
-
+ 
     /* metal islands after liftoff */
     .layer.metal-islands {
       background: repeating-linear-gradient(
@@ -180,7 +180,7 @@
         transparent 80%, transparent 100%
       );
     }
-
+ 
     /* dashed beam lines for PBW */
     .beam-container {
       position: absolute;
@@ -190,7 +190,7 @@
       display: flex;
       gap: 10px;
     }
-
+ 
     .beam-line {
       width: 2px;
       height: 14px;
@@ -200,14 +200,14 @@
         transparent 3px, transparent 6px
       );
     }
-
+ 
     /* tiny line graph for analysis */
     .proc-graph {
       position: absolute;
       bottom: 6px;
       left: 8px;
     }
-
+ 
     /* ── Floating TOC (right side) ───────────────────────── */
     #toc-panel {
       width: 200px;
@@ -220,7 +220,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 12px;
     }
-
+ 
     #toc-panel .toc-title {
       font-size: 11px;
       font-weight: 700;
@@ -231,7 +231,7 @@
       padding-bottom: 0.4rem;
       border-bottom: 1px solid #eee;
     }
-
+ 
     #toc-panel a {
       display: block;
       color: #555;
@@ -240,19 +240,19 @@
       line-height: 1.45;
       transition: color 0.15s;
     }
-
+ 
     #toc-panel a.h3 { padding-left: 0.9rem; font-size: 11px; color: #777; }
     #toc-panel a.h4 { padding-left: 1.6rem; font-size: 11px; color: #999; }
     #toc-panel a:hover { color: #1a1a1a; }
     #toc-panel a.active { color: #1a1a1a; font-weight: 600; }
-
+ 
     /* ── Main content ────────────────────────────────────── */
     #content {
       flex: 1;
       min-width: 0;
       max-width: 720px;
     }
-
+ 
     /* ── Typography ──────────────────────────────────────── */
     #content p {
       font-size: 16px;
@@ -262,7 +262,7 @@
       margin-bottom: 1.15rem;
       color: #1a1a1a;
     }
-
+ 
     #content h1 {
       font-size: clamp(22px, 3vw, 30px);
       font-weight: 700;
@@ -272,7 +272,7 @@
       border-bottom: 2px solid #1a1a1a;
       padding-bottom: 0.4rem;
     }
-
+ 
     #content h2 {
       font-size: clamp(18px, 2.5vw, 23px);
       font-weight: 700;
@@ -280,14 +280,14 @@
       line-height: 1.25;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     #content h3 {
       font-size: clamp(15px, 2vw, 18px);
       font-weight: 700;
       margin: 2rem 0 0.6rem;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     #content h4 {
       font-size: 15px;
       font-weight: 700;
@@ -295,27 +295,27 @@
       font-style: italic;
       font-family: Georgia, serif;
     }
-
+ 
     #content a { color: #1a1a1a; text-decoration: underline; }
     #content a:hover { opacity: 0.65; }
-
+ 
     #content ul, #content ol {
       padding-left: 1.75rem;
       margin-bottom: 1.15rem;
     }
-
+ 
     #content li {
       font-size: 16px;
       line-height: 1.8;
       margin-bottom: 0.2rem;
     }
-
+ 
     #content hr {
       border: none;
       border-top: 1px solid #ddd;
       margin: 2.5rem 0;
     }
-
+ 
     #content blockquote {
       border-left: 3px solid #1a1a1a;
       padding-left: 1.25rem;
@@ -323,20 +323,20 @@
       font-style: italic;
       color: #444;
     }
-
+ 
     /* ── Figures and images ───────────────────────────────── */
     #content figure {
       margin: 2rem auto;
       text-align: center;
     }
-
+ 
     #content figure img {
       max-width: 100%;
       height: auto;
       display: block;
       margin: 0 auto;
     }
-
+ 
     #content img {
       display: block;
       margin-left: auto;
@@ -344,11 +344,11 @@
       max-width: 100%;
       height: auto;
     }
-
+ 
     #content figcaption { text-align: center; }
-
+ 
     #content p > img { display: block; margin: 1.5rem auto; }
-
+ 
     #content .img-row {
       display: flex;
       justify-content: center;
@@ -357,7 +357,7 @@
       margin: 1.5rem 0;
       flex-wrap: wrap;
     }
-
+ 
     #content .img-row img {
       flex: 1;
       min-width: 0;
@@ -366,13 +366,13 @@
       display: block;
       margin: 0;
     }
-
+ 
     #content figcaption strong {
       font-style: normal;
       font-weight: 700;
       color: #1a1a1a;
     }
-
+ 
     /* ── Tables ──────────────────────────────────────────── */
     #content table {
       width: 100%;
@@ -383,7 +383,7 @@
       display: block;
       overflow-x: auto;
     }
-
+ 
     #content th {
       background: #f4f4f2;
       padding: 9px 14px;
@@ -392,17 +392,17 @@
       border-top: 2px solid #1a1a1a;
       border-bottom: 1px solid #ccc;
     }
-
+ 
     #content td {
       padding: 8px 14px;
       border-bottom: 1px solid #e8e8e5;
       vertical-align: top;
       line-height: 1.55;
     }
-
+ 
     #content tr:last-child td { border-bottom: 2px solid #1a1a1a; }
     #content tr:hover td { background: #fafaf8; }
-
+ 
     /* ── Code ────────────────────────────────────────────── */
     #content pre {
       background: #f4f4f2;
@@ -413,7 +413,7 @@
       margin-bottom: 1.5rem;
       font-family: 'SF Mono', 'Fira Mono', monospace;
     }
-
+ 
     #content code {
       font-family: 'SF Mono', 'Fira Mono', monospace;
       font-size: 0.87em;
@@ -421,12 +421,12 @@
       padding: 1px 5px;
       border-radius: 2px;
     }
-
+ 
     #content pre code { background: none; padding: 0; }
-
+ 
     /* ── Iframes ─────────────────────────────────────────── */
     #content iframe, .embed-wrap iframe { width: 100%; border: none; }
-
+ 
     .iframe-16-9 {
       position: relative;
       width: 100%;
@@ -434,14 +434,14 @@
       height: 0;
       margin: 1.5rem 0;
     }
-
+ 
     .iframe-16-9 iframe {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       border: none;
     }
-
+ 
     /* ── Abbreviation tooltips ───────────────────────────── */
     abbr[data-title] {
       border-bottom: 1px dotted #888;
@@ -449,7 +449,7 @@
       text-decoration: none;
       position: relative;
     }
-
+ 
     abbr[data-title]:hover::after {
       content: attr(data-title);
       position: absolute;
@@ -465,7 +465,7 @@
       z-index: 10;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     /* ── Hamburger button (mobile) ──────────────────────── */
     #nav-toggle {
       display: none;
@@ -476,7 +476,7 @@
       margin-left: auto;
       flex-shrink: 0;
     }
-
+ 
     #nav-toggle span {
       display: block;
       width: 20px;
@@ -486,7 +486,7 @@
       border-radius: 1px;
       transition: transform 0.2s, opacity 0.2s;
     }
-
+ 
     /* Mobile nav drawer */
     #mobile-nav {
       display: none;
@@ -494,7 +494,7 @@
       border-bottom: 1px solid #ddd;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
-
+ 
     #mobile-nav a {
       display: block;
       font-size: 14px;
@@ -503,10 +503,10 @@
       padding: 0.75rem 1.25rem;
       border-bottom: 1px solid #eee;
     }
-
+ 
     #mobile-nav a.active { color: #1a1a1a; font-weight: 600; }
     #mobile-nav a:last-child { border-bottom: none; }
-
+ 
     /* ── Large desktop (>1200px) ─────────────────────────── */
     @media (min-width: 1200px) {
       #page-wrap { max-width: 1400px; gap: 3rem; }
@@ -514,7 +514,7 @@
       #process-panel { width: 110px; }
       #content { max-width: 800px; }
     }
-
+ 
     /* ── Medium desktop (900–1200px) ─────────────────────── */
     @media (min-width: 900px) and (max-width: 1199px) {
       #page-wrap { max-width: 1100px; gap: 2rem; }
@@ -523,7 +523,7 @@
       #content { max-width: 680px; }
       .proc-diagram { width: 76px; }
     }
-
+ 
     /* ── Tablet (600–899px) ──────────────────────────────── */
     @media (min-width: 600px) and (max-width: 899px) {
       #topnav { display: none; }
@@ -545,7 +545,7 @@
       #content h3 { font-size: 17px; }
       #site-header .header-sub { display: none; }
     }
-
+ 
     /* ── Mobile (<600px) ─────────────────────────────────── */
     @media (max-width: 599px) {
       #topnav { display: none; }
@@ -580,7 +580,7 @@
       #content .img-row img { max-width: 100%; }
       #content iframe { height: 300px; }
     }
-
+ 
     /* ── Mobile bottom bar ───────────────────────────────── */
     #mobile-bottom-bar {
       display: none;
@@ -592,11 +592,11 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       padding: 10px 16px 12px;
     }
-
+ 
     #mobile-bottom-bar .bar-panel {
       display: block;
     }
-
+ 
     /* Process panel inside bottom bar */
     /* mobile process — single step display */
     #mob-process {
@@ -605,7 +605,7 @@
       justify-content: center;
       gap: 0;
     }
-
+ 
     /* all steps hidden by default */
     .mob-proc-step {
       display: none;
@@ -613,30 +613,30 @@
       align-items: center;
       width: 100%;
     }
-
+ 
     /* only active step shown */
     .mob-proc-step.active {
       display: flex;
     }
-
+ 
     /* hide connectors entirely */
     .mob-proc-connector { display: none; }
-
+ 
     /* bigger diagram for single display */
     .mob-proc-diagram {
       width: 120px !important;
       height: 50px !important;
       margin-bottom: 6px;
     }
-
+ 
     .mob-layer { height: 8px !important; }
-
+ 
     .mob-proc-name {
       font-size: 12px !important;
       font-weight: 700;
       color: #1a1a1a !important;
     }
-
+ 
     /* step counter dots */
     #mob-proc-dots {
       display: flex;
@@ -644,7 +644,7 @@
       justify-content: center;
       margin-top: 8px;
     }
-
+ 
     .proc-dot {
       width: 5px;
       height: 5px;
@@ -652,14 +652,14 @@
       background: #ddd;
       transition: background 0.2s;
     }
-
+ 
     .proc-dot.active { background: #1a1a1a; }
-
+ 
     /* bottom bar layout */
     #mobile-bottom-bar {
       padding: 8px 16px 10px;
     }
-
+ 
     .mob-proc-step {
       flex: 1;
       min-width: 70px;
@@ -667,9 +667,9 @@
       opacity: 0.3;
       transition: opacity 0.3s;
     }
-
+ 
     .mob-proc-step.active { opacity: 1; }
-
+ 
     .mob-proc-diagram {
       width: 64px;
       height: 32px;
@@ -684,23 +684,23 @@
       background: #fafaf8;
       margin: 0 auto 4px;
     }
-
+ 
     .mob-proc-step.active .mob-proc-diagram {
       border-color: #1a1a1a;
       background: #fff;
     }
-
+ 
     .mob-proc-name {
       font-size: 9px;
       color: #888;
       line-height: 1.3;
     }
-
+ 
     .mob-proc-step.active .mob-proc-name {
       color: #1a1a1a;
       font-weight: 700;
     }
-
+ 
     .mob-layer { width: 100%; height: 5px; border-radius: 1px; }
     .mob-layer.silicon        { background: #888780; }
     .mob-layer.pmma           { background: #5DCAA5; }
@@ -724,14 +724,14 @@
         #5DCAA5 72%,#5DCAA5 100%
       );
     }
-
+ 
     .mob-beam-container {
       position: absolute;
       top: 2px; left: 50%;
       transform: translateX(-50%);
       display: flex; gap: 7px;
     }
-
+ 
     .mob-beam-line {
       width: 1px; height: 10px;
       background: repeating-linear-gradient(
@@ -740,73 +740,24 @@
         transparent 2px,transparent 5px
       );
     }
-
-                /* ── Graph hover tooltip ─────────────────────────────── */
-      /* Container for the trigger word and the popup */
-      .graph-tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: help;
-        border-bottom: 1px dotted #185FA5; /* Visual cue for the user */
-        color: #185FA5;
-        font-weight: 500;
-      }
-
-      /* The hidden popup box */
-      /* 1. The Container */
-      .graph-tooltip, .img-tooltip {
-        position: relative;
-        display: inline-block;
-        cursor: help;
-        border-bottom: 1.5px dotted #185FA5;
-        color: #185FA5;
-      }
-
-      /* 2. The Popup (The Hidden Box) */
-      .gt-popup, .it-popup {
-        display: none; /* Changed from 'visibility' to 'display' for web stability */
-        position: absolute;
-        bottom: 125%; /* Places it above the word */
-        left: 50%;
-        transform: translateX(-50%);
-        width: 320px;
-        background: #ffffff;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        padding: 10px;
-        box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
-        z-index: 99999 !important; /* Ensures it's above everything else */
-      }
-
-      /* 3. The Hover Trigger (The most important part) */
-      .graph-tooltip:hover .gt-popup,
-      .img-tooltip:hover .it-popup {
-        display: block !important; /* Force show on hover */
-      }
-
-      /* 4. Ensure images/iframes fit */
-      .gt-popup iframe, .it-popup img {
-        width: 100%;
-        height: auto;
-        min-height: 200px;
-        border: none;
-        border-radius: 4px;
-      }
-        /* ── Image hover tooltip ─────────────────────────────── */
+ 
+    /* ── Graph + image hover tooltips ───────────────────── */
+    .graph-tooltip,
     .img-tooltip {
       position: relative;
       display: inline;
     }
-
-    .img-tooltip .it-trigger {
-      color: #1a1a1a;
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      text-underline-offset: 3px;
-      cursor: pointer;
+ 
+    .gt-trigger,
+    .it-trigger {
+      color: #185FA5;
+      border-bottom: 1.5px dotted #185FA5;
+      cursor: help;
+      font-weight: 500;
     }
-
-    .img-tooltip .it-popup {
+ 
+    .gt-popup,
+    .it-popup {
       display: none;
       position: absolute;
       bottom: calc(100% + 10px);
@@ -814,55 +765,65 @@
       transform: translateX(-50%);
       width: 320px;
       background: #fff;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
       border-radius: 8px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      z-index: 999;
-      overflow: hidden;
       padding: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      z-index: 9999;
+      overflow: hidden;
     }
-
-    .img-tooltip .it-popup img {
+ 
+    .graph-tooltip:hover .gt-popup,
+    .img-tooltip:hover .it-popup {
+      display: block;
+    }
+ 
+    .gt-popup iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+      display: block;
+      pointer-events: none;
+      border-radius: 4px;
+    }
+ 
+    .it-popup img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 4px;
       margin: 0;
     }
-
-    .img-tooltip .it-caption {
+ 
+    .gt-caption,
+    .it-caption {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 11px;
       color: #888;
       text-align: center;
       padding: 6px 4px 2px;
     }
-
-    .img-tooltip:hover .it-popup,
-    .img-tooltip:focus-within .it-popup {
-      display: block;
-    }
-
+ 
     @media (max-width: 600px) {
-      .img-tooltip .it-popup {
-        width: 220px;
+      .gt-popup, .it-popup {
+        width: 240px;
         left: 0;
         transform: none;
       }
     }
-
+ 
     /* push body up so content not hidden behind bar */
     body.has-bottom-bar { padding-bottom: 60px; }
-
+ 
     @media (max-width: 899px) {
       #mobile-bottom-bar { display: block; }
       body { padding-bottom: 60px; }
     }
-
+ 
   </style>
 </head>
 <body>
-
+ 
 <header id="site-header">
   <img src="{{ '/images/NUS_logo.png' | relative_url }}" alt="NUS Logo"
        onerror="this.style.display='none'">
@@ -874,7 +835,7 @@
     <span></span><span></span><span></span>
   </button>
 </header>
-
+ 
 <nav id="mobile-nav">
   <a href="{{ '/' | relative_url }}"
      {% if page.url == '/' or page.url contains 'index' %}class="active"{% endif %}>Abstract</a>
@@ -889,7 +850,7 @@
   <a href="{{ 'FW.html' | relative_url }}"
      {% if page.url contains 'FW' %}class="active"{% endif %}>5. Future Work</a>
 </nav>
-
+ 
 <nav id="topnav">
   <a href="{{ '/' | relative_url }}"
      {% if page.url == '/' or page.url contains 'index' %}class="active"{% endif %}>Abstract</a>
@@ -904,20 +865,20 @@
   <a href="{{ 'FW.html' | relative_url }}"
      {% if page.url contains 'FW' %}class="active"{% endif %}>5. Future Work</a>
 </nav>
-
+ 
 <div id="page-wrap">
-
+ 
   {% if page.url contains 'Methology' or page.url contains 'Fabrication' %}
   <div id="process-panel">
     <div class="proc-label">PROCESS</div>
-
+ 
     <div class="proc-step" data-keys="substrate,wafer,silicon">
       <div class="proc-diagram">
         <div class="layer silicon"></div>
       </div>
       <div class="proc-name">Substrate</div>
     </div>
-
+ 
     <div class="proc-step" data-keys="resist,pmma,hsq,spin,coating,pre-bake,bake">
       <div class="proc-diagram">
         <div class="layer pmma"></div>
@@ -925,7 +886,7 @@
       </div>
       <div class="proc-name">Resist coating</div>
     </div>
-
+ 
     <div class="proc-step" data-keys="lithography,pbw,proton,srim,dose,energy,ciba,pbeam,exposure,beam">
       <div class="proc-diagram">
         <div class="beam-container">
@@ -938,7 +899,7 @@
       </div>
       <div class="proc-name">PBW exposure</div>
     </div>
-
+ 
     <div class="proc-step" data-keys="development,developer,ipa,lift-off,liftoff">
       <div class="proc-diagram">
         <div class="layer pmma-patterned"></div>
@@ -946,7 +907,7 @@
       </div>
       <div class="proc-name">Development</div>
     </div>
-
+ 
     <div class="proc-step" data-keys="metal,deposition,magnetron,evaporation,fcva,material,gold,palladium,dlc,chromium,titanium,sample,fabricated">
       <div class="proc-diagram">
         <div class="layer metal-islands"></div>
@@ -954,7 +915,7 @@
       </div>
       <div class="proc-name">Metal + liftoff</div>
     </div>
-
+ 
     <div class="proc-step" data-keys="analysis,afm,sidewall,roughness,erf,gaussian,electron,detector">
       <div class="proc-diagram">
         <div class="proc-graph">
@@ -970,17 +931,17 @@
     </div>
   </div>
   {% endif %}
-
+ 
   <main id="content">
     {{ content }}
   </main>
-
+ 
   <aside id="toc-panel">
     <div class="toc-title">On this page</div>
   </aside>
-
+ 
 </div>
-
+ 
 <script>
 function toggleMobileNav(){
   const mn = document.getElementById('mobile-nav');
@@ -989,21 +950,21 @@ function toggleMobileNav(){
   mn.style.display = open ? 'none' : 'block';
   btn.setAttribute('aria-expanded', String(!open));
 }
-
+ 
 (function(){
   const content  = document.getElementById('content');
   const toc      = document.getElementById('toc-panel');
   const panel    = document.getElementById('process-panel');
   const headings = content ? content.querySelectorAll('h2, h3, h4') : [];
-
+ 
   function slugify(t){
     return t.toLowerCase().replace(/[^a-z0-9\s]/g,'').trim().replace(/\s+/g,'-');
   }
-
+ 
   headings.forEach(h => {
     if(!h.id) h.id = slugify(h.textContent);
   });
-
+ 
   /* ── TOC ──────────────────────────────────────────────── */
   if(toc && headings.length){
     headings.forEach(h => {
@@ -1018,7 +979,7 @@ function toggleMobileNav(){
       });
       toc.appendChild(a);
     });
-
+ 
     const tocObs = new IntersectionObserver(entries => {
       entries.forEach(e => {
         if(e.isIntersecting){
@@ -1027,31 +988,31 @@ function toggleMobileNav(){
         }
       });
     }, { rootMargin:'-10% 0px -80% 0px', threshold:0 });
-
+ 
     headings.forEach(h => tocObs.observe(h));
-
+ 
   }
-
+ 
   /* ── Process panel ────────────────────────────────────── */
   if(panel && headings.length){
     const steps = panel.querySelectorAll('.proc-step');
-
+ 
     function updatePanel(){
       let activeSlug = '';
       headings.forEach(h => {
         if(h.getBoundingClientRect().top <= 160) activeSlug = h.id;
       });
-
+ 
       steps.forEach(step => {
         const keys = step.dataset.keys.split(',');
         const hit  = keys.some(k => activeSlug.includes(k.trim()));
         step.classList.toggle('active', hit);
       });
-
+ 
       if(!panel.querySelector('.proc-step.active')){
         steps[0].classList.add('active');
       }
-
+ 
       /* sync mobile process steps */
       const mobSteps = document.querySelectorAll('.mob-proc-step');
       mobSteps.forEach(step => {
@@ -1064,11 +1025,11 @@ function toggleMobileNav(){
       }
       syncDots(mobSteps);
     }
-
+ 
     window.addEventListener('scroll', updatePanel, { passive: true });
     updatePanel();
   }
-
+ 
   /* mobile process sync even when desktop panel absent */
   if(!panel){
     const mobSteps = document.querySelectorAll('.mob-proc-step');
@@ -1089,7 +1050,7 @@ function toggleMobileNav(){
       updateMobProc();
     }
   }
-
+ 
   function syncDots(steps){
     const dots = document.querySelectorAll('.proc-dot');
     steps.forEach((s, i) => {
@@ -1098,7 +1059,7 @@ function toggleMobileNav(){
   }
 })();
 </script>
-
+ 
 <div id="mobile-bottom-bar">
   <div class="bar-panel" id="mob-proc-panel">
     <div id="mob-process">
@@ -1156,7 +1117,7 @@ function toggleMobileNav(){
         </div>
         <div class="mob-proc-name">Analysis</div>
       </div>
-
+ 
     </div>
     <div id="mob-proc-dots">
       <div class="proc-dot" data-idx="0"></div>
@@ -1168,8 +1129,8 @@ function toggleMobileNav(){
     </div>
   </div>
 </div>
-
-
-
+ 
+ 
+ 
 </body>
 </html>
