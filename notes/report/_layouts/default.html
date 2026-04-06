@@ -466,19 +466,119 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
-    /* ── Mobile ──────────────────────────────────────────── */
-    @media (max-width: 900px) {
-      #toc-panel, #process-panel { display: none; }
-      #page-wrap { padding: 2rem 1.25rem; gap: 0; }
-      #content { max-width: 100%; }
-      #content p, #content li { text-align: left; }
-      #topnav { padding: 0 1rem; }
+    /* ── Hamburger button (mobile) ──────────────────────── */
+    #nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 6px;
+      margin-left: auto;
+      flex-shrink: 0;
     }
 
-    @media (max-width: 600px) {
-      #site-header { padding: 0.75rem 1rem; }
-      #content h1 { font-size: 22px; }
-      #content h2 { font-size: 18px; }
+    #nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #1a1a1a;
+      margin: 4px 0;
+      border-radius: 1px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    /* Mobile nav drawer */
+    #mobile-nav {
+      display: none;
+      background: #f7f7f5;
+      border-bottom: 1px solid #ddd;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+
+    #mobile-nav a {
+      display: block;
+      font-size: 14px;
+      color: #444;
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    #mobile-nav a.active { color: #1a1a1a; font-weight: 600; }
+    #mobile-nav a:last-child { border-bottom: none; }
+
+    /* ── Large desktop (>1200px) ─────────────────────────── */
+    @media (min-width: 1200px) {
+      #page-wrap { max-width: 1400px; gap: 3rem; }
+      #toc-panel { width: 220px; }
+      #process-panel { width: 110px; }
+      #content { max-width: 800px; }
+    }
+
+    /* ── Medium desktop (900–1200px) ─────────────────────── */
+    @media (min-width: 900px) and (max-width: 1199px) {
+      #page-wrap { max-width: 1100px; gap: 2rem; }
+      #toc-panel { width: 180px; }
+      #process-panel { width: 90px; }
+      #content { max-width: 680px; }
+      .proc-diagram { width: 76px; }
+    }
+
+    /* ── Tablet (600–899px) ──────────────────────────────── */
+    @media (min-width: 600px) and (max-width: 899px) {
+      #topnav { display: none; }
+      #nav-toggle { display: flex; flex-direction: column; justify-content: center; }
+      #toc-panel { display: none; }
+      #process-panel { display: none; }
+      #page-wrap {
+        padding: 2rem 1.5rem;
+        gap: 0;
+        max-width: 100%;
+      }
+      #content {
+        max-width: 100%;
+        font-size: 15px;
+      }
+      #content p, #content li { text-align: left; }
+      #content h1 { font-size: 24px; }
+      #content h2 { font-size: 20px; }
+      #content h3 { font-size: 17px; }
+      #site-header .header-sub { display: none; }
+    }
+
+    /* ── Mobile (<600px) ─────────────────────────────────── */
+    @media (max-width: 599px) {
+      #topnav { display: none; }
+      #nav-toggle { display: flex; flex-direction: column; justify-content: center; }
+      #toc-panel { display: none; }
+      #process-panel { display: none; }
+      #page-wrap {
+        padding: 1.5rem 1rem;
+        gap: 0;
+        max-width: 100%;
+      }
+      #content {
+        max-width: 100%;
+      }
+      #content p, #content li {
+        font-size: 15px;
+        text-align: left;
+        line-height: 1.7;
+      }
+      #content h1 { font-size: 20px; margin: 1.5rem 0 0.75rem; }
+      #content h2 { font-size: 18px; margin: 1.5rem 0 0.5rem; }
+      #content h3 { font-size: 16px; }
+      #content h4 { font-size: 14px; }
+      #content table { font-size: 12px; }
+      #content pre { font-size: 12px; padding: 0.75rem 1rem; }
+      #site-header { padding: 0.75rem 1rem; gap: 0.75rem; }
+      #site-header img { height: 30px; }
+      #site-header .header-title { font-size: 12px; }
+      #site-header .header-sub { display: none; }
+      #content figure { margin: 1rem 0; }
+      #content .img-row { flex-direction: column; }
+      #content .img-row img { max-width: 100%; }
+      #content iframe { height: 300px; }
     }
   </style>
 </head>
@@ -491,7 +591,25 @@
     <div class="header-title">CDE4301 IS434 — Grid Resolution Standard</div>
     <div class="header-sub">NUS College of Design and Engineering · Final Report AY2025</div>
   </div>
+  <button id="nav-toggle" onclick="toggleMobileNav()" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<nav id="mobile-nav">
+  <a href="{{ '/' | relative_url }}"
+     {% if page.url == '/' or page.url contains 'index' %}class="active"{% endif %}>Abstract</a>
+  <a href="{{ 'Introduction.html' | relative_url }}"
+     {% if page.url contains 'Introduction' %}class="active"{% endif %}>1. Introduction</a>
+  <a href="{{ 'Methology.html' | relative_url }}"
+     {% if page.url contains 'Methology' %}class="active"{% endif %}>2. Methodology</a>
+  <a href="{{ 'Fabrication.html' | relative_url }}"
+     {% if page.url contains 'Fabrication' %}class="active"{% endif %}>3. Fabrication</a>
+  <a href="{{ 'fna.html' | relative_url }}"
+     {% if page.url contains 'fna' %}class="active"{% endif %}>4. Results &amp; Analysis</a>
+  <a href="{{ 'FW.html' | relative_url }}"
+     {% if page.url contains 'FW' %}class="active"{% endif %}>5. Future Work</a>
+</nav>
 
 <nav id="topnav">
   <a href="{{ '/' | relative_url }}"
@@ -500,7 +618,7 @@
      {% if page.url contains 'Introduction' %}class="active"{% endif %}>1. Introduction</a>
   <a href="{{ 'Methology.html' | relative_url }}"
      {% if page.url contains 'Methology' %}class="active"{% endif %}>2. Methodology</a>
-  <a href="{{ '/notes/report/Fabrication.html' | relative_url }}"
+  <a href="{{ 'Fabrication.html' | relative_url }}"
      {% if page.url contains 'Fabrication' %}class="active"{% endif %}>3. Fabrication</a>
   <a href="{{ 'fna.html' | relative_url }}"
      {% if page.url contains 'fna' %}class="active"{% endif %}>4. Results &amp; Analysis</a>
@@ -585,6 +703,14 @@
 </div>
 
 <script>
+function toggleMobileNav(){
+  const mn = document.getElementById('mobile-nav');
+  const btn = document.getElementById('nav-toggle');
+  const open = mn.style.display === 'block';
+  mn.style.display = open ? 'none' : 'block';
+  btn.setAttribute('aria-expanded', String(!open));
+}
+
 (function(){
   const content  = document.getElementById('content');
   const toc      = document.getElementById('toc-panel');

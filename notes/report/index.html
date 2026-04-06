@@ -81,7 +81,7 @@ Scalability via nanoimprint lithography is proposed as a route to high-throughpu
             {% assign printed = 0 %}
             {% for line in lines %}
               {% if printed < 12 %}
-                {% if line contains '## ' and line contains 'size' == false %}
+                {% if line contains '# ' and line contains 'size' == false %}
                   {% assign heading = line | remove: '####' | remove: '###' | remove: '##' | remove: '#' | strip | truncate: 60 %}
                   {% assign slug = heading | downcase
                                            | replace: ' ', '-'

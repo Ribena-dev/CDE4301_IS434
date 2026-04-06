@@ -9,11 +9,12 @@
   </figcaption>
 </figure>
 
-A slightly updated version of our fabrication overview 
- 
+A slightly updated version of our fabrication overview
 
 
-### 3.2 simulations of P-beam in PMMA 
+
+
+### 3.2 Simulations of P-beam in PMMA 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/srim_trajectories.png" 
@@ -37,6 +38,8 @@ A slightly updated version of our fabrication overview
   </figcaption>
 </figure>
 
+
+The SRIM Monte Carlo simulations are on 2 Mev proton trajectories are mapped above. 
 Spikes are caused by rare large-angle nuclear scattering events. The teal curve shows the cleaned data after IQR ×3 outlier removal, revealing a true straggle of 0.81 nm at the 1 µm exit depth, well below the 3 nm target (red dotted line).
  
 SRIM Monte Carlo simulations were used to characterise the behaviour of 2 MeV protons in PMMA and to predict the theoretical sidewall angle of the fabricated features. Two outputs are of interest: the depth distribution (Bragg peak), which confirms the feature height
@@ -96,7 +99,7 @@ After spin coating, the wafer is placed on a hotplate for a soft bake, typically
 
 
 
-Development is performed after PBW exposure and is included here for process continuity. The wafer is immersed in DI water:IPA (7:3) developer, which selectively dissolves the chain-scissioned PMMA in the exposed regions while leaving the unexposed resist intact [1][2]. The sample is then rinsed in fresh IPA and dried with a nitrogen gun to stop development. Following metal deposition, the remaining PMMA is removed by immersion in acetone, lifting off the metal on top of the resist and leaving only the metal deposited directly onto the silicon substrate.
+Development is performed after PBW exposure and is included here for process continuity. The wafer is immersed in DI water:IPA (7:3) developer, which selectively dissolves the chain-scissioned PMMA in the exposed regions while leaving the unexposed resist intact [1] [2]. The sample is then rinsed in fresh IPA and dried with a nitrogen gun to stop development. Following metal deposition, the remaining PMMA is removed by immersion in acetone, lifting off the metal on top of the resist and leaving only the metal deposited directly onto the silicon substrate.
 
 ### 3.4 P-beam structure
 
