@@ -45,7 +45,7 @@ For DLC the picture is more varied. DLC is essentially isotropic at 0.030 nm dif
   <img src="afm/dlc-grid_5nm_2.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.2:</strong> AFM across a 5nm grid of dlc
+    <strong>Figure 4.2 (a):</strong> AFM across a 5nm grid of dlc
   </figcaption>
 </figure>
 
@@ -53,7 +53,7 @@ For DLC the picture is more varied. DLC is essentially isotropic at 0.030 nm dif
   <img src="afm/dlc_5nm_grid_afm.png" alt="beam line optics"  >
   
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.3:</strong> Graph of surface roughness across a 5nm grid of dlc
+    <strong>Figure 4.2(b):</strong> Graph of surface roughness across a 5nm grid of dlc
   </figcaption>
 </figure>
 
@@ -65,7 +65,32 @@ what can i say
 
 Edge profiles were extracted from the electron detector data for each sample using the Erf–Gaussian fitting pipeline described in Section 2.5.1. For each sample, a row band was selected over a single grid edge, individual row profiles were fitted independently, and the mean FWHM f and sidewall angle θ were reported with ±1σ across rows.
 
-However, during the year the P-beam and electron detector was down limiting testing. Both the Au and Pd samples have not be tested. Instead the next subsection will be on analysis the visible structure using a optical microscope
+However, during the year the P-beam and electron detector was down limiting testing. Both the Au and Pd samples have not be tested. Instead the next subsection will be on analysis the visible structure using a optical microscope.
+
+#### Benchmark 
+Given that the anlysis is being done with my own python script, it would be import to both benchmark and check if erro fucntion line fit work as intend. 
+So below is the test run with the [nickle grid](Introduction.md#14-objective-and-deliverables) that is used in CIBA to calibrate the P-beam.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/nickel_graph.png"
+       alt="Nickel reference grid edge fit" width="480" >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3 (a):</strong> Nickel grid used to calibrate beam
+  </figcaption>
+</figure>
+| Measurement | f (nm) | θ (°) |
+| Nickel testing | 11.21 | **89.68** | 
+| Nickel refernce | 11.21 | **89.4** |
+
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/nickel_grid_e.png"
+       alt="Nickel reference grid edge fit" width="480" >
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.3(b):</strong> Nickel grid heatmap, blue line indicating selection line scan
+  </figcaption>
+</figure>
+
 
 
 <figure style="text-align: center; margin: 20px 0;">
@@ -92,13 +117,7 @@ However, during the year the P-beam and electron detector was down limiting test
   </figcaption>
 </figure>
 
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/nickel_graph.png"
-       alt="Nickel reference grid edge fit" width="480" >
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.3(d):</strong> Nickel grid used to calibrate beam
-  </figcaption>
-</figure>
+
 
 | Measurement | f (nm) | θ (°) | Meets ≥89.4° |
 |---|---|---|---|

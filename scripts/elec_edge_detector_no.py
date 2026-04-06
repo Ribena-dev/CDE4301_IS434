@@ -198,8 +198,7 @@ def analyse(data, r0, r1, h_nm, nm_per_px):
         axes[1].plot(x_fit, erf_gauss(x_fit, *r['popt']),
                      color='#A32D2D', lw=2, label='fit')
         axes[1].axvline(r['d'], color='#A32D2D', lw=1, ls='--')
-        axes[1].set_title(f"Left edge  f = {r['f']:.1f} px "
-                          f"= {r['f']*nm_per_px:.1f} nm", fontsize=10)
+        axes[1].set_title(f"Left edge  f = {r['f']:.1f} px", fontsize=10)
         axes[1].set_xlabel('Column (px)', fontsize=10)
         axes[1].legend(fontsize=8)
         axes[1].grid(True, lw=0.3, alpha=0.4)
@@ -213,8 +212,7 @@ def analyse(data, r0, r1, h_nm, nm_per_px):
         axes[2].plot(x_fit, erf_gauss(x_fit, *r['popt']),
                      color='#0F6E56', lw=2, label='fit')
         axes[2].axvline(r['d'], color='#0F6E56', lw=1, ls='--')
-        axes[2].set_title(f"Right edge  f = {r['f']:.1f} px "
-                          f"= {r['f']*nm_per_px:.1f} nm", fontsize=10)
+        axes[2].set_title(f"Right edge  f = {r['f']:.1f} px", fontsize=10)
         axes[2].set_xlabel('Column (px)', fontsize=10)
         axes[2].legend(fontsize=8)
         axes[2].grid(True, lw=0.3, alpha=0.4)
