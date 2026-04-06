@@ -297,7 +297,7 @@ $$ \theta = 90° - \arctan\!\left(\frac{f}{h}\right)$$
 where *h* is the feature height determined from the PBW process parameters and verified by AFM step-height measurement.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/calc_angle.jpg" alt = "nevot_coroce"  >
+  <img src="images/calc_angle.png" "  >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;"> Vizual of angle calcualtions
     <strong>Figure 2.8</strong> 
   </figcaption>

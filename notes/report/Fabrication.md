@@ -18,8 +18,7 @@ A slightly updated version of our fabrication overview
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/srim_trajectories.png" 
-       alt="SRIM simulation showing 20 sample 2 MeV proton trajectories through 1 µm PMMA in the X-Y plane (left) and the lateral exit spread distribution in the Y-Z plane with outlier nuclear scatter events marked (right)" 
-        style="margin: 5px;">
+       alt="SRIM simulation showing 20 sample 2 MeV proton trajectories through 1 µm PMMA in the X-Y plane (left) and the lateral exit spread distribution in the Y-Z plane with outlier nuclear scatter events marked (right)" >
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.2:</strong> SRIM Monte Carlo simulation of 2 MeV proton trajectories 
     in 1 µm PMMA. Left: side-view (X–Y) showing 20 sample ion paths,protons travel 
@@ -52,15 +51,14 @@ The simulation focused on two main factors that determine the quality of our mic
 
   - Penetration & The Bragg Peak: The simulation confirms that at 2 MeV, the protons pass through the PMMA with ease. This ensures we can achieve the full 1 µm feature height required for our design.
 
-  - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional <span class="graph-preview-wrap">
-  <a href="#ebl-spread-graph" class="graph-preview-link">Electron Beam Lithography (EBL)</a>
-  <span class="graph-preview-popup">
+  - Lateral Precision : As shown in the graph, the "lateral straggle" (how much the beam spreads sideways) is only 0.81 nm at the exit depth. This is demonstrates that proton beams can maintain much tighter precision than traditional <span class="graph-tooltip">
+  <span class="gt-trigger">Electron Beam Lithography</span>
+  <div class="gt-popup">
     <iframe src="scripts/ebeam_vs_pbeam_lateral_spread.html"
-            width="420" height="320"
-    </iframe>
-    <span class="graph-preview-caption">EBL lateral spread vs depth — hover to explore</span>
-  </span>
-</span>.
+            scrolling="no"></iframe>
+    <div class="gt-caption">EBL lateral spread vs depth — click to explore</div>
+  </div>
+</span>
 
 
 

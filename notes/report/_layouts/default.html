@@ -590,67 +590,41 @@
       border-top: 1px solid #ddd;
       z-index: 200;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    }
-
-    #mobile-bottom-bar .bar-tabs {
-      display: flex;
-      border-bottom: 1px solid #eee;
-    }
-
-    #mobile-bottom-bar .bar-tab {
-      flex: 1;
-      text-align: center;
-      padding: 10px 4px 6px;
-      font-size: 11px;
-      font-weight: 600;
-      color: #888;
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: color 0.15s, border-color 0.15s;
-      user-select: none;
-    }
-
-    #mobile-bottom-bar .bar-tab.active {
-      color: #1a1a1a;
-      border-bottom-color: #1a1a1a;
-    }
-
-    #mobile-bottom-bar .bar-icon {
-      font-size: 16px;
-      display: block;
-      margin-bottom: 2px;
+      padding: 10px 16px 12px;
     }
 
     #mobile-bottom-bar .bar-panel {
-      display: none;
-      max-height: 52vh;
-      overflow-y: auto;
-      padding: 12px 16px 16px;
-    }
-
-    #mobile-bottom-bar .bar-panel.open { display: block; }
-
-    /* TOC panel inside bottom bar */
-    #mob-toc a {
       display: block;
-      font-size: 13px;
-      color: #444;
-      text-decoration: none;
-      padding: 5px 0;
-      border-bottom: 0.5px solid #f0f0ed;
-      line-height: 1.4;
     }
-
-    #mob-toc a.h3 { padding-left: 1rem; font-size: 12px; color: #666; }
-    #mob-toc a.h4 { padding-left: 1.75rem; font-size: 11px; color: #888; }
-    #mob-toc a.active { color: #1a1a1a; font-weight: 600; }
-    #mob-toc a:last-child { border-bottom: none; }
 
     /* Process panel inside bottom bar */
+    /* mobile process — show all steps as a progress row, highlight active */
     #mob-process {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .mob-proc-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      opacity: 0.25;
+      transition: opacity 0.3s;
+      min-width: 0;
+    }
+
+    .mob-proc-step.active { opacity: 1; }
+
+    /* connector line between steps */
+    .mob-proc-connector {
+      width: 12px;
+      height: 1px;
+      background: #ddd;
+      flex-shrink: 0;
+      margin-bottom: 14px;
     }
 
     .mob-proc-step {
@@ -734,21 +708,13 @@
       );
     }
 
-    /* push body up so content not hidden behind bar */
-    body.has-bottom-bar { padding-bottom: 60px; }
-
-    @media (max-width: 899px) {
-      #mobile-bottom-bar { display: block; }
-      body { padding-bottom: 60px; }
-    }
-
-    /* ── Hover graph preview ─────────────────────────────── */
-    .graph-preview-wrap {
+        /* ── Graph hover tooltip ─────────────────────────────── */
+    .graph-tooltip {
       position: relative;
       display: inline;
     }
 
-    .graph-preview-link {
+    .graph-tooltip .gt-trigger {
       color: #1a1a1a;
       text-decoration: underline;
       text-decoration-style: dotted;
@@ -756,44 +722,57 @@
       cursor: pointer;
     }
 
-    .graph-preview-popup {
+    .graph-tooltip .gt-popup {
       display: none;
       position: absolute;
       bottom: calc(100% + 10px);
       left: 50%;
       transform: translateX(-50%);
+      width: 340px;
       background: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-      padding: 8px;
-      z-index: 500;
-      width: 436px;
+      z-index: 300;
+      overflow: hidden;
+    }
+
+    .graph-tooltip .gt-popup iframe {
+      width: 100%;
+      height: 220px;
+      border: none;
+      display: block;
       pointer-events: none;
     }
 
-    .graph-preview-wrap:hover .graph-preview-popup {
-      display: block;
-      pointer-events: auto;
-    }
-
-    .graph-preview-caption {
-      display: block;
+    .graph-tooltip .gt-caption {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       font-size: 11px;
       color: #888;
       text-align: center;
-      margin-top: 5px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      font-style: italic;
+      padding: 6px 10px 8px;
+      border-top: 1px solid #f0f0ed;
     }
 
-    /* keep popup on screen if near right edge */
-    @media (max-width: 700px) {
-      .graph-preview-popup {
-        width: 96vw;
+    .graph-tooltip:hover .gt-popup,
+    .graph-tooltip:focus-within .gt-popup {
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .graph-tooltip .gt-popup {
+        width: 260px;
         left: 0;
         transform: none;
       }
+    }
+
+    /* push body up so content not hidden behind bar */
+    body.has-bottom-bar { padding-bottom: 60px; }
+
+    @media (max-width: 899px) {
+      #mobile-bottom-bar { display: block; }
+      body { padding-bottom: 60px; }
     }
 
   </style>
@@ -967,34 +946,6 @@ function toggleMobileNav(){
 
     headings.forEach(h => tocObs.observe(h));
 
-    /* populate mobile TOC */
-    const mobToc = document.getElementById('mob-toc');
-    if(mobToc){
-      headings.forEach(h => {
-        const a = document.createElement('a');
-        a.href = '#' + h.id;
-        a.textContent = h.textContent;
-        if(h.tagName === 'H3') a.className = 'h3';
-        if(h.tagName === 'H4') a.className = 'h4';
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          document.getElementById(h.id).scrollIntoView({ behavior:'smooth', block:'start' });
-          switchTab('toc');
-        });
-        mobToc.appendChild(a);
-      });
-
-      const mobTocObs = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if(e.isIntersecting){
-            mobToc.querySelectorAll('a').forEach(a =>
-              a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-          }
-        });
-      }, { rootMargin:'-10% 0px -80% 0px', threshold:0 });
-
-      headings.forEach(h => mobTocObs.observe(h));
-    }
   }
 
   /* ── Process panel ────────────────────────────────────── */
@@ -1056,29 +1007,15 @@ function toggleMobileNav(){
 </script>
 
 <div id="mobile-bottom-bar">
-  <div class="bar-tabs">
-    <div class="bar-tab active" id="tab-toc" onclick="switchTab('toc')">
-      <span class="bar-icon">&#9776;</span>
-      Contents
-    </div>
-    <div class="bar-tab" id="tab-proc" onclick="switchTab('proc')">
-      <span class="bar-icon">&#9634;</span>
-      Process
-    </div>
-  </div>
-  <div class="bar-panel" id="mob-toc-panel">
-    <div id="mob-toc"></div>
-  </div>
   <div class="bar-panel" id="mob-proc-panel">
     <div id="mob-process">
-
       <div class="mob-proc-step" data-keys="substrate,wafer,silicon">
         <div class="mob-proc-diagram">
           <div class="mob-layer silicon"></div>
         </div>
         <div class="mob-proc-name">Substrate</div>
       </div>
-
+      <div class="mob-proc-connector"></div>
       <div class="mob-proc-step" data-keys="resist,pmma,hsq,spin,coating,pre-bake,bake">
         <div class="mob-proc-diagram">
           <div class="mob-layer pmma"></div>
@@ -1086,7 +1023,7 @@ function toggleMobileNav(){
         </div>
         <div class="mob-proc-name">Resist</div>
       </div>
-
+      <div class="mob-proc-connector"></div>
       <div class="mob-proc-step" data-keys="lithography,pbw,proton,srim,dose,energy,ciba,beam,exposure">
         <div class="mob-proc-diagram">
           <div class="mob-beam-container">
@@ -1099,7 +1036,7 @@ function toggleMobileNav(){
         </div>
         <div class="mob-proc-name">PBW</div>
       </div>
-
+      <div class="mob-proc-connector"></div>
       <div class="mob-proc-step" data-keys="development,developer,ipa,lift-off,liftoff">
         <div class="mob-proc-diagram">
           <div class="mob-layer pmma-patterned"></div>
@@ -1107,7 +1044,7 @@ function toggleMobileNav(){
         </div>
         <div class="mob-proc-name">Develop</div>
       </div>
-
+      <div class="mob-proc-connector"></div>
       <div class="mob-proc-step" data-keys="metal,deposition,magnetron,evaporation,material,gold,palladium,sample">
         <div class="mob-proc-diagram">
           <div class="mob-layer metal-islands"></div>
@@ -1115,7 +1052,7 @@ function toggleMobileNav(){
         </div>
         <div class="mob-proc-name">Metal</div>
       </div>
-
+      <div class="mob-proc-connector"></div>
       <div class="mob-proc-step" data-keys="analysis,afm,sidewall,roughness,erf,gaussian,electron">
         <div class="mob-proc-diagram" style="justify-content:center;align-items:center;">
           <svg viewBox="0 0 50 20" width="50" height="20">
@@ -1131,31 +1068,7 @@ function toggleMobileNav(){
   </div>
 </div>
 
-<script>
-var _activeTab = null;
 
-function switchTab(tab){
-  var tocPanel  = document.getElementById('mob-toc-panel');
-  var procPanel = document.getElementById('mob-proc-panel');
-  var tabToc    = document.getElementById('tab-toc');
-  var tabProc   = document.getElementById('tab-proc');
-
-  if(_activeTab === tab){
-    tocPanel.classList.remove('open');
-    procPanel.classList.remove('open');
-    tabToc.classList.remove('active');
-    tabProc.classList.remove('active');
-    _activeTab = null;
-    return;
-  }
-
-  _activeTab = tab;
-  tocPanel.classList.toggle('open',  tab === 'toc');
-  procPanel.classList.toggle('open', tab === 'proc');
-  tabToc.classList.toggle('active',  tab === 'toc');
-  tabProc.classList.toggle('active', tab === 'proc');
-}
-</script>
 
 </body>
 </html>

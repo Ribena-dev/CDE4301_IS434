@@ -33,8 +33,8 @@ However, the accuracy of measurements from any such instrument depends entirely 
 There are many kinds of resolution standards/calibration standards, below are the examples of tin spheres and a fine nano copper mesh 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/tin_nm.png" alt="Tin sphere resolution standards" width="260px" style="margin: 0 20px" >
-  <img src="images/grid_nm.png" alt="Grid resolution standards" width="250px">
+  <img src="images/tin_nm.png" alt="Tin sphere resolution standards"  style="margin: 0 20px" >
+  <img src="images/grid_nm.png" alt="Grid resolution standards" width="240px">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.2:</strong> Common resolution standards: tin spheres (top) and nano-grids (bottom)
   </figcaption>
@@ -175,13 +175,12 @@ No specific feature height was targeted, as the appropriate height varies consid
 ### 1.5 Summary logic flow 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/intro_logic.png"
-       alt="Schematic diagram of the target grid resolution standard showing 100 µm × 100 µm cell geometry"
-       width="280" >
+  <img src="images/intro_logic.png">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.9:</strong> Logic flow chart summary
   </figcaption>
 </figure>
+
 [<--Prev: Home ](index.html) | [Next: Methodology →](Methology.md)
 
 ## References
