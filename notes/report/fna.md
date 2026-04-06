@@ -131,7 +131,7 @@ The grid lines are straight and continuous with no visible breaks or bridging de
 
 
 
-### 4.4 Electron Contrast: Au vs DLC
+### 4.4 Electron Contrast Au vs DLC
 
 The backscatter contrast ratio between the metal grid features and the silicon substrate was assessed from the electron detector intensity profiles. A higher contrast ratio indicates greater separation between the metal signal and the background, which is the primary functional requirement of the resolution standard for SEM calibration use.
 
@@ -165,7 +165,7 @@ Surface roughness results are broadly within the sub-1 nm target for Pd and Au s
 
 The electron detector error function method provides an indirect estimate of θ inferred from the top-down intensity profile. It cannot distinguish between a genuinely sloped sidewall and broadening caused by beam effects at the measurement stage. Independent verification by tilted SEM or FIB-TEM cross-section, as described in Section 5.1, would be required to confirm these results at a traceable level of accuracy.
 
-### Conclusion
+### 4.6 Conclusion
 
 In summary, the fabricated grid resolution standard demonstrates sidewall angles consistent with or exceeding the 89.4° benchmark for the DLC-coated samples, surface roughness values meeting the sub-1 nm target for the majority of measured profiles, and electron contrast sufficient for SEM-based edge detection. The primary outstanding work is independent cross-sectional verification of the sidewall angle and systematic evaluation of the remaining Au and Pd samples once beam time is restored, as described in Section 5.
 

@@ -142,7 +142,7 @@ The sample stage can be adjusted along the beam axis with 1 µm accuracy. Becaus
 | **Stage Accuracy (Z-axis)** | ~1 µm |
 | **Power Supply Resolution** | 2 ppm (Bruker) |
 
-### 3.6 Metal Deposition Characteristics
+### 3.5 Metal Deposition Characteristics
 
 | Material | Deposition Technique | Melting Point (°C) | Conductivity (S/m) | Rationale |
 |---|---|---|---|---|
