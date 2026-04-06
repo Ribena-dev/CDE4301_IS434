@@ -4,6 +4,9 @@ Heatmap selector with live edge fitting
 Draw a rectangle on the heatmap — the collapsed profile and
 Erf+Gaussian fit update live as you drag.
 
+Plots are in PIXELS on the x-axis.
+nm conversion is used only for the sidewall angle calculation (printed in info panel).
+
 Press  N  to load a new file
 Press  Q  to quit
 
@@ -44,17 +47,18 @@ def erf_gauss(x, A_amp, B_amp, C, d, f):
             + B_amp * np.exp(-np.log(16) / f**2 * (d - x)**2)
             + C)
 
-def fit_edge(x_nm, y):
-    d_guess = float(x_nm[np.argmax(np.abs(np.gradient(y)))])
+def fit_edge(x_px, y):
+    """Fit in pixel space — returns popt with d and f in px."""
+    d_guess = float(x_px[np.argmax(np.abs(np.gradient(y)))])
     amp     = (y.max() - y.min()) / 2
     step    = np.mean(y[-len(y)//4:]) - np.mean(y[:len(y)//4])
     A_sign  = -1 if step > 0 else 1
     p0      = [A_sign * abs(amp), abs(amp) * 0.3, y.min(), d_guess, 8.0]
-    bounds  = ([-np.inf,       0, -np.inf, x_nm.min(), 0.5],
-               [ np.inf,  np.inf,  np.inf, x_nm.max(),
-                 (x_nm.max() - x_nm.min()) / 2])
+    bounds  = ([-np.inf,       0, -np.inf, x_px.min(), 0.5],
+               [ np.inf,  np.inf,  np.inf, x_px.max(),
+                 (x_px.max() - x_px.min()) / 2])
     try:
-        popt, _ = curve_fit(erf_gauss, x_nm, y, p0=p0,
+        popt, _ = curve_fit(erf_gauss, x_px, y, p0=p0,
                             bounds=bounds, maxfev=10000)
         return popt
     except Exception:
@@ -93,14 +97,14 @@ def run_session(path, nm_per_px, h_nm, cmap):
 
     prof_line,  = ax_profile.plot([], [], color=B, lw=1.4)
     edge_vline   = ax_profile.axvline(-1e9, color=R, lw=1, ls='--', alpha=0.7)
-    ax_profile.set_xlabel('Position (nm)', fontsize=9)
+    ax_profile.set_xlabel('Position (px)', fontsize=9)
     ax_profile.set_ylabel('Mean intensity', fontsize=9)
     ax_profile.set_title('Collapsed profile', fontsize=9)
     ax_profile.grid(True, lw=0.3, alpha=0.4)
 
     scat_fit  = ax_fit.scatter([], [], s=10, color=B, alpha=0.6)
     fit_line, = ax_fit.plot([], [], color=R, lw=2)
-    ax_fit.set_xlabel('Position (nm)', fontsize=9)
+    ax_fit.set_xlabel('Position (px)', fontsize=9)
     ax_fit.set_ylabel('Mean intensity', fontsize=9)
     ax_fit.set_title('Erf+Gauss fit', fontsize=9)
     ax_fit.grid(True, lw=0.3, alpha=0.4)
@@ -113,37 +117,44 @@ def run_session(path, nm_per_px, h_nm, cmap):
     def update(r0, r1, c0, c1):
         region  = data[r0:r1+1, c0:c1+1]
         profile = np.mean(region, axis=0)
-        x_nm    = np.arange(c0, c1+1, dtype=float) * nm_per_px
 
-        prof_line.set_data(x_nm, profile)
-        ax_profile.set_xlim(x_nm[0], x_nm[-1])
+        # pixel indices for plotting
+        x_px = np.arange(c0, c1+1, dtype=float)
+
+        prof_line.set_data(x_px, profile)
+        ax_profile.set_xlim(x_px[0], x_px[-1])
         ax_profile.set_ylim(profile.min() * 0.95, profile.max() * 1.05)
         ax_profile.set_title(f'Rows {r0}-{r1}  cols {c0}-{c1}', fontsize=9)
 
-        popt = fit_edge(x_nm, profile)
+        # fit in pixel space
+        popt = fit_edge(x_px, profile)
 
         if popt is not None:
-            A_amp, B_amp, C, d_nm, f_nm = popt
+            A_amp, B_amp, C, d_px, f_px = popt
+
+            # convert to nm only for angle calculation
+            d_nm  = d_px * nm_per_px
+            f_nm  = f_px * nm_per_px
             theta = 90 - np.degrees(np.arctan(f_nm / h_nm))
 
-            edge_vline.set_xdata([d_nm, d_nm])
+            edge_vline.set_xdata([d_px, d_px])
 
-            x_fit = np.linspace(x_nm[0], x_nm[-1], 500)
+            x_fit = np.linspace(x_px[0], x_px[-1], 500)
             y_fit = erf_gauss(x_fit, *popt)
-            scat_fit.set_offsets(np.column_stack([x_nm, profile]))
+            scat_fit.set_offsets(np.column_stack([x_px, profile]))
             fit_line.set_data(x_fit, y_fit)
-            ax_fit.set_xlim(x_nm[0], x_nm[-1])
+            ax_fit.set_xlim(x_px[0], x_px[-1])
             ax_fit.set_ylim(min(profile.min(), y_fit.min()) * 0.95,
                             max(profile.max(), y_fit.max()) * 1.05)
-            ax_fit.set_title(f'f = {f_nm:.1f} nm   theta = {theta:.2f} deg',
-                             fontsize=9)
+            # ax_fit.set_title(f'f = {f_px:.1f} px   theta = {theta:.2f} deg',
+            #                  fontsize=9)
 
             meets = 'YES' if theta >= 89.4 else 'NO'
             info_text.set_text(
                 f"Pixel size    = {nm_per_px} nm/px\n"
                 f"Height h      = {h_nm} nm\n"
-                f"Edge pos d    = {d_nm:.1f} nm\n"
-                f"FWHM f        = {f_nm:.2f} nm\n"
+                f"Edge pos d    = {d_px:.1f} px  ({d_nm:.1f} nm)\n"
+                f"FWHM f        = {f_px:.2f} px  ({f_nm:.2f} nm)\n"
                 f"A (Erf amp)   = {A_amp:.3f}\n"
                 f"B (Gauss amp) = {B_amp:.3f}\n"
                 f"C (baseline)  = {C:.3f}\n"
@@ -160,14 +171,6 @@ def run_session(path, nm_per_px, h_nm, cmap):
             )
 
         fig.canvas.draw_idle()
-
-    def onselect(eclick, erelease):
-        x1, x2 = sorted([eclick.xdata, erelease.xdata])
-        y1, y2 = sorted([eclick.ydata, erelease.ydata])
-        c0 = max(0, int(x1)); c1 = min(data.shape[1]-1, int(x2))
-        r0 = max(0, int(y1)); r1 = min(data.shape[0]-1, int(y2))
-        if c1 > c0 and r1 > r0:
-            update(r0, r1, c0, c1)
 
     # Two-click selection: click top-left corner, then bottom-right
     clicks = []

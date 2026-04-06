@@ -78,10 +78,14 @@ So below is the test run with the [nickle grid](Introduction.md#14-objective-and
     <strong>Figure 4.3 (a):</strong> Nickel grid used to calibrate beam
   </figcaption>
 </figure>
-| Measurement | f (nm) | θ (°) |
-| Nickel testing | 11.21 | **89.68** | 
-| Nickel refernce | 11.21 | **89.4** |
 
+| Measurement | f (nm) | θ (°) |
+|---|---|---|
+| Nickel testing | 47.71 | **89.68** | 
+| Nickel reference | 35.21 | **89.4** |
+
+
+Although the measured edge blur f is almost 20nm greater 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/nickel_grid_e.png"
@@ -121,11 +125,10 @@ So below is the test run with the [nickle grid](Introduction.md#14-objective-and
 
 | Measurement | f (nm) | θ (°) | Meets ≥89.4° |
 |---|---|---|---|
-| DLC/Au boundary | 5.93 | **89.66** | ✓ |
-| DLC | 14.91 | **89.49** | ✓ |
-| DLC on Pd  | 15.30 | 89.12 | ✗ |
-| Nickel reference | 11.21 | **89.68** | ✓ |
-| SRIM theoretical | 1.91 | 89.90 | ✓ |
+| DLC/Au boundary | 40.93 | **89.66** | ✓ |
+| DLC | 45.91 | **89.49** | ✓ |
+| DLC on Pd  | 60.30 | 89.12 | ✗ |
+
 
 SRIM theoretical prediction: θ = 89.9° (f = 1.91 nm at h = 1000 nm).
 
