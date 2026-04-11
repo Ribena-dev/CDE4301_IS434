@@ -167,8 +167,7 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
 | 6: Pd/Ti/Si | | 2 nm | 100 nm | | |
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/samples.png" alt="Fabricated sample photographs"
-  width = "280px">
+  <img src="images/samples.png" alt="Fabricated sample photographs">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 3.7:</strong> Fabricated samples.
   </figcaption>

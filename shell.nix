@@ -13,6 +13,8 @@ in pkgs.mkShell {
       python-pkgs.seaborn
       python-pkgs.openpyxl
       python-pkgs.pysrim
+      python-pkgs.pillow
+      python-pkgs.tifffile
     ]))
   ];
 }

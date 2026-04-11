@@ -1,0 +1,15 @@
+Test-1e.tif: 9.4359
+Test-2e.tif: 279.4471
+Test-3e.tif: 95.6003
+Test-4e.tif: 19.6368
+Grid-1e.tif: 376.4573
+Grid-2e.tif: 191.2007
+Grid-3e.tif: 96.8750
+Grid-4e.tif: 38.0399
+Grid-5e.tif: 11.9109
+Grid-6e.tif: 3.0273
+Grid-7e.tif: 3.3026
+Grid-8e.tif: 11.9109
+Grid-9e.tif: 3.3026
+Grid-10e.tif: 11.9109
+Grid-11e.tif: 3.1590

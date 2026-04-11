@@ -266,7 +266,7 @@ To process and analyze the electron detector data, a Python script was developed
 
 #### AFM: Surface Roughness
 
-AFM is used to characterise the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometre height variations. From the resulting height map, the root mean square roughness Rq (also written Rrms) is extracted, which is the standard deviation of height across the measured area. An example surface profile as visualised in Gwyddion is shown below.
+AFM is used to characterize the surface roughness of the top face of the deposited metal grid features and of the exposed silicon substrate between features. The AFM tip scans in tapping mode across the sample surface, recording sub-nanometre height variations. From the resulting height map, the root mean square roughness Rq (also written Rrms) is extracted, which is the standard deviation of height across the measured area. An example surface profile as visualised in Gwyddion is shown below.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/afm_example_pdsi.png" alt="AFM example surface scan">

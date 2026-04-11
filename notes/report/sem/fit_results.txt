@@ -1,0 +1,50 @@
+=== Individual Fits ===
+
+Selection 1 (X scan):
+  A (erf amplitude):    26.06
+  B (Gaussian amp):     106.38
+  C (baseline offset):  101.70
+  d (edge position px): 59.09
+  f (FWHM):             18.80 px
+
+Selection 2 (Y scan):
+  A (erf amplitude):    2.01
+  B (Gaussian amp):     3.06
+  C (baseline offset):  137.04
+  d (edge position px): 113.52
+  f (FWHM):             2.82 px
+
+Selection 3 (X scan):
+  A (erf amplitude):    26.07
+  B (Gaussian amp):     107.01
+  C (baseline offset):  99.74
+  d (edge position px): 93.85
+  f (FWHM):             17.77 px
+
+Selection 4 (Y scan):
+  A (erf amplitude):    -0.03
+  B (Gaussian amp):     -1.60
+  C (baseline offset):  119.41
+  d (edge position px): 35.18
+  f (FWHM):             3.87 px
+
+Selection 5 (X scan):
+  A (erf amplitude):    28.68
+  B (Gaussian amp):     114.90
+  C (baseline offset):  111.75
+  d (edge position px): 80.13
+  f (FWHM):             18.47 px
+
+Selection 6 (Y scan):
+  A (erf amplitude):    -39.62
+  B (Gaussian amp):     -28.85
+  C (baseline offset):  230.60
+  d (edge position px): 62.85
+  f (FWHM):             12.04 px
+
+=== Averages across all selections ===
+  A: 7.20 ± 23.96
+  B: 50.15 ± 60.17
+  C: 133.37 ± 45.21
+  d: 74.10 ± 25.32
+  f: 12.30 ± 6.72
