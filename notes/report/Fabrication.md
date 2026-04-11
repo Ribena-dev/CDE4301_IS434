@@ -164,7 +164,7 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
 | 3: DLC/Si | | | | | 10 nm |
 | 4: DLC/Au/Si | | | | 2 nm | 10 nm |
 | 5: DLC/Pd/Ti/Si | | 2 nm | | | 10 nm |
-| 6: Pd/Ti/Si | | 2 nm | 40 nm | | |
+| 6: Pd/Ti/Si | | 2 nm | 100 nm | | |
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/samples.png" alt="Fabricated sample photographs"
@@ -174,7 +174,11 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
   </figcaption>
 </figure>
 
-The samples tested in the results section comprise three DLC samples with seed layers of Pd or Au (and one without), and two Au samples with adhesion layers of Cr and Pd respectively. The Pd sample (Sample 6) was the last to be fabricated and unfortunately could not be fully tested, as the vacuum chamber and proton beam system were offline for repairs during the relevant testing period.
+Importantly not all the samples where tested using the SEM for sidewall characterization
+
+The DLC and Au samples was made and tested for surface roughness and to compared relative electron counts, when scanned with the p-beam
+
+The Pd sample (Sample 6) was the only sample tested with the SEM
 
 [← Prev: Methodology](Methology.md) | [Next: Results and Analysis →](fna.md)
 

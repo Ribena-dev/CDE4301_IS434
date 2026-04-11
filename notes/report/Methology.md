@@ -203,9 +203,16 @@ The plot shows signal retention as a function of roughness across representative
 
 Three complementary characterisation techniques are used to evaluate the fabricated grid resolution standard: electron detector analysis for edge straightness and sidewall angle, and atomic force microscopy (AFM) for surface roughness.
 
-#### Electron Detector: Edge Straightness and Sidewall Angle
+#### SEM: Edge Straightness and Sidewall Angle
 
-The electron detector is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the proton beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
+The SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/sem_phy.jpg" alt="SEM machine used ">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.14:</strong> SEM machine used to image the sample
+  </figcaption>
+</figure>
 
 The edge intensity profile is fitted using a combined error function and Gaussian model:
 
@@ -216,7 +223,7 @@ where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/ni_grid_x_lc.jpg" alt="Analysis method applied to the nickel reference grid">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.14:</strong> Analysis method applied to the previously fabricated nickel reference grid.
+    <strong>Figure 2.15:</strong> Analysis method applied to the previously fabricated nickel reference grid.
   </figcaption>
 </figure>
 
@@ -231,18 +238,29 @@ where *h* is the feature height determined from the PBW process parameters and v
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/calc_angle.png">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.15:</strong> Geometric relationship between FWHM and sidewall angle.
+    <strong>Figure 2.16:</strong> Geometric relationship between FWHM and sidewall angle.
   </figcaption>
 </figure>
 
-The resolution limit for this type of measurement is approximately 1 nm, below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. The method is also limited to top-down or oblique imaging and cannot directly image the sidewall profile without cross-sectioning, which is destructive.
+The resolution limit for this type of measurement is approximately 10 nm, below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. The method is also limited to top-down  and cannot directly image the sidewall profile without cross-sectioning, which is destructive or by titlting the stage, which will be discussed later in [Future works](!FW.md) 
 
-To process and analyse the electron detector data, a Python script was developed. The software workflow is illustrated below.
+##### Processing data
+To process and analyze the electron detector data, a Python script was developed. The software workflow is illustrated below.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/software_flow.png" alt="Software flowchart">
+  <img src="images/software_flow_2.png" alt="Software flowchart">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.16:</strong> Software flowchart for the electron detector analysis pipeline.
+    <strong>Figure 2.17:</strong> Software flowchart for the electron detector analysis pipeline.
+  </figcaption>
+</figure>
+
+- as the sem can only image the sample, we do not recieve the raw electroncounts 
+- instead since the greyscale image in propotional to the elctron count intensity , we will instead be using the intensity or colour grading to analysise the sied wall angles 
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="sem/Test-1e.tiff" alt="Example sem image">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 2.18:</strong> Example image from SEM imaging.
   </figcaption>
 </figure>
 

@@ -3,9 +3,9 @@
 ## Introduction
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/Scaling-of-transistor-size-physical-gate-length-L-g-to-sustain-Moores-Law.png" alt="Moore's Law transistor gate scaling">
+  <img src="images/transistor-size-over-time.png" alt="Moore's Law transistor gate scaling">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 1.1:</strong> Scaling of transistor size physical gate length to sustain Moore's Law.
+    <strong>Figure 1.1:</strong> Scaling of transistor size physical gate length to sustain Moore's Law.<a href="#ref-20">[20]</a>.
   </figcaption>
 </figure>
 
@@ -48,7 +48,7 @@ Calibrating such complex instruments requires different standards for different 
 Most commercial grids are fabricated using [electron beam lithography (EBL)](C.md) at the patterning step.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/e_beam.png" alt="Simplified EBL on positive resist">
+  <img src="images/e-beam.png" alt="Simplified EBL on positive resist">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.5:</strong> Simplified EBL process on positive resist.
   </figcaption>
@@ -110,11 +110,11 @@ While several fabrication methods have been explored for producing resolution st
 |---|---|---|---|
 | Lee et al., SPIE 2023 <a href="#ref-17">[17]</a> | Chrome (photomask) | Conventional lithography; characterised via TEM cross-section | ~85° |
 | He et al., JVST B 2011 <a href="#ref-18">[18]</a> | Silicon | Reactive Ion Etching (RIE) with dual-layer mask | 82° |
-| Bettiol et al. (CIBA, NUS), NIMB 2007 <a href="#ref-16">[16]</a> | Nickel | **Proton Beam Writing + DUV + Ni electroplating** | **89.4°** |
+| F.Zhang et al. (CIBA, NUS), NIMB 2007 <a href="#ref-16">[16]</a> | Nickel | **Proton Beam Writing + DUV + Ni electroplating** | **89.4°** |
 
 **Table 1.1:** Sidewall angles reported in representative resolution standard fabrication studies.
 
-The RIE-fabricated silicon template <a href="#ref-18">[18]</a> and the chrome photomask grid <a href="#ref-17">[17]</a> both fall short of the 90° target, with deviations arising from the lateral scattering effects inherent to their respective patterning processes — precisely the same mechanisms described in Section 1.2 for EBL. The benchmark for this project is the result previously achieved within CIBA by Bettiol et al. <a href="#ref-16">[16]</a>, who demonstrated a sidewall verticality of 89.4° in a nickel grid fabricated using PBW. This project therefore builds directly on that prior work, targeting the same ≥89.4° specification.
+The RIE-fabricated silicon template <a href="#ref-18">[18]</a> and the chrome photomask grid <a href="#ref-17">[17]</a> both fall short of the 90° target, with deviations arising from the lateral scattering effects inherent to their respective patterning processes, precisely the same mechanisms described in Section 1.2 for EBL. The benchmark for this project is the result previously achieved within CIBA . <a href="#ref-16">[16]</a>, who demonstrated a sidewall verticality of 89.4° in a nickel grid fabricated using PBW. This project therefore builds directly on that prior work, targeting the same ≥89.4° specification.
 
 ### 1.4 Objective and Deliverables
 
@@ -158,7 +158,7 @@ No specific feature height was targeted, as the appropriate height varies consid
 
 <li id="ref-1">Z. Yu, S. Tan, R. Han, H. Xiao, and J. He, "Device and technology outlook for 1 nm node and beyond," in <em>Proc. IEEE Int. Conf. Solid-State and Integrated Circuit Technology (ICSICT)</em>, 2004. DOI: <a href="https://doi.org/10.1109/ICSICT.2004.1434947">10.1109/ICSICT.2004.1434947</a></li>
 
-<li id="ref-2">E. Abbe, "Beiträge zur Theorie des Mikroskops und der mikroskopischen Wahrnehmung," <em>Archiv für Mikroskopische Anatomie</em>, vol. 9, pp. 413–468, 1873.</li>
+<li id="ref-2">Hao, X., Kuang, C., Gu, Z. et al. From microscopy to nanoscopy via visible light. <em>Light Sci Appl</em> 2, e108 (2013). <a href="https://doi.org/10.1038/lsa.2013.64">https://doi.org/10.1038/lsa.2013.64</a></li>
 
 <li id="ref-3">National Institute of Standards and Technology, "Improving CD-AFM measurements from the tip down," NIST News, Mar. 2016. [Online]. Available: <a href="https://www.nist.gov/news-events/news/2016/03/improving-cd-afm-measurements-tip-down">nist.gov</a></li>
 
@@ -186,13 +186,15 @@ No specific feature height was targeted, as the appropriate height varies consid
 
 <li id="ref-15">K. Yamazaki, "Electron beam direct writing," in <em>Nanofabrication: Fundamentals and Applications</em>, A. A. Tseng, Ed. Singapore: World Scientific, 2008.</li>
 
-<li id="ref-16">A. A. Bettiol, S. Venugopal Rao, E. J. Teo, J. A. van Kan, and F. Watt, "Sidewall quality in proton beam writing," <em>Nucl. Instrum. Methods Phys. Res. B</em>, vol. 258, no. 1, pp. 302–306, 2007. DOI: <a href="https://doi.org/10.1016/j.nimb.2007.02.065">10.1016/j.nimb.2007.02.065</a></li>
+<li id="ref-16"> F. Zhang, J. A. van Kan, S. Y. Chiam, and F. Watt.<em>Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms</em>, vol. 260, no. 1, pp. 474–478, Jul. 2007. DOI: <a href="https://doi.org/10.1016/j.nimb.2007.02.065">10.1016/j.nimb.2007.02.065</a></li>
 
 <li id="ref-17">W. Lee, H. Yang, and P. Wang, "Sidewall angle calculation on CD-SEM metrology," in <em>Proc. SPIE 12915, Photomask Japan 2023: XXIX Symposium on Photomask and Next-Generation Lithography Mask Technology</em>, 129150O, Sep. 2023. DOI: <a href="https://doi.org/10.1117/12.2685008">10.1117/12.2685008</a></li>
 
 <li id="ref-18">J. He, K. Richter, J. W. Bartha, and S. Howitz, "Fabrication of silicon template with smooth tapered sidewall for nanoimprint lithography," <em>J. Vac. Sci. Technol. B</em>, vol. 29, no. 6, p. 06FC16, Nov. 2011. DOI: <a href="https://doi.org/10.1116/1.3653266">10.1116/1.3653266</a></li>
 
 <li id="ref-19">IBM Research, "IBM unveils world's first 2 nm chip technology," <em>New Atlas</em>, May 2021. [Online]. Available: <a href="https://newatlas.com/computers/ibm-2-nm-chips-transistors/">newatlas.com</a></li>
+
+<li id="ref-20">IBM Research, "Is Smaller Always Better for Transistor Size? - TechSparks," <em>Techsparks</em>, Jan. 16, 2024 [Online]. Available: <a href="https://www.tech-sparks.com/size-of-transistors/">newatlas.com</a></li>
 
 </ol>
 </div>
