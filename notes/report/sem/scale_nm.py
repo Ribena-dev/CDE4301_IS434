@@ -7,7 +7,7 @@ from scipy.optimize import curve_fit
 from scipy.special import erf
 import os
 
-filename = "Grid-11e"
+filename = "Grid-9e"
 intensity = tiff.imread(filename + ".tif")
 image_path = filename + ".tif"  # ← fix 1: .tff → .tif
 

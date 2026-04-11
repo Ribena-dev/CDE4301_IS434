@@ -258,7 +258,7 @@ To process and analyze the electron detector data, a Python script was developed
 - instead since the greyscale image in propotional to the elctron count intensity , we will instead be using the intensity or colour grading to analysise the sied wall angles 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="sem/Test-1e.tiff" alt="Example sem image">
+  <img src="sem/Test-1e.tif" alt="Example sem image">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 2.18:</strong> Example image from SEM imaging.
   </figcaption>

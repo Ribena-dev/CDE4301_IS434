@@ -54,7 +54,7 @@ For DLC the picture is more varied. The DLC-only sample shows an anisotropy of o
 
 This measurement was taken across a patterned grid rather than a flat surface, allowing both the feature height and the surface roughness of the top face and the substrate to be captured in a single scan. The step height is consistent with the intended 5 nm DLC deposition, and the roughness on the grid top face is within the sub-1 nm target.
 
-### 4.2 Sidewall Angle via Electron Detector
+### 4.2 Sidewall Angle via SEM
 
 Edge profiles were extracted from the electron detector data for each sample using the error function and Gaussian fitting pipeline described in Section 2.5.1. For each sample, a row band was selected over a single grid edge, and the mean FWHM f and sidewall angle θ were reported.
 
@@ -64,20 +64,20 @@ During the project period, the proton beam and electron detector were offline fo
 
 Given that the analysis is performed using a custom Python script, it is important to first verify that the error function fit behaves as intended before drawing conclusions from the sample results. The script was therefore tested against the nickel reference grid used at CIBA to calibrate the proton beam.
 
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/nickel_graph.png"
+<figure style="text-align: center; margin: 20px 0;"> 
+  <img src="sem/1646 grid 256_selection_15_x.png"
        alt="Nickel reference grid edge fit" width="480">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(a):</strong> Error function fit applied to the nickel calibration grid edge profile.
   </figcaption>
 </figure>
 
-| Measurement | f (nm) | θ (°) |
-|---|---|---|
-| Nickel measured | 47.71 | **89.68** |
-| Nickel reference | 35.21 | **89.4** |
+| Measurement | θ (°) |
+|---|---|
+| Nickel measured |  **89.59** |
+| Nickel reference | **89.4** |
 
-The measured edge blur f is approximately 20 nm greater than the reference value, which is attributed to the beam not being at its optimum focus during the test scan. Despite this, the fitted sidewall angle of 89.68° is consistent with and slightly exceeds the published reference value of 89.4°, confirming that the fitting pipeline correctly recovers the sidewall angle.
+The beam was having some inconstancy in the stability, which is attributed to the beam not being at its optimum focus during the test scan. Despite this, the fitted sidewall angle of 89.59° is consistent with and slightly exceeds the published reference value of 89.4°, confirming that the fitting line correctly recovers the sidewall angle.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/nickel_grid_e.png"
@@ -90,7 +90,7 @@ The measured edge blur f is approximately 20 nm greater than the reference value
 #### Sample Results
 
 <iframe
-  src="scripts/surface.html"
+  src="scripts/sidewall_table.html"
   style="border:none; border-radius:6px;"
   allowfullscreen="true"
   width="500px"
@@ -105,7 +105,7 @@ The DLC/Au boundary and the standalone DLC measurements both meet the 89.4° tar
 
 ### 4.3 Optical Microscopy Analysis
 
-Due to the electron detector being unavailable for part of the project period, optical microscopy was used as an interim technique to visually inspect the Au and Pd grid samples and confirm the presence of well-defined grid features following fabrication.
+Optical microscopy was used as an interim technique to visually inspect the Au and Pd grid samples and confirm the presence of well-defined grid features following fabrication.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/20260223_4MR_10mindev_50x_1.png" alt="Brightfield optical micrograph of Pd grid after development" width="340px">

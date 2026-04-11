@@ -103,6 +103,7 @@ def fit_profile(region, axis="x"):
 
         theta = None
         if h_px is not None:
+            print(h_px)
             theta = 90 - np.degrees(np.arctan(abs(f) / h_px))
            
 

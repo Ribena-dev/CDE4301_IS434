@@ -1,0 +1,65 @@
+=== Individual Fits ===
+
+Selection 1 (X scan):
+  A:     25.83
+  B:     106.13
+  C:     103.43
+  d:     70.52 px
+  f:     18.51 px
+  theta: 86.82°
+
+Selection 2 (X scan):
+  A:     38.96
+  B:     115.85
+  C:     85.25
+  d:     21.79 px
+  f:     19.57 px
+  theta: 86.64°
+
+Selection 3 (X scan):
+  A:     26.70
+  B:     101.37
+  C:     101.82
+  d:     55.48 px
+  f:     18.37 px
+  theta: 86.85°
+
+Selection 4 (X scan):
+  A:     26.25
+  B:     95.12
+  C:     98.89
+  d:     72.16 px
+  f:     19.24 px
+  theta: 86.70°
+
+Selection 5 (X scan):
+  A:     0.00
+  B:     132.31
+  C:     96.14
+  d:     3.08 px
+  f:     20.95 px
+  theta: 86.40°
+
+Selection 6 (X scan):
+  A:     26.58
+  B:     109.21
+  C:     99.76
+  d:     78.19 px
+  f:     17.06 px
+  theta: 87.07°
+
+Selection 7 (X scan):
+  A:     39.91
+  B:     106.90
+  C:     105.30
+  d:     35.19 px
+  f:     5.85 px
+  theta: 88.99°
+
+=== Averages ===
+  A: 26.32 ± 12.17
+  B: 109.56 ± 11.03
+  C: 98.66 ± 6.14
+  d: 48.06 ± 26.53
+  f: 17.08 ± 4.72
+  theta: 87.07 ± 0.81
