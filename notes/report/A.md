@@ -20,7 +20,7 @@ The emitted electrons are collected by a scintillator-photomultiplier detector s
 **Source:** Microbe Notes — [microbenotes.com/transmission-electron-microscope-tem](https://microbenotes.com/transmission-electron-microscope-tem/)
 
 <figure style="text-align: center; margin: 20px 0;">
-<img src="images/TEM.jpg" alt="Beam line optics diagram">
+<img src="images/TEM.png" alt="TEM diagram">
 
 </figure>
 The transmission electron microscope (TEM) was developed by Ernst Ruska and Max Knoll in 1931 and achieves the highest spatial resolution of any laboratory microscope. Where the SEM images surface topography by collecting emitted electrons, the TEM forms an image by passing a high-energy electron beam through an ultrathin specimen and detecting the transmitted intensity on the far side.
