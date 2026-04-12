@@ -65,7 +65,7 @@ During the project period, the proton beam and electron detector were offline fo
 Given that the analysis is performed using a custom Python script, it is important to first verify that the error function fit behaves as intended before drawing conclusions from the sample results. The script was therefore tested against the nickel reference grid used at CIBA to calibrate the proton beam.
 
 <figure style="text-align: center; margin: 20px 0;"> 
-  <img src="sem/1646 grid 256_selection_15_x.png"
+  <img src="sem/figures/1646 grid 256_selection_15_x.png"
        alt="Nickel reference grid edge fit" width="480">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.3(a):</strong> Error function fit applied to the nickel calibration grid edge profile.
@@ -97,7 +97,6 @@ The beam was having some inconstancy in the stability, which is attributed to th
   height="500px"
   sandbox="allow-scripts">
 </iframe>
-
 
 SRIM theoretical prediction: θ = 89.9° (f = 1.91 nm at h = 1000 nm).
 

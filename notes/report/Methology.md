@@ -242,7 +242,7 @@ where *h* is the feature height determined from the PBW process parameters and v
   </figcaption>
 </figure>
 
-The resolution limit for this type of measurement is approximately 10 nm, below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. The method is also limited to top-down  and cannot directly image the sidewall profile without cross-sectioning, which is destructive or by titlting the stage, which will be discussed later in [Future works](!FW.md) 
+The resolution limit for this type of measurement is approximately 10 nm, below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. The method is also limited to top-down  and cannot directly image the sidewall profile without cross-sectioning, which is destructive or by tilting the stage, which will be discussed later in [Future works](!FW.md) 
 
 ##### Processing data
 To process and analyze the electron detector data, a Python script was developed. The software workflow is illustrated below.
@@ -258,7 +258,7 @@ To process and analyze the electron detector data, a Python script was developed
 - instead since the greyscale image in propotional to the elctron count intensity , we will instead be using the intensity or colour grading to analysise the sied wall angles 
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="sem/Test-1e.tif" alt="Example sem image">
+  <img src="sem/Test-1.png" alt="Example sem image">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 2.18:</strong> Example image from SEM imaging.
   </figcaption>
