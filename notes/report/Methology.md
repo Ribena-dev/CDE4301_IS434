@@ -19,7 +19,7 @@ This section outlines the materials, techniques, and analytical methods selected
 3. **Metal deposition:** a metal layer is deposited over the entire surface, filling the developed trenches.
 4. **Lift-off:** the remaining resist is dissolved in solvent, removing the metal deposited on top of it and leaving only the patterned grid structures.
 
-This section skips a general lithography overview, as the novelty of the proton beam approach is already covered in Section 1.3, and focuses instead on understanding the proton beam system and the analytical techniques used to evaluate the fabricated standard.
+Previously, general lithography overview, as the novelty of the proton beam approach was covered in Section 1.3,as such this section will focus instead on understanding the proton beam system and the analytical techniques used to evaluate the fabricated standard.
 
 Further note: this section and the next include a process chart that will highlight which fabrication step each subsection corresponds to.
 
@@ -102,10 +102,11 @@ There is a minimum dose required, called the threshold dose, to fully develop a 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/dev.png" alt="Dosage and development testing results">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.8:</strong> Dosage and development testing results.
+    <strong>Figure 2.8:</strong> Dosage and development testing results, during lift off process
   </figcaption>
 </figure>
 
+The visible flakes are PMMA being removed during the lift off
 #### Effects of Dosage
 
 <figure style="text-align: center; margin: 20px 0;">
