@@ -4,9 +4,16 @@
 
 Due to time constraints and equipment downtime during the project period, the sidewall angle measurements obtained from electron detector analysis could not be independently verified against a direct cross-sectional technique. The error function and Gaussian edge fitting method used in this project provides an indirect estimate of θ inferred from the top-down intensity profile. It assumes that the feature geometry is the dominant contributor to the edge transition width f. Cross-sectional verification would either confirm or correct this assumption, and is strongly recommended for any future iteration of this work.
 
-#### SEM Cross-Sectional Verification
+#### Direct Sidewall Imaging via Stage Tilt
 
-A tilted SEM approach can provide a direct line-of-sight measurement of the sidewall profile without requiring sample destruction. The sample is mounted on a tilted stub, so that the sidewall of the grid feature is brought into a near-parallel view relative to the incident electron beam. The apparent width of the edge band in the tilted image can then be compared to the top-down measurement; the geometric relationship between the two gives an independent estimate of the sidewall angle.
+A tilted SEM approach can provide a direct line-of-sight measurement of the sidewall profile without requiring sample destruction. The JEOL JSM-6700F specimen stage supports tilt angles of −5° to +60°,  so that the sidewall of the grid feature is brought into a near-parallel view relative to the incident electron beam. The apparent width of the edge band in the tilted image can then be compared to the top-down measurement; the geometric relationship between the two gives an independent estimate of the sidewall angle.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/sem_tilt.png" alt="sem tilt method ">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 5.1:</strong> Simplified diagram of the SEM stage tilt
+  </figcaption>
+</figure>
 
 A more direct method is to cleave or FIB-mill the sample through a grid line and image the exposed cross-section. This gives a true side-on view of the feature profile, and the sidewall angle can be measured directly from the image by fitting a line to the sidewall edge.
 
@@ -14,7 +21,7 @@ A more direct method is to cleave or FIB-mill the sample through a grid line and
 
 Transmission electron microscopy offers the highest spatial resolution for sidewall angle measurement and is the reference technique used by NIST for the SCCDRM single-crystal standards. The procedure involves thinning the sample down to electron transparency using FIB milling, progressively reducing the lamella to a thickness of a few tens of nanometres until the cross-section of the grid feature is exposed. At this thickness, the high-angle annular dark field (HAADF-STEM) mode provides direct imaging of the metal-resist and metal-silicon interfaces with sub-nanometre resolution, and the sidewall angle can be measured directly from the atomic-scale image of the metal column edge.
 
-The primary limitation of TEM is that sample preparation is destructive and time-consuming. Each FIB-prepared lamella represents one measurement site on one sample, and the preparation process itself introduces artefacts at the cut surface. For this project, TEM verification would be most valuable on the best-performing sample identified from the electron detector and AFM results, to establish a ground-truth measurement of θ against which the indirect error function estimates can be calibrated for future use.
+The primary limitation of TEM is that sample preparation is destructive and time-consuming. Each FIB-prepared lamella represents one measurement site on one sample, and the preparation process itself introduces artefacts at the cut surface. For this project, TEM verification would be most valuable on the best-performing sample identified from the SEM and AFM results, to establish a ground-truth measurement of θ against which the indirect error function estimates can be calibrated for future use.
 
 ### 5.2 Scalability via Nanoimprinting
 
@@ -25,7 +32,7 @@ Initial trials were conducted using an Omostamp silicon stamp on a NILT CNI nano
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/stamp.png" alt="Nanoimprinting overview" width="280">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 5.1:</strong> Nanoimprinting process overview.
+    <strong>Figure 5.2:</strong> Nanoimprinting process overview.
   </figcaption>
 </figure>
 
@@ -49,7 +56,7 @@ Initial trials were conducted using an Omostamp silicon stamp on a NILT CNI nano
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/imprinter.jpg" alt="Nanoimprinting machine" width="280" style="margin: 5px;">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 5.2:</strong> NILT CNI nanoimprinting machine.
+    <strong>Figure 5.3:</strong> NILT CNI nanoimprinting machine.
   </figcaption>
 </figure>
 

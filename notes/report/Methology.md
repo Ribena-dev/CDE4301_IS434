@@ -254,8 +254,10 @@ To process and analyze the electron detector data, a Python script was developed
   </figcaption>
 </figure>
 
-- as the sem can only image the sample, we do not recieve the raw electroncounts 
-- instead since the greyscale image in propotional to the elctron count intensity , we will instead be using the intensity or colour grading to analysise the sied wall angles 
+The JEOL JSM-6700F SEM produces a greyscale image where each pixel's intensity value is directly proportional to the number of secondary electrons detected at that position on the sample surface. While the raw electron counts are not directly accessible, the 8-bit greyscale encoding (0–255) provides a linearly scaled representation of the local electron yield, and can therefore be treated as a quantitative proxy for electron intensity.
+
+By fitting the combined error function and Gaussian model to this intensity profile, the FWHM of the edge transition can be extracted. Since the greyscale intensity is proportional to electron count, the fitted FWHM corresponds directly to the spatial width of the electron intensity transition, and by extension, to the projected width of the sidewall slope at the sample surface. Combined with the known feature height, this allows the sidewall angle to be estimated from a standard top-down SEM image.
+
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="sem/Test-1.png" alt="Example sem image">

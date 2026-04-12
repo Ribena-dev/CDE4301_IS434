@@ -127,7 +127,7 @@ The objective of this project is to fabricate a metallic grid resolution standar
   </figcaption>
 </figure>
 
-No specific feature height was targeted, as the appropriate height varies considerably depending on the calibration application. Characterisation is performed using AFM tapping mode and electron detector edge analysis, with results validated against SRIM Monte Carlo predictions.
+No specific feature height was targeted, as the appropriate height varies considerably depending on the calibration application. Characterisation is performed using AFM tapping mode and SEM edge analysis, with results validated against SRIM Monte Carlo predictions.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/grid_dia.png"

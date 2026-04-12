@@ -9,4 +9,4 @@ Source: Ganeysh, "Electron Yield SRIM," presented at [Weekly meeting AY25/26], [
   </figcaption>
 </figure> 
 
-[← Prev: Appendix A](A.md) | [Next: Appendix C →](C.md)
+[← Prev: Appendix D](D.md) | [Next: Abstract →](index.html)
