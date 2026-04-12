@@ -161,7 +161,7 @@ Gold (Au) was selected as the primary structural metal due to its well-establish
 |---|:---:|:---:|:---:|:---:|:---:|
 | 1: Au/Cr/Si | 2 nm | | | 30 nm | |
 | 2: Au/Pd/Ti/Si | | 2 nm | 2 nm | 20 nm | |
-| 3: DLC/Si | | | | | 10 nm |
+| 3: DLC/Si | | | | | 5 nm |
 | 4: DLC/Au/Si | | | | 2 nm | 10 nm |
 | 5: DLC/Pd/Ti/Si | | 2 nm | | | 10 nm |
 | 6: Pd/Ti/Si | | 2 nm | 100 nm | | |
