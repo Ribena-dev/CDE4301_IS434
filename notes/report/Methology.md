@@ -202,7 +202,7 @@ The plot shows signal retention as a function of roughness across representative
 
 ### 2.5 Method of Analysis
 
-Three complementary characterisation techniques are used to evaluate the fabricated grid resolution standard: electron detector analysis for edge straightness and sidewall angle, and atomic force microscopy (AFM) for surface roughness.
+Three complementary characterisation techniques are used to evaluate the fabricated grid resolution standard: SEM analysis for edge straightness and sidewall angle, and atomic force microscopy (AFM) for surface roughness.
 
 #### SEM: Edge Straightness and Sidewall Angle
 
@@ -246,12 +246,12 @@ where *h* is the feature height determined from the PBW process parameters and v
 The resolution limit for this type of measurement is approximately 10 nm, below which the finite beam diameter and beam-sample interaction volume prevent reliable edge discrimination. The method is also limited to top-down  and cannot directly image the sidewall profile without cross-sectioning, which is destructive or by tilting the stage, which will be discussed later in [Future works](!FW.md) 
 
 ##### Processing data
-To process and analyze the electron detector data, a Python script was developed. The software workflow is illustrated below.
+To process and analyze the SEM data, a Python script was developed. The software workflow is illustrated below.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/software_flow_2.png" alt="Software flowchart">
+  <img src="images/software_sem.png" alt="Software flowchart">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.17:</strong> Software flowchart for the electron detector analysis pipeline.
+    <strong>Figure 2.17:</strong> Software flowchart for the SEM analysis pipeline.
   </figcaption>
 </figure>
 

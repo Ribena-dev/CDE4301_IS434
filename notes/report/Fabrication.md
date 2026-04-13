@@ -45,7 +45,7 @@ The lateral straggle σ(z) from SRIM gives the standard deviation of the beam's 
 
 $$ f(z) = 2\sqrt{2\ln 2} \cdot \sigma(z) \approx 2.355\,\sigma(z) $$
 
-where f is the FWHM of the dose profile across the feature edge, the same parameter extracted from electron detector measurements in [Section 2.5.1](Methology.md#25-method-of-analysis). The theoretical sidewall angle at the full feature depth h is then:
+where f is the FWHM of the dose profile across the feature edge, the same parameter extracted from SEM measurements in [Section 2.5.1](Methology.md#25-method-of-analysis). The theoretical sidewall angle at the full feature depth h is then:
 
 $$ \theta = 90° - \arctan\!\left(\frac{f(h)}{h}\right) = 90° - \arctan\!\left(\frac{2.355\,\sigma(h)}{h}\right) $$
 

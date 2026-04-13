@@ -141,6 +141,18 @@ The beam was having some inconstancy in the stability, which is attributed to th
 #### Sample Results
 
 Given the shadowing effect, the below table is carefully curated to only include the ones with least least shadowing effect to reduce it's effect onto the results
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="images/Grid-12_a.png"
+       width="480">
+  <img src="sem/Grid-14_a.png"
+       width="480">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.6:</strong> Grids 12 and 14 with labeled selected regions
+  </figcaption>
+</figure>
+
+
 <iframe
   src="scripts/sidewall_table.html"
   style="border:none; border-radius:6px;"
@@ -176,11 +188,11 @@ A more appropriate quantity to extract from these measurements is the FWHM/2 val
 
 The Y scans are generally very close to the 20 nm beam spot size, with an average deviation of only 1.97 nm above the estimate, while the X scans show a substantially larger average deviation of 25.92 nm above it. The significantly higher FWHM observed in the X scans may be linked to the previously noted observation of vertical sidewalls producing an overlay effect, the projected sidewall width in the X direction broadens the measured transition zone well beyond the instrument resolution, whereas the Y direction edge sits remarkably close to the 20 nm beam spot limit, suggesting the Y transitions are dominated by instrument resolution rather than feature geometry.
 
-### 4.5 Discussion and Limitations
+### 4.4 Discussion and Limitations
 
 **Sidewall angle:**
 
- The sidewall angles extracted from the Pd grid samples range from approximately 44° to 68°, falling well short of the 89.4° target. This is not indicative of poor sidewall geometry but rather a fundamental incompatibility between the 100 nm feature height and the method developed for the 2 µm nickel reference standard — the angle calculation becomes unreliable when the transition width f approaches the feature height h. The FWHM/2 analysis is a more appropriate metric at this scale, with Y scan values consistently near the 20 nm instrument resolution limit, confirming the fitting pipeline is functioning correctly.
+ The sidewall angles extracted from the Pd grid samples range from approximately 44° to 68°, falling well short of the 89.4° target. This is not indicative of poor sidewall geometry but rather a fundamental incompatibility between the 100 nm feature height and the method developed for the 2 µm nickel reference standard, the angle calculation becomes unreliable when the transition width f approaches the feature height h. The FWHM/2 analysis is a more appropriate metric at this scale, with Y scan values consistently near the 20 nm instrument resolution limit, confirming the fitting pipeline is functioning correctly.
 
 **Surface roughness:**
 
@@ -188,15 +200,15 @@ The Y scans are generally very close to the 20 nm beam spot size, with an averag
 
 **Edge warping:**
 
-  Edge irregularity and warping along the aperture boundaries is observed across multiple grid samples, most prominently at the corners. Two contributing mechanisms are possible: proton beam positional drift during PBW exposure, or thermal loading of the PMMA resist during Pd evaporation causing localised stress or reflow. Both effects are well documented in the literature and are not unexpected at this feature scale. The warping observed is relatively minor and does not compromise the straight edge segments used for FWHM extraction.
+  Edge irregularity and warping along the aperture boundaries is observed across multiple grid samples, most prominently at the corners. Two contributing mechanisms are possible: proton beam positional drift during PBW exposure, or thermal loading of the PMMA resist during Pd evaporation causing localised stress or reflow. Both effects are well documented in the literature and are not unexpected at this feature scale. 
 
 #### Limitations of the Analysis Method
 
-The SEM error function method provides an indirect estimate of θ inferred from the top-down intensity profile. It cannot distinguish between a genuinely sloped sidewall and broadening caused by beam effects at the measurement stage. Additionally, the shadowing artefact observed in some images may introduce systematic bias in the extracted intensity profiles even after excluding the most severely affected samples. Independent verification by tilted SEM imaging or FIB-TEM cross-section, as described in Section 5.1, would be required to confirm these results at a traceable level of accuracy.
+The SEM error function method provides an indirect estimate of θ inferred from the top-down intensity profile. It cannot distinguish between a genuinely sloped sidewall and broadening caused by beam effects at the measurement stage. Additionally, the shadowing artefact observed in some images may introduce systematic bias in the extracted intensity profiles even after excluding the most severely affected samples. Independent verification by tilted SEM imaging or FIB-TEM cross-section, as described in (Section 5.1)[FW.md#51-future-testing-using-sem-and-tem], would be required to confirm these results at a traceable level of accuracy.
 
-### 4.6 Conclusion
+### 4.5 Conclusion
 
-The fabricated Pd grid resolution standard demonstrates surface roughness well within the sub-1 nm Rq target at 0.219 nm, and the fitting pipeline was validated against the nickel reference standard, recovering a sidewall angle of 89.59° in agreement with the published reference value of 89.4°. Direct sidewall angle extraction from the Pd samples was not feasible at the current feature height of ~100 nm, as the method was developed for a 2 µm standard and produces unreliable results when the transition width approaches the feature height. The FWHM/2 values from the Y scan profiles (average 1.97 nm above the 20 nm beam spot estimate) indicate that the edge detection is functioning at the instrument resolution limit, providing confidence that the measurement pipeline is sound. The primary limitations are the mismatch in feature height relative to the reference standard and the absence of cross-sectional verification. These are addressed in the future work recommendations in Section 5.
+The fabricated Pd grid resolution standard demonstrates surface roughness well within the sub-1 nm Rq target at 0.219 nm, and the fitting pipeline was validated against the nickel reference standard, recovering a sidewall angle of 89.59° in agreement with the published reference value of 89.4°. Direct sidewall angle extraction from the Pd samples was not feasible at the current feature height of ~100 nm, as the method was developed for a 2 µm standard and produces unreliable results when the transition width approaches the feature height. The FWHM/2 values from the Y scan profiles (average 1.97 nm above the 20 nm beam spot estimate) indicate that the edge detection is functioning at the instrument resolution limit, providing confidence that the measurement pipeline is sound. The primary limitations are the mismatch in feature height relative to the reference standard and the absence of cross-sectional verification. These are addressed in the future work recommendations in (Section 5: Future works)[FW.md]
 
 [← Prev: Fabrication](Fabrication.md) | [Next: Future Works →](FW.md)
 

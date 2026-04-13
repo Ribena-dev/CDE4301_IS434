@@ -95,33 +95,45 @@ const sections = [
     rows: [
       { grid:'Grid-14', sel:1, axis:'Y', f_px:50.78, theta:64.40,
        note:'Well-converged Y scan. FWHM notably narrower than the X scans from the same grid, suggesting the edge is sharper in the Y direction.',
-       graph:'../afm/pd_si_5um_0.png',  src:'' },
-      { grid:'Grid-14', sel:2, axis:'Y', f_px:45.90, theta:66.58, note:'Consistent with sel 1 and 3. The three Grid-14 Y scans form a tight cluster (f ≈ 44–51 px, θ ≈ 64–67°).' },
-      { grid:'Grid-14', sel:3, axis:'Y', f_px:44.49, theta:67.23, note:'Narrowest of the three Grid-14 Y scans. Fit converged cleanly with a prominent Gaussian peak.' },
+       graph:'../sem/figures/Grid-14_selection_1_y.png'  },
+      { grid:'Grid-14', sel:2, axis:'Y', f_px:45.90, theta:66.58,
+       graph:'../sem/figures/Grid-14_selection_2_y.png',
+      note:'Consistent with sel 1 and 3. The three Grid-14 Y scans form a tight cluster (f ≈ 44–51 px, θ ≈ 64–67°).' },
+      { grid:'Grid-14', sel:3, axis:'Y', f_px:44.49, theta:67.23,
+      graph:'../sem/figures/Grid-14_selection_3_y.png',note:'Narrowest of the three Grid-14 Y scans. Fit converged cleanly with a prominent Gaussian peak.' },
     ]
   },
   {
     label: 'Grid-14 — X scans',
     rows: [
-      { grid:'Grid-14', sel:4, axis:'X', f_px:77.66,  theta:53.76, note:'Good quality fit with well-defined edge peak. Wide FWHM reflects the shallower sidewall angle characteristic of the Pd grid at this magnification.' },
-      { grid:'Grid-14', sel:5, axis:'X', f_px:87.82,  theta:50.35, note:'Consistent with sel 4 and 6. Widening FWHM across selections 4–6 may reflect genuine variation in edge sharpness along the Pd aperture boundary.' },
-      { grid:'Grid-14', sel:6, axis:'X', f_px:102.92, theta:45.84, note:'Widest X scan FWHM in Grid-14, yielding the shallowest angle. Selection likely captured a region with increased edge roughness.' },
+      { grid:'Grid-14', sel:4, axis:'X', f_px:77.66,  theta:53.76,
+      graph:'../sem/figures/Grid-14_selection_4_x.png', note:'Good quality fit with well-defined edge peak. Wide FWHM reflects the shallower sidewall angle characteristic of the Pd grid at this magnification.' },
+      { grid:'Grid-14', sel:5, axis:'X', f_px:87.82,  theta:50.35, 
+      graph:'../sem/figures/Grid-14_selection_5_y.png',note:'Consistent with sel 4 and 6. Widening FWHM across selections 4–6 may reflect genuine variation in edge sharpness along the Pd aperture boundary.' },
+      { grid:'Grid-14', sel:6, axis:'X', f_px:102.92, theta:45.84,
+      graph:'../sem/figures/Grid-14_selection_6_y.png', note:'Widest X scan FWHM in Grid-14, yielding the shallowest angle. Selection likely captured a region with increased edge roughness.' },
     ]
   },
   {
     label: 'Grid-12 — Y scans',
     rows: [
-      { grid:'Grid-12', sel:1, axis:'Y', f_px:41.93, theta:68.91, note:'Sharpest Grid-12 Y scan edge. θ consistent with Grid-14 Y results, suggesting the Y-direction edge quality is similar between grids.' },
-      { grid:'Grid-12', sel:2, axis:'Y', f_px:45.47, theta:67.31, note:'Good convergence. FWHM sits between sel 1 and 3, and θ is in line with the Grid-14 Y scan cluster.' },
-      { grid:'Grid-12', sel:3, axis:'Y', f_px:50.58, theta:65.05, note:'Widest Grid-12 Y scan FWHM, yielding the shallowest Y-direction angle. Still well above the X scan θ values for this grid.' },
+      { grid:'Grid-12', sel:1, axis:'Y', f_px:41.93, theta:68.91,
+      graph:'../sem/figures/Grid-12_selection_1_y.png', note:'Sharpest Grid-12 Y scan edge. θ consistent with Grid-14 Y results, suggesting the Y-direction edge quality is similar between grids.' },
+      { grid:'Grid-12', sel:2, axis:'Y', f_px:45.47, theta:67.31, 
+      graph:'../sem/figures/Grid-12_selection_2_y.png',note:'Good convergence. FWHM sits between sel 1 and 3, and θ is in line with the Grid-14 Y scan cluster.' },
+      { grid:'Grid-12', sel:3, axis:'Y', f_px:50.58, theta:65.05,
+      graph:'../sem/figures/Grid-12_selection_3_y.png', note:'Widest Grid-12 Y scan FWHM, yielding the shallowest Y-direction angle. Still well above the X scan θ values for this grid.' },
     ]
   },
   {
     label: 'Grid-12 — X scans',
     rows: [
-      { grid:'Grid-12', sel:4, axis:'X', f_px:113.00, theta:43.90, note:'Widest FWHM across all Grid-12 X scans. Wide transition zone consistent with the generally shallower angles observed in this grid.' },
-      { grid:'Grid-12', sel:5, axis:'X', f_px:97.79,  theta:48.03, note:'Good fit quality. FWHM and θ consistent with sel 6. Grid-12 X scans show a consistently wider f than Grid-14.' },
-      { grid:'Grid-12', sel:6, axis:'X', f_px:106.99, theta:45.46, note:'Fit converged cleanly. Intermediate FWHM between sel 4 and 5, consistent with spatial variation in edge profile along the aperture.' },
+      { grid:'Grid-12', sel:4, axis:'X', f_px:113.00, theta:43.90,
+      graph:'../sem/figures/Grid-12_selection_1_x.png', note:'Widest FWHM across all Grid-12 X scans. Wide transition zone consistent with the generally shallower angles observed in this grid.' },
+      { grid:'Grid-12', sel:5, axis:'X', f_px:97.79,  theta:48.03,
+      graph:'../sem/figures/Grid-12_selection_2_x.png', note:'Good fit quality. FWHM and θ consistent with sel 6. Grid-12 X scans show a consistently wider f than Grid-14.' },
+      { grid:'Grid-12', sel:6, axis:'X', f_px:106.99, theta:45.46, 
+      graph:'../sem/figures/Grid-12_selection_3_x.png',note:'Fit converged cleanly. Intermediate FWHM between sel 4 and 5, consistent with spatial variation in edge profile along the aperture.' },
     ]
   },
 ];
