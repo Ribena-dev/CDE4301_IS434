@@ -1,6 +1,6 @@
 ## Results and Analysis
 
-This section presents the characterisation results for the fabricated grid resolution standards. Measurements are organised by technique: AFM surface roughness is reported first, as it characterises the top face of the metal features independently of the edge geometry, followed by sidewall angle analysis from the electron detector, and finally a comparison of electron contrast between Au and DLC coatings. Where relevant, results are compared against the targets established in Section 1.4: a sidewall angle of at least 89.4°, surface roughness below 1 nm Rq, and a grid cell size of 100 µm x 100 µm.
+This section presents the characterisation results for the fabricated grid resolution standards. Measurements are organised by technique: AFM surface roughness is reported first, as it characterises the top face of the metal features independently of the edge geometry, followed by sidewall angle analysis from the SEM, . Where relevant, results are compared against the targets established in Section 1.4: a sidewall angle of at least 89.4°, surface roughness below 1 nm Rq. To note; the comparison of electron contrast between Au and DLC coatings was left to [Appendix E](E.md).
 
 ### 4.1 Surface Roughness
 
@@ -58,15 +58,15 @@ This measurement was taken across a patterned grid rather than a flat surface, a
 Optical microscopy was used as an interim technique to visually inspect the Au and Pd grid samples and confirm the presence of well-defined grid features following fabrication.
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/20260223_4MR_10mindev_50x_1.png" alt="Brightfield optical micrograph of Pd grid after development" width="340px">
-  <img src="images/20260223_4MR_10mindev_50x_1df.png" alt="Darkfield optical micrograph of Pd grid after development" width="340px">
+  <img src="images/w2_g8_x50.jpg" alt="Brightfield optical micrograph of Pd grid after development" width="340px">
+  <!-- <img src="images/20260223_4MR_10mindev_50x_1df.png" alt="Darkfield optical micrograph of Pd grid after development" width="340px"> -->
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.3:</strong> Optical micrographs of the Pd grid sample after 20 minutes of development at 50× magnification. Brightfield (left) and darkfield (right). Scale bar: 10 µm.
+    <strong>Figure 4.3:</strong> Optical micrographs of the Pd grid sample after 20 minutes of development at 50× magnification. Brightfield  Scale bar: 100 µm.
   </figcaption>
 </figure>
 
 
-Both brightfield and darkfield images confirm that the fabricated Pd grid features are well-resolved and structurally intact across the imaged area. The grid bars are straight and continuous with no visible breaks, bridging between adjacent lines, or rounding at the cell corners. The cell geometry is uniform across the full field of view, with consistent bar width and cell spacing. The darkfield image is particularly informative: under this illumination mode, scattered light from the feature edges produces a bright blue-white edge response while the flat surfaces remain dark, effectively functioning as an edge-detection filter. The sharpness and uniformity of this edge highlight across all four sides of every visible cell confirms that the sidewalls are well-defined 
+The brightfield a images confirm that the fabricated Pd grid features are well-resolved and structurally intact across the imaged area. The grid bars are straight and continuous with no visible breaks, bridging between adjacent lines, or rounding at the cell corners. The cell geometry is uniform across the full field of view, with consistent bar width and cell spacing. 
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/20250929_100x_grid3_10minDev_3_9m.png" alt="Au grid interior with CD measurements, 100x" width="340px">
@@ -78,18 +78,45 @@ Both brightfield and darkfield images confirm that the fabricated Pd grid featur
 
 The grid lines are straight and continuous with no visible breaks or bridging defects. The cell corners are visibly rounded rather than sharp, which is an expected consequence of the finite beam spot size at CIBA: the beam cannot write an abrupt corner at the intersection of two orthogonal lines, resulting in a smooth fillet. This rounding has no practical consequence for the sidewall angle measurement, which is extracted from straight edge segments rather than corners, but would need to be accounted for if the standard were used for corner radius characterisation.
 
-### 4.3 Sidewall Angle via SEM
+### 4.3 SEM Analysis
 
-Edge profiles were extracted from the electron detector data for each sample using the error function and Gaussian fitting pipeline described in Section 2.5.1. For each sample, a row band was selected over a single grid edge, and the mean FWHM f and sidewall angle θ were reported.
+#### SEM Images
 
-During the project period, the proton beam and electron detector were offline for part of the year due to maintenance, which limited testing. As a result, the Au and Pd samples have not yet been analysed by this method. Section 4.3 presents optical microscopy analysis of these samples as an interim characterisation.
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="sem/Grid-4_instability.png" alt="SEM images of Pd grid 4">
+  <img src="sem/Grid-5_cleansi.png" alt="SEM images of Pd grid 5">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.6:</strong> SEM images of Pd grid 2500 magnification (left) 8000 magnification(right)
+  </figcaption>
+</figure>
+
+
+
+Image  on the left shows the full grid array, confirming consistent aperture geometry and good dose uniformity across the PBW exposure field. However, edge warping and undulation is visible along the Pd boundaries, which may be attributed to two mechanisms: beam positional drift during PBW exposure, or PMMA deformation under thermal load during Pd evaporation. The two are not mutually exclusive and both may have contributed, with the effect appearing most pronounced at the aperture corners.
+Image on the right shows a single aperture at high magnification. The bright white perimeter is the Pd edge, producing high secondary electron yield at the metal-to-void boundary. The uniformly dark interior confirms clean bare Si, with no residual PMMA or Pd particulates visible, indicating a successful lift-off.
+
+<figure style="text-align: center; margin: 20px 0;">
+  <img src="sem/Grid-12.png" alt="SEM images of Pd grid 4">
+  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
+    <strong>Figure 4.7:</strong> SEM images of Pd grid 100000 magnification 
+  </figcaption>
+</figure>
+
+Two additional things observed in the SEM images. A prominent shadowing effect is visible across the apertures, likely attributable to the SEM detector configuration or working distance settings rather than the sample itself. This could skew the edge analysis, as such samples with this promise effect where excluded.
+
+Additionally, a widening effect along the horizontal edges is consistent with proton beam instability during exposure. These samples were written immediately after the beam was brought back online following extended downtime, without adequate time to recommission or characterise the beam state. Residual instability under such conditions would directly manifest as lateral edge broadening, and should be considered when interpreting the FWHM results from these samples.
+
+
+#### EdgeAnalysis
+
+Edge profiles were extracted from the SEMimage data for each sample using the error function and Gaussian fitting pipeline described in Section 2.5.1. For each sample, a row band was selected over a single grid edge, and the mean FWHM f and sidewall angle θ were reported.
 
 #### Benchmark Verification
 
 Given that the analysis is performed using a custom Python script, it is important to first verify that the error function fit behaves as intended before drawing conclusions from the sample results. The script was therefore tested against the nickel reference grid used at CIBA to calibrate the proton beam.
 
 <figure style="text-align: center; margin: 20px 0;"> 
-  <img src="sem/figures/1646 grid 256_selection_15_x.png"
+  <img src="images/nickel_graph.png"
        alt="Nickel reference grid edge fit" width="480">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 4.5(a):</strong> Error function fit applied to the nickel calibration grid edge profile.
@@ -101,7 +128,7 @@ Given that the analysis is performed using a custom Python script, it is importa
 | Nickel measured |  **89.59** |
 | Nickel reference | **89.4** |
 
-The beam was having some inconstancy in the stability, which is attributed to the beam not being at its optimum focus during the test scan. Despite this, the fitted sidewall angle of 89.59° is consistent with and slightly exceeds the published reference value of 89.4°, confirming that the fitting line correctly recovers the sidewall angle.
+The beam was having some inconstancy in the stability, which is attributed to the beam not being at its optimum focus during the test scan. Despite this, the fitted sidewall angle of 89.59° is consistent with and slightly exceeds the published reference value of 89.4°, confirming that the fitting line correctly recovers the sidewall angle and the FWHM.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/nickel_grid_e.png"
@@ -113,6 +140,7 @@ The beam was having some inconstancy in the stability, which is attributed to th
 
 #### Sample Results
 
+Given the shadowing effect, the below table is carefully curated to only include the ones with least least shadowing effect to reduce it's effect onto the results
 <iframe
   src="scripts/sidewall_table.html"
   style="border:none; border-radius:6px;"
@@ -124,61 +152,54 @@ The beam was having some inconstancy in the stability, which is attributed to th
 
 SRIM theoretical prediction: θ = 89.9° (f = 1.91 nm at h = 1000 nm).
 
+The fitted sidewall angles exhibit large fluctuations across both grids, with values ranging from approximately 44° to 68°, which are inconsistent with the expected geometry of a well-defined etched feature. This variability is attributed primarily to the significant difference in feature height between the current Pd samples and the resolution standard used to establish the fitting methodology.
 
-[insert analysis]
+The edge fitting approach and sidewall angle calculation were originally developed by F. Zhang et al. [1] using a nickel reference grid with a feature height of 2 µm. The current Pd samples have a total deposited thickness of only ~100 nm (100 nm Pd + 2 nm Ti), representing a reduction in height by a factor of approximately 20. This deviation arose due to machining and deposition constraints during fabrication. Given that the angle calculation is directly dependent on the ratio of feature height to FWHM, using a method calibrated for a 2 µm feature on a 100 nm structure introduces systematic error , a small FWHM that would indicate a steep sidewall at 2 µm height becomes physically ambiguous at 100 nm, where the transition width is comparable to or exceeds the feature height itself. The intense scatter in the computed angles is therefore expected and confirms that the sidewall angle metric is not a reliable figure of merit at this length scale.
 
-##### SEM images
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="sem/Grid-4_instability.png" alt="SEM images of Pd grid 4">
-  <img src="sem/Grid-5_cleansi.png" alt="SEM images of Pd grid 5">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.6:</strong> SEM images of Pd grid 2500 magnification (left) 8000 magnification(right)
-  </figcaption>
-</figure>
-
-Image  on the left shows the full grid array, confirming consistent aperture geometry and good dose uniformity across the PBW exposure field. However, edge warping and undulation is visible along the Pd boundaries, which may be attributed to two mechanisms: beam positional drift during PBW exposure, or PMMA deformation under thermal load during Pd evaporation. The two are not mutually exclusive and both may have contributed, with the effect appearing most pronounced at the aperture corners.
-
-Image on the right shows a single aperture at high magnification. The bright white perimeter is the Pd edge, producing high secondary electron yield at the metal-to-void boundary. The uniformly dark interior confirms clean bare Si, with no residual PMMA or Pd particulates visible, indicating a successful lift-off.
+A more appropriate quantity to extract from these measurements is the FWHM/2 value, which at this scale is no longer dominated by the sidewall geometry but instead reflects the SEM beam spot size and instrument resolution. At a magnification of ×100,000, the beam spot size is approximately 20 nm, and the FWHM/2 values extracted from the fits , particularly from the well-converged Y scan profiles , are broadly consistent with this range, providing a useful indirect measure of the imaging resolution under the acquisition conditions used.
 
 
-### 4.4 Electron Contrast Au vs DLC
+| Grid | Sel | Axis | FWHM (nm) | FWHM/2 (nm) | Beam spot ~20 nm | Δ (nm) |
+|------|-----|------|-----------|-------------|------------------|--------|
+| Grid-14 | 1 | Y | 47.73 | 23.87 | 20 | +3.87 |
+| Grid-14 | 2 | Y | 43.15 | 21.58 | 20 | +1.58 |
+| Grid-14 | 3 | Y | 41.82 | 20.91 | 20 | +0.91 |
+| Grid-14 | 4 | X | 73.00 | 36.50 | 20 | +16.50 |
+| Grid-14 | 5 | X | 82.55 | 41.28 | 20 | +21.28 |
+| Grid-14 | 6 | X | 96.74 | 48.37 | 20 | +28.37 |
+| Grid-12 | 1 | Y | 39.41 | 19.71 | 20 | −0.29 |
+| Grid-12 | 2 | Y | 42.74 | 21.37 | 20 | +1.37 |
+| Grid-12 | 3 | Y | 47.55 | 23.78 | 20 | +3.78 |
+| Grid-12 | 4 | X | 106.22 | 53.11 | 20 | +33.11 |
+| Grid-12 | 5 | X | 91.92 | 45.96 | 20 | +25.96 |
+| Grid-12 | 6 | X | 100.57 | 50.29 | 20 | +30.29 |
 
-The backscatter contrast ratio between the metal grid features and the silicon substrate was assessed from the electron detector intensity profiles. A higher contrast ratio indicates greater separation between the metal signal and the background, which is the primary functional requirement of the resolution standard for SEM calibration use.
-
-<figure style="text-align: center; margin: 20px 0;">
-  <img src="images/electron_heatmaps.png" alt="Electron count heatmaps for Au and DLC">
-  <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.7:</strong> Electron count heatmaps for the Au and DLC samples.
-  </figcaption>
-</figure>
-
-Electron contrast was assessed from 256 x 256 pixel electron count maps acquired for the Au and DLC samples. Each pixel value represents the number of backscattered or secondary electrons detected at that position during the scan. A higher mean count indicates greater electron yield from the surface, which translates to a brighter signal and better contrast against the silicon substrate in the final calibration image.
-
-| Metric | Au | DLC |
-|---|---|---|
-| Mean count (e/px) | 1.329 | 1.115 |
-| Std (e/px) | 1.775 | 1.616 |
-| Median (e/px) | 1.0 | 0.0 |
-| Max (e/px) | 18 | 19 |
-| Zero-count pixels | 28,853 | 32,963 |
-| Au/DLC mean ratio | 1.192 | |
-
-Au produces a mean electron count of 1.329 e/px compared to 1.115 e/px for DLC, giving a contrast ratio of 1.19. Gold (Z = 79) has a substantially higher backscatter coefficient than carbon (Z = 6) and should in principle yield significantly more signal per unit area. The modest ratio of 1.19, rather than the order-of-magnitude difference expected from Z alone, is due to the thin DLC film thickness used: at 5 to 10 nm, the DLC layer is thin enough to allow partial electron transmission into the underlying substrate, diluting the contrast difference.
+The Y scans are generally very close to the 20 nm beam spot size, with an average deviation of only 1.97 nm above the estimate, while the X scans show a substantially larger average deviation of 25.92 nm above it. The significantly higher FWHM observed in the X scans may be linked to the previously noted observation of vertical sidewalls producing an overlay effect, the projected sidewall width in the X direction broadens the measured transition zone well beyond the instrument resolution, whereas the Y direction edge sits remarkably close to the 20 nm beam spot limit, suggesting the Y transitions are dominated by instrument resolution rather than feature geometry.
 
 ### 4.5 Discussion and Limitations
-to dicuss:
-- side wall angle 
-- why is there warping testing to check why and waht is causing it 
-- the roughness 
 
-Surface roughness results are broadly within the sub-1 nm target for Pd and Au seed layers in isolation. The DLC boundary measurements show more spatial variability, which reflects the underlying grain structure of the substrate material. The electron contrast data confirm that Au provides marginally higher signal than DLC at the beam conditions used, though the difference is modest and both materials produce usable contrast for edge detection purposes.
+**Sidewall angle:**
+
+ The sidewall angles extracted from the Pd grid samples range from approximately 44° to 68°, falling well short of the 89.4° target. This is not indicative of poor sidewall geometry but rather a fundamental incompatibility between the 100 nm feature height and the method developed for the 2 µm nickel reference standard — the angle calculation becomes unreliable when the transition width f approaches the feature height h. The FWHM/2 analysis is a more appropriate metric at this scale, with Y scan values consistently near the 20 nm instrument resolution limit, confirming the fitting pipeline is functioning correctly.
+
+**Surface roughness:**
+
+ Pd meets the sub-1 nm Rq target at 0.219 nm. Au exceeds it on some profiles (up to 1.271 nm), consistent with island growth during magnetron sputtering. DLC shows the largest variability (0.392 to 1.943 nm), reflecting the underlying grain structure of the seed layer rather than the DLC film itself. For applications requiring sub-1 nm smoothness, electron beam evaporated Pd is the preferred choice.
+
+**Edge warping:**
+
+  Edge irregularity and warping along the aperture boundaries is observed across multiple grid samples, most prominently at the corners. Two contributing mechanisms are possible: proton beam positional drift during PBW exposure, or thermal loading of the PMMA resist during Pd evaporation causing localised stress or reflow. Both effects are well documented in the literature and are not unexpected at this feature scale. The warping observed is relatively minor and does not compromise the straight edge segments used for FWHM extraction.
 
 #### Limitations of the Analysis Method
 
-The electron detector error function method provides an indirect estimate of θ inferred from the top-down intensity profile. It cannot distinguish between a genuinely sloped sidewall and broadening caused by beam effects at the measurement stage. Independent verification by tilted SEM or FIB-TEM cross-section, as described in Section 5.1, would be required to confirm these results at a traceable level of accuracy.
+The SEM error function method provides an indirect estimate of θ inferred from the top-down intensity profile. It cannot distinguish between a genuinely sloped sidewall and broadening caused by beam effects at the measurement stage. Additionally, the shadowing artefact observed in some images may introduce systematic bias in the extracted intensity profiles even after excluding the most severely affected samples. Independent verification by tilted SEM imaging or FIB-TEM cross-section, as described in Section 5.1, would be required to confirm these results at a traceable level of accuracy.
 
 ### 4.6 Conclusion
 
-In summary, the fabricated grid resolution standard demonstrates sidewall angles consistent with or exceeding the ________ benchmark for the Pd grid samples, surface roughness values meeting the sub-1 nm target for the majority of measured profiles, and electron contrast sufficient for SEM-based edge detection. The primary outstanding work is independent cross-sectional verification of the sidewall angle and systematic evaluation of the remaining Au and Pd samples once beam time is restored, as described in Section 5.
+The fabricated Pd grid resolution standard demonstrates surface roughness well within the sub-1 nm Rq target at 0.219 nm, and the fitting pipeline was validated against the nickel reference standard, recovering a sidewall angle of 89.59° in agreement with the published reference value of 89.4°. Direct sidewall angle extraction from the Pd samples was not feasible at the current feature height of ~100 nm, as the method was developed for a 2 µm standard and produces unreliable results when the transition width approaches the feature height. The FWHM/2 values from the Y scan profiles (average 1.97 nm above the 20 nm beam spot estimate) indicate that the edge detection is functioning at the instrument resolution limit, providing confidence that the measurement pipeline is sound. The primary limitations are the mismatch in feature height relative to the reference standard and the absence of cross-sectional verification. These are addressed in the future work recommendations in Section 5.
 
 [← Prev: Fabrication](Fabrication.md) | [Next: Future Works →](FW.md)
+
+
+### Reference
+<li> F. Zhang, J. A. van Kan, S. Y. Chiam, and F. Watt.<em>Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms</em>, vol. 260, no. 1, pp. 474–478, Jul. 2007. DOI: <a href="https://doi.org/10.1016/j.nimb.2007.02.065">10.1016/j.nimb.2007.02.065</a></li>

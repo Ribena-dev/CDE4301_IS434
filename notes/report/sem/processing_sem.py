@@ -9,7 +9,7 @@ import os
 
 
 
-filename = "Grid-6"
+filename = "Grid-12"
 intensity = tiff.imread(filename+".tif")
 print(intensity.shape,intensity.dtype)
 csvname = "intensity_" + filename + ".csv"
@@ -76,7 +76,7 @@ def save_results():
             vals = [r[key] for r in results]
             f_out.write(f"  {key}: {np.mean(vals):.2f} ± {np.std(vals):.2f}\n")
 
-        print(f"Saved {len(results)} results to fit_results.txt")
+        print(f"Saved {len(results)} results to fit_results_"+filename+".txt")
 
 
 def fit_profile(region, axis="x"):

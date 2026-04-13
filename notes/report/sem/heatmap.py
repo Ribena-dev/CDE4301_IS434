@@ -7,6 +7,7 @@ from matplotlib.widgets import RectangleSelector
 csvname = input("input your .csv file name here: ")
 def heatmap(csvname):
     data = np.loadtxt(csvname, delimiter=",")
+    data = np.load
 
     #plot heatmap
     plt.figure(figsize=(8, 16))  # tall to match 1k x 2k aspect ratio

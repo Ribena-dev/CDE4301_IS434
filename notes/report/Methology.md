@@ -206,7 +206,7 @@ Three complementary characterisation techniques are used to evaluate the fabrica
 
 #### SEM: Edge Straightness and Sidewall Angle
 
-The SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
+The SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. The method selected is based off F.Zhang et al. (CIBA, NUS), NIMB 2007 [9]. When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/sem_phy.jpg" alt="SEM machine used ">
@@ -224,7 +224,7 @@ where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/ni_grid_x_lc.jpg" alt="Analysis method applied to the nickel reference grid">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.15:</strong> Analysis method applied to the previously fabricated nickel reference grid.
+    <strong>Figure 2.15:</strong> Analysis method applied to the previously fabricated nickel reference grid: F.Zhang et al. (CIBA, NUS), NIMB 2007 [9]
   </figcaption>
 </figure>
 
@@ -323,7 +323,7 @@ All three parameters are computed from 1D line profiles extracted from the AFM h
   <li>F. Watt, A. A. Bettiol, J. A. van Kan, E. J. Teo, and M. B. H. Breese, "Ion beam lithography and nanofabrication: a review," <em>Int. J. Nanosci.</em>, vol. 4, no. 3, pp. 269–286, 2005.</li>
   <li>F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam writing," <em>Mater. Today</em>, vol. 10, no. 6, pp. 20–29, 2007. DOI: 10.1016/S1369-7021(07)70129-3</li>
   <li>J. A. van Kan, P. G. Shao, Y. H. Wang, and P. Malar, "Proton beam writing: a platform technology for high quality three-dimensional metal mold fabrication for nanofluidic applications," <em>Microsyst. Technol.</em>, vol. 17, pp. 1519–1527, 2011. DOI: 10.1007/s00542-011-1333-0</li>
-  <li>A. A. Bettiol, S. Venugopal Rao, E. J. Teo, J. A. van Kan, and F. Watt, "Sidewall quality in proton beam writing," <em>Nucl. Instrum. Methods Phys. Res. B</em>, vol. 258, no. 1, pp. 302–306, 2007. DOI: 10.1016/j.nimb.2007.01.073</li>
+  <li > F. Zhang, J. A. van Kan, S. Y. Chiam, and F. Watt.<em>Nuclear Instruments and Methods in Physics Research Section B: Beam Interactions with Materials and Atoms</em>, vol. 260, no. 1, pp. 474–478, Jul. 2007. DOI: <a href="https://doi.org/10.1016/j.nimb.2007.02.065">10.1016/j.nimb.2007.02.065</a></li>
   <li>S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," <em>Nucl. Instrum. Methods Phys. Res. B</em>, 2016. DOI: 10.1016/j.nimb.2016.11.022</li>
   <li>C. Mack, <em>Fundamental Principles of Optical Lithography</em>. Chichester: Wiley, 2007.</li>
   <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>

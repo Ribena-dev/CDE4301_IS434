@@ -1,0 +1,89 @@
+=== Individual Fits ===
+
+Selection 1 (X scan):
+  A (erf amplitude):    -33.42
+  B (Gaussian amp):     100.47
+  C (baseline offset):  107.02
+  d (edge position px): 128.46
+  f (FWHM):             97.03 px
+  theta :             47.52°
+
+Selection 2 (Y scan):
+  A (erf amplitude):    -0.52
+  B (Gaussian amp):     0.20
+  C (baseline offset):  114.01
+  d (edge position px): 7.96
+  f (FWHM):             1.36 px
+  theta :             89.27°
+
+Selection 3 (X scan):
+  A (erf amplitude):    42866.34
+  B (Gaussian amp):     -978.44
+  C (baseline offset):  98.13
+  d (edge position px): -139.77
+  f (FWHM):             81.45 px
+  theta :             52.46°
+
+Selection 4 (Y scan):
+  A (erf amplitude):    37.67
+  B (Gaussian amp):     64.43
+  C (baseline offset):  52.05
+  d (edge position px): 58.36
+  f (FWHM):             44.75 px
+  theta :             67.11°
+
+Selection 5 (X scan):
+  A (erf amplitude):    -0.75
+  B (Gaussian amp):     0.01
+  C (baseline offset):  111.24
+  d (edge position px): 1.69
+  f (FWHM):             9.27 px
+  theta :             85.00°
+
+Selection 6 (Y scan):
+  A (erf amplitude):    35.12
+  B (Gaussian amp):     84.42
+  C (baseline offset):  51.90
+  d (edge position px): 89.90
+  f (FWHM):             53.41 px
+  theta :             63.26°
+
+Selection 7 (X scan):
+  A (erf amplitude):    -59.61
+  B (Gaussian amp):     116.34
+  C (baseline offset):  98.78
+  d (edge position px): 82.97
+  f (FWHM):             131.68 px
+  theta :             38.83°
+
+Selection 8 (Y scan):
+  A (erf amplitude):    -0.32
+  B (Gaussian amp):     -0.93
+  C (baseline offset):  115.38
+  d (edge position px): 2.48
+  f (FWHM):             0.75 px
+  theta :             89.60°
+
+Selection 9 (X scan):
+  A (erf amplitude):    -43.84
+  B (Gaussian amp):     104.01
+  C (baseline offset):  111.15
+  d (edge position px): 80.42
+  f (FWHM):             84.32 px
+  theta :             51.49°
+
+Selection 10 (Y scan):
+  A (erf amplitude):    0.22
+  B (Gaussian amp):     0.62
+  C (baseline offset):  117.88
+  d (edge position px): 4.70
+  f (FWHM):             2.20 px
+  theta :             88.81°
+
+=== Averages across all selections ===
+  A: 4280.09 ± 12862.12
+  B: -50.89 ± 312.60
+  C: 97.76 ± 23.71
+  d: 31.72 ± 71.35
+  f: 50.62 ± 44.52
+  theta: 67.33 ± 18.56

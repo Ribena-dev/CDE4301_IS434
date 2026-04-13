@@ -10,6 +10,10 @@ Grid-5e.tif: 11.9109
 Grid-6e.tif: 3.0273
 Grid-7e.tif: 3.3026
 Grid-8e.tif: 11.9109
-Grid-9e.tif: 3.3026
+Grid-9e.tif: 3.0273
 Grid-10e.tif: 11.9109
 Grid-11e.tif: 3.3026
+Grid-12e.tif: 0.9197
+Grid-13e.tif: 0.9436
+Grid-14e.tif: 0.9436
+

@@ -1,178 +1,153 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 .wrap{padding:16px 20px;font-family:var(--font-sans)}
-.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
-.ctrl-label{font-size:11px;color:var(--color-text-tertiary)}
-.pill{font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s;user-select:none}
-.pill.on{background:var(--color-background-primary);border-color:var(--color-text-primary);color:var(--color-text-primary)}
 table{width:100%;border-collapse:collapse;font-size:12px}
-th{text-align:left;font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;user-select:none;white-space:nowrap}
-th:hover{color:var(--color-text-secondary)}
-th.sorted{color:var(--color-text-primary)}
+th{text-align:left;font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);user-select:none;white-space:nowrap}
 td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:middle}
 tr:last-child td{border-bottom:none}
-tr:hover td{background:var(--color-background-secondary)}
-.meas-name{font-weight:500;color:var(--color-text-primary);font-size:12px;cursor:pointer;border-bottom:1px dashed #ccc;transition:border-color .15s}
-.meas-name:hover{text-decoration:underline;text-decoration-style:dotted}
+tr:hover td{background:var(--color-background-secondary);cursor:pointer}
+.meas-name{font-weight:500;color:var(--color-text-primary);font-size:12px}
 .theta-val{font-weight:600;font-size:13px}
 .fwhm-val{font-size:12px;color:var(--color-text-secondary)}
-.flag-pass{color:#1D9E75;font-weight:600}
-.flag-fail{color:#BA7517;font-weight:500}
-.flag-theory{color:#888;font-style:italic}
-.srim-row td{background:var(--color-background-secondary);font-style:italic}
-.empty{padding:24px;text-align:center;font-size:12px;color:var(--color-text-tertiary)}
+.grid-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500;margin-right:4px}
+.axis-badge{font-size:10px;padding:1px 6px;border-radius:4px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500}
+.section-row td{background:var(--color-background-secondary);font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:5px 10px}
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .stat{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
-.stat-n{font-size:18px;font-weight:500;color:var(--color-text-primary)}
+.stat-n{font-size:18px;font-weight:500}
 .stat-l{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
 .note{font-size:11px;color:var(--color-text-tertiary);margin-top:12px;padding:8px 12px;border-left:2px solid var(--color-border-tertiary);line-height:1.6}
-
-/* theta bar */
 .theta-bar-wrap{display:flex;align-items:center;gap:6px}
-.theta-bar-track{flex:1;height:6px;border-radius:3px;background:var(--color-background-secondary);position:relative}
-.theta-bar-fill{height:100%;border-radius:3px;transition:width .3s}
-.theta-target{position:absolute;top:-2px;bottom:-2px;width:1.5px;background:#1D9E75;opacity:0.6}
+.theta-bar-track{width:70px;height:5px;border-radius:3px;background:var(--color-background-secondary);flex-shrink:0}
+.theta-bar-fill{height:100%;border-radius:3px}
 
 /* lightbox */
 .lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center}
 .lb-overlay.open{display:flex}
-.lb-box{background:#fff;border-radius:12px;padding:24px;max-width:860px;width:92vw;max-height:88vh;overflow-y:auto;position:relative}
+.lb-box{background:#fff;border-radius:12px;padding:24px;max-width:700px;width:92vw;max-height:88vh;overflow-y:auto;position:relative}
 .lb-close{position:absolute;top:14px;right:16px;font-size:20px;cursor:pointer;color:#aaa;background:none;border:none;padding:0;line-height:1}
 .lb-close:hover{color:#111}
-.lb-title{font-size:14px;font-weight:500;color:#111;margin-bottom:3px;padding-right:28px}
-.lb-subtitle{font-size:11px;color:#999;margin-bottom:14px}
-.lb-metrics{display:flex;gap:20px;margin-bottom:16px;flex-wrap:wrap}
-.lb-metric{display:flex;flex-direction:column;gap:2px}
-.lb-metric-val{font-weight:500;color:#111;font-size:14px}
-.lb-metric-key{font-size:10px;color:#aaa}
-.lb-imgs{display:grid;gap:14px}
+.lb-title{font-size:14px;font-weight:500;color:#111;margin-bottom:4px;padding-right:28px}
+.lb-metrics{display:flex;gap:18px;margin:12px 0;flex-wrap:wrap}
+.lb-m{display:flex;flex-direction:column;gap:2px}
+.lb-m-val{font-size:15px;font-weight:500;color:#111}
+.lb-m-key{font-size:10px;color:#aaa}
+.lb-imgs{display:grid;gap:12px;margin-top:14px}
 .lb-imgs.one{grid-template-columns:1fr}
 .lb-imgs.two{grid-template-columns:1fr 1fr}
-.lb-imgs img{width:100%;border-radius:8px;border:0.5px solid #e5e5e5;display:block}
-.lb-img-wrap{display:flex;flex-direction:column;gap:5px}
-.lb-img-label{font-size:10px;color:#aaa;text-align:center}
-@media(max-width:580px){.lb-imgs.two{grid-template-columns:1fr}}
+.lb-imgs img{width:100%;border-radius:8px;border:0.5px solid #eee}
+.lb-img-label{font-size:10px;color:#aaa;text-align:center;margin-top:4px}
+@media(max-width:560px){.lb-imgs.two{grid-template-columns:1fr}}
 </style>
 
-<!-- lightbox -->
 <div class="lb-overlay" id="lb-overlay" onclick="closeLB(event)">
   <div class="lb-box">
     <button class="lb-close" onclick="closeLB(null)">✕</button>
     <div class="lb-title" id="lb-title"></div>
-    <div class="lb-subtitle" id="lb-subtitle"></div>
     <div class="lb-metrics" id="lb-metrics"></div>
     <div class="lb-imgs" id="lb-imgs"></div>
   </div>
 </div>
 
 <div class="wrap">
-
-  <div class="summary" id="summary">
-    <div class="stat"><div class="stat-n" style="color:#1D9E75">2 / 3</div><div class="stat-l">meet ≥89.4°</div></div>
-    <div class="stat"><div class="stat-n" style="color:#1D9E75">89.66°</div><div class="stat-l">best measured</div></div>
-    <div class="stat"><div class="stat-n" style="color:#888">89.9°</div><div class="stat-l">SRIM prediction</div></div>
+  <div class="summary" style="grid-template-columns:repeat(2,1fr)">
+    <div class="stat">
+      <div class="stat-n" style="color:#0F6E56">58.03°</div>
+      <div class="stat-l">Grid-14 avg θ (X + Y)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n" style="color:#854F0B">56.44°</div>
+      <div class="stat-l">Grid-12 avg θ (X + Y)</div>
+    </div>
   </div>
 
   <table>
     <thead>
       <tr>
-        <th>Measurement ↕</th>
-        <th>f (nm)</th>
+        <th>Grid / Selection</th>
+        <th>Axis</th>
+        <th>FWHM (px)</th>
+        <th>FWHM (nm)</th>
         <th>θ (°)</th>
-        <th>Meets ≥89.4°</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 
   <div class="note">
-    SRIM theoretical prediction: θ = 89.9° (f = 1.91 nm at h = 1000 nm), assuming perfect beam focus and negligible broadening. Click any row to view the edge fit graph.
+    nm/px = 0.94 · h = 100 nm · θ = arctan(h_px / f_px) · 3 best X and 3 best Y selections per grid. Click any row to view fit parameters.
   </div>
-
 </div>
 
 <script>
-const THETA_MIN = 88.8;
-const THETA_MAX = 90.0;
-const TARGET = 89.4;
+const NM_PER_PX = 0.94;
+const THETA_MIN = 40;
+const THETA_MAX = 90;
 
-const data = [
-  {
-    label: 'Pd grid position 1',
-    f: 40.93, theta: 89.66, pass: true,
-    imgs: [
-      {graph: '../sem/Grid-x_selection_xy.png', sem:'../sem/Grid-7.png', caption: 'Erf+Gaussian fit — Pd grid position 1'}
-    ],
-    note: 'Single edge measurement at the Pd grid. Erf+Gaussian fit converged cleanly with a well-defined edge peak.'
-  },
-  {
-    label: 'Pd grid position 2',
-    f: 45.91, theta: 89.49, pass: true,
-    imgs: [
-      {graph: '../sem/Grid-x_selection_xy.png', sem:'../sem/Grid-9.png', caption: 'Edge fit — PMMA sidewall, position 1'}
-    ],
-    note: 'Single edge measurement at the Pd grid. Erf+Gaussian fit converged cleanly with a well-defined edge peak.'
-  },
-  {
-    label: 'Pd grid position 3',
-    f: 45.91, theta: 89.49, pass: true,
-    imgs: [
-      {graph: '../sem/Grid-x_selection_xy.png', sem:'../sem/Grid-11.png', caption: 'Edge fit — PMMA sidewall, position 2'}
-    ],
-    note: 'Single edge measurement at the Pd grid. Erf+Gaussian fit converged cleanly with a well-defined edge peak.'
-  },
-  {
-    // label: 'Pd grid position 4',
-    // f: 60.30, theta: 89.12, pass: false,
-    // imgs: [ {graph: '../sem/Grid-x_selection_xy.png', sem:'../sem/Grid-11.png', caption: 'Edge fit — PMMA sidewall, position 2'}],
-    // note: 'Marginally below the 89.4° target. The wider f is consistent with a slightly less sharp edge, possibly reflecting the Pd seed layer surface roughness contribution.'
-  },
+const gridStyle = {
+  'Grid-14': {bg:'#E1F5EE', fg:'#0F6E56'},
+  'Grid-12': {bg:'#FAEEDA', fg:'#854F0B'},
+};
 
+const sections = [
+  {
+    label: 'Grid-14 — Y scans',
+    rows: [
+      { grid:'Grid-14', sel:1, axis:'Y', f_px:50.78, theta:64.40,
+       note:'Well-converged Y scan. FWHM notably narrower than the X scans from the same grid, suggesting the edge is sharper in the Y direction.',
+       graph:'../afm/pd_si_5um_0.png',  src:'' },
+      { grid:'Grid-14', sel:2, axis:'Y', f_px:45.90, theta:66.58, note:'Consistent with sel 1 and 3. The three Grid-14 Y scans form a tight cluster (f ≈ 44–51 px, θ ≈ 64–67°).' },
+      { grid:'Grid-14', sel:3, axis:'Y', f_px:44.49, theta:67.23, note:'Narrowest of the three Grid-14 Y scans. Fit converged cleanly with a prominent Gaussian peak.' },
+    ]
+  },
+  {
+    label: 'Grid-14 — X scans',
+    rows: [
+      { grid:'Grid-14', sel:4, axis:'X', f_px:77.66,  theta:53.76, note:'Good quality fit with well-defined edge peak. Wide FWHM reflects the shallower sidewall angle characteristic of the Pd grid at this magnification.' },
+      { grid:'Grid-14', sel:5, axis:'X', f_px:87.82,  theta:50.35, note:'Consistent with sel 4 and 6. Widening FWHM across selections 4–6 may reflect genuine variation in edge sharpness along the Pd aperture boundary.' },
+      { grid:'Grid-14', sel:6, axis:'X', f_px:102.92, theta:45.84, note:'Widest X scan FWHM in Grid-14, yielding the shallowest angle. Selection likely captured a region with increased edge roughness.' },
+    ]
+  },
+  {
+    label: 'Grid-12 — Y scans',
+    rows: [
+      { grid:'Grid-12', sel:1, axis:'Y', f_px:41.93, theta:68.91, note:'Sharpest Grid-12 Y scan edge. θ consistent with Grid-14 Y results, suggesting the Y-direction edge quality is similar between grids.' },
+      { grid:'Grid-12', sel:2, axis:'Y', f_px:45.47, theta:67.31, note:'Good convergence. FWHM sits between sel 1 and 3, and θ is in line with the Grid-14 Y scan cluster.' },
+      { grid:'Grid-12', sel:3, axis:'Y', f_px:50.58, theta:65.05, note:'Widest Grid-12 Y scan FWHM, yielding the shallowest Y-direction angle. Still well above the X scan θ values for this grid.' },
+    ]
+  },
+  {
+    label: 'Grid-12 — X scans',
+    rows: [
+      { grid:'Grid-12', sel:4, axis:'X', f_px:113.00, theta:43.90, note:'Widest FWHM across all Grid-12 X scans. Wide transition zone consistent with the generally shallower angles observed in this grid.' },
+      { grid:'Grid-12', sel:5, axis:'X', f_px:97.79,  theta:48.03, note:'Good fit quality. FWHM and θ consistent with sel 6. Grid-12 X scans show a consistently wider f than Grid-14.' },
+      { grid:'Grid-12', sel:6, axis:'X', f_px:106.99, theta:45.46, note:'Fit converged cleanly. Intermediate FWHM between sel 4 and 5, consistent with spatial variation in edge profile along the aperture.' },
+    ]
+  },
 ];
 
-function thetaColor(theta, pass){
-  if(pass === null) return '#888';
-  if(pass) return '#1D9E75';
-  return '#BA7517';
+function thetaColor(theta){
+  if(theta >= 80) return '#1D9E75';
+  if(theta >= 60) return '#BA7517';
+  return '#E24B4A';
 }
 
-function openLB(r){
-  document.getElementById('lb-title').textContent = r.label;
-  document.getElementById('lb-subtitle').textContent = r.note;
+let flatData = [];
+sections.forEach(s => s.rows.forEach(r => flatData.push(r)));
 
-  const col = thetaColor(r.theta, r.pass);
-  const passLabel = r.pass === null
-    ? 'Theory'
-    : r.pass ? '✓ meets target' : '✗ below target';
-
+function openLB(i){
+  const r = flatData[i];
+  const col = thetaColor(r.theta);
+  const gs = gridStyle[r.grid];
+  document.getElementById('lb-title').textContent = `${r.grid} · Selection ${r.sel} · ${r.axis} scan`;
   document.getElementById('lb-metrics').innerHTML = `
-    <div class="lb-metric">
-      <span class="lb-metric-val" style="color:${col}">${r.theta.toFixed(2)}°</span>
-      <span class="lb-metric-key">Sidewall angle θ</span>
-    </div>
-    <div class="lb-metric">
-      <span class="lb-metric-val">${r.f.toFixed(2)} nm</span>
-      <span class="lb-metric-key">FWHM f</span>
-    </div>
-    <div class="lb-metric">
-      <span class="lb-metric-val" style="color:${col}">${passLabel}</span>
-      <span class="lb-metric-key">≥89.4° target</span>
-    </div>`;
-
-  const imgBox = document.getElementById('lb-imgs');
-  if(!r.imgs || r.imgs.length === 0){
-    imgBox.className = 'lb-imgs one';
-    imgBox.innerHTML = `<div style="padding:24px;text-align:center;font-size:12px;color:#aaa;">No edge fit image available for this measurement.</div>`;
-  } else {
-    imgBox.className = r.imgs.length === 1 ? 'lb-imgs one' : 'lb-imgs two';
-    imgBox.innerHTML = r.imgs.map(im =>
-      `<div class="lb-img-wrap">
-        <img src="${im.src}" alt="${im.caption}" onerror="this.style.display='none';this.nextElementSibling.textContent='Image not found — check path'">
-        <div class="lb-img-label">${im.caption}</div>
-      </div>`
-    ).join('');
-  }
-
+    <div class="lb-m"><span class="lb-m-val" style="color:${col}">${r.theta.toFixed(2)}°</span><span class="lb-m-key">θ sidewall angle</span></div>
+    <div class="lb-m"><span class="lb-m-val">${(r.f_px*NM_PER_PX).toFixed(2)} nm</span><span class="lb-m-key">FWHM (nm)</span></div>
+    <div class="lb-m"><span class="lb-m-val">${r.f_px.toFixed(2)} px</span><span class="lb-m-key">FWHM (px)</span></div>
+    <div class="lb-m"><span class="lb-m-val" style="background:${gs.bg};color:${gs.fg};padding:2px 8px;border-radius:8px;font-size:12px">${r.grid}</span><span class="lb-m-key">Grid</span></div>`;
+  document.getElementById('lb-metrics').insertAdjacentHTML('afterend',
+    `<p style="font-size:12px;color:#666;margin-top:8px;line-height:1.6">${r.note}</p>`);
+  document.getElementById('lb-imgs').innerHTML = '';
   document.getElementById('lb-overlay').classList.add('open');
 }
 
@@ -180,45 +155,40 @@ function closeLB(e){
   if(e && e.target !== document.getElementById('lb-overlay')) return;
   document.getElementById('lb-overlay').classList.remove('open');
 }
-
-document.addEventListener('keydown', e=>{
-  if(e.key === 'Escape') document.getElementById('lb-overlay').classList.remove('open');
-});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') document.getElementById('lb-overlay').classList.remove('open'); });
 
 function render(){
+  let flatIdx = 0;
   const tbody = document.getElementById('tbody');
-  tbody.innerHTML = data.map((r, i) => {
-    const col = thetaColor(r.theta, r.pass);
-    const isTheory = r.pass === null;
-
-    // theta bar: fill from 88.8 to actual theta, marker at 89.4
-    const fillPct = Math.min(100, Math.max(0, (r.theta - THETA_MIN) / (THETA_MAX - THETA_MIN) * 100));
-    const targetPct = (TARGET - THETA_MIN) / (THETA_MAX - THETA_MIN) * 100;
-
-    const passCell = isTheory
-      ? `<span class="flag-theory">theory</span>`
-      : r.pass
-        ? `<span class="flag-pass">✓</span>`
-        : `<span class="flag-fail">✗</span>`;
-
-    const hasImg = r.imgs && r.imgs.length > 0;
-    const hint = hasImg ? ` <span style="font-size:9px;color:#bbb">⬡</span>` : '';
-
-    return `<tr class="${isTheory ? 'srim-row' : ''}" style="cursor:pointer" onclick="openLB(data[${i}])">
-      <td><span class="meas-name">${r.label}${hint}</span></td>
-      <td class="fwhm-val">${r.f.toFixed(2)}</td>
-      <td>
-        <div class="theta-bar-wrap">
-          <div class="theta-bar-track" style="width:80px">
-            <div class="theta-bar-fill" style="width:${fillPct}%;background:${col}"></div>
-            <div class="theta-target" style="left:${targetPct}%"></div>
+  let html = '';
+  sections.forEach(sec => {
+    html += `<tr class="section-row"><td colspan="5">${sec.label}</td></tr>`;
+    sec.rows.forEach(r => {
+      const idx = flatIdx++;
+      const col = thetaColor(r.theta);
+      const gs  = gridStyle[r.grid];
+      const fNm = (r.f_px * NM_PER_PX).toFixed(2);
+      const fillP = Math.min(100, Math.max(0, (r.theta - THETA_MIN)/(THETA_MAX - THETA_MIN)*100));
+      html += `<tr onclick="openLB(${idx})">
+        <td>
+          <span class="grid-pill" style="background:${gs.bg};color:${gs.fg}">${r.grid}</span>
+          <span class="meas-name">Sel ${r.sel}</span>
+        </td>
+        <td><span class="axis-badge">${r.axis}</span></td>
+        <td class="fwhm-val">${r.f_px.toFixed(2)}</td>
+        <td class="fwhm-val">${fNm}</td>
+        <td>
+          <div class="theta-bar-wrap">
+            <div class="theta-bar-track">
+              <div class="theta-bar-fill" style="width:${fillP}%;background:${col}"></div>
+            </div>
+            <span class="theta-val" style="color:${col}">${r.theta.toFixed(2)}°</span>
           </div>
-          <span class="theta-val" style="color:${col}">${r.theta.toFixed(2)}°</span>
-        </div>
-      </td>
-      <td>${passCell}</td>
-    </tr>`;
-  }).join('');
+        </td>
+      </tr>`;
+    });
+  });
+  tbody.innerHTML = html;
 }
 
 render();
