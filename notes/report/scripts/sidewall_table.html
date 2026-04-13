@@ -1,8 +1,16 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 .wrap{padding:16px 20px;font-family:var(--font-sans)}
+.controls{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.ctrl-label{font-size:11px;color:var(--color-text-tertiary);margin-right:2px}
+.pill{font-size:11px;padding:3px 10px;border-radius:20px;border:0.5px solid var(--color-border-tertiary);cursor:pointer;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all .15s;user-select:none}
+.pill.on{background:var(--color-text-primary);border-color:var(--color-text-primary);color:var(--color-background-primary)}
 table{width:100%;border-collapse:collapse;font-size:12px}
-th{text-align:left;font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);user-select:none;white-space:nowrap}
+th{text-align:left;font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:6px 10px;border-bottom:0.5px solid var(--color-border-tertiary);cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:var(--color-text-secondary)}
+th.sorted{color:var(--color-text-primary)}
+th .sa{margin-left:3px;opacity:0.4;font-size:9px}
+th.sorted .sa{opacity:1}
 td{padding:7px 10px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-secondary);vertical-align:middle}
 tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--color-background-secondary);cursor:pointer}
@@ -11,7 +19,7 @@ tr:hover td{background:var(--color-background-secondary);cursor:pointer}
 .fwhm-val{font-size:12px;color:var(--color-text-secondary)}
 .grid-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500;margin-right:4px}
 .axis-badge{font-size:10px;padding:1px 6px;border-radius:4px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500}
-.section-row td{background:var(--color-background-secondary);font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;padding:5px 10px}
+.has-img{font-size:9px;color:var(--color-text-tertiary);margin-left:4px}
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .stat{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
 .stat-n{font-size:18px;font-weight:500}
@@ -20,11 +28,12 @@ tr:hover td{background:var(--color-background-secondary);cursor:pointer}
 .theta-bar-wrap{display:flex;align-items:center;gap:6px}
 .theta-bar-track{width:70px;height:5px;border-radius:3px;background:var(--color-background-secondary);flex-shrink:0}
 .theta-bar-fill{height:100%;border-radius:3px}
+.empty{padding:24px;text-align:center;font-size:12px;color:var(--color-text-tertiary)}
 
 /* lightbox */
 .lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center}
 .lb-overlay.open{display:flex}
-.lb-box{background:#fff;border-radius:12px;padding:24px;max-width:700px;width:92vw;max-height:88vh;overflow-y:auto;position:relative}
+.lb-box{background:#fff;border-radius:12px;padding:24px;max-width:780px;width:92vw;max-height:88vh;overflow-y:auto;position:relative}
 .lb-close{position:absolute;top:14px;right:16px;font-size:20px;cursor:pointer;color:#aaa;background:none;border:none;padding:0;line-height:1}
 .lb-close:hover{color:#111}
 .lb-title{font-size:14px;font-weight:500;color:#111;margin-bottom:4px;padding-right:28px}
@@ -32,12 +41,10 @@ tr:hover td{background:var(--color-background-secondary);cursor:pointer}
 .lb-m{display:flex;flex-direction:column;gap:2px}
 .lb-m-val{font-size:15px;font-weight:500;color:#111}
 .lb-m-key{font-size:10px;color:#aaa}
-.lb-imgs{display:grid;gap:12px;margin-top:14px}
-.lb-imgs.one{grid-template-columns:1fr}
-.lb-imgs.two{grid-template-columns:1fr 1fr}
-.lb-imgs img{width:100%;border-radius:8px;border:0.5px solid #eee}
-.lb-img-label{font-size:10px;color:#aaa;text-align:center;margin-top:4px}
-@media(max-width:560px){.lb-imgs.two{grid-template-columns:1fr}}
+.lb-img-wrap{margin-top:14px}
+.lb-img-wrap img{width:100%;border-radius:8px;border:0.5px solid #eee;display:block}
+.lb-img-label{font-size:10px;color:#aaa;text-align:center;margin-top:5px}
+.lb-no-img{padding:20px;text-align:center;font-size:12px;color:#bbb;background:#fafafa;border-radius:8px;margin-top:14px}
 </style>
 
 <div class="lb-overlay" id="lb-overlay" onclick="closeLB(event)">
@@ -45,121 +52,124 @@ tr:hover td{background:var(--color-background-secondary);cursor:pointer}
     <button class="lb-close" onclick="closeLB(null)">✕</button>
     <div class="lb-title" id="lb-title"></div>
     <div class="lb-metrics" id="lb-metrics"></div>
-    <div class="lb-imgs" id="lb-imgs"></div>
+    <div id="lb-note"></div>
+    <div id="lb-img-area"></div>
   </div>
 </div>
 
 <div class="wrap">
-  <div class="summary" style="grid-template-columns:repeat(2,1fr)">
-    <div class="stat">
-      <div class="stat-n" style="color:#0F6E56">58.03°</div>
-      <div class="stat-l">Grid-14 avg θ (X + Y)</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n" style="color:#854F0B">56.44°</div>
-      <div class="stat-l">Grid-12 avg θ (X + Y)</div>
-    </div>
+  <div class="summary" id="summary"></div>
+
+  <div class="controls">
+    <span class="ctrl-label">Grid:</span>
+    <span class="pill on" data-filter="grid" data-val="all" onclick="setFilter('grid','all',this)">All</span>
+    <span class="pill" data-filter="grid" data-val="Grid-14" onclick="setFilter('grid','Grid-14',this)">Grid-14</span>
+    <span class="pill" data-filter="grid" data-val="Grid-12" onclick="setFilter('grid','Grid-12',this)">Grid-12</span>
+    <span class="ctrl-label" style="margin-left:8px">Axis:</span>
+    <span class="pill on" data-filter="axis" data-val="all" onclick="setFilter('axis','all',this)">All</span>
+    <span class="pill" data-filter="axis" data-val="X" onclick="setFilter('axis','X',this)">X</span>
+    <span class="pill" data-filter="axis" data-val="Y" onclick="setFilter('axis','Y',this)">Y</span>
   </div>
 
   <table>
     <thead>
       <tr>
-        <th>Grid / Selection</th>
-        <th>Axis</th>
-        <th>FWHM (px)</th>
-        <th>FWHM (nm)</th>
-        <th>θ (°)</th>
+        <th onclick="sortBy('grid')">Grid / Sel <span class="sa">↕</span></th>
+        <th onclick="sortBy('axis')">Axis <span class="sa">↕</span></th>
+        <th onclick="sortBy('f_px')">FWHM (px) <span class="sa">↕</span></th>
+        <th onclick="sortBy('f_nm')">FWHM (nm) <span class="sa">↕</span></th>
+        <th onclick="sortBy('theta')">θ (°) <span class="sa">↕</span></th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 
   <div class="note">
-    nm/px = 0.94 · h = 100 nm · θ = arctan(h_px / f_px) · 3 best X and 3 best Y selections per grid. Click any row to view fit parameters.
+    nm/px = 0.94 · h = 100 nm · θ = arctan(h_px / f_px) · Click any row to view fit parameters and edge profile.
   </div>
 </div>
 
 <script>
 const NM_PER_PX = 0.94;
-const THETA_MIN = 40;
-const THETA_MAX = 90;
-
+const THETA_MIN = 40, THETA_MAX = 90;
 const gridStyle = {
   'Grid-14': {bg:'#E1F5EE', fg:'#0F6E56'},
   'Grid-12': {bg:'#FAEEDA', fg:'#854F0B'},
 };
 
-const sections = [
-  {
-    label: 'Grid-14 — Y scans',
-    rows: [
-      { grid:'Grid-14', sel:1, axis:'Y', f_px:50.78, theta:64.40,
-       note:'Well-converged Y scan. FWHM notably narrower than the X scans from the same grid, suggesting the edge is sharper in the Y direction.',
-       graph:'../sem/figures/Grid-14_selection_1_y.png'  },
-      { grid:'Grid-14', sel:2, axis:'Y', f_px:45.90, theta:66.58,
-       graph:'../sem/figures/Grid-14_selection_2_y.png',
-      note:'Consistent with sel 1 and 3. The three Grid-14 Y scans form a tight cluster (f ≈ 44–51 px, θ ≈ 64–67°).' },
-      { grid:'Grid-14', sel:3, axis:'Y', f_px:44.49, theta:67.23,
-      graph:'../sem/figures/Grid-14_selection_3_y.png',note:'Narrowest of the three Grid-14 Y scans. Fit converged cleanly with a prominent Gaussian peak.' },
-    ]
-  },
-  {
-    label: 'Grid-14 — X scans',
-    rows: [
-      { grid:'Grid-14', sel:4, axis:'X', f_px:77.66,  theta:53.76,
-      graph:'../sem/figures/Grid-14_selection_4_x.png', note:'Good quality fit with well-defined edge peak. Wide FWHM reflects the shallower sidewall angle characteristic of the Pd grid at this magnification.' },
-      { grid:'Grid-14', sel:5, axis:'X', f_px:87.82,  theta:50.35, 
-      graph:'../sem/figures/Grid-14_selection_5_y.png',note:'Consistent with sel 4 and 6. Widening FWHM across selections 4–6 may reflect genuine variation in edge sharpness along the Pd aperture boundary.' },
-      { grid:'Grid-14', sel:6, axis:'X', f_px:102.92, theta:45.84,
-      graph:'../sem/figures/Grid-14_selection_6_y.png', note:'Widest X scan FWHM in Grid-14, yielding the shallowest angle. Selection likely captured a region with increased edge roughness.' },
-    ]
-  },
-  {
-    label: 'Grid-12 — Y scans',
-    rows: [
-      { grid:'Grid-12', sel:1, axis:'Y', f_px:41.93, theta:68.91,
-      graph:'../sem/figures/Grid-12_selection_1_y.png', note:'Sharpest Grid-12 Y scan edge. θ consistent with Grid-14 Y results, suggesting the Y-direction edge quality is similar between grids.' },
-      { grid:'Grid-12', sel:2, axis:'Y', f_px:45.47, theta:67.31, 
-      graph:'../sem/figures/Grid-12_selection_2_y.png',note:'Good convergence. FWHM sits between sel 1 and 3, and θ is in line with the Grid-14 Y scan cluster.' },
-      { grid:'Grid-12', sel:3, axis:'Y', f_px:50.58, theta:65.05,
-      graph:'../sem/figures/Grid-12_selection_3_y.png', note:'Widest Grid-12 Y scan FWHM, yielding the shallowest Y-direction angle. Still well above the X scan θ values for this grid.' },
-    ]
-  },
-  {
-    label: 'Grid-12 — X scans',
-    rows: [
-      { grid:'Grid-12', sel:4, axis:'X', f_px:113.00, theta:43.90,
-      graph:'../sem/figures/Grid-12_selection_1_x.png', note:'Widest FWHM across all Grid-12 X scans. Wide transition zone consistent with the generally shallower angles observed in this grid.' },
-      { grid:'Grid-12', sel:5, axis:'X', f_px:97.79,  theta:48.03,
-      graph:'../sem/figures/Grid-12_selection_2_x.png', note:'Good fit quality. FWHM and θ consistent with sel 6. Grid-12 X scans show a consistently wider f than Grid-14.' },
-      { grid:'Grid-12', sel:6, axis:'X', f_px:106.99, theta:45.46, 
-      graph:'../sem/figures/Grid-12_selection_3_x.png',note:'Fit converged cleanly. Intermediate FWHM between sel 4 and 5, consistent with spatial variation in edge profile along the aperture.' },
-    ]
-  },
+const allData = [
+  {grid:'Grid-14',sel:1,axis:'Y',f_px:50.78,theta:64.40,graph:'../sem/figures/Grid-14_selection_1_y.png',note:'Well-converged Y scan. FWHM notably narrower than the X scans from the same grid, suggesting the edge is sharper in the Y direction.'},
+  {grid:'Grid-14',sel:2,axis:'Y',f_px:45.90,theta:66.58,graph:'../sem/figures/Grid-14_selection_2_y.png',note:'Consistent with sel 1 and 3. The three Grid-14 Y scans form a tight cluster (f ≈ 44–51 px, θ ≈ 64–67°).'},
+  {grid:'Grid-14',sel:3,axis:'Y',f_px:44.49,theta:67.23,graph:'../sem/figures/Grid-14_selection_3_y.png',note:'Narrowest of the three Grid-14 Y scans. Fit converged cleanly with a prominent Gaussian peak.'},
+  {grid:'Grid-14',sel:4,axis:'X',f_px:77.66, theta:53.76,graph:'../sem/figures/Grid-14_selection_4_x.png',note:'Good quality fit with well-defined edge peak. Wide FWHM reflects the shallower sidewall angle characteristic of the Pd grid at this magnification.'},
+  {grid:'Grid-14',sel:5,axis:'X',f_px:87.82, theta:50.35,graph:'../sem/figures/Grid-14_selection_5_x.png',note:'Consistent with sel 4 and 6. Widening FWHM across selections 4–6 may reflect genuine variation in edge sharpness along the Pd aperture boundary.'},
+  {grid:'Grid-14',sel:6,axis:'X',f_px:102.92,theta:45.84,graph:'../sem/figures/Grid-14_selection_6_x.png',note:'Widest X scan FWHM in Grid-14, yielding the shallowest angle. Selection likely captured a region with increased edge roughness.'},
+  {grid:'Grid-12',sel:1,axis:'Y',f_px:41.93,theta:68.91,graph:'../sem/figures/Grid-12_selection_1_y.png',note:'Sharpest Grid-12 Y scan edge. θ consistent with Grid-14 Y results, suggesting the Y-direction edge quality is similar between grids.'},
+  {grid:'Grid-12',sel:2,axis:'Y',f_px:45.47,theta:67.31,graph:'../sem/figures/Grid-12_selection_2_y.png',note:'Good convergence. FWHM sits between sel 1 and 3, and θ is in line with the Grid-14 Y scan cluster.'},
+  {grid:'Grid-12',sel:3,axis:'Y',f_px:50.58,theta:65.05,graph:'../sem/figures/Grid-12_selection_3_y.png',note:'Widest Grid-12 Y scan FWHM, yielding the shallowest Y-direction angle. Still well above the X scan θ values for this grid.'},
+  {grid:'Grid-12',sel:4,axis:'X',f_px:113.00,theta:43.90,graph:'../sem/figures/Grid-12_selection_1_x.png',note:'Widest FWHM across all Grid-12 X scans. Wide transition zone consistent with the generally shallower angles observed in this grid.'},
+  {grid:'Grid-12',sel:5,axis:'X',f_px:97.79, theta:48.03,graph:'../sem/figures/Grid-12_selection_2_x.png',note:'Good fit quality. FWHM and θ consistent with sel 6. Grid-12 X scans show a consistently wider f than Grid-14.'},
+  {grid:'Grid-12',sel:6,axis:'X',f_px:106.99,theta:45.46,graph:'../sem/figures/Grid-12_selection_3_x.png',note:'Fit converged cleanly. Intermediate FWHM between sel 4 and 5, consistent with spatial variation in edge profile along the aperture.'},
 ];
+allData.forEach(r => r.f_nm = r.f_px * NM_PER_PX);
 
-function thetaColor(theta){
-  if(theta >= 80) return '#1D9E75';
-  if(theta >= 60) return '#BA7517';
-  return '#E24B4A';
+const filters = {grid:'all', axis:'all'};
+let sortKey = null, sortDir = 1, currentRows = [];
+
+function setFilter(type, val, el){
+  filters[type] = val;
+  document.querySelectorAll(`[data-filter="${type}"]`).forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  render();
 }
 
-let flatData = [];
-sections.forEach(s => s.rows.forEach(r => flatData.push(r)));
+function sortBy(key){
+  if(sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
+  document.querySelectorAll('th').forEach(th => {
+    th.classList.remove('sorted');
+    const a = th.querySelector('.sa'); if(a) a.textContent = '↕';
+  });
+  const map = {grid:0,axis:1,f_px:2,f_nm:3,theta:4};
+  const ths = document.querySelectorAll('th');
+  if(map[key] !== undefined){
+    ths[map[key]].classList.add('sorted');
+    const a = ths[map[key]].querySelector('.sa');
+    if(a) a.textContent = sortDir === 1 ? '↑' : '↓';
+  }
+  render();
+}
+
+function thetaColor(t){ return t>=80?'#1D9E75':t>=60?'#BA7517':'#E24B4A'; }
 
 function openLB(i){
-  const r = flatData[i];
-  const col = thetaColor(r.theta);
-  const gs = gridStyle[r.grid];
+  const r = currentRows[i];
+  const col = thetaColor(r.theta), gs = gridStyle[r.grid];
+
   document.getElementById('lb-title').textContent = `${r.grid} · Selection ${r.sel} · ${r.axis} scan`;
+
   document.getElementById('lb-metrics').innerHTML = `
     <div class="lb-m"><span class="lb-m-val" style="color:${col}">${r.theta.toFixed(2)}°</span><span class="lb-m-key">θ sidewall angle</span></div>
-    <div class="lb-m"><span class="lb-m-val">${(r.f_px*NM_PER_PX).toFixed(2)} nm</span><span class="lb-m-key">FWHM (nm)</span></div>
+    <div class="lb-m"><span class="lb-m-val">${r.f_nm.toFixed(2)} nm</span><span class="lb-m-key">FWHM (nm)</span></div>
     <div class="lb-m"><span class="lb-m-val">${r.f_px.toFixed(2)} px</span><span class="lb-m-key">FWHM (px)</span></div>
     <div class="lb-m"><span class="lb-m-val" style="background:${gs.bg};color:${gs.fg};padding:2px 8px;border-radius:8px;font-size:12px">${r.grid}</span><span class="lb-m-key">Grid</span></div>`;
-  document.getElementById('lb-metrics').insertAdjacentHTML('afterend',
-    `<p style="font-size:12px;color:#666;margin-top:8px;line-height:1.6">${r.note}</p>`);
-  document.getElementById('lb-imgs').innerHTML = '';
+
+  document.getElementById('lb-note').innerHTML =
+    `<p style="font-size:12px;color:#666;margin-top:4px;line-height:1.6">${r.note}</p>`;
+
+  // ← this is where images were missing — now actually renders the graph
+  const imgArea = document.getElementById('lb-img-area');
+  if(r.graph){
+    imgArea.innerHTML = `
+      <div class="lb-img-wrap">
+        <img src="${r.graph}"
+             alt="Edge fit — ${r.grid} sel ${r.sel} ${r.axis}"
+             onerror="this.parentElement.innerHTML='<div class=\\'lb-no-img\\'>Image not found — check that the file exists at: ${r.graph}</div>'">
+        <div class="lb-img-label">Edge fit — ${r.grid} · Sel ${r.sel} · ${r.axis} scan</div>
+      </div>`;
+  } else {
+    imgArea.innerHTML = '<div class="lb-no-img">No edge fit image available for this selection.</div>';
+  }
+
   document.getElementById('lb-overlay').classList.add('open');
 }
 
@@ -170,37 +180,48 @@ function closeLB(e){
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') document.getElementById('lb-overlay').classList.remove('open'); });
 
 function render(){
-  let flatIdx = 0;
+  let rows = allData.filter(r =>
+    (filters.grid==='all'||r.grid===filters.grid) &&
+    (filters.axis==='all'||r.axis===filters.axis)
+  );
+  if(sortKey) rows = [...rows].sort((a,b)=>{
+    const av=a[sortKey],bv=b[sortKey];
+    return typeof av==='string'?sortDir*av.localeCompare(bv):sortDir*(av-bv);
+  });
+  currentRows = rows;
+
   const tbody = document.getElementById('tbody');
-  let html = '';
-  sections.forEach(sec => {
-    html += `<tr class="section-row"><td colspan="5">${sec.label}</td></tr>`;
-    sec.rows.forEach(r => {
-      const idx = flatIdx++;
-      const col = thetaColor(r.theta);
-      const gs  = gridStyle[r.grid];
-      const fNm = (r.f_px * NM_PER_PX).toFixed(2);
-      const fillP = Math.min(100, Math.max(0, (r.theta - THETA_MIN)/(THETA_MAX - THETA_MIN)*100));
-      html += `<tr onclick="openLB(${idx})">
+  if(!rows.length){
+    tbody.innerHTML = '<tr><td colspan="5" class="empty">No results match the current filters</td></tr>';
+  } else {
+    tbody.innerHTML = rows.map((r,i) => {
+      const col=thetaColor(r.theta), gs=gridStyle[r.grid];
+      const fillP=Math.min(100,Math.max(0,(r.theta-THETA_MIN)/(THETA_MAX-THETA_MIN)*100));
+      return `<tr onclick="openLB(${i})">
         <td>
           <span class="grid-pill" style="background:${gs.bg};color:${gs.fg}">${r.grid}</span>
           <span class="meas-name">Sel ${r.sel}</span>
+          ${r.graph ? '<span class="has-img">⬡ graph</span>' : ''}
         </td>
         <td><span class="axis-badge">${r.axis}</span></td>
         <td class="fwhm-val">${r.f_px.toFixed(2)}</td>
-        <td class="fwhm-val">${fNm}</td>
-        <td>
-          <div class="theta-bar-wrap">
-            <div class="theta-bar-track">
-              <div class="theta-bar-fill" style="width:${fillP}%;background:${col}"></div>
-            </div>
-            <span class="theta-val" style="color:${col}">${r.theta.toFixed(2)}°</span>
-          </div>
-        </td>
+        <td class="fwhm-val">${r.f_nm.toFixed(2)}</td>
+        <td><div class="theta-bar-wrap">
+          <div class="theta-bar-track"><div class="theta-bar-fill" style="width:${fillP}%;background:${col}"></div></div>
+          <span class="theta-val" style="color:${col}">${r.theta.toFixed(2)}°</span>
+        </div></td>
       </tr>`;
-    });
-  });
-  tbody.innerHTML = html;
+    }).join('');
+  }
+
+  const s = document.getElementById('summary');
+  if(!rows.length){ s.innerHTML=''; return; }
+  const avgT = rows.reduce((a,r)=>a+r.theta,0)/rows.length;
+  const avgF = rows.reduce((a,r)=>a+r.f_nm,0)/rows.length;
+  s.innerHTML = `
+    <div class="stat"><div class="stat-n">${rows.length}</div><div class="stat-l">selections shown</div></div>
+    <div class="stat"><div class="stat-n">${avgT.toFixed(1)}°</div><div class="stat-l">avg θ</div></div>
+    <div class="stat"><div class="stat-n">${avgF.toFixed(1)} nm</div><div class="stat-l">avg FWHM</div></div>`;
 }
 
 render();

@@ -143,7 +143,7 @@ The beam was having some inconstancy in the stability, which is attributed to th
 Given the shadowing effect, the below table is carefully curated to only include the ones with least least shadowing effect to reduce it's effect onto the results
 
 <figure style="text-align: center; margin: 20px 0;">
-  <img src="images/Grid-12_a.png"
+  <img src="sem/Grid-12_a.png"
        width="480">
   <img src="sem/Grid-14_a.png"
        width="480">
@@ -171,20 +171,14 @@ The edge fitting approach and sidewall angle calculation were originally develop
 A more appropriate quantity to extract from these measurements is the FWHM/2 value, which at this scale is no longer dominated by the sidewall geometry but instead reflects the SEM beam spot size and instrument resolution. At a magnification of ×100,000, the beam spot size is approximately 20 nm, and the FWHM/2 values extracted from the fits , particularly from the well-converged Y scan profiles , are broadly consistent with this range, providing a useful indirect measure of the imaging resolution under the acquisition conditions used.
 
 
-| Grid | Sel | Axis | FWHM (nm) | FWHM/2 (nm) | Beam spot ~20 nm | Δ (nm) |
-|------|-----|------|-----------|-------------|------------------|--------|
-| Grid-14 | 1 | Y | 47.73 | 23.87 | 20 | +3.87 |
-| Grid-14 | 2 | Y | 43.15 | 21.58 | 20 | +1.58 |
-| Grid-14 | 3 | Y | 41.82 | 20.91 | 20 | +0.91 |
-| Grid-14 | 4 | X | 73.00 | 36.50 | 20 | +16.50 |
-| Grid-14 | 5 | X | 82.55 | 41.28 | 20 | +21.28 |
-| Grid-14 | 6 | X | 96.74 | 48.37 | 20 | +28.37 |
-| Grid-12 | 1 | Y | 39.41 | 19.71 | 20 | −0.29 |
-| Grid-12 | 2 | Y | 42.74 | 21.37 | 20 | +1.37 |
-| Grid-12 | 3 | Y | 47.55 | 23.78 | 20 | +3.78 |
-| Grid-12 | 4 | X | 106.22 | 53.11 | 20 | +33.11 |
-| Grid-12 | 5 | X | 91.92 | 45.96 | 20 | +25.96 |
-| Grid-12 | 6 | X | 100.57 | 50.29 | 20 | +30.29 |
+<iframe
+  src="scripts/fwhm_table.html"
+  style="border:none; border-radius:6px;"
+  allowfullscreen="true"
+  width="500px"
+  height="500px"
+  sandbox="allow-scripts">
+</iframe>
 
 The Y scans are generally very close to the 20 nm beam spot size, with an average deviation of only 1.97 nm above the estimate, while the X scans show a substantially larger average deviation of 25.92 nm above it. The significantly higher FWHM observed in the X scans may be linked to the previously noted observation of vertical sidewalls producing an overlay effect, the projected sidewall width in the X direction broadens the measured transition zone well beyond the instrument resolution, whereas the Y direction edge sits remarkably close to the 20 nm beam spot limit, suggesting the Y transitions are dominated by instrument resolution rather than feature geometry.
 
