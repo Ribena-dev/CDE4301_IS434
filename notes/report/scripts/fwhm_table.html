@@ -16,13 +16,15 @@ tr:last-child td{border-bottom:none}
 tr:hover td{background:var(--color-background-secondary)}
 .grid-pill{display:inline-block;font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
 .axis-badge{font-size:10px;padding:1px 6px;border-radius:4px;background:var(--color-background-secondary);color:var(--color-text-secondary);font-weight:500}
-.delta-pos{color:#1D9E75;font-weight:500}
-.delta-neg{color:#185FA5;font-weight:500}
-.delta-near{color:#BA7517;font-weight:500}
 .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
 .stat{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
 .stat-n{font-size:18px;font-weight:500}
 .stat-l{font-size:10px;color:var(--color-text-tertiary);margin-top:2px}
+.avgs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.avg-card{background:var(--color-background-secondary);border-radius:8px;padding:8px 12px}
+.avg-title{font-size:10px;font-weight:500;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.avg-row{display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-secondary);padding:2px 0}
+.avg-val{font-weight:500;color:var(--color-text-primary)}
 .empty{padding:24px;text-align:center;font-size:12px;color:var(--color-text-tertiary)}
 .note{font-size:11px;color:var(--color-text-tertiary);margin-top:12px;padding:8px 12px;border-left:2px solid var(--color-border-tertiary);line-height:1.6}
 </style>
@@ -51,15 +53,15 @@ tr:hover td{background:var(--color-background-secondary)}
         <th onclick="sortBy('axis')">Axis <span class="sort-arrow">↕</span></th>
         <th onclick="sortBy('fwhm')">FWHM (nm) <span class="sort-arrow">↕</span></th>
         <th onclick="sortBy('fwhm2')">FWHM/2 (nm) <span class="sort-arrow">↕</span></th>
-        <th>Beam spot (nm)</th>
-        <th onclick="sortBy('delta')">Δ (nm) <span class="sort-arrow">↕</span></th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
 
+  <div class="avgs" id="avgs"></div>
+
   <div class="note">
-    Beam spot ~20 nm at ×100,000 magnification. Δ = FWHM/2 − beam spot. Y scans sit close to the beam spot limit; X scans show additional broadening from sidewall overlay effects.
+    nm/px = 0.94 · FWHM/2 represents the half-width of the edge transition, comparable to the SEM beam spot size.
   </div>
 </div>
 
@@ -70,23 +72,25 @@ const gridStyle = {
 };
 
 const raw = [
-  {grid:'Grid-14', sel:1, axis:'Y', fwhm:47.73, fwhm2:23.87, beam:20, delta:3.87},
-  {grid:'Grid-14', sel:2, axis:'Y', fwhm:43.15, fwhm2:21.58, beam:20, delta:1.58},
-  {grid:'Grid-14', sel:3, axis:'Y', fwhm:41.82, fwhm2:20.91, beam:20, delta:0.91},
-  {grid:'Grid-14', sel:4, axis:'X', fwhm:73.00, fwhm2:36.50, beam:20, delta:16.50},
-  {grid:'Grid-14', sel:5, axis:'X', fwhm:82.55, fwhm2:41.28, beam:20, delta:21.28},
-  {grid:'Grid-14', sel:6, axis:'X', fwhm:96.74, fwhm2:48.37, beam:20, delta:28.37},
-  {grid:'Grid-12', sel:1, axis:'Y', fwhm:39.41, fwhm2:19.71, beam:20, delta:-0.29},
-  {grid:'Grid-12', sel:2, axis:'Y', fwhm:42.74, fwhm2:21.37, beam:20, delta:1.37},
-  {grid:'Grid-12', sel:3, axis:'Y', fwhm:47.55, fwhm2:23.78, beam:20, delta:3.78},
-  {grid:'Grid-12', sel:4, axis:'X', fwhm:106.22, fwhm2:53.11, beam:20, delta:33.11},
-  {grid:'Grid-12', sel:5, axis:'X', fwhm:91.92,  fwhm2:45.96, beam:20, delta:25.96},
-  {grid:'Grid-12', sel:6, axis:'X', fwhm:100.57, fwhm2:50.29, beam:20, delta:30.29},
+  {grid:'Grid-14', sel:1, axis:'Y', fwhm:47.73, fwhm2:23.87},
+  {grid:'Grid-14', sel:2, axis:'Y', fwhm:43.15, fwhm2:21.58},
+  {grid:'Grid-14', sel:3, axis:'Y', fwhm:41.82, fwhm2:20.91},
+  {grid:'Grid-14', sel:4, axis:'X', fwhm:73.00, fwhm2:36.50},
+  {grid:'Grid-14', sel:5, axis:'X', fwhm:82.55, fwhm2:41.28},
+  {grid:'Grid-14', sel:6, axis:'X', fwhm:96.74, fwhm2:48.37},
+  {grid:'Grid-12', sel:1, axis:'Y', fwhm:39.41, fwhm2:19.71},
+  {grid:'Grid-12', sel:2, axis:'Y', fwhm:42.74, fwhm2:21.37},
+  {grid:'Grid-12', sel:3, axis:'Y', fwhm:47.55, fwhm2:23.78},
+  {grid:'Grid-12', sel:4, axis:'X', fwhm:106.22, fwhm2:53.11},
+  {grid:'Grid-12', sel:5, axis:'X', fwhm:91.92,  fwhm2:45.96},
+  {grid:'Grid-12', sel:6, axis:'X', fwhm:100.57, fwhm2:50.29},
 ];
 
 const filters = {grid:'all', axis:'all'};
-let sortKey = null;
-let sortDir = 1;
+let sortKey = null, sortDir = 1;
+
+function avg(arr){ return arr.length ? arr.reduce((s,v)=>s+v,0)/arr.length : null; }
+function fmt(v){ return v !== null ? v.toFixed(2) : '—'; }
 
 function setFilter(type, val, el){
   filters[type] = val;
@@ -96,27 +100,19 @@ function setFilter(type, val, el){
 }
 
 function sortBy(key){
-  if(sortKey === key) sortDir *= -1;
-  else { sortKey = key; sortDir = 1; }
+  if(sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
   document.querySelectorAll('th').forEach(th => {
     th.classList.remove('sorted');
-    const arrow = th.querySelector('.sort-arrow');
-    if(arrow) arrow.textContent = '↕';
+    const a = th.querySelector('.sort-arrow'); if(a) a.textContent = '↕';
   });
+  const keyMap = {grid:0,sel:1,axis:2,fwhm:3,fwhm2:4};
   const ths = document.querySelectorAll('th');
-  const keyMap = {grid:0,sel:1,axis:2,fwhm:3,fwhm2:4,delta:6};
   if(keyMap[key] !== undefined){
     ths[keyMap[key]].classList.add('sorted');
-    const arrow = ths[keyMap[key]].querySelector('.sort-arrow');
-    if(arrow) arrow.textContent = sortDir === 1 ? '↑' : '↓';
+    const a = ths[keyMap[key]].querySelector('.sort-arrow');
+    if(a) a.textContent = sortDir === 1 ? '↑' : '↓';
   }
   render();
-}
-
-function deltaClass(d){
-  if(Math.abs(d) <= 3) return 'delta-near';
-  if(d < 0) return 'delta-neg';
-  return 'delta-pos';
 }
 
 function render(){
@@ -128,44 +124,60 @@ function render(){
   if(sortKey){
     rows = [...rows].sort((a,b) => {
       const av = a[sortKey], bv = b[sortKey];
-      if(typeof av === 'string') return sortDir * av.localeCompare(bv);
-      return sortDir * (av - bv);
+      return typeof av === 'string' ? sortDir * av.localeCompare(bv) : sortDir * (av - bv);
     });
   }
 
   const tbody = document.getElementById('tbody');
-  if(rows.length === 0){
-    tbody.innerHTML = '<tr><td colspan="7" class="empty">No results match the current filters</td></tr>';
-  } else {
-    tbody.innerHTML = rows.map(r => {
-      const gs = gridStyle[r.grid];
-      const dc = deltaClass(r.delta);
-      const sign = r.delta >= 0 ? '+' : '';
-      return `<tr>
-        <td><span class="grid-pill" style="background:${gs.bg};color:${gs.fg}">${r.grid}</span></td>
-        <td>${r.sel}</td>
-        <td><span class="axis-badge">${r.axis}</span></td>
-        <td>${r.fwhm.toFixed(2)}</td>
-        <td>${r.fwhm2.toFixed(2)}</td>
-        <td>${r.beam}</td>
-        <td><span class="${dc}">${sign}${r.delta.toFixed(2)}</span></td>
-      </tr>`;
-    }).join('');
-  }
+  tbody.innerHTML = rows.length === 0
+    ? '<tr><td colspan="5" class="empty">No results match the current filters</td></tr>'
+    : rows.map(r => {
+        const gs = gridStyle[r.grid];
+        return `<tr>
+          <td><span class="grid-pill" style="background:${gs.bg};color:${gs.fg}">${r.grid}</span></td>
+          <td>${r.sel}</td>
+          <td><span class="axis-badge">${r.axis}</span></td>
+          <td>${r.fwhm.toFixed(2)}</td>
+          <td>${r.fwhm2.toFixed(2)}</td>
+        </tr>`;
+      }).join('');
 
-  renderSummary(rows);
-}
+  // summary cards
+  const n = rows.length;
+  const avgF2  = avg(rows.map(r=>r.fwhm2));
+  const avgFwh = avg(rows.map(r=>r.fwhm));
+  document.getElementById('summary').innerHTML = n === 0 ? '' : `
+    <div class="stat"><div class="stat-n">${n}</div><div class="stat-l">selections shown</div></div>
+    <div class="stat"><div class="stat-n">${fmt(avgFwh)} nm</div><div class="stat-l">avg FWHM</div></div>
+    <div class="stat"><div class="stat-n">${fmt(avgF2)} nm</div><div class="stat-l">avg FWHM/2</div></div>`;
 
-function renderSummary(rows){
-  if(rows.length === 0){ document.getElementById('summary').innerHTML = ''; return; }
-  const avgFwhm2 = rows.reduce((s,r)=>s+r.fwhm2,0)/rows.length;
-  const avgDelta = rows.reduce((s,r)=>s+r.delta,0)/rows.length;
-  const near = rows.filter(r=>Math.abs(r.delta)<=5).length;
-  const sign = avgDelta >= 0 ? '+' : '';
-  document.getElementById('summary').innerHTML = `
-    <div class="stat"><div class="stat-n">${avgFwhm2.toFixed(2)} nm</div><div class="stat-l">avg FWHM/2</div></div>
-    <div class="stat"><div class="stat-n">${sign}${avgDelta.toFixed(2)} nm</div><div class="stat-l">avg Δ from beam spot</div></div>
-    <div class="stat"><div class="stat-n">${near} / ${rows.length}</div><div class="stat-l">within ±5 nm of beam spot</div></div>`;
+  // averages breakdown — always computed from full dataset for context
+  const xRows = raw.filter(r =>
+    (filters.grid==='all'||r.grid===filters.grid) && r.axis==='X');
+  const yRows = raw.filter(r =>
+    (filters.grid==='all'||r.grid===filters.grid) && r.axis==='Y');
+  const allRows = raw.filter(r =>
+    (filters.grid==='all'||r.grid===filters.grid));
+
+  document.getElementById('avgs').innerHTML = `
+    <div class="avg-card">
+      <div class="avg-title">Y scans</div>
+      <div class="avg-row"><span>Avg FWHM</span><span class="avg-val">${fmt(avg(yRows.map(r=>r.fwhm)))} nm</span></div>
+      <div class="avg-row"><span>Avg FWHM/2</span><span class="avg-val">${fmt(avg(yRows.map(r=>r.fwhm2)))} nm</span></div>
+      <div class="avg-row"><span>n</span><span class="avg-val">${yRows.length}</span></div>
+    </div>
+    <div class="avg-card">
+      <div class="avg-title">X scans</div>
+      <div class="avg-row"><span>Avg FWHM</span><span class="avg-val">${fmt(avg(xRows.map(r=>r.fwhm)))} nm</span></div>
+      <div class="avg-row"><span>Avg FWHM/2</span><span class="avg-val">${fmt(avg(xRows.map(r=>r.fwhm2)))} nm</span></div>
+      <div class="avg-row"><span>n</span><span class="avg-val">${xRows.length}</span></div>
+    </div>
+    <div class="avg-card">
+      <div class="avg-title">All (X + Y)</div>
+      <div class="avg-row"><span>Avg FWHM</span><span class="avg-val">${fmt(avg(allRows.map(r=>r.fwhm)))} nm</span></div>
+      <div class="avg-row"><span>Avg FWHM/2</span><span class="avg-val">${fmt(avg(allRows.map(r=>r.fwhm2)))} nm</span></div>
+      <div class="avg-row"><span>n</span><span class="avg-val">${allRows.length}</span></div>
+    </div>`;
 }
 
 render();
