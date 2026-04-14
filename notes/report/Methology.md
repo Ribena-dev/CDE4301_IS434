@@ -122,11 +122,11 @@ The visible flakes are PMMA being removed during the lift off
 
 **Overdose (above 280 nC/mm²):** Excess secondary electron generation begins to expose resist beyond the intended beam boundary. The trench widens beyond the written pattern, reducing the effective critical dimension and degrading sidewall verticality.
 
-**Extreme overdose (above approximately 3.5 x 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become insoluble rather than soluble. This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached.
+**Extreme overdose (above approximately 3.5 x 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become insoluble rather than soluble. This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached. [13]
 
 ### 2.3 Material Deposition
 
-Following lithographic patterning and development of the resist, metal is deposited onto the substrate to form the functional grid features. For this project, metal deposition is carried out using physical vapour deposition (PVD), a broad class of processes in which a solid source material is vaporised and the resulting vapour is transported and condensed onto the substrate as a thin film [13] [14].
+Following lithographic patterning and development of the resist, metal is deposited onto the substrate to form the functional grid features. For this project, metal deposition is carried out using physical vapour deposition (PVD), a broad class of processes in which a solid source material is vaporised and the resulting vapour is transported and condensed onto the substrate as a thin film [14] [15].
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/PVD_schmatic.png" alt="PVD schematic">
@@ -156,7 +156,7 @@ Three PVD techniques are considered: magnetron sputtering, electron beam evapora
 
 For this project, magnetron sputtering is the most readily accessible deposition technique available in the laboratory. Its key advantage in the context of PMMA-patterned substrates is that it is a non-thermal process: energy is delivered to the target by ion bombardment rather than by heat, so the substrate temperature remains comparatively low during deposition. This reduces the risk of the PMMA resist warping or deforming before lift-off. Magnetron sputtering is also highly versatile in terms of target material, provided the material is compatible with the vacuum level achievable in the available system.
 
-The primary disadvantage for lift-off applications is the diffuse angular transport of sputtered atoms, which can deposit material on the sides of resist walls and prevent clean lift-off [15].
+The primary disadvantage for lift-off applications is the diffuse angular transport of sputtered atoms, which can deposit material on the sides of resist walls and prevent clean lift-off [16].
 
 #### E-beam Evaporation
 
@@ -180,7 +180,7 @@ For this fabrication project, a metal is required that satisfies five criteria:
 1. It must be compatible with PMMA lift-off, i.e. depositable at substrate-compatible temperatures.
 2. It must be a good electron scatterer for SEM and TEM characterisation. Materials with a high atomic number (high Z) produce strong contrast in electron microscopy.
 3. It must be chemically stable. The grid standard must resist oxidation or corrosion during storage and repeated use.
-4. It must have low lattice mismatch with the silicon substrate to minimise stress-induced deformation of the thin film. The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic structure) [18]. Lattice mismatch f is defined as f = (a_film - a_Si) / a_Si.
+4. It must have low lattice mismatch with the silicon substrate to minimise stress-induced deformation of the thin film. The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic structure) [17]. Lattice mismatch f is defined as f = (a_film - a_Si) / a_Si.
 5. It must have good surface smoothness to limit diffuse electron scattering.
 
 The Névot-Croce factor provides a quantitative measure of how surface roughness degrades specular signal retention. A perfectly smooth surface reflects all of the incident beam in the specular direction. As the surface gets rougher, signal scatters diffusely in random directions and the coherent reflection is reduced.
@@ -327,6 +327,7 @@ All three parameters are computed from 1D line profiles extracted from the AFM h
   <li>S. Rajendran, J. A. van Kan, T. Osipowicz, and F. Watt, "Design considerations for a compact proton beam writing system aiming for fast sub-10 nm direct write lithography," <em>Nucl. Instrum. Methods Phys. Res. B</em>, 2016. DOI: 10.1016/j.nimb.2016.11.022</li>
   <li>C. Mack, <em>Fundamental Principles of Optical Lithography</em>. Chichester: Wiley, 2007.</li>
   <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
+  <li>N. Puttaraksa, S. Unai, M. W. Rhodes, K. Singkarat, H. J. Whitlow, and S. Singkarat, "Fabrication of a negative PMMA master mold for soft-lithography by MeV ion beam lithography," <em>Nuclear Instruments and Methods in Physics Research Section B</em>, vol. 272, pp. 149–152, 2012. DOI: <a href="https://doi.org/10.1016/j.nimb.2011.01.053">10.1016/j.nimb.2011.01.053</a></li>
   <li>J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton beam writing: a review," <em>Appl. Surf. Sci.</em>, 2014. DOI: 10.1016/j.apsusc.2014.04.147</li>
   <li>A. A. Tseng, K. Chen, C. D. Chen, and K. J. Ma, "Electron beam lithography in nanoscale fabrication: recent development," <em>IEEE Trans. Electron. Packag. Manuf.</em>, vol. 26, no. 2, pp. 141–149, 2003. DOI: 10.1109/TEPM.2003.817714</li>
   <li>L. B. Freund and S. Suresh, <em>Thin Film Materials: Stress, Defect Formation and Surface Evolution</em>. Cambridge: Cambridge University Press, 2003.</li>

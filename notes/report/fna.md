@@ -86,7 +86,7 @@ The grid lines are straight and continuous with no visible breaks or bridging de
   <img src="sem/Grid-4_instability.png" alt="SEM images of Pd grid 4">
   <img src="sem/Grid-5_cleansi.png" alt="SEM images of Pd grid 5">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.6:</strong> SEM images of Pd grid 2500 magnification (left) 8000 magnification(right)
+    <strong>Figure 4.5:</strong> SEM images of Pd grid 2500 magnification (left) 8000 magnification(right)
   </figcaption>
 </figure>
 
@@ -98,7 +98,7 @@ Image on the right shows a single aperture at high magnification. The bright whi
 <figure style="text-align: center; margin: 20px 0;">
   <img src="sem/Grid-12.png" alt="SEM images of Pd grid 4">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.7:</strong> SEM images of Pd grid 100000 magnification 
+    <strong>Figure 4.6:</strong> SEM images of Pd grid 100000 magnification 
   </figcaption>
 </figure>
 
@@ -119,7 +119,7 @@ Given that the analysis is performed using a custom Python script, it is importa
   <img src="images/nickel_graph.png"
        alt="Nickel reference grid edge fit" width="480">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.5(a):</strong> Error function fit applied to the nickel calibration grid edge profile.
+    <strong>Figure 4.7(a):</strong> Error function fit applied to the nickel calibration grid edge profile.
   </figcaption>
 </figure>
 
@@ -134,7 +134,7 @@ The beam was having some inconstancy in the stability, which is attributed to th
   <img src="images/nickel_grid_e.png"
        alt="Nickel reference grid heatmap with line scan indicated" width="480">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.5(b):</strong> Electron count heatmap of the nickel calibration grid. The blue line indicates the position of the selected line scan.
+    <strong>Figure 4.7(b):</strong> Electron count heatmap of the nickel calibration grid. The blue line indicates the position of the selected line scan.
   </figcaption>
 </figure>
 
@@ -148,7 +148,7 @@ Given the shadowing effect, the below table is carefully curated to only include
   <img src="sem/Grid-14_a.png"
        width="480">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 4.6:</strong> Grids 12 and 14 with labeled selected regions
+    <strong>Figure 4.8:</strong> Grids 12 and 14 with labeled selected regions
   </figcaption>
 </figure>
 
