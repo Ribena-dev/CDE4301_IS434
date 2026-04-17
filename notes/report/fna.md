@@ -2,6 +2,8 @@
 
 This section presents the characterisation results for the fabricated grid resolution standards. Measurements are organised by technique: AFM surface roughness is reported first, as it characterises the top face of the metal features independently of the edge geometry, followed by sidewall angle analysis from the SEM, . Where relevant, results are compared against the targets established in Section 1.4: a sidewall angle of at least 89.4°, surface roughness below 1 nm Rq. To note; the comparison of electron contrast between Au and DLC coatings was left to [Appendix E](E.md).
 
+To note; the heights used are much smaller than made previously by CIBA. This is both due to fabrication restrictions; current material deposition systems can only do a max height of 100nm and because I aimed to take advantage of the beam spread being narrower at the start, by depositing smaller heights. 
+
 ### 4.1 Surface Roughness
 
 Surface roughness Rq was measured by AFM in tapping mode, characterising the top face of the surface metal grid feature across each sample.
@@ -168,7 +170,7 @@ The fitted sidewall angles exhibit large fluctuations across both grids, with va
 
 The edge fitting approach and sidewall angle calculation were originally developed by F. Zhang et al. [1] using a nickel reference grid with a feature height of 2 µm. The current Pd samples have a total deposited thickness of only ~100 nm (100 nm Pd + 2 nm Ti), representing a reduction in height by a factor of approximately 20. This deviation arose due to machining and deposition constraints during fabrication. Given that the angle calculation is directly dependent on the ratio of feature height to FWHM, using a method calibrated for a 2 µm feature on a 100 nm structure introduces systematic error , a small FWHM that would indicate a steep sidewall at 2 µm height becomes physically ambiguous at 100 nm, where the transition width is comparable to or exceeds the feature height itself. The intense scatter in the computed angles is therefore expected and confirms that the sidewall angle metric is not a reliable figure of merit at this length scale.
 
-A more appropriate quantity to extract from these measurements is the FWHM/2 value, which at this scale is no longer dominated by the sidewall geometry but instead reflects the SEM beam spot size and instrument resolution. The FWHM/2 values extracted from the fits show a consistent and physically meaningful pattern across both grids.
+A more appropriate quantity to extract from these measurements is the FWHM/2 value, which can be used as an estimate for SEM resolution spot size according to industry experts. The FWHM/2 values extracted from the fits show a consistent and physically meaningful pattern across both grids.
 
 
 <iframe

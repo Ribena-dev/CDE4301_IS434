@@ -178,6 +178,8 @@ Importantly not all the samples where tested using the SEM for sidewall characte
 The DLC and Au samples was made and tested for surface roughness and to compared relative electron counts, when scanned with the p-beam
 
 The Pd sample (Sample 6) was the only sample tested with the SEM, this is because the Au surface was too rough and the DLC surface although smoother was too thin a layer to be properly calculated using the line fit method
+
+
 ##### Pd Fabrication - Key Structural Diffrences
 
 Unlike the Au and DLC samples where the Ti adhesion layer was deposited across the entire Si surface prior to PMMA coating, the Pd sample followed an inverted process, PMMA was spun first, followed by PBW exposure, then Pd/Ti deposition into the developed apertures. As a result, the Ti adhesion layer is confined solely to the footprint of the Pd features and is absent from the surrounding Si surface.
