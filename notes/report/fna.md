@@ -2,7 +2,7 @@
 
 This section presents the characterisation results for the fabricated grid resolution standards. Measurements are organised by technique: AFM surface roughness is reported first, as it characterises the top face of the metal features independently of the edge geometry, followed by sidewall angle analysis from the SEM, . Where relevant, results are compared against the targets established in Section 1.4: a sidewall angle of at least 89.4°, surface roughness below 1 nm Rq. To note; the comparison of electron contrast between Au and DLC coatings was left to [Appendix E](E.md).
 
-To note; the heights used are much smaller than made previously by CIBA. This is both due to fabrication restrictions; current material deposition systems can only do a max height of 100nm and because I aimed to take advantage of the beam spread being narrower at the start, by depositing smaller heights. 
+To note; the heights used are much smaller than made previously by CIBA. This is both due to fabrication restrictions; current material deposition systems can only do a max height of 100nm and because I aimed to take advantage of the beam spread being narrower at the start, by depositing smaller heights and in theory creating more vertical sidewalls.
 
 ### 4.1 Surface Roughness
 

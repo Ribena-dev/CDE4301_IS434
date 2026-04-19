@@ -28,7 +28,7 @@ There are many kinds of resolution and calibration standards. Common examples in
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/tin_nm.png" alt="Tin sphere resolution standards" >
-  <img src="images/grid_nm.png" alt="Grid resolution standards" width = "280px">
+  <img src="images/grid_nm.png" alt="Grid resolution standards">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
     <strong>Figure 1.3:</strong> Common resolution standards: tin spheres (left) and nano-grids (right).
   </figcaption>
