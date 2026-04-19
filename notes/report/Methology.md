@@ -25,9 +25,9 @@ Further note: this section and the next include a process chart that will highli
 
 ### 2.1 Resist
 
-Resists are radiation-sensitive materials that can be coated onto substrates and locally modified to yield desired patterns. Based on their response to exposure, they are broadly classified as positive or negative resists. Positive resists show an increased dissolution rate in the exposed regions when developed, while negative resists show a decreased dissolution rate; the exposed regions become insoluble and are retained after development [1].
+Resists are radiation-sensitive materials that can be coated onto substrates and locally modified to yield desired patterns. Based on their response to exposure, they are broadly classified as positive or negative resists. Positive resists show an increased dissolution rate in the exposed regions when developed, while negative resists show a decreased dissolution rate; the exposed regions become insoluble and are retained after development <a href="#ref-1">[1]</a>.
 
-Two of the most common and highest-resolution resists used for nanofabrication are PMMA and HSQ. Both have been demonstrated to be compatible with proton beam writing (PBW) at sub-100 nm dimensions, and represent the state of the art for direct-write lithography at CIBA [2].
+Two of the most common and highest-resolution resists used for nanofabrication are PMMA and HSQ. Both have been demonstrated to be compatible with proton beam writing (PBW) at sub-100 nm dimensions, and represent the state of the art for direct-write lithography at CIBA <a href="#ref-2">[2]</a>.
 
 #### PMMA: Poly(methyl methacrylate)
 
@@ -38,7 +38,7 @@ Two of the most common and highest-resolution resists used for nanofabrication a
   </figcaption>
 </figure>
 
-PMMA is a long-chain synthetic polymer and one of the most widely used positive resists in nanofabrication. Its primary advantages include a simple formulation (PMMA dissolved in anisole, a low-toxicity solvent), insensitivity to white light (wavelength above 250 nm), a wide range of available film thicknesses through dilution, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the PMMA [2] [3].
+PMMA is a long-chain synthetic polymer and one of the most widely used positive resists in nanofabrication. Its primary advantages include a simple formulation (PMMA dissolved in anisole, a low-toxicity solvent), insensitivity to white light (wavelength above 250 nm), a wide range of available film thicknesses through dilution, no processing delay effects after spin-coating, and straightforward removal after metal deposition via lift-off using acetone to dissolve the PMMA <a href="#ref-2">[2]</a> <a href="#ref-3">[3]</a>.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/p_re.png" >
@@ -47,9 +47,9 @@ PMMA is a long-chain synthetic polymer and one of the most widely used positive 
   </figcaption>
 </figure>
 
-PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission: the breaking of the polymer backbone at the carbon-carbonyl bond. This reduces the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development, leaving the unexposed PMMA as the remaining resist pattern [3] [4].
+PMMA is a positive resist. When exposed to a proton or electron beam, the incident radiation generates secondary electrons that initiate chain scission: the breaking of the polymer backbone at the carbon-carbonyl bond. This reduces the molecular weight of the polymer in the exposed regions, increasing their solubility in an organic developer such as MIBK:IPA. The exposed material is dissolved away during development, leaving the unexposed PMMA as the remaining resist pattern <a href="#ref-3">[3]</a> <a href="#ref-4">[4]</a>.
 
-PMMA is available in two standard molecular weights, 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) [3] [5]. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness range.
+PMMA is available in two standard molecular weights, 495K and 950K, each supplied at multiple concentrations in anisole (e.g. A2, A4, A6 for 2%, 4%, 6% solids by weight) <a href="#ref-3">[3]</a> <a href="#ref-5">[5]</a>. Higher molecular weight resist is more viscous at the same concentration and produces a slightly thicker film at a given spin speed. The choice of molecular weight and concentration together determine the accessible thickness range.
 
 #### HSQ: Hydrogen Silsesquioxane
 
@@ -60,7 +60,7 @@ PMMA is available in two standard molecular weights, 495K and 950K, each supplie
   </figcaption>
 </figure>
 
-HSQ is an inorganic silicon-based resist with the empirical formula [HSiO3/2]n. In its as-deposited state it exists as a polyhedral cage of silicon and oxygen atoms, each silicon bearing a single hydrogen substituent. HSQ is a negative resist and has been shown to function as a high-resolution negative-tone e-beam resist, with resolutions below 20 nm reported and single lines as narrow as 7 nm demonstrated [2].
+HSQ is an inorganic silicon-based resist with the empirical formula [HSiO3/2]n. In its as-deposited state it exists as a polyhedral cage of silicon and oxygen atoms, each silicon bearing a single hydrogen substituent. HSQ is a negative resist and has been shown to function as a high-resolution negative-tone e-beam resist, with resolutions below 20 nm reported and single lines as narrow as 7 nm demonstrated <a href="#ref-2">[2]</a>.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/n_re.png" >
@@ -69,7 +69,7 @@ HSQ is an inorganic silicon-based resist with the empirical formula [HSiO3/2]n. 
   </figcaption>
 </figure>
 
-When exposed to radiation, secondary electrons cleave the Si-H bonds within the cage structure, generating silanol groups that rapidly condense to form new Si-O-Si crosslinks. This converts the soluble cage structure into a dense, crosslinked network that is insoluble in developer solutions such as TMAH. The unexposed, uncrosslinked regions are dissolved during development and removed, leaving the crosslinked network as the patterned feature. This is the negative-tone response [2] [6].
+When exposed to radiation, secondary electrons cleave the Si-H bonds within the cage structure, generating silanol groups that rapidly condense to form new Si-O-Si crosslinks. This converts the soluble cage structure into a dense, crosslinked network that is insoluble in developer solutions such as TMAH. The unexposed, uncrosslinked regions are dissolved during development and removed, leaving the crosslinked network as the patterned feature. This is the negative-tone response <a href="#ref-2">[2]</a> <a href="#ref-6">[6]</a>.
 
 #### Resist Choice
 
@@ -80,7 +80,7 @@ When exposed to radiation, secondary electrons cleave the Si-H bonds within the 
   </figcaption>
 </figure>
 
-PMMA is selected over HSQ for this project on the basis of lift-off compatibility. The fabrication process requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film [3] [4]. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow [6].
+PMMA is selected over HSQ for this project on the basis of lift-off compatibility. The fabrication process requires metal deposition followed by resist lift-off to define the metallic grid features. As a positive resist, PMMA produces an undercut profile during development that allows clean separation of the deposited metal film <a href="#ref-3">[3]</a> <a href="#ref-4">[4]</a>. HSQ, as a negative resist, produces an overcut profile that prevents clean lift-off and is therefore incompatible with this process flow <a href="#ref-6">[6]</a>.
 
 ### 2.2 Proton Beam Writing
 
@@ -122,11 +122,11 @@ The visible flakes are PMMA being removed during the lift off
 
 **Overdose (above 280 nC/mm²):** Excess secondary electron generation begins to expose resist beyond the intended beam boundary. The trench widens beyond the written pattern, reducing the effective critical dimension and degrading sidewall verticality.
 
-**Extreme overdose (above approximately 3.5 x 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become insoluble rather than soluble. This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached. [6]
+**Extreme overdose (above approximately 3.5 x 10¹⁴ ions/cm²):** PMMA undergoes a positive-to-negative resist transition, and the exposed regions become insoluble rather than soluble. This regime is not relevant to the present project but would fundamentally change the development polarity if accidentally reached. <a href="#ref-6">[6]</a>
 
 ### 2.3 Material Deposition
 
-Following lithographic patterning and development of the resist, metal is deposited onto the substrate to form the functional grid features. For this project, metal deposition is carried out using physical vapour deposition (PVD), a broad class of processes in which a solid source material is vaporised and the resulting vapour is transported and condensed onto the substrate as a thin film [7] [8].
+Following lithographic patterning and development of the resist, metal is deposited onto the substrate to form the functional grid features. For this project, metal deposition is carried out using physical vapour deposition (PVD), a broad class of processes in which a solid source material is vaporised and the resulting vapour is transported and condensed onto the substrate as a thin film <a href="#ref-7">[7]</a> <a href="#ref-8">[8]</a>.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/PVD_schmatic.png" alt="PVD schematic">
@@ -137,11 +137,11 @@ Following lithographic patterning and development of the resist, metal is deposi
 
 The general PVD process proceeds in four stages: energy is applied to the source material to vaporise it; the vaporised material is transported through a high-vacuum environment; the vapour impinges on the substrate surface; and the material condenses to form a thin film.
 
-PVD is well-suited to this project for several reasons. High vacuum conditions minimise contamination from residual gases. The deposition rate can be controlled, providing influence over the film morphology, texture, and surface roughness, all of which affect the calibration utility of the finished standard [7].
+PVD is well-suited to this project for several reasons. High vacuum conditions minimise contamination from residual gases. The deposition rate can be controlled, providing influence over the film morphology, texture, and surface roughness, all of which affect the calibration utility of the finished standard <a href="#ref-7">[7]</a> .
 
 The primary disadvantage of PVD is that it is a line-of-sight process: atoms travel in straight paths from the source to the substrate and cannot coat surfaces that are geometrically hidden from the source. For this project, this is not a limitation, as the grid structure is a relatively simple planar geometry with no hidden or re-entrant surfaces requiring coating.
 
-Additionally, given that pure PMMA has a glass transition temperature (Tg) of approximately 105 to 107 °C (commercial grades can range from 85 to 165 °C) [8], the deposition method must not subject the substrate to temperatures that would damage the PMMA before lift-off.
+Additionally, given that pure PMMA has a glass transition temperature (Tg) of approximately 105 to 107 °C (commercial grades can range from 85 to 165 °C) <a href="#ref-8">[8]</a> , the deposition method must not subject the substrate to temperatures that would damage the PMMA before lift-off.
 
 Three PVD techniques are considered: magnetron sputtering, electron beam evaporation, and filtered cathodic vacuum arc (FCVA).
 
@@ -156,7 +156,7 @@ Three PVD techniques are considered: magnetron sputtering, electron beam evapora
 
 For this project, magnetron sputtering is the most readily accessible deposition technique available in the laboratory. Its key advantage in the context of PMMA-patterned substrates is that it is a non-thermal process: energy is delivered to the target by ion bombardment rather than by heat, so the substrate temperature remains comparatively low during deposition. This reduces the risk of the PMMA resist warping or deforming before lift-off. Magnetron sputtering is also highly versatile in terms of target material, provided the material is compatible with the vacuum level achievable in the available system.
 
-The primary disadvantage for lift-off applications is the diffuse angular transport of sputtered atoms, which can deposit material on the sides of resist walls and prevent clean lift-off [7].
+The primary disadvantage for lift-off applications is the diffuse angular transport of sputtered atoms, which can deposit material on the sides of resist walls and prevent clean lift-off <a href="#ref-7">[7]</a> .
 
 #### E-beam Evaporation
 
@@ -180,7 +180,7 @@ For this fabrication project, a metal is required that satisfies five criteria:
 1. It must be compatible with PMMA lift-off, i.e. depositable at substrate-compatible temperatures.
 2. It must be a good electron scatterer for SEM and TEM characterisation. Materials with a high atomic number (high Z) produce strong contrast in electron microscopy.
 3. It must be chemically stable. The grid standard must resist oxidation or corrosion during storage and repeated use.
-4. It must have low lattice mismatch with the silicon substrate to minimise stress-induced deformation of the thin film. The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic structure) [9]. Lattice mismatch f is defined as f = (a_film - a_Si) / a_Si.
+4. It must have low lattice mismatch with the silicon substrate to minimise stress-induced deformation of the thin film. The silicon substrate has a lattice parameter of a = 5.431 Å (diamond cubic structure) <a href="#ref-9">[9]</a> . Lattice mismatch f is defined as f = (a_film - a_Si) / a_Si.
 5. It must have good surface smoothness to limit diffuse electron scattering.
 
 The Névot-Croce factor provides a quantitative measure of how surface roughness degrades specular signal retention. A perfectly smooth surface reflects all of the incident beam in the specular direction. As the surface gets rougher, signal scatters diffusely in random directions and the coherent reflection is reduced.
@@ -206,7 +206,7 @@ Three complementary characterisation techniques are used to evaluate the fabrica
 
 #### SEM: Edge Straightness and Sidewall Angle
 
-The SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. The method selected is based off F.Zhang et al. (CIBA, NUS), NIMB 2007 [10]. When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
+The SEM is the primary tool used in this project to assess edge quality and estimate sidewall angle. The method selected is based off F.Zhang et al. (CIBA, NUS), NIMB 2007 <a href="#ref-10">[10]</a> . When the electron beam scans across the edge of a grid feature, the secondary electron yield increases sharply at the sidewall, producing a bright edge peak in the greyscale line profile. The width of this bright band, known as the edge width (EW) or white-band width (WBW), is directly related to the sidewall angle: a steeper, more vertical sidewall produces a narrower edge band, while a sloped or tapered sidewall broadens it.
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/sem_phy.jpg" alt="SEM machine used ">
@@ -219,12 +219,12 @@ The edge intensity profile is fitted using a combined error function and Gaussia
 
 $$ F(x) = A\left[1 + \text{Erf}\!\left(\frac{2\sqrt{\ln 2}}{f}(d - x)\right)\right] + B\exp\!\left(-\frac{\ln 16}{f^2}(d - x)^2\right) + C $$
 
-where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is the baseline offset, *d* is the fitted edge position in pixels, and *f* is the FWHM of the edge transition [10].
+where *A* is the error function amplitude, *B* is the Gaussian amplitude, *C* is the baseline offset, *d* is the fitted edge position in pixels, and *f* is the FWHM of the edge transition <a href="#ref-10">[10]</a> .
 
 <figure style="text-align: center; margin: 20px 0;">
   <img src="images/ni_grid_x_lc.jpg" alt="Analysis method applied to the nickel reference grid">
   <figcaption style="font-style: italic; color: #666; margin-top: 8px; font-size: 14px;">
-    <strong>Figure 2.15:</strong> Analysis method applied to the previously fabricated nickel reference grid: F.Zhang et al. (CIBA, NUS), NIMB 2007 [9]
+    <strong>Figure 2.15:</strong> Analysis method applied to the previously fabricated nickel reference grid: F.Zhang et al. (CIBA, NUS), NIMB 2007 <a href="#ref-10">[10]</a> 
   </figcaption>
 </figure>
 
@@ -315,46 +315,44 @@ All three parameters are computed from 1D line profiles extracted from the AFM h
 
 <div class="references">
 <ol>
-  <li>K. Yamazaki, "Electron beam direct writing," in <em>Nanofabrication: 
-  Fundamentals and Applications</em>, A. A. Tseng, Ed. Singapore: World 
+  <li id="ref-1">K. Yamazaki, "Electron beam direct writing," in <em>Nanofabrication:
+  Fundamentals and Applications</em>, A. A. Tseng, Ed. Singapore: World
   Scientific, 2008, ch. 10.</li>
 
-  <li>J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton 
-  beam writing: a review," <em>Appl. Surf. Sci.</em>, 2014. 
+  <li id="ref-2">J. A. van Kan, P. Malar, and A. B. H. Tay, "Resist materials for proton
+  beam writing: a review," <em>Appl. Surf. Sci.</em>, 2014.
   DOI: 10.1016/j.apsusc.2014.04.147</li>
 
-  <li>Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019. 
-  Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">
-  kayakuam.com</a></li>
+  <li id="ref-3">Microchem / Kayaku Advanced Materials, "PMMA Data Sheet," 2019.
+  Available: <a href="https://kayakuam.com/wp-content/uploads/2019/09/PMMA_Data_Sheet.pdf">kayakuam.com</a></li>
 
-  <li>F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam 
-  writing," <em>Mater. Today</em>, vol. 10, no. 6, pp. 20–29, 2007. 
+  <li id="ref-4">F. Watt, M. B. H. Breese, A. A. Bettiol, and J. A. van Kan, "Proton beam
+  writing," <em>Mater. Today</em>, vol. 10, no. 6, pp. 20–29, 2007.
   DOI: 10.1016/S1369-7021(07)70129-3</li>
 
-  <li>F. Watt, A. A. Bettiol, J. A. van Kan, E. J. Teo, and M. B. H. Breese, 
-  "Ion beam lithography and nanofabrication: a review," <em>Int. J. Nanosci.</em>, 
+  <li id="ref-5">F. Watt, A. A. Bettiol, J. A. van Kan, E. J. Teo, and M. B. H. Breese,
+  "Ion beam lithography and nanofabrication: a review," <em>Int. J. Nanosci.</em>,
   vol. 4, no. 3, pp. 269–286, 2005.</li>
 
-  <li>N. Puttaraksa et al., "Fabrication of a negative PMMA master mold for 
-  soft-lithography by MeV ion beam lithography," <em>Nuclear Instruments and 
-  Methods in Physics Research Section B</em>, vol. 272, pp. 149–152, 2012. 
-  DOI: <a href="https://doi.org/10.1016/j.nimb.2011.01.053">
-  10.1016/j.nimb.2011.01.053</a></li>
+  <li id="ref-6">N. Puttaraksa et al., "Fabrication of a negative PMMA master mold for
+  soft-lithography by MeV ion beam lithography," <em>Nuclear Instruments and
+  Methods in Physics Research Section B</em>, vol. 272, pp. 149–152, 2012.
+  DOI: <a href="https://doi.org/10.1016/j.nimb.2011.01.053">10.1016/j.nimb.2011.01.053</a></li>
 
-  <li>H. Frey and H. R. Khan, Eds., <em>Handbook of Thin-Film Technology</em>. 
+  <li id="ref-7">H. Frey and H. R. Khan, Eds., <em>Handbook of Thin-Film Technology</em>.
   Berlin: Springer, 2015.</li>
 
-  <li>K. Müller, "Thermal stability of PMMA resists used in nanolithography," 
+  <li id="ref-8">K. Müller, "Thermal stability of PMMA resists used in nanolithography,"
   <em>Sci. Rep.</em>, 2021. DOI: 10.1038/s41598-021-01282-7</li>
 
-  <li>L. B. Freund and S. Suresh, <em>Thin Film Materials: Stress, Defect 
-  Formation and Surface Evolution</em>. Cambridge: Cambridge University 
+  <li id="ref-9">L. B. Freund and S. Suresh, <em>Thin Film Materials: Stress, Defect
+  Formation and Surface Evolution</em>. Cambridge: Cambridge University
   Press, 2003.</li>
 
-  <li>F. Zhang, J. A. van Kan, S. Y. Chiam, and F. Watt, <em>Nuclear Instruments 
-  and Methods in Physics Research Section B: Beam Interactions with Materials 
-  and Atoms</em>, vol. 260, no. 1, pp. 474–478, Jul. 2007. 
-  DOI: <a href="https://doi.org/10.1016/j.nimb.2007.02.065">
-  10.1016/j.nimb.2007.02.065</a></li>
+  <li id="ref-10">F. Zhang, J. A. van Kan, S. Y. Chiam, and F. Watt, <em>Nuclear Instruments
+  and Methods in Physics Research Section B: Beam Interactions with Materials
+  and Atoms</em>, vol. 260, no. 1, pp. 474–478, Jul. 2007.
+  DOI: <a href="https://doi.org/10.1016/j.nimb.2007.02.065">10.1016/j.nimb.2007.02.065</a></li>
 </ol>
 </div>
+
